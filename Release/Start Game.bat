@@ -1,0 +1,1 @@
+start Apocalyx.exe game.lua
