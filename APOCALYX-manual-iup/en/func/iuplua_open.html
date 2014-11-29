@@ -1,0 +1,64 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>iuplua_open</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>iuplua_open</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Initializes the Lua Binding. This function 
+  should be called by the host program before running any Lua functions, but it is important to call it after </span><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IupOpen</span></b>.</p>
+  <p>It is also allowed to call <b><span style="font-family: Courier New">iuplua_open</span></b> without calling <b>
+  <span style="font-family: Courier New">IupOpen</span></b>. Then <b><span style="font-family: Courier New">IupOpen</span></b> 
+  will be internally called. This enable you to dynamically load IUP using Lua 5 &quot;require&quot;. This is also valid for all 
+  the additional controls when IUP is&nbsp; dynamically loaded. To call <b><span style="font-family: Courier New">
+  IupClose</span></b> in this way you must call <b><span style="font-family: Courier New">iuplua_close</span></b>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>int iuplua_open(void); [in C for Lua 3]
+int iuplua_open(lua_State *L); [in C for Lua 5]
+[<span style="font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">There is no equivalent in </span>Lua]</pre>
+  <pre>For Lua 3 returns a non zero value if successfull.
+For Lua 5 returns 0 (the number of elements in the stack).</pre>
+</blockquote>
+<h3>Note</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">For a more detailed explanation on the 
+  system control for the Lua Binding, please refer to </span>
+  <a href="javascript:parent.manLoadCont('guide', '../iuplua', 'sistema')">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Lua Binding / System Control</span></a>.</p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><a href="iupopen.html"><font face="Courier New">IupOpen</font></a>,
+  <a href="javascript:parent.manLoadCont('guide', '../guide', 'sistema')">Guide / System Control</a></p>
+</blockquote>
+
+</body>
+
+</html>

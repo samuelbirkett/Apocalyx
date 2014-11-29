@@ -1,0 +1,67 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupGetAllNames</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupGetAllNames</h2>
+<blockquote>
+  <p><span style="font-family: Times New Roman">Returns</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the names of all interface elements </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  that have an associated name</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  using IupSetHandle or using LED.</span></p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>int IupGetAllNames(char *<strong>names</strong>[], int <strong>max_n</strong>); [in C]
+iup.GetAllNames(<strong>max_n</strong>: number) -&gt; (<strong>names</strong>: table<strong>, n</strong>: number) [in Lua]</pre>
+</blockquote>
+<blockquote>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">names</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: table receiving the names</span><br>
+  <b>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  max_<span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">n</span></span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: maximum number of names the table can receive</span>.</p>
+</blockquote>
+<blockquote>
+  <p><span style="font-family: Times New Roman">R</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">eturns the number of names loaded to the 
+  table</span>.</p>
+</blockquote>
+<h3>Lua Binding&nbsp;</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This name is not associated to the name of 
+  the Lua variable – this was inherited from LED and is needed for some functions</span>.</p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupsethandle.html">IupSetHandle</a>, <a href="iupgethandle.html">IupGetHandle</a>,
+  <a href="iupgetname.html">IupGetName</a>, <a href="iupgetalldialogs.html">IupGetAllDialogs</a></font>.</p>
+</blockquote>
+
+</body>
+
+</html>

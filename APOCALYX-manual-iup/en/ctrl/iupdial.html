@@ -1,0 +1,155 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>IupDial - control</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupDial</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a dial for regulating a given 
+  angular variable</span>. It inherits from <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">
+  IupCanvas</a>.</p>
+</blockquote>
+<h3>Creation</h3>
+<blockquote>
+  <pre>Ihandle* IupDial(char *<strong>type</strong>); [in C]
+iup.dial{<strong>type</strong>: string} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+dial(<strong>type</strong>) [in LED] </pre>
+  <p><strong><font face="Courier New">tipo</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">dial type. Can be </span>
+  <font face="Courier New">&quot;HORIZONTAL&quot;, &quot;VERTICAL&quot;</font> or <font face="Courier New">&quot;CIRCULAR&quot;</font>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The function returns the identifier of the 
+  created dial, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><b><font face="Courier New">FGCOLOR</font></b>: Controls the foreground color. The default value is &quot;64 64 64&quot;. The 
+  foreground color is not used for the circular dial.</p>
+  <p><b><font face="Courier New">BGCOLOR</font></b>: Controls the background color. The default value is the parent or 
+  the dialog background color.</p>
+  <p><strong><font face="Courier New">DENSITY</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Contains average value of the number of
+  <span style="background-repeat: repeat; background-attachment: scroll; mso-highlight: red; background-position: 0%">
+  lines </span>per pixel in the dial. The purpose of this attribute is to maintain the control’s appearance when its 
+  size changes</span>. Default is &quot;0.2&quot;.</p>
+  <p><strong><font face="Courier New">UNIT</font></strong>: Contains the unit of the angle. Can be &quot;<font face="Courier New">DEGREES</font>&quot; 
+  or &quot;<font face="Courier New">RADIANS</font>&quot;. Default is &quot;<font face="Courier New">RADIANS</font>&quot;.</p>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">VALUE</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Contains the dial value in a given moment</span>. 
+  The value is an angle starting at zero when the interaction started.</p>
+  <p><strong><font face="Courier New">TYPE</font></strong>:&nbsp; Informs whether the dial is &quot;<font face="Courier New">VERTICAL</font>&quot;, 
+  &quot;<font face="Courier New">HORIZONTAL</font>&quot; or &quot;<font face="Courier New">CIRCULAR</font>&quot;. </p>
+  <p><b><font face="Courier New">EXPAND</font></b>: The default is <font face="Courier New">&quot;</font>NO<font face="Courier New">&quot;</font>.
+  </p>
+  <p><b><font face="Courier New">SIZE</font></b>: the default is &quot;16x80&quot;, &quot;80x16&quot; or &quot;40x35&quot; according to the dial type.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><strong><font face="Courier New">MOUSEMOVE_CB</font></strong>: <font size="3">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Called each time the user moves the dial with the
+  <span style="background-repeat: repeat; background-attachment: scroll; mso-highlight: red; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; background-position: 0% 50%">
+  mouse<span> </span></span></span>
+  <span lang="PT-BR" style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: PT-BR; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  button pressed. </span>
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The angle the dial rotated since it was initialized is passed as a parameter</span></span></font>.</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <div align="left">
+      <pre>int function(Ihandle *<strong>self</strong>, double <strong>angle</strong>); [in C]
+<strong>elem</strong>:mousemove_cb(<strong>angle</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    </div>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">BUTTON_PRESS_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called when the user presses the left mouse 
+  button over the dial</span>. The angle here is always zero, except for the circular dial.</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <div align="left">
+      <pre>int function(Ihandle *<strong>self</strong>, double <strong>angle</strong>)
+<strong>elem</strong>:button_press_cb(<strong>angle</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    </div>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">BUTTON_RELEASE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called when the user releases the left mouse 
+  button after pressing it over the dial</span>.</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <div align="left">
+      <pre>int function(Ihandle *<strong>self</strong>, double <strong>angle</strong>)
+<strong>elem</strong>:button_release_cb(<strong>angle</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    </div>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>When the keyboard arrows are pressed and released the mouse press and the mouse release callbacks are called in 
+  this order. If you hold the key down a mouse move callback is also called.</p>
+  <p>When the wheel is rotated only the mouse move callback is called, and it increments the last angle the dial was 
+  rotated.</p>
+  <p>In these cases the value is incremented by PI/10 (18 degrees). </p>
+</blockquote>
+<h3><a href="../examples/ctrl/iupdial/">Examples</a></h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates several </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Dials</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> and shows each dial’s value in a </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">Label</span>.</p>
+  <p align="center"><img src="iupdial.gif" width="258" height="397"></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a></p>
+</blockquote>
+
+</body>
+
+</html>

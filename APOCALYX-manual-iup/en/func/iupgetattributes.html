@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupGetAttributes</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupGetAttributes</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Verifies all attributes of a given element 
+  that are in the internal hash table</span>. The known attributes that are pointers (not strings) are returned as 
+  integers.</p>
+  <p>Notice that IUP uses some internal attributes on many elements. These attributes are always prefixed with &quot;_IUP&quot;.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>char* IupGetAttributes (Ihandle *<strong>element</strong>); [in C]
+iup.GetAttributes(<strong>element</strong>: iulua_tag) -&gt; (<strong>attributes</strong>: string) [in Lua] </pre>
+</blockquote>
+<blockquote>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">element</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Identifier of the interface element</span>.<br>
+  <b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">attributes</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: in the form </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">v1=a1,v2=a2,...</span><span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">where </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">vi</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> is the name of an attribute and </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">ai</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is its value</span>.</p>
+</blockquote>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns all attributes defined 
+  for that element</span>.</p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupgetattribute.html">IupGetAttribute</a>, <a href="iupsetattribute.html">
+  IupSetAttribute</a>, <a href="iupsetattributes.html">IupSetAttributes</a>, <a href="iupstoreattribute.html">
+  IupStoreAttribute</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

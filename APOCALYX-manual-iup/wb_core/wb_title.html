@@ -1,0 +1,43 @@
+<html>
+
+<head>
+<style TYPE="text/css">           
+A:link, A:visited, A:active {color:white;}
+TD {border:1pt; font-size:10pt; font-family:sans-serif; white-space:nowrap; color:white;}
+TD.title {font-size:16pt; font-weight:bold;}
+#layer0 {position:absolute; left:0px; top:0px; width:100%;}
+</style>
+
+</head>                                         
+
+<script language="JavaScript" type="text/javascript">
+function wb_usrmsg(name)
+{
+  return parent.wb_usr.messages[parent.wb_cur_lang][name];
+}
+
+document.write("<body bgcolor='", parent.wb_usr.title_bgcolor, "'>\n");
+</script>
+
+<div id=layer0>
+<table width="100%" border="0" cellpadding="0" cellspacing="5">
+  <tr>
+    <td width="60">
+      <img border='0' alt='Logo' src='../wb_usr/logo.gif'>
+		</td>
+    <td align="left" class='title'>
+<script language="JavaScript" type="text/javascript">
+      document.write(wb_usrmsg("bar_title"), "\n");
+</script>
+		</td>
+		<td align='right'>
+<script language="JavaScript" type="text/javascript">
+    document.write("Rev.: ",wb_usrmsg("revision_date"),"<br>© <a href='", parent.wb_usr.copyright_link, "' target=_blank>", parent.wb_usr.copyright_name, "</a>\n");
+</script>
+  	</td>
+  </tr>
+</table>
+</span>
+
+</body>
+</html>

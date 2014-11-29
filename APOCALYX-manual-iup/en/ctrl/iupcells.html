@@ -1,0 +1,251 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>IupCells</title>
+</head>
+
+<body>
+
+<h2>IupCells</h2>
+<blockquote>
+  <p><span style="font-size: 12pt; font-family: Times New Roman">Creates a grid widget (set of cells) that enables 
+  several application-specific drawing, such as: chess tables, tiles editors, degradeé scales, drawable spreadsheets and 
+  so forth. </span></p>
+  <p><span style="font-size: 12pt; font-family: Times New Roman">This element is mostly based on application callbacks 
+  functions that determine the number of cells (rows and coluns), their appearence and interation. This mechanism offers 
+  full flexibility to applications, but requires programmers attention to avoid infinite loops inside this functions.</span><span style="font-family: Times New Roman"> 
+  Using callbacks</span><span style="font-size: 12pt; font-family: Times New Roman">, cells can be also grouped to form 
+  major or hierarchical elements, such as headers,&nbsp; footers etc.</span></p>
+  <p><span style="font-family: Times New Roman">Since the size of each cell is given by the application the size of the 
+  control also must be given using SIZE or RASTERSIZE attributes.</span></p>
+  <p><span style="font-family: Times New Roman">This callback approach was intentionally chosen to allow all cells
+  </span><span style="font-size: 12pt; font-family: Times New Roman">to be dinamically and directly changed based on 
+  application's data structures.</span></p>
+  <p><span style="font-size: 12pt; font-family: Times New Roman">This control implementation is directly inherited on
+  </span>&nbsp;<a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>, and is originally 
+  implemented by André Clinio.</p>
+</blockquote>
+<h3>Creation</h3>
+<blockquote>
+  <pre>Ihandle* IupCells(void); [in C]
+iup.cells{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+cells() [in LED] </pre>
+  <p><span style="font-size: 12pt; font-family: Times New Roman">The function returns the identifier of the created 
+  Cells, or </span><span style="font-size: 12pt; font-family: Courier New">NULL</span><span style="font-size: 12pt; font-family: Times New Roman"> 
+  if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><b><font face="Courier New">BOXED:</font></b> Determines if the bounding cells' regions should the drawn with black 
+  lines. It can be <font face="Courier New">&quot;YES&quot;</font> or <font face="Courier New">&quot;NO&quot;</font>. Default:
+  <font face="Courier New">&quot;YES&quot;.</font>If the span atributtes are set set this attribute to &quot;<font face="Courier New">NO&quot;</font> 
+  to avoid grid drawing over spanned cells.</p>
+  <p><b><font face="Courier New">CLIPPED:</font></b> Determines if, before cells drawing, each bounding region should be 
+  clipped. This attribute should the changed in few specific cases.&nbsp; It can be <font face="Courier New">&quot;YES&quot;</font> 
+  or <font face="Courier New">&quot;NO&quot;</font>. Default: <font face="Courier New">&quot;YES&quot;.</font></p>
+  <p><b><font face="Courier New">NON_SCROLLABLE_LINES:</font></b> Determines the number of non-scrollable lines 
+  (vertical headers) that should allways be visible despite the vertical scrollbar position. It can&nbsp; be any 
+  non-negative integer value. Default: &quot;0&quot;</p>
+  <p><b><font face="Courier New">NON_SCROLLABLE_COLS:</font></b> Determines the number of non-scrollable columns 
+  (horizontal headers) that should allways be visible despite the horizontal scrollbar position. It can be any 
+  non-negative integer value. Default: &quot;0&quot;</p>
+  <p><b><font face="Courier New">ORIGIN:</font></b> Sets the first visible line and column positions. This attribute is 
+  set by a formatted string <code>&quot;%d:%d&quot;</code> (C syntax), where each &quot;%d&quot;represent the line and column integer 
+  indexes respectely.</p>
+  <p><b><font face="Courier New">REPAINT:</font></b> When set with any value (write-only), provokes the control full 
+  repaint.</p>
+  <p><b><font face="Courier New">FULL_VISIBLE:</font></b> Tries to show completely a specific cell (considering any 
+  vertical or horizontal header or scrollbar position) .This attribute is set by a formatted string <code>&quot;%d:%d&quot;</code> 
+  (C syntax), where each &quot;%d&quot;represent the line and column integer indexes respectely.</p>
+  <p><b><font face="Courier New">NO_COLOR</font></b>:&nbsp; Adjusts the default color of cells which the drawing 
+  callback does nothing. Default: the BGCOLOR attribute.</p>
+  <p><b><font face="Courier New">LIMITS</font></b>: (Read Only) Returns the limits of a given cell. Input format is &quot;<code>lin:col</code>&quot; 
+  or &quot;<code>%d:%d&quot;</code> in C. Output format is <code>&quot;xmin:xmax:ymin:ymax&quot;</code> or <code>&quot;%d:%d:%d:%d&quot; </code>in C.</p>
+  <p><b><font face="Courier New">FIRST_COL</font></b>: (Read Only) Returns the number of the first visible column. </p>
+  <p><b><font face="Courier New">FIRST_LINE</font></b>: (Read Only) Returns the number of the first visible line. </p>
+  <p><b><font face="Courier New">BUFFERIZE:</font></b> When set to &quot;<font face="Courier New">YES</font>&quot;, disables the 
+  control redrawing. It should be used only to avoid the control blinking effect when several attributes are being 
+  changed at sequentially. When REPAINT attribute is set, BUFFERIZE is automatically adjusted to &quot;<font face="Courier New">NO</font>&quot;. 
+  Default: <font face="Courier New">&quot;NO&quot;</font>. </p>
+  <p><b><font face="Courier New">IMAGE_CANVAS</font></b>: Returns the internal image CD canvas (read-only). This 
+  attribute should be used only in specific cases and by experienced CD programmers.</p>
+  <p><b><font face="Courier New">CANVAS</font></b>: Returns the internal IUP CD canvas (read-only). This attribute 
+  should be used only in specific cases and by experienced CD programmers.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><tt><font size="3"><b>MOUSECLICK_CB</b>:</font></tt> called when a color is selected. The primary color is
+  <span style="font-size: 12pt">selected </span>with the left mouse button, and if existant the secondary is
+  <span style="font-size: 12pt">selected </span>with the right mouse button.</p>
+  <blockquote>
+    <pre>int function(Ihandle* <b>self</b>, int <b>button</b>, int <b>pressed</b>, int <b>line</b>, int <b>column</b>, int <b>x</b>, int <b>y</b>, char* <b>status</b>);  [in C]<strong>
+elem</strong>:mouseclick_cb(<strong>button, pressed, line, column, x, y</strong>: number, <b>string: </b>status) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size: 12pt; font-family: Times New Roman">identifies the control that activated the function's 
+    execution</span>.<br>
+    <strong><font face="Courier New">but</font></strong>: identifies the<span style="font-size: 12pt; font-family: Times New Roman"> 
+    activated</span> <span style="font-size: 12pt; font-family: Times New Roman">mouse button (just like in canvas 
+    control)</span>:</p>
+    <blockquote>
+      <p><font face="Courier New">IUP_BUTTON1</font> <span style="font-size: 12pt; font-family: Times New Roman">left 
+      mouse button (button 1</span>);<br>
+      <font face="Courier New">IUP_BUTTON2</font> <span style="font-size: 12pt; font-family: Times New Roman">middle 
+      mouse button (button 2</span>);<br>
+      <font face="Courier New">IUP_BUTTON3</font> <span style="font-size: 12pt; font-family: Times New Roman">right 
+      mouse button (button </span>3).</p>
+    </blockquote>
+    <p><strong><font face="Courier New">pressed</font></strong>:
+    <span style="font-size: 12pt; font-family: Times New Roman">indicates the state of the button</span>:</p>
+    <blockquote>
+      <p><font face="Courier New">0</font> <span style="font-size: 12pt; font-family: Times New Roman">mouse button was 
+      released</span>;<br>
+      <font face="Courier New">1</font> <span style="font-size: 12pt; font-family: Times New Roman">mouse button was 
+      pressed</span>.</p>
+    </blockquote>
+    <p><font face="Courier New"><strong>x</strong>, <strong>y</strong></font>:
+    <span style="font-size: 12pt; font-family: Times New Roman">raster </span>
+    <span style="font-size: 12pt; font-family: Times New Roman">position (relative to the canvas) where the event has 
+    occurred, in pixels</span>.<br>
+    <font face="Courier New"><strong>line</strong>, </font><strong><font face="Courier New">column</font></strong>:
+    <span style="font-size: 12pt; font-family: Times New Roman">the grid position in the control where the event has 
+    occurred, in </span><span style="font-family: Times New Roman">grid coordinates</span>.<br>
+    <strong>status</strong>: <span style="font-size: 12pt; font-family: Times New Roman">status of the mouse buttons and 
+    some keyboard keys at the moment the event is generated. The following macros must be used for verification</span>:
+    </p>
+    <blockquote>
+      <p><font face="Courier New">isshift(</font><strong style="font-weight: 400">status</strong><font face="Courier New">)
+      <br>
+      iscontrol(</font><strong style="font-weight: 400">status</strong><font face="Courier New">) <br>
+      isbutton1(</font><strong style="font-weight: 400">status</strong><font face="Courier New">) <br>
+      isbutton2(</font><strong style="font-weight: 400">status</strong><font face="Courier New">) <br>
+      isbutton3(</font><strong style="font-weight: 400">status</strong><font face="Courier New">)<br>
+      isdouble(</font><strong style="font-weight: 400">status</strong><font face="Courier New">)</font> </p>
+    </blockquote>
+    <p><span style="font-size: 12pt; font-family: Times New Roman">They return </span><span style="font-size: 12pt">
+    <font face="Courier New">1</font></span><span style="font-size: 12pt; font-family: Times New Roman"> if the 
+    respective key or button is pressed, and </span><span style="font-size: 12pt"><font face="Courier New">0</font></span><span style="font-size: 12pt; font-family: Times New Roman"> 
+    otherwise</span>. </p>
+  </blockquote>
+  <p><tt><font size="3"><b>MOUSEMOTION_CB</b>:</font></tt> <span style="font-size: 12pt; font-family: Times New Roman">
+  called when the mouse move</span><span style="font-family: Times New Roman"><font size="3">s over the control</font></span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <b>line</b>, int <b>column</b>, int <strong>x</strong>, int <strong>y</strong>, char *<strong>r</strong>); [in C]
+<strong>elem</strong>:mousemotion_cb(<strong>x</strong>, <strong>y</strong>: number, <strong>r</strong>: string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size: 12pt; font-family: Times New Roman">identifier of the canvas that activated the function's 
+    execution</span>.<br>
+    <font face="Courier New"><strong>x</strong>, <strong>y</strong></font>:
+    <span style="font-size: 12pt; font-family: Times New Roman">position in the canvas where the event has occurred, in 
+    pixels</span>.<br>
+    <font face="Courier New"><strong>line</strong>, </font><strong><font face="Courier New">column</font></strong>:
+    <span style="font-size: 12pt; font-family: Times New Roman">the grid position in the control where the event has 
+    occurred, in </span><span style="font-family: Times New Roman">grid coordinates</span>.<br>
+    <strong><font face="Courier New">r</font></strong>: <span style="font-size: 12pt; font-family: Times New Roman">
+    status of mouse buttons and certain keyboard keys at the moment the event was generated. The following macros must 
+    be used for verification</span>:</p>
+    <blockquote>
+      <p><font face="Courier New">isshift(r) <br>
+      iscontrol(r) <br>
+      isbutton1(r) <br>
+      isbutton2(r) <br>
+      isbutton3(r)<br>
+      isdouble(r)</font> </p>
+    </blockquote>
+  </blockquote>
+  <p><tt><font size="3"><b>DRAW_CB</b>:</font></tt> called when a specif cell needs to be repainted<font face="Courier New"><b>.</b></font></p>
+  <blockquote>
+    <pre>int function(Ihandle* <b>self</b>, int <b>line</b>, int <b>column</b>, int <b>xmin</b>, int <b>xmax</b>, int <b>ymin</b>, int <b>ymax</b>);  [in C]<strong>
+elem</strong>:draw_cb(<b>line</b>, <b>column</b>, <b>xmin</b>, <b>xmax</b>, <b>ymin</b>, <b>ymax</b>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><font face="Courier New"><strong>line</strong>, </font><strong><font face="Courier New">column</font></strong>:
+    <span style="font-size: 12pt; font-family: Times New Roman">the grid position inside the control that is being 
+    repainted, in </span><span style="font-family: Times New Roman">grid coordinates</span>.<br>
+    <strong><font face="Courier New">xmin, xmax, ymin, ymax</font></strong>: the raster bounding box of the repainting 
+    cells, where the application can use CD functions to draw anything. If the atributte IUP_CLIPPED is set (the 
+    default), all CD graphical primitives is clipped to the bounding region.</p>
+    <p>The&nbsp; returned value is ignored. </p>
+    <p><b>Important note</b>: Inside this callback, the cdActivate() function call is <b><u>not</u></b> required. Before 
+    DRAW_CB is called, the active cdCanvas is properly set; and correctly restored when this function ends. Moreover, 
+    all CD attributes are saved and set back for the callback calling, so that the application does not need to deal 
+    with the graphical attributes restoration.</p>
+  </blockquote>
+  <p><tt><font size="3"><b>WIDTH_CB</b>:</font></tt> called when the controls needs to know a (eventually new) colunm 
+  width</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int <b>column</b>);  [in C]
+<strong>elem</strong>:width_cb(<strong>column</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><b>column:</b> the column index</p>
+    <p>The return value should be an integer that specifies the desired width (in pixels). Negative values will be 
+    ignored.</p>
+  </blockquote>
+  <p><tt><font size="3"><b>HEIGHT_CB</b>:</font></tt> called when the controls needs to know a (eventually new) line 
+  heigth.</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int <b>line</b>);  [in C]
+<strong>elem</strong>:height_cb(<strong>line</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><b>line:</b> the line index</p>
+    <p>The return value should be an integer that specifies the desired heigth (in pixels). Negative values will be 
+    ignored.</p>
+  </blockquote>
+  <p><tt><font size="3"><b>NLINES_CB</b>:</font></tt> called when then controls needs to know its number of lines.</p>
+  <blockquote>
+    <pre>int function(Ihandle* <b>self</b>);  [in C]
+<strong>elem</strong>:nlines_cb() -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p>The return value should be an integer that specifies number of lines. Negative values will be ignored and 
+    considered as zero</p>
+  </blockquote>
+  <p><tt><font size="3"><b>NCOLS_CB</b>:</font></tt> called when then controls needs to know its number of columns.</p>
+  <blockquote>
+    <pre>int function(Ihandle* <b>self</b>);  [in C]
+<strong>elem</strong>:ncols_cb() -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p>The return value should be an integer that specifies number of lines. Negative values will be ignored and 
+    considered as zero</p>
+  </blockquote>
+  <p><tt><font size="3"><b>HSPAN_CB</b>:</font></tt> called when the control needs to know if a cell should be 
+  horizontally spanned.</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int <b>line</b>, int <b>column</b>);  [in C]
+<strong>elem</strong>:hspan_cb(<strong>line, column</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong>line, column</strong><b>:</b> the line and colun indexes (in grid coordinates)</p>
+    <p>The return value should be an integer that specifies the desired span Negative values will be ignored and treated 
+    as 1 (no span)</p>
+    <p>If this callback is not set, all cells will not have any span (default value 1).</p>
+  </blockquote>
+  <p><tt><font size="3"><b>VSPAN_CB</b>:</font></tt> called when the control needs to know if a cell should be 
+  vertically spanned.</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int <b>line</b>, int <b>column</b>);  [in C]
+<strong>elem</strong>:vspan_cb(<strong>line, column</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong>line, column</strong><b>:</b> the line and colun indexes (in grid coordinates)</p>
+    <p>The return value should be an integer that specifies the desired span. Negative values will be ignored and 
+    treated as 1 (no span)</p>
+    <p>If this callback is not set, all cells will not have any span (default value 1).</p>
+  </blockquote>
+  <p><tt><font size="3"><b>SCROLLING_CB</b>:</font></tt> called when the user right click a cell with the Shift key 
+  pressed. It is independent of the <font face="Courier New">SHOW_SECONDARY</font> attribute.</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int <b>line</b>, int <b>column</b>);  [in C]
+<strong>elem</strong>:scrolling_cb(<strong>line, column</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong>line, column</strong><b>:</b> the first visible line and colunm indexes (in grid coordinates)</p>
+    <p>The return value should be IUP_DEFAULT is the application wants the grid to be repainted.</p>
+    <p>If this callback is not set, all visible cells are redrawn after the scrollbar adjustments.</p>
+  </blockquote>
+</blockquote>
+<h3><a href="../examples/ctrl/iupcells">Examples</a></h3>
+<blockquote>
+  <p align="center"><b>Checkerboard Pattern<br>
+  </b><img border="0" src="iupcells_chess.jpg" width="436" height="456"></p>
+  <p align="center"><b>Numbering Cells<br>
+  </b><img border="0" src="iupcells_num.jpg" width="486" height="511"></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

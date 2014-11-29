@@ -1,0 +1,669 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupTree - control</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupTree</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a tree containing nodes of branches 
+  or leaves</span>. It inherits from <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>.</p>
+  <p>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The branches can be expanded or collapsed. When a branch is expanded, its immediate children are visible, and when it 
+  is collapsed they are hidden. The leaves can generate an executed or renamed action, branches can only generate 
+  renamed actions. Both branches and leaves can have an associated text</span>. The selected node is the node with the 
+  focus rectangle, marked nodes have their background inverted. </p>
+</blockquote>
+<h3 dir="ltr">Creation</h3>
+<blockquote dir="ltr">
+  <div dir="ltr">
+    <pre>Ihandle* IupTree(<strong>void</strong>); [in C] 
+iup.tree{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+tree() [in LED]</pre>
+  </div>
+  <p dir="ltr">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+  created </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <h4><a href="iuptree_attrib.html#global"><span style="font-family: Times New Roman">General</span></a></h4>
+  <blockquote>
+    <p><font face="Courier New"><strong>SCROLLBAR</strong><br>
+    <strong>FONT</strong><br>
+    </font><strong><font face="Courier New">ADDEXPANDED<br>
+    SHOWDRAGDROP<br>
+    SHOWRENAME<br>
+    RENAMECARET<br>
+    RENAMESELECTION</font></strong></p>
+  </blockquote>
+  <h4>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><a href="iuptree_attrib.html#marks">Marks</a></span></h4>
+  <blockquote>
+    <p><strong><font face="Courier New">CTRL<br>
+    SHIFT<br>
+    STARTING<br>
+    VALUE<br>
+    MARKED</font></strong></p>
+  </blockquote>
+  <h4><a href="iuptree_attrib.html#images">Images</a></h4>
+  <blockquote>
+    <p><strong><font face="Courier New">IMAGELEAF<br>
+    IMAGEBRANCHCOLLAPSED<br>
+    IMAGEBRANCHEXPANDED<br>
+    IMAGEid<br>
+    IMAGEEXPANDEDid</font></strong></p>
+  </blockquote>
+  <h4>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><a href="iuptree_attrib.html#nodes">Nodes</a></span></h4>
+  <blockquote>
+    <p><strong><font face="Courier New">NAME<br>
+    STATE<br>
+    DEPTH<br>
+    KIND<br>
+    PARENT<br>
+    COLOR</font></strong></p>
+  </blockquote>
+  <h4><span style="font-family: Times New Roman"><a href="iuptree_attrib.html#action">Action</a></span></h4>
+  <blockquote>
+    <p><font face="Courier New"><strong>ADDLEAF<br>
+    ADDBRANCH<br>
+    DELNODE</strong><br>
+    </font><b><font face="Courier New">REDRAW<br>
+    RENAMENODE</font></b></p>
+  </blockquote>
+</blockquote>
+<h3><a href="iuptree_cb.html">Callbacks</a></h3>
+<blockquote>
+  <p><strong><font face="Courier New">SELECTION_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when an node is selected or 
+  deselected.</span><strong><font face="Courier New"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><br>
+  MULTI</span>SELECTION_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when multiple nodes are 
+  selected with the mouse and the shift key pressed.</span><strong><font face="Courier New"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><br>
+  </span>BRANCHOPEN_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a branch is expanded.
+  </span><strong><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <br>
+  </span>BRANCHCLOSE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a branch is collapsed.</span><strong><font face="Courier New"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><br>
+  </span>EXECUTELEAF_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a leaf is to be 
+  executed. </span><strong><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <br>
+  </span>RENAMENODE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a node is to be 
+  renamed. </span><strong><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <br>
+  </span>RENAME_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a node new name was 
+  entered. </span><strong><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <br>
+  SHOW</span>RENAME_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a new name is about to 
+  be entered. </span><strong><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <br>
+  </span>DRAGDROP_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a drag &amp; drop is 
+  executed. </span><strong><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <br>
+  </span>RIGHTCLICK_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the right mouse button 
+  is pressed over a node</span>.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>Branches may be added in IupLua using a Lua Table (see Example 2).&nbsp; </p>
+  <h4>Hierarchy</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">Branches can contain other branches or leaves. The tree always has at least one branch, 
+  the <b>root</b>, which will be the parent of all the first level branches and leaves</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">. </span></p>
+  <h4>Structure</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is stored as a list, so that each node or branch has an associated identification number 
+  (</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">id</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">), starting by the root, with </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">id=0</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. However, this number does not always correspond to the same 
+  node as the tree is modified. For example, a node with id 2 will always refer to the third node in the tree. For that 
+  reason, there is also </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">userid</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, which allows identifying a specific node. The </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">userid</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> always refers to the same node (just as the associated text). The </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">userid</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> may contain a user-created structure allowing the identification of a node. </span></p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">Each node also contains its depth level, starting by the root, which has depth </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">0</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. To allow inserting nodes in any position, 
+  sometimes the depth of a node must be explicitly changed. For instance, if you create a leaf in a child branch of the 
+  root, it will be created with depth </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">2</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. To make it become a child of the root, its 
+  depth must be set to </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">1</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">.</span></p>
+  <h4>Images</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> has three types of images: one associated to the leaf, one to the collapsed branch and 
+  the other to the expanded branch. Each image can be changed, both globally and individually.</span></p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">The predefined images used in </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> can be obtained by means of function </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">IupGetHandle</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">.</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">The names of the </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  predefined </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">images are:</span><font face="Courier New"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  </span>IMGLEAF, IMGCOLLAPSED, IMGEXPANDED, IMGBLANK</font> (blank sheet of paper) and<font face="Courier New"> 
+  IMGPAPER</font> (written sheet of paper). By default:</p>
+  <blockquote>
+    <pre>&quot;IMAGELEAF&quot; uses &quot;IMGLEAF&quot;
+&quot;IMAGEBRANCHCOLLAPSED&quot; uses &quot;IMGCOLLAPSED&quot;
+&quot;IMAGEBRANCHEXPANDED&quot; uses &quot;IMGEXPANDED&quot;</pre>
+    <pre><font face="Courier New">&quot;IMGBLANK&quot; and &quot;IMGPAPER&quot; are designed for use as </font>&quot;IMAGELEAF&quot;</pre>
+  </blockquote>
+  <h4>Scrollbar</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">’s scrollbar is activated by default and works automatically. When a node leaves the 
+  visible area, the scrollbar automatically scrolls so as to make it visible. We recommend not changing the SCROLLBAR 
+  attribute.</span> </p>
+  <h4>Fonts</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The fonts used by </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> are like the ones defined by IUP (see attribute</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">FONT</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">). We recommend using only IUP-defined fonts</span>. </p>
+  <h4>Colors</h4>
+  <p>The IupTree colors are fixed by definition. The tree background color is &quot;255 255 255&quot; in Windows and &quot;156 156 165&quot; 
+  in Motif. The tree selected node color is &quot;8 33 107&quot; in Windows and &quot;0 0 156&quot; in Motif.</p>
+  <h4>Manipulation</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Node insertion or removal is done by means 
+  of attributes. It is allowed to remove nodes and branches inside callbacks associated to opening or closing branches.
+  </span></p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This means that the user may insert nodes 
+  and branches only when necessary when the parent brach is opened, allowing the use of a larger </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <font face="Courier New">IupTree</font></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> without too much overhead.</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> Then when the parent branch is closed the subtree can be removed. A side-effect of this 
+  use is that the expanded or collapsed state of the children branches must be managed by the user. </span></p>
+  <p><span style="font-family: Times New Roman">When a node is added, removed or renamed the tree is not automatically 
+  redrawn. You must set REDRAW=YES when you finish changing the tree.</span></p>
+</blockquote>
+<blockquote>
+  <h4>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Simple Marking</span></h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Is the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">’s default operation mode. In this mode only one node is marked, and it matches the 
+  selected node.</span></p>
+  <h4>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Multiple Marking</span></h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> allows marking several nodes simultaneously using the Shift and Control keys. To use 
+  multiple marking, the user must use attributes</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">SHIFT</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> and</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">CTRL</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">When a user keeps the Control key pressed, 
+  the individual marking mode is used. This way, the selected node can be modified without changing the marked node. To 
+  reverse a node marking, the user simply has to press the space bar</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">When the user keeps the Shift key pressed, 
+  the block marking mode is used. This way, all nodes between the selected node and the initial node are marked, and all 
+  others are unmarked. The initial node is changed every time a node is marked without the Shift key being pressed. This 
+  happens when any movement is done without Shift or Control being pressed, or when the space bar is pressed together 
+  with Control</span>.</p>
+  <h4>Removing a Node with &quot;Del&quot;</h4>
+  <p>You can simply implement a K_ANY callback:</p>
+  <blockquote>
+    <pre>int k_any(Ihandle* self, int c)
+{
+  if (c == K_DEL) 
+  {
+    IupSetAttribute(self,&quot;DELNODE&quot;,&quot;MARKED&quot;);
+    IupSetAttribute(self,&quot;REDRAW&quot;,&quot;&quot;);
+  }
+  return IUP_DEFAULT;
+}</pre>
+  </blockquote>
+</blockquote>
+<h3><a name="navigation">Navigation</a></h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Using the keyboard</span>: </p>
+  <ul>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Arrow Up/Down</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Shifts the selected node to the neighbor 
+    node, according to the arrow direction</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Arrow Left/Right</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Makes the branch collapse/expand</span></li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Home/End</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Selects the root/last node</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Page Up/Page Down</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Selects the node one page above/below the 
+    selected node</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Enter</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: If the selected node is an expanded branch, it is collapsed; if it is a collapsed
+    </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    branch</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, it is expanded; if it is a leaf, it is executed</span>.</li>
+    <li><b>Ctrl+Space</b>:&nbsp;
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    Marks or unmarks a node</span>.</li>
+    <li><b>F2</b>:
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    Calls the rename callback or invoke the inplace rename.</span></li>
+  </ul>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Using the mouse</span>: </p>
+  <ul>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Clicking a node</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Selects the clicked node</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Clicking a (-/+) box</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Makes the branch to the right of the (-/+) 
+    box collapse/expand</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Clicking an empty region</span></b><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Unmarks all nodes (including the selected 
+    one</span>).</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Double-clicking a node image</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: If the selected node is an expanded 
+    branch, it is collapsed; if it is a collapsed branch, it is expanded; if it is a leaf, it is executed</span>. </li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Double-clicking a node text</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">: Calls the rename callback</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+    or invoke the inplace rename</span>.</li>
+  </ul>
+</blockquote>
+<h3>Extra Functions</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> has functions that allow associating a pointer (or a user defined id) to </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  a </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">node</span>. In order to do that, you provide the id of the node and the pointer (userid); even 
+  if the node's id changes later on, the userid will still be associated with the given node. In IupLua, instead of a 
+  pointer the same functions are defined for table and userdata.</p>
+  <blockquote>
+    <pre>int IupTreeSetUserId(Ihandle *<strong>self</strong>, int <strong>id</strong>, void *<strong>userid</strong>); [in C]
+iup.TreeSetUserId(<strong>self: </strong>ihandle, <strong>id: </strong>number, <strong>userid: </strong>userdata) [in Lua]
+iup.TreeSetTableId(<strong>self: </strong>ihandle, <strong>id: </strong>number, <strong>table: </strong>table) [in Lua]</pre>
+    <blockquote>
+      <p><strong><font face="Courier New">self</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+      <strong><font face="Courier New">id</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Node identifier</span>. <br>
+      <strong><font face="Courier New">userid</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">User pointer associated to the node</span>. 
+      Use NULL (nil) value to remove the association.<br>
+      <strong><font face="Courier New">
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">table</span></font></strong>:
+      <span style="font-family: Times New Roman">Table that should be associated to the node or leaf. Use </span>nil 
+      value to remove the association.</p>
+      <p>Associations to Lua objects in Lua 5 are referenced in the Lua REGISTRY. So they can be retrieved later. This 
+      means also that the associated object will not be garbage collected until its reference is removed.</p>
+      <p>Also, the user should not use the same table to reference different nodes (neither in the same nor across 
+      different trees.)</p>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <pre>void* IupTreeGetUserId(Ihandle *<strong>self</strong>, int <strong>id</strong>); [in C] 
+iup.TreeGetUserId(<strong>self: </strong>ihandle, <strong>id: </strong>number) -&gt; (<b>ret:</b> userdata) [in Lua]
+iup.TreeGetTable(<strong>self: </strong>ihandle, <strong>id: </strong>number) -&gt; (<b>ret:</b> table) [in Lua]</pre>
+    <blockquote>
+      <p><strong><font face="Courier New">self</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+      <strong><font face="Courier New">id</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Node identifier.</span></p>
+      <p>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Returns the pointer or table associated to 
+      the node. </span></p>
+    </blockquote>
+  </blockquote>
+  <blockquote>
+    <pre>int IupTreeGetId(Ihandle *<strong>self</strong>, void *<strong>userid</strong>); [in C] 
+iup.TreeGetId(<strong>self: </strong>ihandle, <strong>userid: </strong>userdata) -&gt; (<b>ret:</b> number) [in Lua]
+iup.TreeGetTableId(<strong>self: </strong>ihandle, <strong>table: </strong>table) -&gt; (<b>ret:</b> number) [in Lua]</pre>
+    <blockquote>
+      <p><strong><font face="Courier New">self</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+      <strong><font face="Courier New">userid</font></strong>:
+      <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+      Pointer</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> associated to the node. <br>
+      </span><strong><font face="Courier New">
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">table</span></font></strong>:
+      <span style="font-family: Times New Roman">Table that should be associated to the node or leaf.</span></p>
+      <p>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Returns the id of the node on success and -1 
+      (nil) on failure</span>. </p>
+    </blockquote>
+    <pre>iup.TreeSetValue(<strong>self: </strong>ihandle, <strong>tree: </strong>table) [in Lua]</pre>
+    <blockquote>
+      <p><strong><font face="Courier New">self</font></strong>:
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>.<br>
+      <strong><font face="Courier New">tree</font></strong>: <span style="font-family: Times New Roman">table of nodes.</span></p>
+      <p>Initializes the tree using the given Lua table as values for the tree nodes. For example:</p>
+      <blockquote>
+        <pre>tree = {
+  {
+    &quot;Horse&quot;,
+    &quot;Whale&quot;;
+    branchname = &quot;Mammals&quot;
+  },
+  {
+    &quot;Shrimp&quot;,
+    &quot;Lobster&quot;;
+    branchname = &quot;Crustaceans&quot;
+  };
+  branchname = &quot;Animals&quot;
+}
+iup.TreeSetValue(handle, tree)</pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+</blockquote>
+<h3>Utility Functions </h3>
+<blockquote>
+  <p>These functions can be used to help set and get attributes from the matrix:</p>
+  <blockquote>
+    <pre>void  IupTreeSetAttribute (Ihandle *n, char* a, int id, char* v);
+void  IupTreeStoreAttribute(Ihandle *n, char* a, int id, char* v);
+char* IupTreeGetAttribute (Ihandle *n, char* a, int id);
+int   IupTreeGetInt (Ihandle *n, char* a, int id);
+float IupTreeGetFloat (Ihandle *n, char* a, int id);
+void  IupTreeSetfAttribute (Ihandle *n, char* a, int id, char* f, ...);</pre>
+  </blockquote>
+  <p>They work just like the respective tradicional set and get functions. But the attribute string is complemented with 
+  the L and C values. For ex:</p>
+  <blockquote>
+    <pre>IupTreeSetAttribute(n, &quot;KIND&quot; , 30, v) = IupSetAttribute(n, &quot;KIND30&quot;, v)
+IupTreeSetAttribute(n, &quot;ADDLEAF&quot; , 10, v) = IupSetAttribute(n, &quot;ADDLEAF10&quot;, v)</pre>
+  </blockquote>
+  <p>See also the <a href="../../download/IupTreeUtil.tar.gz">IupTreeUtil</a> by Sergio Maffra and Frederico Abraham. It 
+  is an utility wrapper in C++ for the IupTree.</p>
+</blockquote>
+<h3><a href="../examples/ctrl/iuptree/">Examples</a></h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> with the values shown on the images below, and allows the user to change them 
+  dynamically</span>.</p>
+  <p align="center"><img src="iuptree.gif" alt="iuptree.gif (8Kb)" width="236" height="313"></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a></p>
+</blockquote>
+
+</body>
+
+</html>

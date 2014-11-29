@@ -1,0 +1,56 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupGetCallback</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupGetCallback</h2>
+<blockquote>
+  <p><span style="font-family: Times New Roman">Returns</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the callback associated to an event</span>.
+  </p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>Icallback IupGetCallback(Ihandle* <b>ih</b>, const char *<strong>name</strong>); [in C]
+[There is no equivalent in IupLua]</pre>
+</blockquote>
+<blockquote>
+  <p><b><span style="font-family: Courier New">ih</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: identifier of the interface element</span>. <strong><br>
+  </strong><b><span style="font-family: Courier New">name</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: attribute name of the callback</span>.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>This function replaces the combination:</p>
+  <blockquote>
+    <pre>IupGetFunction(IupGetAttribute(ih, name))</pre>
+  </blockquote>
+  <p>If an event is associated using <b><span style="font-family: Courier New">IupSetFunction</span></b> and <b>
+  <span style="font-family: Courier New">IupSetAttribute</span></b>, the <b><span style="font-family: Courier New">
+  IupGetCallback</span></b> also returns the correct callback. So old applications work normally.</p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupsetcallback.html">IupSetCallback</a></font>,&nbsp;&nbsp;
+  <font face="Courier New"><a href="iupgetfunction.html">IupGetFunction</a></font></p>
+</blockquote>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,371 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupTree - control</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupTree Callbacks</h2>
+<blockquote>
+  <p><strong><font face="Courier New">SELECTION_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when an element is selected 
+  or deselected. This action occurs when the user clicks with the mouse or uses the keyboard with the appropriate 
+  combination of keys. </span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id, int </strong>status) [in C]
+<strong>elem</strong>:selection_cb(<strong>id, status:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Node identifier</span>.<br>
+    <font face="Courier New"><b>status</b></font>: 1 - node was selected, 0 - node was unselected. </p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function must return</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New"> 
+    IUP_</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> for the selected node not to be changed, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> to change it</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New">MULTISELECTION_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  when multiple nodes are selected with the mouse and the shift key pressed.</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> </span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int* <strong>ids, int </strong>n) [in C]
+<strong>elem</strong>:multiselection_cb(<strong>ids: </strong>table<strong>, n:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">ids</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Array of node identifiers</span>.<br>
+    <b><font face="Courier New">n</font></b>: Number of nodes in the array.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function must return</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New"> 
+    IUP_</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> for the selected nodes not to be changed, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> to change it</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New">BRANCHOPEN_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a branch is expanded. 
+  This action occurs when the user clicks the &quot;+&quot; sign on the left of the branch, or when double clicks the branch 
+  image, or hits Enter on a collapsed branch</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">.</span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>) [in C] 
+<strong>elem</strong>:branchopen_cb(<strong>id:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Node identifier</span>. </p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function must return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> for the branch not to be opened, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> for the branch to be opened</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New">BRANCHCLOSE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a branch is collapsed. 
+  This action occurs when the user clicks the &quot;-&quot; </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  sign </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">on the left of the branch, or when double 
+  clicks</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  the branch <b>image</b>,</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> or hits Enter on an expanded branch.</span>
+  </p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>); [in C]
+<strong>elem</strong>:branchclose_cb(<strong>id:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node</span>. </p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function must return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> for the branch not to be closed, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> for the branch to be closed</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New">EXECUTELEAF_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a leaf is to be 
+  executed. This action occurs when the user double clicks the </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  leaf </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><b>image</b>, or hits Enter on a leaf</span>.
+  </p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>); [in C] 
+<strong>elem</strong>:executeleaf_cb(<strong>id:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node</span>.&nbsp;
+    <br>
+    </p>
+  </blockquote>
+  <p><strong><font face="Courier New">RENAMENODE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a node is to be 
+  renamed. It occurs only when the user double clicks the <b>text</b> associated to a node (leaf or branch) or press <b>
+  F2</b></span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">, 
+  and </span><strong><font face="Courier New">SHOWRENAME</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">=NO</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>, char *<strong>name</strong>); [in C]<strong>
+elem</strong>:renamenode_cb(<strong>id:</strong> number, <strong>name</strong>:<strong> </strong>string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node</span>. <br>
+    <strong><font face="Courier New">name</font></strong>: <span style="font-family: Times New Roman">Current</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> name of the clicked node</span>. <br>
+    </p>
+  </blockquote>
+  <p><strong><font face="Courier New">SHOWRENAME_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a node is to be 
+  renamed in place and </span><strong><font face="Courier New">SHOWRENAME</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">=</span><strong><font face="Courier New">YES</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  It occurs only when the user double clicks the <b>text</b> associated to a node (leaf or branch) or press <b>F2</b>, 
+  and </span><strong><font face="Courier New">SHOWRENAME</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">=</span><strong><font face="Courier New">YES</font></strong>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>); [in C]<strong>
+elem</strong>:showrename_cb(<strong>id:</strong> number:<strong> </strong>string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node</span>.&nbsp;
+    <br>
+    </p>
+  </blockquote>
+  <p><strong><font face="Courier New">RENAME_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated after a node was renamed in 
+  place. It occurs when the user press <b>Enter</b> after editing the name, or when the text box looses it focus</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>, char *<strong>name</strong>); [in C]<strong>
+elem</strong>:rename_cb(<strong>id:</strong> number, <strong>name</strong>:<strong> </strong>string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node</span>. <br>
+    <strong><font face="Courier New">name</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">New name of the clicked node</span>. </p>
+    <p>The new name is accepted only if the callback returns IUP_DEFAULT. If the callback does not exists the new name 
+    is always accepted. If the user pressed <b>Enter</b> and the callback returns IUP_IGNORE the editing continues. If 
+    the text box looses its focus the editing stops always.<br>
+    </p>
+  </blockquote>
+  <p><strong><font face="Courier New">DRAGDROP_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  a drag &amp; drop is executed. Only active if </span><font face="Courier New"><strong>SHOWDRAGDRO</strong></font><strong><font face="Courier New">P=YES.</font></strong></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <b>drag_id</b>, int <b>drop_id</b>, int <b>isshift</b>, int <b>iscontrol</b>); [in C] 
+<strong>elem</strong>:dragdrop_cb(<b>drag_id</b>, <b>drop_id</b>, <b>isshift</b>, <b>iscontrol</b><strong>:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">drag_id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node where the 
+    drag start</span>. <br>
+    <strong><font face="Courier New">drop_id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node where the 
+    drop were executed</span>.<br>
+    <strong><font face="Courier New">isshift</font></strong>: Boolean flag indicatinf the shift key state. <br>
+    <strong><font face="Courier New">iscontrol</font></strong>: Boolean flag indicatinf the control key state.<br>
+    </p>
+  </blockquote>
+  <p><strong><font face="Courier New">RIGHTCLICK_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the right mouse button 
+  is pressed over the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IupTree</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>id</strong>); [in C] 
+<strong>elem</strong>:rightclick_cb(<strong>id:</strong> number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupTree</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interacting with the user</span>. <br>
+    <strong><font face="Courier New">id</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the clicked node</span>. </p>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <hr>
+  <p>The canvas callbacks <font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_keypress_cb')">KEYPRESS_CB</a></font>,<font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_action')">ACTION</a></font>,<font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_scroll_cb')">SCROLL_CB</a></font>,<font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_map_cb')">MAP_CB</a></font>,<font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_resize_cb')">RESIZE_CB</a></font> and<font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_button_cb')">BUTTON_CB</a></font> can be changed but you 
+  should save and call the original definitions or the tree will not correctly work. This can not be done in Lua.</p>
+  <p>See also <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a>.</p>
+</blockquote>
+
+</body>
+
+</html>

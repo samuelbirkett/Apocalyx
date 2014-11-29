@@ -1,0 +1,326 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Template" content="X:\OFFICE97\OFFICE\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupList</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080">
+
+<h2>IupList</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">list</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> interface element, which is a list of two-state (on or off) items. An action is 
+  generated when an event changes the state of an item</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creation</span></h3>
+<blockquote>
+  <pre>Ihandle* IupList(char *<strong>action</strong>); [in C]
+iup.list{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+list(<strong>action</strong>) [in LED]</pre>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">action</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: String with the name of the action generated when the state of an item is changed</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+  created list, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> (</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">nil</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> in IupLua) if an error occurs</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Attributes</span></h3>
+<blockquote>
+  <p><strong>&quot;<font face="Courier New">1</font>&quot;</strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">First item in the list</span>.<br>
+  <strong>&quot;<font face="Courier New">2</font>&quot;</strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Second item in the list</span>.<br>
+  <strong>&quot;<font face="Courier New">3</font>&quot;</strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Third item in the list</span>.<br>
+  <b>...</b><br>
+  <strong>&quot;<font face="Courier New">n</font>&quot;</strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">n<sup>th</sup> item in the list</span>.</p>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The values can be any text. Default: </span>
+    <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. The first element with a </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is considered the end of the list. </span></p>
+  </blockquote>
+  <p><font face="Courier New"><a href="../atrib/iup_dropdown.html">DROPDOWN</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Changes the appearance of the list for the 
+  user: only the selected item is shown beside a button with the image of an arrow pointing down. Creation-only 
+  attribute</span>. Can be
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;YES&quot;</span> or
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;NO&quot;</span>. Default
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;NO&quot;</span>.</p>
+  <p>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <b>EDITBOX</b></span>: Adds an edit box to the list.
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Creation-only attribute</span>. Can be
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;YES&quot;</span> or
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;NO&quot;</span>. Default
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;NO&quot;</span>.</p>
+  <p><b><font face="Courier New">VISIBLE_ITEMS</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Number of items that appear when a </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">DROPDOWN</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> list is activated</span>. Default:
+  <span style="font-size: 12pt; font-family: Times New Roman">Depends on the native system</span>.</p>
+  <p><b><font face="Courier New">MULTIPLE</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Allows selecting several items 
+  simultaneously (multiple list</span>). Default: <font face="Courier New">&quot;NO&quot;.</font> Creation only attribute in 
+  Windows. Valid only for simple lists with no edit box.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_size')"><font face="Courier New">SIZE</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Size of the list. </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Default: room for 5 characters in 1 item.</span></p>
+  <p><b><font face="Courier New">VALUE</font></b>: Depends on the list type:</p>
+  <blockquote>
+    <p><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Simple list with edit box:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Text entered by the user. </span>&nbsp;<br>
+    <b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Simple list:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> Integer number representing the selected 
+    element in the list (begins at </span>1). It can be zero if there is no selected item.<br>
+    <b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Multiple list:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> Sequence of '+' and '-' symbols indicating 
+    the state of each item. When setting this value, the user must provide the same amount of '+' and '-' symbols as the 
+    amount of items in the list, otherwise the specified items will be deselected</span>. </p>
+  </blockquote>
+  <p><font face="Courier New"><a href="../atrib/iup_append.html">APPEND</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Inserts a text at the end of the current 
+  text</span>. Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_insert.html">INSERT</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Inserts a text in the caret's position</span>. 
+  Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_nc.html">NC</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Maximum number of characters allowed</span>. 
+  Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_caret.html">CARET</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Position of the insertion point</span>. 
+  Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_readonly.html">READONLY</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Allows the user only to read the contents, 
+  without changing it. Possible values</span>: <font face="Courier New">YES</font>, <font face="Courier New">NO</font> 
+  (default).&nbsp; Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_selection.html">SELECTION</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Selection interval</span>. Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_selectedtext.html">SELECTEDTEXT</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Selection text</span>. Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <p><b>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  SHOWDROPDOWN</span></b>: Action to open or close the dropdown list. Can be
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;YES&quot;</span> or
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;NO&quot;</span>. Valid only when
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">DROPDO</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">WN=YES</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">. </span></p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_action')"><font face="Courier New">ACTION</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the state of an item 
+  in the list is changed. Also provides information on the changed item</span>:</p>
+  <blockquote>
+    <p><code>int function (Ihandle *<strong>self</strong>, char *<strong>t</strong>, int <strong>i</strong>, int <strong>
+    v</strong>); [in C]<br>
+    <b>elem</b>:action(<b>t</b>: string, <b>i, v</b>: number) -&gt; (ret: number) [in Lua]</code><br>
+    <br>
+    <strong><font face="Courier New">t</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Text of the changed item</span>.<br>
+    <strong><font face="Courier New">i</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Number of the changed item</span>.<br>
+    <strong><font face="Courier New">v</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Equal to </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">1</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> if the option was selected or to </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if the option was deselected</span>.</p>
+  </blockquote>
+  <p><b><font face="Courier New">MULTISELECT</font></b><font face="Courier New"><b>_CB</b></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the state of an item 
+  in the multiple selection list is changed. But it is called only when the interaction is over.</span></p>
+  <blockquote>
+    <p><code>int function (Ihandle *<strong>self</strong>, char *<b>value</b>); [in C]<br>
+    <b>elem</b>:multiselect_cb(<b>value</b>: string) -&gt; (ret: number) [in Lua]</code><br>
+    <br>
+    <strong><font face="Courier New">value</font></strong>: Similar to the VALUE attribute for a multiple selection 
+    list, but non changed items are marked with an 'x'.</p>
+    <p>This callback is called only when MULTIPLE==YES. And if this callback is defined the <b><font face="Courier New">
+    ACTION</font></b> callback will not be called.</p>
+  </blockquote>
+  <p><font face="Courier New"><b>EDIT_CB</b></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the text in the text 
+  box is manually changed by the user. </span>Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, <font face="Courier">int <b>c</b>, char *<strong>after</strong></font>); [in C]
+<strong>elem</strong>:edit_cb(<b>c</b>: number, <b>after</b>: string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">text</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Represents the new text value</span>. This 
+    is the same callback definition as for the <a href="iuptext.html">IupText</a>.</p>
+  </blockquote>
+  <p><b><font face="Courier New">CARET_CB</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the caret/cursor 
+  position is changed. </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &nbsp;</span>Valid only when
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITBOX=YES</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>row</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:caret_cb(<b>row</b>, <b>col</b>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">row, col</font></strong>: Row and collumn number.</p>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p dir="ltr">Text is always left aligned.</p>
+</blockquote>
+<h3><a href="../examples/elem/iuplist/">Examples</a></h3>
+<p align="center"><img src="iuplist.gif" alt="iuplist.gif (7651 bytes)" width="433" height="125"></p>
+<p align="center"><img border="0" src="iuplist2.gif" width="566" height="243"></p>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="../dlg/iuplistdialog.html">IupListDialog</a>, </font><a href="iuptext.html">
+  <font face="Courier New">Iuptext</font></a></p>
+</blockquote>
+
+</body>
+
+</html>

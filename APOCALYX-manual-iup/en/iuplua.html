@@ -1,0 +1,165 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Binding Lua</title>
+<meta http-equiv="Content-Language" content="pt-br">
+</head>
+
+<body bgcolor="white" lang="EN-US" link="blue" vlink="blue">
+
+<h2 align="center" style="text-align:center"><span style="font-family: Helvetica">IupLua Advanced Guide</span></h2>
+<h3>Exchanging &quot;Ihandle*&quot; between C and Lua</h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>Each binding to a version of Lua uses different features of the language in order to implement IUP handles (<span style="font-family:&quot;Courier New&quot;">Ihandle</span>) 
+  in Lua. Therefore, functions have been created to help exchange references between Lua and C.</p>
+  <p>In C, to push an Ihandle in Lua's stack, use the function:</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>iuplua_pushihandle(Ihandle *ih);                 // for Lua3
+iuplua_pushihandle(lua_State *L, Ihandle *ih);   // for Lua5</pre>
+  </blockquote>
+  <p>In C, to receive an Ihandle in a C function called from Lua, just use one of the following code:</p>
+  <blockquote>
+    <pre>Ihandle* ih = (Ihandle*)lua_getuserdata(object);    // for Lua 3
+Ihandle* ih = *(Ihandle**)lua_touserdata(L, pos);   // for Lua 5</pre>
+    <p>or using parameter checking:</p>
+    <pre>Ihandle* iuplua_checkihandle(int pos);                 // for Lua 3
+Ihandle* iuplua_checkihandle(lua_State *L, int pos);   // for Lua 5</pre>
+  </blockquote>
+  <p>In Lua, if the handle is a user data create with the above structure, but not mapped to a Lua object, use the 
+  function:</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>iup.RegisterHandle(handle, typename)</pre>
+    <p>where &quot;typename&quot; is the string returned in IupGetType(handle)</p>
+  </blockquote>
+  <p>In Lua, to access a handle created in C as a Lua object, alternatively use the function:</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>handle = iup.GetFromC(name)</pre>
+  </blockquote>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <p class="MsoBodyText">where &quot;name&quot; is the name of the element previously defined with
+    <span style="font-family: Courier New">IupSetHandle</span>.</p>
+  </blockquote>
+</blockquote>
+<h3>Error Handling</h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>In Lua 3 the _ALERT function is redefined to show the message in a dialog.</p>
+  <p>In Lua 5 there is no such function, so to improve the error report the following functions have been created to 
+  execute Lua code:</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>int iuplua_dofile(lua_State *L, char *filename);
+int iuplua_dostring(lua_State *L, const char *string, const char *chunk_name);</pre>
+  </blockquote>
+  <p>These functions mimics the implementation in the standalone interpreter for Lua 5, that displays the error message 
+  followed by the stack.</p>
+  <p>If the these functions are used the errors will be reported through the _ERRORMESSAGE function. By default 
+  _ERRORMESSAGE is defined to show a dialog with the error message.</p>
+</blockquote>
+<h3>The Architecture Behind IupLua 3</h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>The Lua API for the IUP system was based on object classes representing the different interface elements. A 
+  hierarchy was built among these classes, with the main purpose of reusing code. Code inheritance was implemented 
+  precisely as described in the Lua 3 user guide. </p>
+  <p class="MsoBodyText">The root of this hierarchy is the <span style="font-family:
+&quot;Courier New&quot;">WIDGET</span> class. It contains the basic procedures for construction, parameter type 
+  verification, and allocation of structures for controlling IUP’s interface elements. This class also defines the basic 
+  parameters of all classes, such as <span style="font-family:&quot;Courier New&quot;">handle</span> (which stores the 
+  handle of the associated IUP element) and <span style="font-family:&quot;Courier New&quot;">parent</span> (used to 
+  implement the inheritance mechanism).<u1:p> </p>
+  </u1:p>
+  <p class="MsoNormal">Even though almost all classes directly descend from the
+  <span style="font-family:&quot;Courier New&quot;">WIDGET</span> class, some other classes serve as mediators in the 
+  tree. This is the case of the <span style="font-family:
+&quot;Courier New&quot;">COMPOSITION</span> class, located among the composition element classes:
+  <span style="font-family:&quot;Courier New&quot;">IUPHBOX,<b> </b>IUPVBOX</span><b> </b>and<b> </b>
+  <span style="font-family:&quot;Courier New&quot;">IUPZBOX</span>.<u1:p> </u1:p>
+  <u1:p></u1:p>
+  </p>
+  <p class="MsoNormal">Some classes use part of the code from other classes, when they are very similar. This happens to
+  <span style="font-family:&quot;Courier New&quot;">IUPITEM</span><b> </b>and<b> </b>
+  <span style="font-family:&quot;Courier New&quot;">IUPTOGGLE</span>, which reuse the code related to the verification 
+  of parameter types and to the definition of the <span style="font-family:&quot;Courier New&quot;">action</span> 
+  callback in the <span style="font-family:&quot;Courier New&quot;">IUPBUTTON</span> class. Class
+  <span style="font-family:&quot;Courier New&quot;">IUPMULTILINE</span> inherits several characteristics from
+  <span style="font-family:&quot;Courier New&quot;">IUPTEXT</span>, such as the definition of the
+  <span style="font-family:&quot;Courier New&quot;">action</span> callback and the verification of parameter types.<u1:p>
+  </u1:p>
+  <u1:p></u1:p>
+  </p>
+  <p>The complete class hierarchy for the standard controls can be represented as follows: </p>
+  <blockquote>
+    <pre>WIDGET
+   IUPBUTTON
+      IUPITEM
+      IUPTOGGLE
+   IUPCANVAS
+   COMPOSITION
+      IUPHBOX
+      IUPVBOX
+      IUPZBOX
+   IUPDIALOG
+   IUPFILL
+   IUPFRAME
+   IUPIMAGE
+   IUPLABEL
+   IUPLIST
+   IUPMENU
+   IUPRADIO
+   IUPSEPARATOR
+   IUPSUBMENU
+   IUPTEXT
+      IUPMULTILINE</pre>
+  </blockquote>
+</blockquote>
+<h3>The Architecture Behind IupLua 5</h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>There are two important names in IupLua5: &quot;iup handle&quot; and &quot;iup widget&quot;. </p>
+  <p>When you create an IUP element in Lua 5 it is created a table with a metatable called &quot;iup widget&quot;. This metatable 
+  has its &quot;__index&quot; method redefined so when an index is not defined it looks for it in the &quot;parent&quot; table. The table it 
+  self represents the class of the control. And all the classes inherit the implementation of the base class WIDGET. 
+  Each control class must implement the &quot;createElement&quot; method of the class. The WIDGET class also a member called 
+  &quot;handle&quot; that contains the Ihandle* in Lua. The constructor of the WIDGET class returns the handle. </p>
+  <p>The Ihandle* is represented in Lua as a table with a metatable called &quot;iup handle&quot;. This metable has its &quot;__index&quot;, 
+  &quot;__newindex&quot; and &quot;__eq&quot; methods redefined. The index methods are used to implement the set and get attribute facility. 
+  The handle knows its class because it is stored in its &quot;parent&quot; member.</p>
+  <p>Since the controls creation is done by the &quot;iup.&lt;control&gt;&quot; function, the application does not use the WIDGET class 
+  directly. All the time the application only uses the handle.</p>
+  <p>So for example the IupLabel:</p>
+  <blockquote>
+    <pre>iup.label   <b><font size="3">calls</font></b>    iup.LABEL:constructor
+<b><font size="3">since</font></b>   iup.LABEL.parent = iup.WIDGET    <b><font size="3">and</font></b>     iup.LABEL:constructor <b><font size="3">is not implemented</font></b>
+<font size="3"><b>it</b></font><b><font size="3"> calls</font></b>     iup.WIDGET:constructor  
+<b><font size="3">then</font></b>   iup.WIDGET:constructor    <b><font size="3">calls  </font></b> iup.LABEL:createElement    
+<b><font size="3">and finally returns the created</font></b>    handle  </pre>
+  </blockquote>
+  <p>The complete class hierarchy for the standard controls can be represented as follows: </p>
+  <blockquote>
+    <pre>WIDGET
+   BUTTON
+   ITEM
+   TOGGLE
+   CANVAS
+   BOX
+      HBOX
+      VBOX
+      ZBOX
+      MENU
+   DIALOG
+   FILL
+   FRAME
+   IMAGE
+   LABEL
+   LIST
+   RADIO
+   SEPARATOR
+   SUBMENU
+   TEXT
+   MULTILINE</pre>
+  </blockquote>
+</blockquote>
+
+</body>
+
+</html>

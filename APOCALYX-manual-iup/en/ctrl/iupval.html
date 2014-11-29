@@ -1,0 +1,194 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>IupVal - controle</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupVal</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Valuator</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> control. It allows creating a regulator similar to </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupDial</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, but with well-defined limits</span>. It inherits from
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>.</p>
+</blockquote>
+<h3 dir="ltr">Creation</h3>
+<blockquote dir="ltr">
+  <div dir="ltr">
+    <pre>Ihandle* IupVal(char *<strong>type</strong>); [in C]
+iup.val{<strong>type</strong>: string} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+val(<strong>type</strong>) [in LED] </pre>
+  </div>
+  <p dir="ltr"><strong><font face="Courier">type</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Type of valuator. Can be </span>&quot;<font face="Courier New">VERTICAL</font>&quot; 
+  or <font face="Courier New">&quot;HORIZONTAL&quot;.</font> </p>
+  <p dir="ltr">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The function returns the identifier of the 
+  created </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">val</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><strong><font face="Courier New">TYPE</font></strong>:&nbsp; Informs whether the valuator is &quot;<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">VERTICAL</span>&quot; 
+  or &quot;<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">HORIZONTAL</span>&quot;. 
+  Vertical valuators are bottom to up, and horizontal valuators are left to right variations of min to max.</p>
+  <p><strong><font face="Courier New">MIN</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Contains the minimum valuator value. Default 
+  is &quot;</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">0&quot;</span>.</p>
+  <p><strong><font face="Courier New">MAX</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Contains the maximum valuator value. Default 
+  is </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">1</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&quot;</span>.</p>
+  <p><strong><font face="Courier New">VALUE</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Contains a number between</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">MIN</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> and</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">MAX</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">, indicating the valuator position</span>.</p>
+  <p><strong><font face="Courier New">STEP</font></strong>: Controls the increment for keyboard control and the mouse 
+  wheel.</p>
+  <p><strong><font face="Courier New">PAGESTEP</font></strong>: Controls the increment for pagedown and pageup keys.</p>
+  <p><strong><font face="Courier New">SHOWTICKS</font></strong>: <span style="font-family: Times New Roman">Display tick 
+  mark along the valuator trail</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. The attribute controls the number of 
+  ticks. Minimum value is </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">3</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. Default is </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">0</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&quot;</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">, 
+  in this case the ticks are not shown</span>. The precision of the ticks are affected by the raster size of the 
+  control.</p>
+  <p><b><font face="Courier New">BGCOLOR</font></b>: Controls the background color. The default value is the parent or 
+  the dialog background color.</p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_rastersize')">RASTERSIZE</a></font>: 
+  The default is &quot;124x28&quot; or &quot;28x124&quot;. We recomend to leave this as the minimum size.</p>
+  <p><b><font face="Courier New">EXPAND</font></b>: The default is
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;</span>NO<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&quot;</span>. 
+  The thumb will not expand if the valuator is expanded.</p>
+  <p><b><font face="Courier New">HANDLER_IMAGE</font></b>: Handler image name. When defined the handle will not be drawn 
+  an this image will be used instead.</p>
+  <p><b><font face="Courier New">HANDLER_IMAGE_INACTIVE</font></b>: Inactive handler image name. Used when <b>
+  <font face="Courier New">HANDLER_IMAGE</font></b> is used and the control is inactive.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><strong><font face="Courier New">MOUSEMOVE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called each time the user moves the 
+  valuator’s thumb keeping the mouse button pressed. The value of</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">VALUE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is passed as parameter</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, double <strong>val</strong>); [in C]
+<strong>elem</strong>:mousemove_cb(<strong>val</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  </blockquote>
+  <p><strong><font face="Courier New">BUTTON_PRESS_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called when the user presses the left mouse 
+  button over the valuator. The value of</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">VALUE</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> is passed as parameter</span>. The thumb is always repositioned to the current mouse position.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, double <strong>val</strong>); [in C]
+<strong>elem</strong>:button_press_cb(<strong>val</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  </blockquote>
+  <p><strong><font face="Courier New">BUTTON_RELEASE_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called when the user releases the mouse 
+  button, after having pressed it over the valuator. The value of</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">VALUE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is passed as parameter</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, double <strong>val</strong>); [in C]
+<strong>elem</strong>:button_release_cb(<strong>val</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>When the keyboard arrows are pressed and released, or the mouse wheel is rotated, the mouse press and the mouse 
+  release callbacks are called, in this order. If you hold the key down a mouse move callback is also called.</p>
+  <p>In these cases the value is incremented by 10% of the interval max-min. </p>
+</blockquote>
+<h3><a href="../examples/ctrl/iupval/">Examples</a></h3>
+<p align="center"><img src="iupval.gif" width="307" height="201"> </p>
+<h3>See Also</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a></p>
+</blockquote>
+
+</body>
+
+</html>

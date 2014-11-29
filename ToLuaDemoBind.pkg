@@ -1,0 +1,2 @@
+void polarToCartesian(float* r, float* alpha);
+void cartesianToPolar(float* x, float* y);

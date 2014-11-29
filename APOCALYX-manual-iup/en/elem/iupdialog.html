@@ -1,0 +1,324 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>IupDialog</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2 align="left">IupDialog</h2>
+<blockquote>
+  <p><span style="font-size: 12.0pt; font-family: Times New Roman">Creates a dialog element. It manages user interaction 
+  with the interface elements. For any interface element to be shown, it must be encapsulated in a dialog</span>.</p>
+</blockquote>
+<h3><span style="font-size: 14.0pt; font-family: Times New Roman">Creation</span></h3>
+<blockquote>
+  <pre>Ihandle* IupDialog(Ihandle *<strong>element</strong>); [in C]
+iup.dialog{<strong>element</strong>: ihandle} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+dialog(<strong>element</strong>) [in LED]</pre>
+  <p><b><span style="font-size: 12.0pt; font-family: Courier New">element</span></b><span style="font-size: 12.0pt; font-family: Times New Roman">: 
+  Identifier of an interface element</span>.</p>
+  <p><span style="font-size: 12.0pt; font-family: Times New Roman">This function returns the identifier of the created 
+  dialog, or </span><span style="font-size: 12.0pt; font-family: Courier New">NULL</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+  if an error occurs</span>. </p>
+</blockquote>
+<h3><span style="font-size: 14.0pt; font-family: Times New Roman">Attributes</span></h3>
+<blockquote>
+  <p><b><font face="Courier New">BORDER</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Shows a thick border around the dialog</span>. 
+  Default: <font face="Courier New">&quot;YES&quot;</font>. Used only in the creation. Can not be changed after that.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_cursor.html">CURSOR</a></font>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Defines a cursor for the dialog</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_icon.html">ICON</a></font>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Dialog’s icon</span>.</p>
+  <p><a href="../atrib/iup_maxbox.html"><font face="Courier New">MAXBOX</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Requires a maximize button from the window manager. 
+  Creation-only attribute</span>.</p>
+  <p><a href="../atrib/iup_menu.html"><font face="Courier New">MENU</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Associates a menu to the dialog</span>.</p>
+  <p><a href="../atrib/iup_menubox.html"><font face="Courier New">MENUBOX</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Requires a menu box from the window manager. 
+  Creation-only attribute</span>.</p>
+  <p><a href="../atrib/iup_minbox.html"><font face="Courier New">MINBOX</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Requires a minimize button from the window manager. 
+  Creation-only attribute</span>.</p>
+  <p><a href="../atrib/iup_resize.html"><font face="Courier New">RESIZE</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Allows interactively changing the dialog’s size. 
+  Creation-only attribute</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_size')"><font face="Courier New">SIZE</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Dialog’s size. Differently from other interface 
+  elements, the following values can be defined for width and height</span>: </p>
+  <ul>
+    <li><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><font face="Courier New">FULL</font><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>:
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Defines the dialog’s width (or height) equal to the 
+    screen's width (or height)</span></li>
+    <li><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><font face="Courier New">HALF</font><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>:
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Defines the dialog’s width (or height) equal to half 
+    the screen's width (or height)</span></li>
+    <li><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><font face="Courier New">THIRD</font><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>:
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Defines the dialog’s width (or height) equal to 1/3 
+    the screen's width (or height)</span></li>
+    <li><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><font face="Courier New">QUARTER</font><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>:
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Defines the dialog’s width (or height) equal to 1/4 of 
+    the screen's width (or height)</span></li>
+    <li><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><font face="Courier New">EIGHTH</font><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>:
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Defines the dialog’s width (or height) equal to 1/8 of 
+    the screen's width (or height)</span></li>
+  </ul>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">Default: the smallest size that allows viewing the 
+    dialog</span>.</p>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">The dialog’s size has precedence over the smallest 
+    size required by its children (either if it was specified in its creation or in run-time). Attributing a NULL value 
+    to SIZE or RASTERSIZE (in C) in a dialog will recompute its size according to its children</span>. </p>
+  </blockquote>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_title')"><font face="Courier New">TITLE</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Dialog’s title. On Motif, if it is not defined, the 
+  dialog will not be properly displayed</span>.</p>
+  <p><a href="../atrib/iup_startfocus.html"><font face="Courier New">STARTFOCUS</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Name of the dialog element that must receive the focus 
+  right after the dialog is opened</span>.</p>
+</blockquote>
+<blockquote>
+  <p><a href="../atrib/iup_defaultenter.html"><font face="Courier New">DEFAULTENTER</font></a>:&nbsp;
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Name of the button activated when Enter is hit</span>.</p>
+  <p><a href="../atrib/iup_defaultesc.html"><font face="Courier New">DEFAULTESC</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Name of the button activated when Esc is hit</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_x')"><font face="Courier New">X</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Dialog’s horizontal position on the screen, in pixels</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_y')"><font face="Courier New">Y</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Dialog’s vertical position on the screen, in pixels</span>.</p>
+  <p><a href="../atrib/iup_shrink.html"><font face="Courier New">SHRINK</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Allows changing the elements’ distribution when the 
+  dialog is smaller than the minimum size</span>.</p>
+</blockquote>
+<blockquote>
+  <p><a href="../atrib/iup_parentdialog.html"><font face="Courier New">PARENTDIALOG</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Makes the dialog be treated as a child of the specified 
+  dialog</span>.</p>
+  <p><font face="Courier New"><b>FULLSCREEN</b></font></p>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">Makes the dialog occupy the whole screen. All 
+    dialog details, such as border, maximize button, etc, are removed. Possible values: YES, NO. In Motif you may have 
+    to click in the dialog to set its focus.</span></p>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p><b><font face="Courier New">WIN_SAVEBITS</font></b> [Windows Only]</p>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute is only consulted when the dialog is 
+    mapped. When this attribute is true (</span><span style="font-size: 12.0pt; font-family: Courier New">YES</span><span style="font-size: 12.0pt; font-family: Times New Roman">), 
+    the dialog stores the original image of the desktop region it occupies (if Windows has enough memory to store the 
+    image). In this case, when the dialog is closed or moved, a redrawing event is not generated for the windows that 
+    were shadowed by it. Its default value is </span><span style="font-size: 12.0pt; font-family: Courier New">YES</span>.
+    </p>
+  </blockquote>
+  <p><strong><font face="Courier New">TOPMOST</font></strong> [Windows Only]</p>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute puts the dialog always in front of 
+    all other dialogs in all applications</span>. Default: <font face="Courier New">NO</font>.</p>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">TOOLBOX</font></strong> [Windows Only]</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute makes the dialog look like a 
+    toolbar. It is only valid if the </span><span style="font-size: 12.0pt; font-family: Courier New">PARENTDIALOG</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+    attribute is also defined</span>. Default: <font face="Courier New">NO</font>.</p>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">CLIPCHILDREN</font></strong> [Windows Only]</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">Modifies the way the dialog and its children are 
+    redrawn</span>.</p>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">When option </span>
+    <span style="font-size: 12.0pt; font-family: Courier New">YES</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+    is selected, the area occupied by the children in the dialog is not redrawn, thus preventing the matrix and the 
+    canvas from blinking when a resize is made. Usually this brings better performance, but in some cases it may bring a 
+    performance reduction, as every time the dialog needs to be redrawn all children are redrawn as well</span>. 
+    Default: <font face="Courier New">YES</font>.</p>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p><b><font face="Courier New">BRINGFRONT</font></b> [Windows Only]</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute makes the dialog the foreground 
+    window. Use </span><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><span style="font-size: 12.0pt; font-family: Times New Roman">YES</span><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+    to activate it. </span>Useful for multithreaded applications.</p>
+  </blockquote>
+  <p><b><font face="Courier New">COMPOSITED</font></b> [Windows Only]</p>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute controls if the created window will 
+    have an automatic double buffer for all controls. </span><span style="font-size: 12.0pt">Default is &quot;NO&quot;. </span>
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Creation-only attribute</span>.</p>
+  </blockquote>
+  <p><b><font face="Courier New">LAYERED</font></b> [Windows Only]</p>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute sets and removes the layered style 
+    bit. Use </span><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><span style="font-size: 12.0pt; font-family: Times New Roman">YES</span><span style="font-size: 12.0pt; font-family: Courier New">&quot;</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+    to activate it. </span><span style="font-size: 12.0pt">Default is &quot;NO&quot;. The </span><font face="Courier New">
+    LAYERALPHA</font> attribute must also be set, just after this one.</p>
+  </blockquote>
+  <p><b><font face="Courier New">LAYERALPHA</font></b> [Windows Only]</p>
+  <blockquote>
+    <p><span style="font-size: 12.0pt; font-family: Times New Roman">This attribute sets the dialog transparency alpha 
+    value. The dialog must have </span><font face="Courier New">LAYERED=YES</font><span style="font-size: 12.0pt; font-family: Times New Roman">. 
+    Valid values range from 0 (completely transparent) to 255 (opaque).</span></p>
+  </blockquote>
+  <p><b><font face="Courier New">NATIVEPARENT</font></b> [Windows Only]</p>
+  <blockquote>
+    <p>Makes any window created in the system (even from outside IUP) able to be parent of a IUP dialog. The value 
+    provided should be a valid window handle (HWND.)</p>
+  </blockquote>
+  <p><b><font face="Courier New">PLACEMENT</font></b> [Windows Only]</p>
+  <blockquote>
+    <p>Changes how the dialog will be shown. Values: &quot;FULL&quot;, &quot;MAXIMIZED&quot;, &quot;MINIMIZED&quot; and &quot;NORMAL&quot;. After IupShow the 
+    attribute is set to &quot;NORMAL&quot; if it was different. &quot;NORMAL&quot; is equivalent of not defining the attribute. FULL is 
+    simular to FULLSCREEN but all the dialog client area covers the screen area, menu is not included and decoration is 
+    not removed, they just stay out of the screen.</p>
+  </blockquote>
+  <p><b><font face="Courier New">HELPBUTTON</font></b> [<font face="Courier New">Windows Only</font>]</p>
+  <blockquote>
+    <p>Inserts a help button in the same place of the maximize button. It can only be used for dialogs without the 
+    minimize and maximize buttons, and with the menu box. For the next interaction of the user with a control in the 
+    dialog, the callback&nbsp; <a href="javascript:parent.manLoadCont('call', '../call/iup_help_cb')">HELP_CB</a> will 
+    be called instead of the control defined ACTION callback.
+    <span style="font-size: 12.0pt; font-family: Times New Roman">Possible values: </span><font face="Courier New">YES</font><span style="font-size: 12.0pt; font-family: Times New Roman">,
+    </span><font face="Courier New">NO</font><span style="font-size: 12.0pt; font-family: Times New Roman">. </span>
+    Default: <font face="Courier New">NO</font>.</p>
+  </blockquote>
+  <p><a href="../atrib/iup_tray.html"><font face="Courier New">TRAY</font></a> [Windows Only]: When set to
+  <span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>YES<span style="font-size: 12.0pt; font-family: Courier New">&quot;</span>, 
+  displays an icon on the system tray. </p>
+  <p><font face="Courier New"><a href="../atrib/iup_trayimage.html">TRAYIMAGE</a></font> [Windows Only]: System tray 
+  icon</p>
+  <p><font face="Courier New"><a href="../atrib/iup_traytip.html">TRAYTIP</a></font> [Windows Only]: Tray icon's tooltip 
+  text</p>
+  <p><b><font face="Courier New">HIDETASKBAR</b></font> [Windows Only]</p>
+  <blockquote>
+    <p>When set to &quot;YES&quot;, hides the dialog from the task bar. Must be used with <font face="Courier New">TRAYICON</font> 
+    attribute.</p>
+  </blockquote>
+  <p><b><font face="Courier New"><a href="../atrib/iup_control.html">CONTROL</a></font></b> [Windows Only]: Embeds the 
+  dialog inside another window. Creation-only attribute.</p>
+  <p><b><font face="Courier New">MDIMENU</font></b> [Windows Only]: Name of a IupSubmenu to be used as the Window list 
+  of a MDI frame window. The system will automatically add the list of MDI child windows there. Used in the IupDialog 
+  configured as a MDI frame. This dialog must contains one IupCanvas configured with <font face="Courier New">
+  MDICLIENT=YES</font>.</p>
+  <p><b><font face="Courier New">MDICHILD</font></b> [Windows Only]: Configure this dialog to be a MDI child window. The
+  <font face="Courier New">MDICLIENT</font> attribute must also be set. Each MDI child is automatically named 
+  (IupSetHandle) to &quot;mdichild%d&quot;, where &quot;%d&quot; is a sequencial number.</p>
+  <p><b><font face="Courier New">MDICLIENT</font></b> [Windows Only]: Name of the IupCanvas used as MDI client window. 
+  The MDI frame window must have one and only one MDI client window.</p>
+  <p><b><font face="Courier New">MDIARRANGE</b></font> [Windows Only]: Action to arrange MDI child windows. Possible 
+  values: <font face="Courier New">TILEHORIZONTAL</font>, <font face="Courier New">TILEVERTICAL</font>,
+  <font face="Courier New">CASCADE</font> and <font face="Courier New">ICON</font> (arrange the minimized icons).</p>
+  <p><b><font face="Courier New">MDIACTIVATE</font></b> [Windows Only]: Name of a MDI child window to be activated. If 
+  value is &quot;<font face="Courier New">NEXT</font>&quot; will activate the next window after the current active window. If 
+  value is &quot;<font face="Courier New">PREVIOUS</font>&quot; will activate the previous one. </p>
+  <p><b><font face="Courier New">MDIACTIVE</font></b> [Windows Only]: Returns the the name of the current active MDI 
+  child.</p>
+  <p><b><font face="Courier New">MDINEXT</font></b> [Windows Only]: Returns the name of the next available MDI child. 
+  Must use <font face="Courier New">MDIACTIVE</font> to retrieve the first child. If the application is going to destroy 
+  the child retreive the next child before destroying the current.</p>
+  <p><b><font face="Courier New">MDICLOSEALL</font></b> [Windows Only]: Action to close and destroy all MDI child 
+  windows. The <font face="Courier New">CLOSE_CB</font> callback will be called for each child. </p>
+  <blockquote>
+    <p>IMPORTANT: When a MDI child window is closed it is automatically destroyed, the application can override this 
+    returning <font face="Courier New">IUP_IGNORE</font> in <font face="Courier New">CLOSE_CB</font>.</p>
+  </blockquote>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_show_cb')"><font face="Courier New">SHOW_CB</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Called right after the dialog is opened, minimized or 
+  restored from a minimization</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_map_cb')"><font face="Courier New">MAP_CB</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Called right after the element is mapped</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_close_cb')"><font face="Courier New">CLOSE_CB</font></a>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Called right before the dialog is closed</span>.</p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_dropfiles_cb')">DROPFILES_CB</a></font><span style="font-family: Times New Roman">:</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> [Windows Only] Action generated when one or 
+  more files are dropped from the Windows Explorer in the dialog.</span></p>
+  <p><b><font face="Courier New">TRAYCLICK_CB</font></b>:
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  [Windows Only] </span>Called right after the mouse button is pressed or released over the tray icon.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<b>n</b>, int <b>but</b>, int <b>pressed</b>, int <b>dclick</b>); [in C]
+elem:trayclick_cb(<b>but</b>, <b>pressed</b>, <b>dclick</b>: number) -&gt; (ret: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">but</font></strong>: identifies the acti<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">vated</span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">mouse button</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">. 
+    Can be: 1, 2 or 3. Note that this is different from the BUTTON_CB canvas callback definition.</span><br>
+    <strong><font face="Courier New">pressed</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">indicates the state of the button</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">.<br>
+    </span><strong><font face="Courier New">dclick</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">: 
+    indicates a double click. </span></p>
+    <p>Returning <font face="Courier New">CLOSE</font> closes the dialog.</p>
+  </blockquote>
+  <p><b><font face="Courier New">MDIACTIVATE_CB</font></b>:
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  [Windows Only] </span>Called when a MDI child window is activated. Only the MDI child receive this message. It is not 
+  called when the child is shown for the first time.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<b>n</b>); [in C]
+elem:mdiactivate_cb() -&gt; (ret: number) [in Lua]</pre>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p><span style="font-size: 12.0pt; font-family: Times New Roman">Except for the menu, all other elements must be 
+  inside a dialog to interact with the user. Therefore, an interface element will only be visible when its </span>
+  <a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_visible')"><font face="Courier New">VISIBLE</font></a>
+  <span style="font-size: 12.0pt; font-family: Times New Roman">attribute and that of the dialog are </span>
+  <span style="font-size: 12.0pt; font-family: Courier New">&quot;YES&quot;</span>.</p>
+  <p><span style="font-size: 12.0pt; font-family: Times New Roman">A menu that is not associated to a dialog can 
+  interact with the user by means of the </span><span style="font-size: 12.0pt; font-family: Courier New">IupPopup</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+  function</span>.</p>
+  <p><span style="font-size: 12.0pt; font-family: Times New Roman">Values attributed to the </span>
+  <span style="font-size: 12.0pt; font-family: Courier New">SIZE</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+  attribute of a dialog are <b>always</b> accepted, regardless of the minimum size required by its children. For a 
+  dialog to have the minimum necessary size to fit all elements contained in it, simply define </span>
+  <span style="font-size: 12.0pt; font-family: Courier New">NULL</span><span style="font-size: 12.0pt; font-family: Times New Roman"> 
+  (in C) to </span><span style="font-size: 12.0pt; font-family: Courier New">SIZE</span><span style="font-size: 12.0pt; font-family: Times New Roman">. 
+  In the case of partial dimensions, a specified dimension is <b>always</b> used, while a non-defined dimension uses the 
+  smallest necessary size for the elements in the corresponding direction</span>. </p>
+  <p>In Motif the decorations <span style="font-size: 12.0pt; font-family: Courier New">ICON</span>,
+  <span style="font-size: 12.0pt; font-family: Courier New">MENUBOX</span>,
+  <span style="font-size: 12.0pt; font-family: Courier New">MINBOX</span>,
+  <span style="font-size: 12.0pt; font-family: Courier New">MAXBOX</span>,
+  <span style="font-size: 12.0pt; font-family: Courier New">RESIZE</span> and
+  <span style="font-size: 12.0pt; font-family: Courier New">BORDER</span> will work only if the running Window Manager 
+  supports the Motif WM hints.</p>
+  <p>The MDI support is composed of 3 components: the MDI frame window (IupDialog), the MDI client window (IupCanvas) 
+  and the MDI children (IupDialog). Altough the MDI client is a IupCanvas it is not used directly by the application, 
+  but it must be created and included in the dialog that will be the MDI frame, other controls can also be available in 
+  the same dialog, like buttons and other canvases composing toolbars and status area. The following picture illustrates 
+  the e components:</p>
+  <p align="center"><img border="0" src="mdi.gif" width="504" height="435"></p>
+</blockquote>
+<h3><a href="../examples/elem/iupdialog/">Examples</a></h3>
+
+</body>
+
+</html>

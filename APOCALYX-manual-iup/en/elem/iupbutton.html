@@ -1,0 +1,209 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupButton</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupButton</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates an interface element that is a 
+  button. When selected, this element activates a function in the application. Its visual presentation can contain a 
+  text or an image</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creation</span></h3>
+<blockquote>
+  <pre>Ihandle* IupButton(char *<strong>title</strong>, char *<strong>action</strong>); [in C]
+iup.button{title = <strong>title</strong>: string} -&gt; <strong>elem</strong>: ihandle [in Lua]
+button(<strong>title</strong>, <strong>action</strong>) [in LED]</pre>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">title</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Text to be shown to the user</span>.<br>
+  <b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">action</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Name of the action generated when the button is selected</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+  created button, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> (</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">nil</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> in IupLua) if an error occurs</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Attributes</span></h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_bgcolor')"><font face="Courier New">BGCOLOR</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Background color of the text</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_fgcolor')"><font face="Courier New">FGCOLOR</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Text color</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_font')"><font face="Courier New">FONT</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Character font of the text</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_image.html">IMAGE</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image name of the non-pressed button. The 
+  button's title (attribute </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">TITLE</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">) is not shown when this attribute is defined</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_impress.html">IMPRESS</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  name </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">of the pressed button</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_iminactive.html">IMINACTIVE</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  name </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">of the button when the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">ACTIVE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> attribute equals </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">&quot;NO&quot;</span>. If it is not defined but IMAGE is defined then for inactive buttons the non 
+  transparent colors will be replaced by a darker version of the background color creating the disabled effect.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_title')"><font face="Courier New">TITLE</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Text of the button</span>.</p>
+  <p><b><font face="Courier New">FLAT</font></b>: (Windows Only) Hides the button borders until the mouse enter the 
+  button area.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_action')"><font face="Courier New">ACTION</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the button 1 (usually 
+  left) is selected</span>. This callback is called only after the mouse is released and whe it is released inside the 
+  button area.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_button_cb')"><font face="Courier New">BUTTON_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when any mouse button is 
+  pressed and released</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_enterwindow_cb')"><font face="Courier New">
+  ENTERWINDOW_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse enters the 
+  button</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_leavewindow_cb')"><font face="Courier New">
+  LEAVEWINDOW_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse leaves the
+  </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  button</span>.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>Buttons with images or texts can not change its behavior after mapped. This is a creation attribute. But after 
+  creation the image can be changed for another image, and the text for another text.</p>
+  <p dir="ltr">Text and images are always centered.</p>
+  <p dir="ltr">Buttons are activated using Enter or Space keys.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">When </span><font face="Courier New">IMPRESS</font> 
+  and <font face="Courier New">IMAGE</font>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">are defined together, IUP does not show the 
+  element's border to provide a 3D effect; the user has to define the border in the image itself</span>.</p>
+  <p>In Windows, when using Windows XP Visual Styles the <font face="Courier New">BGCOLOR</font> attribute is ignored 
+  when a non empty text button is created.</p>
+  <p>Here are some examples of buttons using Windows XP Visual Styles:</p>
+  <div align="center">
+    <center>
+    <table border="0" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1">
+      <tr>
+        <td align="center"><img border="0" src="iupbutton5.gif" width="125" height="94"></td>
+        <td>Text button without and with Visual Styles.</td>
+      </tr>
+      <tr>
+        <td align="center"><img border="0" src="iupbutton1.gif" width="290" height="153"></td>
+        <td>Windows XP without Visual Styles.</td>
+      </tr>
+      <tr>
+        <td align="center"><img border="0" src="iupbutton4.gif" width="254" height="148"></td>
+        <td>Windows XP without Visual Styles <br>
+        and FLAT=YES. <br>
+        The border is displayed only <br>
+        when the mouse is over the button.<br>
+        The image of the button should be <br>
+        smaller when FLAT=YES.</td>
+      </tr>
+      <tr>
+        <td align="center"><img border="0" src="iupbutton2.gif" width="304" height="148"></td>
+        <td>Windows XP with Visual Styles.</td>
+      </tr>
+      <tr>
+        <td align="center"><img border="0" src="iupbutton3.gif" width="272" height="151"></td>
+        <td>Windows XP with Visual Styles <br>
+        and FLAT=YES. </td>
+      </tr>
+    </table>
+    </center>
+  </div>
+</blockquote>
+<h3><a href="../examples/elem/iupbutton/">Examples</a></h3>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupimage.html">IupImage</a>, <a href="iuptoggle.html">IupToggle</a></font>.</p>
+</blockquote>
+
+</body>
+
+</html>

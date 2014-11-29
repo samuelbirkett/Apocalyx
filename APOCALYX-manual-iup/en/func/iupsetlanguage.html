@@ -1,0 +1,71 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupSetLanguage</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupSetLanguage</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Defines the language used by IUP</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <p><code>void IupSetLanguage(char *<b>lng</b>); [in C] <br>
+  iup.SetLanguage(<strong>language</strong> :string) [in Lua]</code></p>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">lng</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Language to be used. Can have one of the following values</span>: </p>
+  <ul>
+    <li><font face="Courier New">&quot;ENGLISH&quot;</font> </li>
+    <li><font face="Courier New">&quot;PORTUGUESE&quot;</font> </li>
+  </ul>
+  <p>default: <font face="Courier New">&quot;PORTUGUESE&quot;</font>. </p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">All elements that have predefined texts</span>.
+  </p>
+</blockquote>
+<h3>Example in C</h3>
+<blockquote>
+  <pre>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &quot;iup.h&quot;
+
+void main(void)
+{
+  IupOpen();
+  IupSetLanguage(&quot;ENGLISH&quot;); 
+  IupMessage(&quot;IUP Language&quot;, IupGetLanguage());
+  IupClose();
+  return;
+}
+
+
+</pre>
+</blockquote>
+<pre></pre>
+
+</body>
+
+</html>

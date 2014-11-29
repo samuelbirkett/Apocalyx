@@ -1,0 +1,89 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupGetFile</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupGetFile</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Shows a modal dialog of the native interface 
+  system to select a filename</span>. Uses the <a href="iupfiledlg.html">IupFileDlg</a> element.</p>
+</blockquote>
+<h3>Creation and Show</h3>
+<dl>
+  <dd>
+  <pre>int IupGetFile(char *<strong>filename</strong>); [in C]
+iup.GetFile(<strong>filename</strong>: string) -&gt; (<strong>filename</strong>: string, <strong>status</strong>: number) [in Lua]</pre>
+  </dd>
+</dl>
+<blockquote>
+  <p><strong><font face="Courier New">filename</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This parameter is used as an input value to 
+  define the default filter and directory. Example: &quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">../docs/*.txt</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">&quot;. As an output value, it is used to contain the filename entered by the user</span>.</p>
+  <p><strong><font face="Courier New">status</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The function returns a code, whose values 
+  can be</span>:</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <p><font face="Courier New">&nbsp;1</font>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The name defined by the user is that of a 
+    new file</span><br>
+    <font face="Courier New">&nbsp;0</font>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The name defined by the user is that of an 
+    already existent file</span><br>
+    <font face="Courier New">-1</font>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The operation was cancelled by the user</span></p>
+  </blockquote>
+</blockquote>
+<h3>Note</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The </span><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupGetFile</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> function does not allocate memory space to store the complete filename entered by the 
+  user. Therefore, the file parameter must be large enough to contain the directory and file names</span>.</p>
+  <p>The dialog uses a global attribute called &quot;PARENTDIALOG&quot; as the parent dialog if it is defined. It also uses a 
+  global attribute called &quot;ICON&quot; as the dialog icon if it is defined.</p>
+</blockquote>
+<h3><a href="../examples/dlg/iupgetfile/">Examples</a></h3>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupmessage.html">IupMessage</a>, <a href="iupscanf.html">IupScanf</a>,
+  <a href="iuplistdialog.html">IupListDialog</a>, <a href="iupalarm.html">IupAlarm</a>,
+  <a href="javascript:parent.manLoadCont('func', '../func/iupsetlanguage')">IupSetLanguage</a></font>.</p>
+</blockquote>
+
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupSetAttribute</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupSetAttribute</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Defines an attribute for an interface 
+  element</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>void IupSetAttribute(Ihandle *<strong>element</strong>, char *<strong>a</strong>, char *<strong>v</strong>); [in C]
+iup.SetAttribute(<strong>element</strong>: iulua_tag, <strong>attribute</strong>: string, <strong>value</strong>: string) [in Lua] </pre>
+</blockquote>
+<blockquote>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">element</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Identifier of the interface element</span>.<br>
+  <b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">a</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: name of the attribute</span>.<br>
+  <b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">v</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: value of the attribute. If it equals </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> (</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">nil</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> in Lua), the attribute will be removed from the element</span>.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The value stored in the attribute is not 
+  duplicated. Therefore, you can store your private attributes, such as a structure with data to be used in a callback</span>.<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> When you want IUP to store an attribute by 
+  duplicating a string passed as a value, use function </span><a href="iupstoreattribute.html"><font face="Courier New">
+  IupStoreAttribute</font></a>.
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">For further information on memory allocation 
+  by </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">IupSetAttribute</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">, see </span><a href="iupgetattribute.html#comentarios">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IupGetAttribute</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">’s notes section</span></a>.</p>
+  <p>A very common mistake when using IupSetAttribute is to use local string arrays to set attributes. For ex:</p>
+  <blockquote>
+    <pre>{
+  char value[30];
+  sprintf(value, &quot;%d&quot;, i);
+  IupSetAttribute(dlg, &quot;BADEXAMPLE&quot;, value)   //  WRONG  (value pointer will be internally stored, 
+}                                             //          but its memory will be released at the end of this scope)
+                                              // Use IupStoreAttribute in this case</pre>
+    <pre>{
+  char *value = malloc(30);
+  sprintf(value, &quot;%d&quot;, i);
+  IupSetAttribute(dlg, &quot;EXAMPLE&quot;, value)     //  correct  (but to avoid memory leaks you should free the pointer
+}                                                          after the dialog has been destroyed)</pre>
+    <pre>IupSetAttribute(dlg, &quot;VISIBLE&quot;, &quot;YES&quot;)        //  correct (static values still exists after this scope)</pre>
+    <pre>char attrib[30];
+sprintf(attrib, &quot;ITEM%d&quot;, i);
+IupSetAttribute(dlg, attrib, &quot;Test&quot;)          //  correct (attribute names are always internally duplicated)</pre>
+    <pre>struct myData* mydata = malloc(sizeof(struct myData));
+IupSetAttribute(dlg, &quot;MYDATA&quot;, (char*)mydata)     //  correct  (unknown attributes will be stored as pointers)</pre>
+  </blockquote>
+  <p>When an attribute is set it is always stored at the hash table.
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  If the value is </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, the attribute will be removed from the hash table</span>. Then the driver or the custom 
+  control is updated. Finally the attribute is also updated for the children of the element in the driver if they do not 
+  have the attribute defined in their own hash table.</p>
+</blockquote>
+<h3>Example 1</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Defines a radio’s initial value</span>.</p>
+  <h4>In C</h4>
+  <blockquote>
+    <pre>Ihandle *portrait = IupToggle(&quot;Portrait&quot; , &quot;acao_portrait&quot;);
+Ihandle *landscape = IupToggle(&quot;landscape&quot; , &quot;acao_landscape&quot;);
+Ihandle *box = IupVbox(portrait, IupFill(),landscape, NULL);
+Ihandle *modo = IupRadio(box);
+IupSetHandle(&quot;landscape&quot;, landscape); /* <span style="font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">associates a name to initialize the radio </span>*/
+<strong>IupSetAttribute</strong>(modo, &quot;VALUE&quot;, &quot;landscape&quot;); /* <span style="font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">defines the radio’s initial value </span>*/</pre>
+  </blockquote>
+</blockquote>
+<h3>Example 2</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Some usages</span>:</p>
+  <h4>In C</h4>
+  <pre>  1. IupSetAttribute(texto, &quot;VALUE&quot;, &quot;Hello!&quot;);</pre>
+  <pre>  2. IupSetAttribute(indicador, &quot;VALUE&quot;, &quot;ON&quot;);</pre>
+  <pre>  3. struct
+     {
+       int x;
+       int y;
+     } myData;
+
+     IupSetAttribute(texto, &quot;myData&quot;, (char*)&amp;myData);</pre>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupgetattribute.html">IupGetAttribute</a>, <a href="iupsetattributes.html">
+  IupSetAttributes</a>, <a href="iupgetattributes.html">IupGetAttributes</a>, <a href="iupstoreattribute.html">
+  IupStoreAttribute</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

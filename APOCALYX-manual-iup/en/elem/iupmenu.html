@@ -1,0 +1,178 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Template" content="X:\OFFICE97\OFFICE\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupMenu</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080">
+
+<h2>IupMenu</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">menu</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> element, which groups 3 types of interface elements: </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">item</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">submenu</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> and </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">separator</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">. Any other interface element defined inside a menu will be ignored</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creation</span></h3>
+<blockquote>
+  <pre>Ihandle* IupMenu(Ihandle *<strong>elem1</strong>, ...); [in C]
+Ihandle* IupMenuv(Ihandle **<strong>elems</strong>); [in C]
+iup.menu{<strong>elem1</strong>, <strong>elem2</strong>, ...: ihandle} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+menu(<strong>elem1</strong>, <strong>elem2</strong>, ...) [in LED]</pre>
+  <p><font face="Courier New"><strong>elem1</strong>, <strong>elem2</strong>, ...</font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">List of identifiers that will be grouped by 
+  the menu. </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> defines the end of the list in C</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+  created menu, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">if an error occurs</span></span>.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_open_cb')">OPEN_CB</a>:</font>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Called just before a submenu is opened</span>.</p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_menuclose_cb')">MENUCLOSE_CB</a></font>:
+  <span style="font-size: 12.0pt; font-family: Times New Roman">Called right before the </span>
+  <span style="font-size: 12pt; font-family: Times New Roman; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  submenu</span><span style="font-size: 12.0pt; font-family: Times New Roman"> is closed</span>.</p>
+</blockquote>
+<h3>Lua Binding&nbsp;</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Offers a &quot;cleaner&quot; syntax than LED for 
+  defining menu, submenu and separator items. The list of elements in the menu is described as a string, with one 
+  element after the other, separated by commas</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Each element can be</span>: </p>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">{&quot;&lt;item_name&gt;&quot;}</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> - menu item</span><br>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">{&quot;&lt;submenu_name&gt;&quot;,&quot;&lt;menu&gt;&quot;}</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> - submenu</span><br>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">{}</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> - separator</span></p>
+  </blockquote>
+  <p><span style="font-family: Times New Roman">For example:</span></p>
+  <blockquote>
+    <pre>mnu = iup.menu
+{
+  iup.submenu
+  {
+    iup.menu
+    {
+      iup.item{title=&quot;IupItem 1 Checked&quot;,value=&quot;ON&quot;},
+      iup.separator{},
+      iup.item{title=&quot;IupItem 2 Disabled&quot;,active=&quot;NO&quot;}
+    } 
+    ;title=&quot;IupSubMenu 1&quot;
+  },
+  iup.item{title=&quot;IupItem 3&quot;},
+  iup.item{title=&quot;IupItem 4&quot;}
+}</pre>
+  </blockquote>
+  <p>The same example using the cleaner syntax:</p>
+  <blockquote>
+    <pre>mnu = iup.menu
+{
+  {
+    &quot;IupSubMenu 1&quot;,
+    iup.menu
+    {
+      {&quot;IupItem 1 Checked&quot;;value=&quot;ON&quot;},
+      {},
+      {&quot;IupItem 2 Disabled&quot;;active=&quot;NO&quot;}
+    } 
+  },
+  {&quot;IupItem 3&quot;},
+  {&quot;IupItem 4&quot;}
+}</pre>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>A menu can be a menu bar of a dialog, defined by the dialog's MENU attribute, or a popup menu. </p>
+  <p>A popup menu is displayed for the user using the
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IupPopup</span> function (usually on the mouse position) and disappears when an item is selected.</p>
+  <p>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IupDestroy</span> should be called only for popup menus. Menu bars associated with dialogs are automatically destroyed 
+  when the dialog is destroyed. But if you change the menu of a dialog for another menu, the previous one should be 
+  destroyed using
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IupDestroy</span>.</p>
+  <p>In Motif the menu does not inherit attributes from the dialog, like in the Windows driver. This should be solved in 
+  future versions.</p>
+</blockquote>
+<h3><a href="../examples/elem/iupmenu/">Examples</a></h3>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupdialog.html">IupDialog</a>,
+  <a href="javascript:parent.manLoadCont('func', '../func/iuppopup')">IupPopup</a>, <a href="iupitem.html">IupItem</a>,
+  <a href="iupseparator.html">IupSeparator</a>, <a href="iupsubmenu.html">IupSubmenu</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

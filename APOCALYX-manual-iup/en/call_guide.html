@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Language" content="en-us">
+<title>Guia</title>
+</head>
+
+<body bgcolor="white" lang="EN-US">
+
+<h2 align="center" style="text-align:center"><span style="font-family:Helvetica">Events and Callbacks Guide</span></h2>
+<h3><a name="Using">Using</a></h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p class="MsoNormal">Even though callbacks have different purposes from attributes, they are actually associated to an 
+  element by means of an attribute. </p>
+  <p class="MsoNormal">The OLD method to associate a function to a callback, the application must employ the
+  <span style="font-family:&quot;Courier New&quot;"><a href="func/iupsetattribute.html">IupSetAttribute</a></span> 
+  function, linking the action to a name (passed as a string). From this point on, this name will refer to a callback. 
+  By means of function <span style="font-family:&quot;Courier New&quot;"><a href="func/iupsetfunction.html">
+  IupSetFunction</a></span>, the user connects this name to the callback.<u1:p> </u1:p>
+  For example: </p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>int myButton_action(Ihandle* self);
+...
+IupSetAttribute(myButton, &quot;ACTION&quot;, &quot;my_button_action&quot;);
+IupSetFunction(&quot;my_button_action&quot;, (Icallback)myButton_action);</pre>
+  </blockquote>
+  <p>In LED, callback are only assigned by their names. It will be still necessary to associate the name with the 
+  corresponding function in C using <span style="font-family: Courier New">IupSetFunction</span>. For example:</p>
+  <blockquote>
+    <pre>bt = button(&quot;Title&quot;, my_button_action)  # In LED, is equivalent to the IupSetAttribute command in the previous example.</pre>
+  </blockquote>
+  <p class="MsoNormal">In the NEW method, the application does not needs a global name, it directly sets the callback 
+  using the attribute name using <span style="font-family: Courier New"><a href="func/iupsetcallback.html">
+  IupSetCallback</a></span>. For example:</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>int myButton_action(Ihandle* self);
+...
+IupSetCallback(myButton, &quot;ACTION&quot;, (Icallback)myButton_action);</pre>
+  </blockquote>
+  <p class="MsoNormal">The new method is more efficient and more secure, because there is no risk of a name conflict. If 
+  the application uses LED, just ignore the name in the LED, and replace <b><span style="font-family: Courier New">
+  IupSetFunction</span></b> by <b><span style="font-family: Courier New">IupSetCallback</span></b>.</p>
+  <p class="MsoNormal">Therefore, callbacks also have some of the attributes' functionalities. The most important one is
+  <b>inheritance</b>. Though many callbacks are specific to a given element, a callback can be set to a composition 
+  element, such as a <b><span style="font-family:&quot;Courier New&quot;">vbox</span></b>, which contains other 
+  elements, and while the composition element does not call that callback all other elements contained in it will call 
+  the same callback, unless the callback is redefined in the element.<u1:p> </u1:p>
+  </p>
+  <p class="MsoNormal">All callbacks receive at least the element which activated the action as a parameter (self).<u1:p>
+  </u1:p>
+  <u1:p></u1:p>
+  </p>
+  <p>The callbacks implemented in C by the application must return one of the following values:</p>
+  <ul type="disc">
+    <li class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">IUP_DEFAULT</span>: Proceeds normally with 
+    user interaction. In case other return values do not apply, the callback should return this value.</li>
+    <li class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">IUP_CLOSE</span>: Makes the
+    <span style="font-family:&quot;Courier New&quot;"><a href="func/iupmainloop.html">IupMainLoop</a></span> function 
+    return the control to the application. Depending on the state of the application it will close all windows.</li>
+    <li class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">IUP_IGNORE</span>: Makes the native system 
+    ignore that callback action. Applies only to some actions. Please refer to specific action documentation to know 
+    whether it applies or not.</li>
+    <li class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">IUP_CONTINUE</span>: Makes the element to 
+    ignore the callback and pass the treatment of the execution to the parent element. </li>
+  </ul>
+  <p>An important detail when using callbacks is that they are only called when the user actually executes an action 
+  over an element. A callback is not called when the programmer sets a value via
+  <span style="font-family:&quot;Courier New&quot;"><a href="func/iupsetattribute.html">IupSetAttribute</a></span>. For 
+  instance: when the programmer changes a selected item on a list, no callback is called. </p>
+  <p>Inside a callback if one of the parameters is a string, this string may be modified during the callback if another 
+  IUP function (such as <span style="font-family: Courier New"><a href="func/iupgetattribute.html">IupGetAttribute</a></span>) 
+  is called.</p>
+  <p>To help the definition of callbacks in C, the header &quot;iupcbs.h&quot; can be used, there are typedefs for all the 
+  callbacks.</p>
+</blockquote>
+<h3><a name="mainloop">Main Loop</a></h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>IUP is an event-oriented interface system, so it will keep a loop “waiting” for the user to interact with the 
+  application. For this loop to occur, the application must call the <span style="font-family:&quot;Courier New&quot;">
+  <a href="func/iupmainloop.html">IupMainLoop</a></span> function, which is generally used right before
+  <span style="font-family:&quot;Courier New&quot;"><a href="func/iupclose.html">IupClose</a></span>.</p>
+  <p>When the application is closed by returning IUP_CLOSE in a callback or by user closing the last dialog, the 
+  function <span style="font-family:&quot;Courier New&quot;">IupMainLoop</span> will return.</p>
+  <p>The <span style="font-family: Courier New"><a href="func/iuploopstep.html">IupLoopStep</a></span> and the
+  <span style="font-family: Courier New"><a href="func/iupflush.html">IupFlush</a></span> functions force the processing 
+  of incoming events while inside an application callback.</p>
+</blockquote>
+<h3><a name="IupLua">IupLua</a></h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>Callbacks in Lua have the same names and receive the same parameters as callbacks in C, in the same order. In Lua 
+  the callbacks they can either return a value or not, the IupLua binding will automatically return
+  <span style="font-family:&quot;Courier New&quot;">IUP_DEFAULT</span> if no value is returned. In Lua callbacks can be 
+  Lua functions or strings with Lua code.</p>
+  <p>The callbacks can also be implemented as methods, using the language’s resources for object orientation. Thus, the 
+  element is implicitly passed as the <b><span style="font-family:&quot;Courier New&quot;">self</span></b> parameter.</p>
+  <p>The following example shows the definition of an action for a button. </p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>function <span style="font-family: Courier New">myButton</span>:action ()
+  local aux = self.fgcolor
+  self.fgcolor = self.bgcolor
+  self.bgcolor = aux
+end </pre>
+  </blockquote>
+  <p>Or you can do</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>function <span style="font-family: Courier New">myButton_action</span>(self)
+  ...
+end
+<span style="font-family: Courier New">myButton</span>.action = <span style="font-family: Courier New">myButton_action</span></pre>
+  </blockquote>
+</blockquote>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>Or also</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre><span style="font-family: Courier New">myButton</span>.action = function (self)
+  ...
+end
+</pre>
+  </blockquote>
+  <p>Or, as a string</p>
+  <blockquote>
+    <pre>myButton.action = &quot;local aux = self.fgcolor; self.fgcolor = self.bgcolor; self.bgcolor = aux&quot;
+</pre>
+  </blockquote>
+  <p>Altough some callbacks exists only in specific controls, all the callbacks can be set for all the controls. This is 
+  usefull to set a callback for a box, so it will be inherited by all the elements inside that box which implements that 
+  callback.</p>
+</blockquote>
+
+</body>
+
+</html>

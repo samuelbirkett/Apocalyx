@@ -1,0 +1,159 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>IupColorbar</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Iup<span lang="pt-br">OleControl</span></h2>
+<blockquote>
+  <p><span lang="pt-br">The IupOleControl hosts an windows OLE control (also named ActiveX control), allowing it to be 
+  used inside IUP dialogs. There are many OLE controls available, like calendars, internet browsers, PDF readers etc.</span></p>
+  <p><span lang="pt-br">Notice that IupOleControl just takes care of the visualization of the control (size and 
+  positioning). It does not deal with properties, methods and events. The application must deal with them using the the 
+  COM interfaces offered by the control. Nevertheless, using IupLua together with LuaCOM makes it possible to use OLE 
+  controls very easily in Lua, accessing their methods, properties and events similarly to the other IUP elements.</span></p>
+  <p><span lang="pt-br">Notice that this control works only on Windows, using Visual C++ or Borland C++.</span></p>
+</blockquote>
+<h3><span lang="pt-br">Initialization and usage</span></h3>
+<blockquote>
+  <p dir="ltr">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The </span><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Iup<span lang="pt-br">OleControlOpen</span></span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> function must be called after a </span><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IupOpen</span></b><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">, so that the control can be used. </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">iu<span lang="pt-br">pole</span>.h</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> file must also be included in the source code. </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The program must be linked to the control’s 
+  library </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">iup<span lang="pt-br">ole</span>.lib</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">.</span></p>
+  <p dir="ltr">
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">To make the control available in Lua, use the initialization function in C, </span><b>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"><span lang="pt-br">iupole</span>lua_open</span></b><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">, after calling </span><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">iuplua_open</span></b>.
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &nbsp;The </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><span lang="pt-br">iupluaole</span>.h</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> file must also be included in the source code. The program must be linked to the control’s 
+  librar<span lang="pt-br">y:</span> </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">iuplua<span lang="pt-br">ole</span></span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">[5]</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">.lib</span>.</p>
+</blockquote>
+<h3>Creation</h3>
+<blockquote>
+  <pre>Ihandle* Iup<span lang="pt-br">OleControl</span>(<span lang="pt-br">char* ProgID</span>); [in C]
+iup.<span lang="pt-br">olecontrol</span>{<span lang="pt-br"><b>ProgID</b>: string</span>} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+</pre>
+  <b>
+  <p><font face="Courier New"><span lang="pt-br">ProgID</span></font></b>: <span lang="pt-br">the programmatic 
+  identifier of the OLE control</span>.<span lang="pt-br"> This can be found in the documentation of the OLE control or 
+  by browsing the list of registered controls, using tools like OleView. </span></p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The function returns <span lang="pt-br">the 
+  OLE control created or </span></span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><span lang="pt-br"><b><font face="Courier New">DESIGNMODE</font></b></span><b><font face="Courier New">:</font></b>
+  <span lang="pt-br">Returns if the control is in design mode. Some controls behave differently when in design mode.</span>
+  <span lang="pt-br">See <a target="_blank" href="http://support.microsoft.com/default.aspx?scid=kb;en-us;260744">this 
+  article</a> for more information about design mode. </span>Default<span lang="pt-br"> value</span>:
+  <font face="Courier New">&quot;<span lang="pt-br">NO</span>&quot;.</font></p>
+  <p><span lang="pt-br"><b><font face="Courier New">IUNKNOWN</font></b></span><b><font face="Courier New">:</font></b>
+  <span lang="pt-br">Returns the IUnknown pointer for the control</span>.<span lang="pt-br"> This pointer is necessary 
+  to access methods and properties of the control in C/C++ code.</span> <span lang="pt-br">This is a read-only 
+  attribute.</span> </p>
+  <p><span lang="pt-br">The control's specific attributes shall be accessed using the COM mechanism (see section below 
+  for more information).</span></p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><span lang="pt-br">In C/C++, the OLE control's callbacks (events, in ActiveX terms) shall be set using the 
+  control's interface and the COM mechanism</span>.<span lang="pt-br"> When using IupLua, it's possible to call methods, 
+  access properties and receive events from the OLE control using the
+  <a target="_blank" href="http://luaforge.net/projects/luacom/">LuaCOM</a> library. When the LuaCOM library is loaded, 
+  for each OLE control created a LuaCOM object is also created and stored in the </span><font face="Courier New">com</font><span lang="pt-br"> 
+  field of the object returned by <font face="Courier New"><b>iup.olecontrol</b></font>. This LuaCOM object can be used 
+  to access properties, methods and events in a way very similar to VB. See the examples for more information.</span></p>
+</blockquote>
+<h3><span lang="pt-br">Notes</span></h3>
+<blockquote>
+  <p><span lang="pt-br">To learn more about OLE and ActiveX:</span></p>
+  <blockquote>
+    <p><a target="_blank" href="http://www.microsoft.com/com">http://www.microsoft.com/com</a><br>
+    <a target="_blank" href="http://www.webopedia.com/TERM/A/ActiveX_control.html">
+    http://www.webopedia.com/TERM/A/ActiveX_control.html</a><br>
+    <a target="_blank" href="http://msdn.microsoft.com/workshop/components/activex/activex_node_entry.asp">
+    http://msdn.microsoft.com/workshop/components/activex/activex_node_entry.asp</a><br>
+    <a target="_blank" href="http://activex.microsoft.com/activex/activex/">
+    http://activex.microsoft.com/activex/activex/</a> </p>
+  </blockquote>
+</blockquote>
+<h3><a href="../examples/ctrl/iupolecontrol/">Examples</a></h3>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="../elem/iupcanvas.html">IupCanvas</a></font></p>
+</blockquote>
+
+</body>
+
+</html>
+
+</body>
+
+</html>

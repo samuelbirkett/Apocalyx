@@ -1,0 +1,133 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>IupColorbar</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupColorbar</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a color palette to enable a color 
+  selection from several samples. </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  It can select one or two colors. The primary color is selected with the left mouse button, and the secondary color is 
+  selected with the right mouse button. You can double click a cell to change its color and you can double click the 
+  preview area to switch between primary and secondary colors. </span>It inherits from
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>. Originally implemented by André 
+  Clinio.</p>
+</blockquote>
+<h3>Creation</h3>
+<blockquote>
+  <pre>Ihandle* IupColorbar(void); [in C]
+iup.colorbar{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+colorbar() [in LED] </pre>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The function returns the identifier of the 
+  created Colorbar, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><b><font face="Courier New">ORIENTATION:</font></b> Controls the orientation. It can be <font face="Courier New">
+  &quot;VERTICAL&quot;</font> or <font face="Courier New">&quot;HORIZONTAL&quot;</font>. Default: <font face="Courier New">&quot;VERTICAL&quot;.</font></p>
+  <p><b><font face="Courier New">NUM_CELLS:</font></b> Contains the number of color cells. Default:
+  <font face="Courier New">&quot;16&quot;</font>. The maximum number of colors is 256. The default colors use the same set of
+  <font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupimage')">IupImage</a></font>.</p>
+  <p><b><font face="Courier New">NUM_PARTS:</font></b> Contains the number of lines or columns. Default:
+  <font face="Courier New">&quot;1&quot;</font>. </p>
+  <p><b><font face="Courier New">CELLn:</font></b> Contains the color of the &quot;n&quot; cell. &quot;n&quot; can be from 0 to NUM_CELLS-1.</p>
+  <p><b><font face="Courier New">PREVIEW_SIZE:</font></b> Fixes the size of the preview area in pixels. The default size 
+  is dynamically calculated from the size of the control. The size is reset to the default when <font face="Courier New">
+  SHOW_PREVIEW=NO</font>.</p>
+  <p><b><font face="Courier New">SHOW_PREVIEW:</font></b> Controls the display of the preview area. Default:
+  <font face="Courier New">&quot;YES&quot;</font>. </p>
+  <p><b><font face="Courier New">SHOW_SECONDARY:</font></b> Controls the existence of a secondary color selection. 
+  Default: <font face="Courier New">&quot;NO&quot;</font>. </p>
+  <p><b><font face="Courier New">PRIMARY_CELL:</font></b> Contains the index of the primary color. Default
+  <font face="Courier New">&quot;0&quot; (black)</font>. </p>
+  <p><b><font face="Courier New">SECONDARY_CELL:</font></b> Contains the index of the secondary color. Default
+  <font face="Courier New">&quot;15&quot; (white)</font>. </p>
+  <p><b><font face="Courier New">SQUARED</font></b>: Controls the aspect ratio of the color cells. Non square cells 
+  expand equally to occupy all of the control area. Default: <font face="Courier New">&quot;YES&quot;</font>. </p>
+  <p><b><font face="Courier New">SHADOWED:</font></b> Controls the 3D effect of the color cells. Default:
+  <font face="Courier New">&quot;YES&quot;</font>. </p>
+  <p><b><font face="Courier New">BUFFERIZE:</font></b> Disables the redrawing of the control, so many attributes can be 
+  changed without many redraws. Default: &quot;<font face="Courier New">NO</font>&quot;.</p>
+  <p><b><font face="Courier New">TRANSPARENCY</font></b>: Contains a color that will be not rendered in the color 
+  pallete. The color cell will have a white and gray chess pattern. It can be used to create a pallete with less colors 
+  than the number of cells. Default is not defined.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><tt><font size="3">SELECT_CB:</font></tt> called when a color is selected. The primary color is
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  selected </span>with the left mouse button, and if existant the secondary is
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  selected </span>with the right mouse button.</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int cell, int type);  [in C]<strong>
+elem</strong>:select_cb(<strong>cell, type</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><b>cell</b>: index of the selected cell.<br>
+    <b>type</b>: indicates if the user selected a primary or secondary color. In can be: <tt><font size="3">
+    IUP_PRIMARY(-1)</font></tt> or <tt><font size="3">IUP_SECONDARY(-2).</font></tt></p>
+    <p>If <font face="Courier New">IUP_DEFAULT</font> is returned the selection is accepted. If the callback does not 
+    exist the selection is always accepted.</p>
+  </blockquote>
+  <p><tt><font size="3">CELL_CB:</font></tt> called when the user double clicks a color cell to change its value. </p>
+  <blockquote>
+    <pre>char* function(Ihandle* self, int cell); [in C]
+<strong>elem</strong>:cell_cb(<strong>cell</strong>: number) -&gt; (<strong>ret</strong>: string) [in Lua]</pre>
+    <p><b>cell:</b> index of the selected cell. If the user double click a preview cell, the respective index is 
+    returned.</p>
+    <p>The callback should return a new color or NULL (nil in Lua) to ignore the change. If the callback does not exist 
+    nothing is changed.</p>
+  </blockquote>
+  <p><tt><font size="3">SWITCH_CB:</font></tt> called when the user double clicks the preview area outside the preview 
+  cells to switch the primary and secondary selections. It is only called if <font face="Courier New">SHOW_SECONDARY=YES<b>.</b></font></p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int prim_cell, int sec_cell);  [in C]<strong>
+elem</strong>:switch_cb(<b>prim_cell</b>, <b>sec_cell</b>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><b>prim_cell</b>: index of the actual primary cell.<br>
+    <b>sec_cell</b>: index of the actual secondary cell. </p>
+    <p>If <font face="Courier New">IUP_DEFAULT</font> is returned the switch is accepted. If the callback does not exist 
+    the switch is always accepted.</p>
+  </blockquote>
+  <p><tt><font size="3">EXTENDED_CB:</font></tt> called when the user right click a cell with the Shift key pressed. It 
+  is independent of the <font face="Courier New">SHOW_SECONDARY</font> attribute.</p>
+  <blockquote>
+    <pre>int function(Ihandle* self, int cell);  [in C]
+<strong>elem</strong>:extended_cb(<strong>cell</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><b>cell:</b> index of the selected cell.</p>
+    <p>If <font face="Courier New">IUP_DEFAULT</font> is returned the control is redrawn. </p>
+  </blockquote>
+</blockquote>
+<h3><a href="../examples/ctrl/iupcolorbar/">Examples</a></h3>
+<blockquote>
+  <p>Creates a Colorbar for selection of two colors</span>.</p>
+  <p align="center"><img src="iupcolorbar.gif" alt="iupcolorbar.gif" width="284" height="353"></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>,
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupimage')">IupImage</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

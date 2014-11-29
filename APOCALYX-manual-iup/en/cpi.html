@@ -1,0 +1,418 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CPI</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<center>
+<h2><font face="Arial">CPI</font></h2>
+</center>
+<h3><a NAME="intro"></a>Introduction</h3>
+<blockquote>
+  <p>The IUP toolkit was originally designed to support a set of well-defined 
+  controls existing in all the destination platforms. With the evolution of 
+  native systems and new requests from users, IUP needed to evolve with the 
+  purpose of making the addition of new interface elements to the toolkit 
+  easier.</p>
+  <p>Thus, to support the development of new controls for IUP, a specific API (<b>Application 
+  Programing Interface</b>) was created for this purpose: it was called CPI (<b>Controls 
+  Programing Interface</b>). This new API is orthogonal to the original IUP API, 
+  that is, its use with a client application does not interfere with the 
+  conventional use of IUP. Only a developer wishing to implement a new IUP 
+  control is required study this API.</p>
+</blockquote>
+<blockquote>
+  <p>To create a new CPI control, follow these steps:</p>
+  <ul>
+    <li>Initialize the control</li>
+    <li>Create control instances</li>
+    <li>Implement the CPI methods associated to the control</li>
+    <li>Make exported information available to the user (function prototypes, 
+    definitions, etc.)</li>
+  </ul>
+</blockquote>
+<h3><a NAME="Inicialização_geral"></a>Control Initialization</h3>
+<blockquote>
+  <p>The initialization function is in charge of passing IUP the necessary 
+  information so that the control can be used. Such information is grouped in an
+  <font face="Courier New">Iclass</font>-type structure, which from now on is to 
+  be called the class of the control. </p>
+  <p>The first step is to create the structure. This is done by calling the
+  <font face="Courier New">iupCpiCreateNewClass</font> function. To this 
+  function, two pieces of information must be passed: a string identifying the 
+  control in a unique way (the &quot;name&quot; of the control), and a string describing 
+  the creation parameters when the control is created via LED.</p>
+  <p><font face="Courier New">Iclass *iupCpiCreateNewClass(char *<b>name</b>, 
+  char *<b>format</b>);<a NAME="iupCpiCreateNewClass"></a></font></p>
+  <ul type="disc">
+    <li><b>name</b>: Stores the name given to the control. This name allows the 
+    control to be used in LED.</li>
+    <li><b>format</b>: Format string used to describe the required attributes 
+    defined in LED to create a control instance. If this field is null, then the 
+    new control type has no required attributes. The format string can be any 
+    sequence with the following characters:<br>
+&nbsp; <center>
+    <table BORDER CELLPADDING="3">
+      <tr>
+        <td><b>Character&nbsp;</b></td>
+        <td><b>Meaning</b></td>
+      </tr>
+      <tr>
+        <td><font face="Courier New">n</font></td>
+        <td>name of a control instance or an action</td>
+      </tr>
+      <tr>
+        <td><font face="Courier New">s</font></td>
+        <td>any string&nbsp;</td>
+      </tr>
+      <tr>
+        <td><font face="Courier New">c</font></td>
+        <td>interface control (<font face="Courier New">Ihandle *</font>)</td>
+      </tr>
+      <tr>
+        <td><font face="Courier New">N</font></td>
+        <td>from this character on, a list of control-instance names or a list 
+        of actions will be passed</td>
+      </tr>
+      <tr>
+        <td><font face="Courier New">S</font></td>
+        <td>from this character on, a list of strings will be passed</td>
+      </tr>
+      <tr>
+        <td><font face="Courier New">C</font></td>
+        <td>from this character on, a list of interface controls will be passed 
+        (<font face="Courier New">Ihandle *</font>)</td>
+      </tr>
+    </table>
+    </center></li>
+  </ul>
+  <p>Next step is to replace, if necessary, some of the control's
+  <a href="#metodos">CPI methods</a>. This is done through function
+  <a href="#iupSetClassMethod"><font face="Courier New">iupCpiSetClassMethod</font></a>, 
+  which receives the control's class as an argument and the pointer to the new 
+  method. The Function <font face="Courier New">iupCpiCreateNewClass</font> will 
+  set the class with default methods, which provide the control a default 
+  behavior. </p>
+  <p>This initialization function should be named <font face="Courier New">
+  IupXxxOpen</font>, where <i><font face="Courier New">Xxx</font></i> is the 
+  name of the control. The control will be automatically unregistered, but any 
+  other memory allocated in <font face="Courier New">IupXxxOpen</font> should be 
+  dealocated in a <font face="Courier New">IupXxxClose</font>.</p>
+  <p>Example (class creation for a control named Xxx):</p>
+  <blockquote>
+    <pre>#include &lt;iup.h&gt; 
+#include &lt;iupcpi.h&gt; 
+
+static Ihandle *XxxCreate(...)
+{ 
+  ... 
+}
+
+void IupXxxOpen(void) 
+{ 
+  Iclass *new_class = iupCpiCreateNewClass(&quot;xxx&quot;,&quot;n&quot;);
+
+  iupCpiSetClassMethod(new_class, ICPI_CREATE, DialCreate); 
+}</pre>
+  </blockquote>
+</blockquote>
+<h3><a NAME="instancias"></a>Control Instances</h3>
+<blockquote>
+  <p>The new control should make a function available whose name would be
+  <font face="Courier New">IupXxx</font>, where <i><font face="Courier New">Xxx</font></i> 
+  is the control name. This function is to be used by the user to create a new 
+  control instance, and should not receive arguments. If the control is a 
+  container, then the arguments are necessarily its children.</p>
+  <p dir="ltr">In this creation function, if no parameters are necessary, just 
+  call <font face="Courier New">IupCreate</font> with the control's name. If the 
+  control allows children, use <font face="Courier New">IupCreatev</font> to 
+  pass them forward to IUP. This function will create the control's
+  <font face="Courier New">Ihandle</font>, by means of the function registered 
+  by the ICPI_CREATE method.</p>
+  <p>Example 1:</p>
+  <blockquote>
+    <pre>Ihandle* IupXxx(void)
+{
+  return IupCreate(&quot;xxx&quot;);
+}</pre>
+  </blockquote>
+  <p>Example 2:</p>
+  <blockquote>
+    <pre>Ihandle* IupXxx (Ihandle* first,...)
+{
+  Ihandle **params = NULL;
+  Ihandle *elem;
+  va_list arg;
+
+  if (first)
+  {
+    int i, n = 1;
+    va_start (arg, first); 
+    while (va_arg(arg, Ihandle *)) n++;
+    va_end (arg);
+
+    params = (Ihandle**) malloc (sizeof(Ihandle*) * (n+1));
+  
+    va_start (arg, first); 
+    params[0] = first;
+
+    for (i = 1; i &lt; n; i++)
+    {
+      params[i] = va_arg(arg, Ihandle *);
+    }
+
+    params[n] = NULL;
+    va_end (arg);
+  }
+
+  elem = IupCreatev(&quot;xxx&quot;, params);
+  if (params) free(params);
+  return elem;
+}</pre>
+  </blockquote>
+</blockquote>
+<h3><a NAME="metodos"></a>CPI Methods</h3>
+<blockquote>
+  <p>The <tt><font face="Courier New">Iclass</font> </tt>structure fields are 
+  mostly pointers to functions to be called by IUP in certain moments. These 
+  pointers to functions play the same parts as methods in languages such as C++. 
+  Following the C++ philosophy, the CPI defines a set of functions which can be 
+  used to provide the controls a default behavior. The <tt>Iclass </tt>structure 
+  stores these function pointers, which are defined right after the call to
+  <a href="#iupCreateNewClass"><font face="Courier New">iupCpiCreateNewClass</font></a>.</p>
+  <p>In several occasions, the default behavior defined by the CPI is not 
+  adequate for the new control's implementation. In this case, a new function 
+  must be set, providing the desired implementation for such method. If 
+  convenient, this new function can call the function implementing the method's 
+  default behavior, either before or after performing the specific treatment of 
+  the new control. Generally, a method that will always be redefined to a new 
+  control is the one in charge of creating instances of this control. To 
+  redefine (replace) a control method, function <font face="Courier New">
+  iupCpiSetClassMethod</font> must be used. It receives as parameters the values 
+  described below:</p>
+  <p><font face="Courier New">&nbsp;&nbsp;&nbsp; int iupCpiSetClassMethod(Iclass 
+  *ic, char *<b>method</b>, Imethod func);<a NAME="iupCpiSetClassMethod"></a></font></p>
+  <table BORDER="1" WIDTH="100%" style="border-collapse: collapse" bordercolor="#111111" cellpadding="0" cellspacing="0">
+    <tr>
+      <th bgcolor="#C0C0C0" height="80">Method <br>
+      &amp;<br>
+      Default Method</th>
+      <th bgcolor="#C0C0C0">Description</th>
+    </tr>
+    <tr>
+      <td ALIGN="center" dir="ltr"><font face="Courier New">ICPI_CREATE</font><p dir="ltr">
+      <font face="Courier New">iupCpiDefaultCreate</font></td>
+      <td align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP when an instance for such control must 
+        be created. When this function is called, IUP already has a registered
+        <font face="Courier New">Iclass</font> for the control instance 
+        (represented by the <font face="Courier New">ic</font> parameter). The 
+        array parameter is an array with the required attributes, specified in 
+        the call to the control creation function. The default function creates 
+        an <font face="Courier New">IupCanvas</font> control.</p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">Ihandle *(*create) (Iclass* ic, void** array);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="132" dir="ltr"><font face="Courier New">
+      ICPI_DESTROY</font><p dir="ltr"><font face="Courier New">
+      iupCpiDefaultDestroy</font></td>
+      <td height="132" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP when the control is about to be 
+        destroyed. If necessary, this method can be redefined to dispose of 
+        structures maintained by the control. </p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">void (*destroy) (Ihandle* self);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="132" dir="ltr"><font face="Courier New">
+      ICPI_MAP</font><p dir="ltr"><font face="Courier New">iupCpiDefaultMap</font></td>
+      <td height="132" align="left">
+      <blockquote>
+        <p>This method is called by IUP to map the control in the native system. 
+        The parent parameter indicates of which parent the control is a child 
+        (This parent can either be a dialog or any other control). If you do not 
+        directly map the control to the native system then
+        <font face="Courier New">iupCpiDefaultMap</font> must be called to let 
+        IUP map the control.</p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">void (*map) (Ihandle* self, Ihandle* parent);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="113" dir="ltr"><font face="Courier New">
+      ICPI_UNMAP</font><p dir="ltr"><font face="Courier New">iupCpiDefaultUnmap</font></td>
+      <td height="113" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP to &quot;destroy&quot; the control's mapping in 
+        the native system without removing the control from the control 
+        hierarchy of a IUP dialog. </p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">void (*unmap) (Ihandle* self);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="189"><font face="Courier New">
+      ICPI_SETNATURALSIZE</font><p><font face="Courier New">
+      iupCpiDefaultSetNaturalSize</font></td>
+      <td height="189" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP for the control to specify its natural 
+        size. For such, this function must call functions <tt>iupSetNaturalWidth
+        </tt>and <tt>iupSetNaturalHeight</tt>. Its implementation might call the
+        <font face="Courier New">ICPI_GETSIZE</font> method to compute the 
+        natural size of the control. This function must return the same value 
+        returned by the <font face="Courier New"><a href="#ICPI_GETSIZE">
+        ICPI_GETSIZE</a></font> method. </p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">int (*setnaturalsize) (Ihandle* self);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="151"><font face="Courier New">
+      ICPI_SETCURRENTSIZE</font><p><font face="Courier New">
+      iupCpiDefaultSetCurrentSize</font></td>
+      <td height="151" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP for the control to change its current 
+        size. For such, this function must call functions <tt>iupSetCurrentWidth
+        </tt>and <tt>iupSetCurrentHeight</tt>. Parameters represent the maximum 
+        size the control can have in pixels. </p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">void (*setcurrentsize) (Ihandle* self, int 
+        max_w, int max_h);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="151" dir="ltr"><font face="Courier New">
+      ICPI_SETPOSITION</font><p dir="ltr"><font face="Courier New">
+      iupCpiDefaultSetPosition</font></td>
+      <td height="151" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP for the control to define its position 
+        inside the parent window. Parameters <font face="Courier New">x</font> 
+        and <font face="Courier New">y</font> represent the position in pixels 
+        (upper left corner of the control) the control must have, computed by 
+        IUP. The default behavior for this method need only be changed if the 
+        control has sub-controls. </p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">void (*setposition) (Ihandle* self, int x, int 
+        y);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="169">
+      <p dir="ltr"><font face="Courier New">ICPI_SETATTR</font></p>
+      <p><font face="Courier New">iupCpiDefaultSetAttr</font></td>
+      <td height="169" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called to provide a new value to a given control 
+        attribute. When this method is called, the attribute's value is already 
+        stored in the control's attribute environment.</p>
+        <p dir="ltr">Prototype: <br>
+        <font face="Courier New">void (*setattr) (Ihandle* self, char* attr, 
+        char* value);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="170"><font face="Courier New">ICPI_GETATTR</font><p>
+      <font face="Courier New">iupCpiDefaultGetAttr</font></td>
+      <td height="170" align="left">
+      <blockquote>
+        <p>This method is called by IUP to verify the value of a control 
+        attribute, determined by parameter attr. This method is called before 
+        IUP verifies the control's attribute environment. If this method returns
+        <font face="Courier New">null</font>, IUP verifies the control's 
+        attribute environment. If the control's attribute environment check also 
+        returns <font face="Courier New">null</font>, then the
+        <font face="Courier New">ICPI_GETDEFAULTATTR</font> method is called.
+        </p>
+        <p dir="ltr">Prototype:<br>
+        <font face="Courier New">char* (*getattr) (Ihandle* self, char* attr);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td ALIGN="center" height="132"><font face="Courier New">
+      ICPI_GETDEFAULTATTR</font><p><font face="Courier New">
+      iupCpiDefaultGetDefaultAttr</font></td>
+      <td height="132" align="left">
+      <blockquote>
+        <p>This method is called by IUP when verifying an attribute value, when 
+        both the call to the <font face="Courier New">ICPI_GETATTR</font> method 
+        and the verification of the control's attribute environment fail 
+        (returned <font face="Courier New">null</font>). </p>
+        <p dir="ltr">Prototype:<br>
+        <font face="Courier New">char* (*getdefaultattr) (Ihandle* self, char* 
+        attr);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td height="227" align="center"><center>
+      <p><font face="Courier New"><a name="ICPI_GETSIZE">ICPI_GETSIZE</a></font></p>
+      <p><font face="Courier New">iupCpiDefaultGetSize</font></p>
+      </center></td>
+      <td height="227" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP to verify the size the control must 
+        have. This function must write to the <font face="Courier New">w</font> 
+        and <font face="Courier New">h</font> parameters the control size in 
+        pixels, respectively. The return value for this function can only be one 
+        of the following: </p>
+        <p dir="ltr"><font face="Courier New">0</font> - The control size does 
+        not vary when the dialog size varies.<br>
+        <font face="Courier New">1</font> - The control width may vary when the 
+        dialog width varies.<br>
+        <font face="Courier New">2</font> - The control height may vary when the 
+        dialog height varies.<br>
+        <font face="Courier New">3</font> - The control width and height may 
+        vary when the dialog size varies.</p>
+        <p dir="ltr">Prototype:<br>
+        <font face="Courier New">int (*getsize) (Ihandle *self, int *w, int *h);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+    <tr>
+      <td height="133" dir="ltr" align="center"><center dir="ltr">
+      <p dir="ltr"><font face="Courier New">ICPI_POPUP</font></p>
+      <p dir="ltr"><font face="Courier New">(no default)</font></p>
+      </center></td>
+      <td height="133" align="left" dir="ltr">
+      <blockquote dir="ltr">
+        <p>This method is called by IUP when wishing the control to show a popup 
+        dialog. The <font face="Courier New">x</font> and
+        <font face="Courier New">y</font> parameters indicate the position the 
+        dialog must initially have. This method must return
+        <font face="Courier New">IUP_NOERROR</font>, if no error occurs, or
+        <font face="Courier New">IUP_ERROR</font> if an error occurs. </p>
+        <p dir="ltr">Prototype:<br>
+        <font face="Courier New">int (*popup) (Ihandle *self, int x, int y);</font></p>
+      </blockquote>
+      </td>
+    </tr>
+  </table>
+</blockquote>
+
+</body>
+
+</html>

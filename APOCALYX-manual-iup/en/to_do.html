@@ -1,0 +1,79 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Lista de to do</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2 align="center"><font face="Helvetica,Arial">To Do</font></h2>
+<h3>General</h3>
+<ul>
+  <li><font color="#008000">Organize controls and driver initialization and management, improve the possibility of 
+  implementing new drivers.</font></li>
+  <li><font color="#008000">A gtk driver in Linux.</font></li>
+  <li>A MacOS X native driver using Carbon.</li>
+  <li>A wxWidgets driver?</li>
+  <li>A tutorial section in the documentation. Add more complete samples.</li>
+  <li>To show a border for visual location of <font face="Courier New">VBOX</font>, <font face="Courier New">HBOX</font> 
+  and <font face="Courier New">FILL</font>. Can be a dialog attribute. Or most likely a function to display the layout.</li>
+  <li>Change all comments in the source code to english. Add comments to the internal includes for Doxygen.</li>
+  <li>Drag&amp;Drop between controls or dialogs in the same application.</li>
+  <li><font color="#008000">Allow the functions <font face="Courier New">IupAppend</font> and <font face="Courier New">
+  IupDetach</font> to be used for dynamic creation of menus, IupSbox, IupCbox and IupTabs.</font></li>
+  <li><font color="#008000">Buttons with image and text simultaneously.</font></li>
+  <li><font color="#008000">Support for RGBA images. Support for alpha in colors for images?</font></li>
+  <li><font color="#FF0000">IupLua executables in SunOS using the Sun WorkShop 6 C++ and in AIX using the C++ for AIX 
+  compilers do not include the IMLua binaries.</font></li>
+</ul>
+<h3>Motif</h3>
+<ul>
+  <li><font color="#008000">Support for MDI.</font></li>
+  <li>Reduce flicker when dialog is resized.</li>
+  <li>Callback <font face="Courier New">SHOW_CB</font> is not called when the dialog is hidden because of
+  <font face="Courier New">PARENTDIALOG</font>.</li>
+  <li>When another Window Manager is running the <font face="Courier New">IupPopup</font> disable the other windows, but 
+  they can be placed in front of the popup window if <font face="Courier New">PARENTDIALOG</font> is not used. Also in 
+  this case, some window decorations do not work.</li>
+  <li>The menu does not inherit attributes from the dialog like in the Windows driver.</li>
+  <li><font color="#FF0000">Sometimes the control initialization is incomplete and its size is miscalculated. To solve 
+  this call IupRefresh(dialog). This will fix the sizes.</font></li>
+</ul>
+<h3>IupControls</h3>
+<ul>
+  <li>Move iupMask to the mail library using attributes instead of functions.</li>
+  <li>A vertical IupGauge?</li>
+  <li><font color="#FF0000">IupSbox can be resized above the maximum size so some controls go to outside the dialog area 
+  at right or bottom. In fact thi is part of the dynamic layout default reposition of controls inside the dialog. See 
+  the IupRefresh function. The IUP layout does not have a maximum limit only a minimum.</font></li>
+</ul>
+<h3>IupMatrix</h3>
+<ul>
+  <li><font color="#FF0000">Fix column resize when line is moved outside the matrix canvas.</font></li>
+  <li><span lang="en-us">When removing a line, if it has the focus an invalid call to enteritem_cb/leave_item_cb will 
+  occur for the removed cell.</span></li>
+  <li>Lines and columns are not unmarked when clicking on the title. </li>
+  <li>Should allows to start the selection on cell 0:0.</li>
+</ul>
+<h3>IupTree</h3>
+<ul>
+  <li>Define minimum size based on tree nodes. New callback mode. Change internal list to real tree?</li>
+  <li>Images with variable sizes for nodes.</li>
+</ul>
+<h3>New Controls</h3>
+<ul>
+  <li><font color="#008000">IupPlot to plot a XY graph</font></li>
+  <li>A detachable toolbar?</li>
+  <li>Image Listbox</li>
+  <li>Grid Container (to distribute elements in a grid)</li>
+  <li>RTF editor in Windows</li>
+  <li>HTML viewer?</li>
+</ul>
+
+</body>
+
+</html>

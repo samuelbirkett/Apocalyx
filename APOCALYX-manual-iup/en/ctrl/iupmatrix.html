@@ -1,0 +1,555 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupMatrix</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupMatrix</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a matrix of alphanumeric fields. 
+  Therefore, all values of the matrix’s fields are strings</span>. The matrix is not a grid container like many systems 
+  have. It inherits from <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>.</p>
+  <p>It has two modes of operation: normal and callback mode. In normal mode string values are stored in attributes for 
+  each cell. In callback mode these attributes are ignored and the cells are filled with strings returned by the &quot;<code>VALUE_CB</code>&quot; 
+  callback. So the existance of this callback defines the mode the matrix will operate.</p>
+</blockquote>
+<h3 dir="ltr">Creation</h3>
+<blockquote dir="ltr">
+  <div dir="ltr">
+    <pre>Ihandle* IupMatrix(char *<strong>action_cb</strong>); [in C]
+iup.matrix{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+matrix(<strong>action_cb</strong>) [in LED]</pre>
+  </div>
+  <p dir="ltr"><strong><font face="Courier New">action_cb</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Name of the action generated when the user 
+  types something</span>.</p>
+  <p dir="ltr">
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Returns the identifier of the created 
+  matrix, or </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <h4>Cell Attributes</h4>
+  <dl>
+    <dd><a href="iupmatrix_attrib.html#L:C">L:C</a></dd>
+    <dd><a href="iupmatrix_attrib.html#ALIGNMENTn">ALIGNMENTn</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_BGCOLOR">BGCOLOR</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_FGCOLOR">FGCOLOR</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_FONT">FONT</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_FOCUS_CELL">FOCUS_CELL</a></dd>
+    <dd><a href="iupmatrix_attrib.html#VALUE">VALUE</a><br>
+    <a href="iupmatrix_attrib.html#SORTSIGN">SORTSIGN</a></dd>
+  </dl>
+  <h4>Size Attributes</h4>
+  <dl>
+    <dd><a href="iupmatrix_attrib.html#IUP_NUMCOL">NUMCOL</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_NUMCOL_VISIBLE">NUMCOL_VISIBLE</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_NUMLIN">NUMLIN</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_NUMLIN_VISIBLE">NUMLIN_VISIBLE</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_WIDTHDEF">WIDTHDEF</a></dd>
+    <dd><a href="iupmatrix_attrib.html#WIDTHn">WIDTHn</a></dd>
+    <dd><a href="iupmatrix_attrib.html#HEIGHTn">HEIGHTn</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_RESIZEMATRIX">RESIZEMATRIX</a></dd>
+  </dl>
+  <h4>Mark Attributes</h4>
+  <dl>
+    <dd><a href="iupmatrix_attrib.html#IUP_AREA">AREA</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_MARK_MODE">MARK_MODE</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_MARKED">MARKED</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_MULTIPLE">MULTIPLE</a></dd>
+  </dl>
+  <h4>Action Attributes</h4>
+  <dl>
+    <dd><a href="iupmatrix_attrib.html#IUP_ADDCOL">ADDCOL</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_ADDLIN">ADDLIN</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_DELCOL">DELCOL</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_DELLIN">DELLIN</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_EDIT_MODE">EDIT_MODE</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_ORIGIN">ORIGIN</a></dd>
+    <dd><a href="iupmatrix_attrib.html#REDRAW">REDRAW</a></dd>
+  </dl>
+  <h4>General Attributes</h4>
+</blockquote>
+<blockquote>
+  <dl>
+    <dd><a href="iupmatrix_attrib.html#IUP_CURSOR">CURSOR</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_FRAMECOLOR">FRAMECOLOR</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_SCROLLBAR">SCROLLBAR</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_SIZE">SIZE</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_CARET">CARET</a></dd>
+    <dd><a href="iupmatrix_attrib.html#IUP_SELECTION">SELECTION</a><br>
+    <a href="iupmatrix_attrib.html#HIDEFOCUS">HIDEFOCUS</a></dd>
+  </dl>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <h4>Interaction</h4>
+  <blockquote>
+    <p><a href="iupmatrix_cb.html#IUP_ACTION">ACTION_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a keyboard event 
+    occurs</span>.<a href="iupmatrix_cb.html#IUP_CLICK_CB"><br>
+    CLICK_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when any mouse button is 
+    pressed over a cell</span>.<a href="iupmatrix_cb.html#IUP_DRAW_CB"><br>
+    </a><a href="iupmatrix_cb.html#IUP_MOUSEMOVE_CB">MOUSEMOVE_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to notify the application 
+    that the mouse has moved over the matrix.</span><a href="iupmatrix_cb.html#IUP_SCROLL_CB"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><br>
+    </span></a><a href="iupmatrix_cb.html#IUP_ENTERITEM_CB">ENTERITEM_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a matrix cell is 
+    selected, becoming the current cell</span>.<a href="iupmatrix_cb.html#IUP_LEAVEITEM_CB"><br>
+    LEAVEITEM_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a cell is no longer 
+    the current cell</span>.<br>
+    <a href="iupmatrix_cb.html#IUP_SCROLL_CB">SCROLLTOP_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the matrix is scrolled 
+    with the scrollbars or with the keyboard.</span></p>
+  </blockquote>
+  <h4>Drawing</h4>
+  <blockquote>
+    <p><a href="iupmatrix_cb.html#BGCOLOR_CB">BGCOLOR_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to retrieve the background 
+    color of a cell when it needs to be redrawn. </span><a href="iupmatrix_cb.html#IUP_VALUE_EDIT_CB">
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    <br>
+    </span></a><a href="iupmatrix_cb.html#FGCOLOR_CB">FGCOLOR_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to retrieve the foreground 
+    color of a cell when it needs to be redrawn. </span><a href="iupmatrix_cb.html#IUP_VALUE_EDIT_CB">
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    <br>
+    </span></a><a href="iupmatrix_cb.html#IUP_DRAW_CB">DRAW_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated before the cell is drawn. 
+    Allow a custom cell draw.</span><a href="iupmatrix_cb.html#IUP_DROPCHECK_CB"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><br>
+    </span>DROPCHECK_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to determine if a dropdown 
+    feedback should be shown.</span></p>
+  </blockquote>
+  <h4>Editing</h4>
+  <blockquote>
+    <p><a href="iupmatrix_cb.html#IUP_DROP_CB">DROP_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to determine if a text 
+    field or a dropdown will be shown.</span><a href="iupmatrix_cb.html#IUP_DROPCHECK_CB"><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><br>
+    </span></a><a href="iupmatrix_cb.html#IUP_DROPSELECT_CB">DROPSELECT_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when an element in the 
+    dropdown list is selected</span>.<a href="iupmatrix_cb.html#IUP_EDITION_CB"><br>
+    EDITION_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the current cell 
+    enters or leaves the edition mode</span>.</p>
+  </blockquote>
+  <h4>Callback Mode</h4>
+  <blockquote>
+    <p><a href="iupmatrix_cb.html#IUP_VALUE_CB">VALUE_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to verify the value of a 
+    cell. </span><a href="iupmatrix_cb.html#IUP_VALUE_EDIT_CB">
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    <br>
+    </span>VALUE_EDIT_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to notify the application 
+    that the value of a cell was edited. </span><br>
+    <a href="iupmatrix_cb.html#IUP_MARK_CB">MARK_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to verify the selection 
+    state of a cell. </span><a href="iupmatrix_cb.html#IUP_MARKEDIT_CB">
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    <br>
+    MARK</span>EDIT_CB</a> -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to notify the application 
+    that the selection state of a cell was changed. </span></p>
+    <p>&nbsp;</p>
+  </blockquote>
+</blockquote>
+<h3>Additional Methods in Lua</h3>
+<blockquote>
+  <pre><strong>elem</strong>:setcell(<strong>lin, col</strong>: number, <strong>value</strong>: string)</pre>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Modifies the text of a cell</span>.</p>
+  </blockquote>
+  <pre><strong>elem</strong>:getcell(<strong>lin, col</strong>: number) -&gt; (<strong>cell</strong>: string)</pre>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Returns the text of a cell</span>.</p>
+  </blockquote>
+</blockquote>
+<h3>Utility Functions </h3>
+<blockquote>
+  <p>These functions can be used to help set and get attributes from the matrix:</p>
+  <blockquote>
+    <pre>void  IupMatSetAttribute (Ihandle *n, char* a, int l, int c, char* v);
+void  IupMatStoreAttribute(Ihandle *n, char* a, int l, int c, char* v);
+char* IupMatGetAttribute (Ihandle *n, char* a, int l, int c);
+int   IupMatGetInt (Ihandle *n, char* a, int l, int c);
+float IupMatGetFloat (Ihandle *n, char* a, int l, int c);
+void  IupMatSetfAttribute (Ihandle *n, char* a, int l, int c, char* f, ...);</pre>
+  </blockquote>
+  <p>They work just like the respective tradicional set and get functions. But the attribute string is complemented with 
+  the L and C values. For ex:</p>
+  <blockquote>
+    <pre>IupMatSetAttribute (n, &quot;&quot; , 30, 10, v) = IupSetAttribute(n, &quot;30:10&quot;, v)
+IupMatSetAttribute (n, &quot;BGCOLOR&quot; , 30, 10, v) = IupSetAttribute(n, &quot;BGCOLOR30:10&quot;, v)
+IupMatSetAttribute (n, &quot;ALIGNMENT&quot; , 10, 0, v) = IupSetAttribute(n, &quot;ALIGNMENT10:0&quot;, v)  (*)</pre>
+    <pre>(*) noticed that in this case the second value will be ignored.</pre>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The </span><a href="iupmask.html">
+  <font face="Courier New">IupMask</font></a>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">control can be used to create a mask and 
+  filter the text entered by the user in each cell</span>.</p>
+  <h4>Titles</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">A matrix might have titles for lines and 
+  columns. This must be defined before the matrix is mapped, and cannot be changed afterwards. A matrix will have line 
+  titles if, before it is mapped, an attribute of the “</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">L:0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">” type is defined. It will have column titles if, before being mapped, an attribute of the “</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">0:C</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">” type is defined. The size of a line title 
+  is given by attribute “</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">WIDTH0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">”, if it is defined. Otherwise, it is given by the size of the largest title defined when the 
+  matrix is mapped</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Titles (for lines or columns) can be 
+  generated with more that one text line. For such, the title value must contain a “</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">\n</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">”. The matrix does not by itself change the 
+  line’s height to fit titles with multiple lines. The user must change the line’s size manually, by using attribute
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">HEIGHTn</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">. In IUP’s size definition, a line with height 8 will fit one text line, a line with height 16 
+  will fit two text lines, and so on</span>.</p>
+  <p>When allowed the
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  width of a column</span> can be changed holding and dragging its title right border. </p>
+  <h4>Callback Mode</h4>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Very large matrices must use the callback 
+  mode to set the values, and not </span><font size="3">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  the regular<span style="mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  value attributes</span></span></font><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> of the cells. The idea is the following</span>:</p>
+  <blockquote>
+    <p>1 -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Register the</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+    </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">VALUE_CB</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> callback</span><br>
+    2 -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">No longer set the value of the cells. They 
+    will be set one by one by the callback. Note that the values of the cells must now be stored by the user</span>.<br>
+    3 -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">If the matrix is editable, set the</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+    </span>
+    <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">VALUE_EDIT_CB</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> callback</span>.<br>
+    4 -
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">When the matrix must be invalidated, use the</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+    </span>
+    <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">REDRAW</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> attribute to force a matrix redraw</span>.</p>
+  </blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">A negative aspect is that, when</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">VALUE_CB</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is defined, the matrix never verifies attributes of type “</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">%d:%d</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">”. Therefore, it also does not verify line and column titles (which must be given by the 
+  callback). The result is that, at the moment the matrix is created, it resorts solely to the existence of attributes
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">WIDTH0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> and </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">HEIGHT0</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> to find out if it will have line or column titles. That is, for such matrices to have 
+  titles, the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">WIDTH0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> and </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">HEIGHT0</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> attributes must be defined. This problem is not serious, because with IUP’s definition 
+  of </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">SIZE</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">, </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">HEIGHT0=8</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> will always produce a column title in the size desired</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Another important reminder: if</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">VALUE_CB</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> is defined and</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">VALUE_EDIT_CB</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> is not, it is absolutely necessary that the application does not allow the user to edit any 
+  cell. This must be done by returning</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+  </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> in the </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">IUP_EDITION_CB</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> callback. (In the future, this will be done inside the matrix</span>.)</p>
+  <h3>Navigation</h3>
+  <p>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Navigating </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">through the matrix cells outside the edition 
+  mode is done by using the following keys</span>:</p>
+  <ul>
+    <li><strong>Arrows</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the next cell, according to 
+    the arrow’s direction</span>.</li>
+    <li><strong>Page Up</strong> and <strong>Page Down</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> a visible page up or down</span>.</li>
+    <li><strong>Home</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the fist column in the line</span>.</li>
+    <li><strong>Home</strong> <strong>Home</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the upper left corner of the 
+    visible page</span>.</li>
+    <li><strong>Home</strong> <strong>Home</strong> <strong>Home</strong>: <span style="font-family: Times New Roman">
+    Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the upper left corner of the 
+    first page of the matrix</span>.</li>
+    <li><strong>End</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the last column in the line</span>.</li>
+    <li><strong>End</strong> <strong>End</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the lower right corner of the 
+    visible page</span>.</li>
+    <li><strong>End</strong> <strong>End</strong> <strong>End</strong>: <span style="font-family: Times New Roman">Moves</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> the focus to the lower right corner of the 
+    last page in the matrix</span>.</li>
+  </ul>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Inside the <b>edition mode</b>, the 
+  following keys are used </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  for a text field</span>:</p>
+  <ul>
+    <li><strong>Up and down arrows</strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Leave the edition mode and moves the focus 
+    accordingly</span>.</li>
+    <li><strong>Left and right arrows</strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">If the caret is at the extremes of the text 
+    being edited then leave the edition mode and moves the focus accordingly.</span></li>
+    <li><strong>Ctrl + Arrows</strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Leave the edition mode and moves the focus 
+    accordingly</span>.</li>
+  </ul>
+  <p><font size="3">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  When the matrix is outside the edition mode, pressing any character key makes the current key to enter in the edition 
+  mode, the old text is replaced by the new one being typed. If <b>Enter</b> or <b>Space</b> is pressed, the current 
+  cell enters the edition mode with the current text of the cell. If <b>Del</b> is pressed, the whole contents of the 
+  cell will be<span style="mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  deleted.</span> </span></font>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Double-clicking a cell also </span>
+  <font size="3">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  enters the edition mode</span></font>. <font color="#FF0000">In Motif, when start editing using a double click, the 
+  user must click again to the edit control get the focus.</font></p>
+  <p>
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <font size="3">When the matrix is in the edition mode, to confirm the entered value, press <b>Enter</b>.<span style="mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  By pressing <b>Esc</b>, the previous value is restored. The cell will also leave the edition mode if the user clicked 
+  in another cell or in another control, then the value will be confirmed</span></font></span>. When pressing <b>Enter</b> 
+  to confirm the value the focus goes to the cell bellow the current cell, if at the last line then the focus goes to 
+  the cell on the left. The value confirmation depends on the
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITION_CB</span> callback return code.</p>
+  <h3>Marks</h3>
+  <p>When mark mode is active the cells can be marked using mouse, if the keyboard is used all marks are cleared.</p>
+  <p>A marked cell will have its background attenuated to indicate that it is marked.</p>
+  <p>Cells can be selected individually or the marks can be restricted to lines and/or columns. Also multiple cells can 
+  be marked simultaneously in continuous or in segmented areas. Lines and columns are marked only when the user clicks 
+  in their respective titles. Continuous areas are marked holding and dragging the mouse or holding the <b>Shift</b> 
+  key. Segmented areas are marked holding the <b>Ctrl</b> key.</p>
+</blockquote>
+<h3><a href="../examples/ctrl/iupmatrix/">Examples</a></h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates a simple matrix with the values and 
+  layout shown in the image below. There is also a menu that allows making some changes to the matrix</span>.</p>
+  <p align="center"><img src="iupmatrix.gif" alt="iupmatrx.gif (125Kb)" width="299" height="142"></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a></p>
+</blockquote>
+
+</body>
+
+</html>

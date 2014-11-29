@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupGetColor</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body BGCOLOR="#FFFFFF">
+
+<h2>IupSpin and IupSpinBox</h2>
+<blockquote>
+  <p>This functions will create a control set with a vertical box containing two buttons, one with an up arrow and the 
+  other with a down arrow, to be used to increment and decrement values.</p>
+</blockquote>
+<h3 dir="ltr">Creation</h3>
+<blockquote dir="ltr">
+  <div dir="ltr">
+    <pre>Ihandle* IupSpin(void); [in C]
+iup.spin{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]</pre>
+  </div>
+</blockquote>
+<blockquote dir="ltr">
+  <blockquote>
+    <p dir="ltr">
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+    created box</span>. It is just a IupVbox with two IupButton.</p>
+  </blockquote>
+</blockquote>
+<blockquote dir="ltr">
+  <div dir="ltr">
+    <pre>Ihandle* IupSpinbox(Ihandle* <b>ctrl</b>); [in C]
+iup.spinbox{<b>ctrl: </b>ihandle} -&gt; (<strong>elem</strong>: ihandle) [in Lua]</pre>
+  </div>
+</blockquote>
+<blockquote dir="ltr">
+  <blockquote>
+    <p dir="ltr">
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+    created box</span>. This will create a IupHbox with the additional control and a IupSpin set.</p>
+  </blockquote>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><strong><font face="Courier New">SPIN_CB</font></strong>: <font size="3">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Called each time the user clicks in the </span>
+  <span lang="PT-BR" style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: PT-BR; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  buttons. </span>It will increment 1 and decrement -1 by default. Holding Shit will set a factor of 2, holding Ctrl a 
+  factor of 10, and both a factor of 100.</span></font></p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <div align="left">
+      <pre>int function(Ihandle *<strong>self</strong>, int <strong>inc</strong>); [in C]
+<strong>elem</strong>:spin_cb(<strong>inc</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    </div>
+  </blockquote>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupgetparam.html">IupGetParam</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CURSOR</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>CURSOR</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Defines the element's cursor</span>.</p>
+</blockquote>
+<h3>Value</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Name of a cursor predefined by IUP</span>:</p>
+  <blockquote>
+    <pre>&quot;NONE&quot;
+&quot;ARROW&quot;
+&quot;BUSY&quot;
+&quot;CROSS&quot;
+&quot;HAND&quot;
+&quot;IUP&quot; (* - context help)
+&quot;MOVE&quot;
+&quot;PEN&quot; (* - pencil shape)
+&quot;RESIZE_N&quot;
+&quot;RESIZE_S&quot;
+&quot;RESIZE_W&quot;
+&quot;RESIZE_E&quot;
+&quot;RESIZE_NE&quot;
+&quot;RESIZE_SE&quot;
+&quot;RESIZE_NW&quot;
+&quot;RESIZE_SW&quot;
+&quot;TEXT&quot;
+&quot;APPSTARTING&quot; (Windows Only)
+&quot;HELP&quot; (Windows Only)
+&quot;NO&quot; (Windows Only)
+&quot;UPARROW&quot; (Windows Only)</pre>
+  </blockquote>
+  <p>Default:
+  <span style="font-size: 12pt; font-family: Times New Roman; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  &quot;</span><font face="Courier New">ARROW</font><span style="font-size: 12pt; font-family: Times New Roman; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&quot;</span></p>
+  <p>(*) To use these cursors on Windows, the <b>iup.rc</b> file, provided with IUP, must be linked with the 
+  application. </p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">It can receive as a parameter the name of an 
+  image, to be used as an application-defined cursor (the cursor must be a </span>
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupimage')"><font face="Courier New">IupImage</font></a>,
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">but the image is not a regular one. See the 
+  notes below</span>).</p>
+  <p>In Motif the value can be a number of one of the cursors defined in the X11 header &quot;cursorfont.h&quot;.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">For the image to represent a cursor, it must 
+  use attribute &quot;</span><b><font face="Courier New">HOTSPOT&quot;</font></b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">to define its hotspot (place where the mouse 
+  click is actually effective). Only color indices 0, 1 and 2 can be used in a cursor, where 0 will be transpare</span>nt. 
+  The RGB colors corresponding to indices 1 and 2 are defined just as in regular images. In Windows the cursor can have 
+  more than 2 colors. Cursor sizes are usually less than or equal to 32x32.</p>
+  <p>In the interface system, the cursor will only change when the interface system regains control.</p>
+  <p>The Windows SDK recomends that cursors and icons should be implemented as resources rather than created at run 
+  time.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">When the cursor image is no longer 
+  necessary, it must be destroyed through function </span>
+  <a href="javascript:parent.manLoadCont('func', '../func/iupdestroy')"><font face="Courier New">IupDestroy</font></a>.
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Attention: the cursor cannot be in use when 
+  it is destroyed</span>. </p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupdialog')">IupDialog</a>,
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a></font></p>
+  <p>In Motif
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  can also be used in other controls.</span></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupimage')"><font face="Courier New">IupImage</font></a></p>
+</blockquote>
+
+</body>
+
+</html>

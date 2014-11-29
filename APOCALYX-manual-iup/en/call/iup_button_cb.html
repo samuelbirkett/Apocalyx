@@ -1,0 +1,112 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_BUTTON_CB</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>BUTTON_CB</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a mouse button is 
+  pressed or released</span>.</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle* <strong>self</strong>,int <strong>but</strong>,int <strong>pressed</strong>,int <strong>x</strong>,int <strong>y</strong>,char* <strong>status</strong>); [in C]
+<strong>elem</strong>:button_cb(<strong>but</strong>, <strong>pressed</strong>, <strong>x</strong>,<strong> y</strong>: number,<strong> status</strong>: string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <p><strong><font face="Courier New">self</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">identifies the canvas that activated the 
+  function's execution</span>.<br>
+  <strong><font face="Courier New">but</font></strong>: identifies the<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> activated</span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">mouse button</span>:</p>
+  <blockquote>
+    <p><font face="Courier New">IUP_BUTTON1</font>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">left mouse button (button 1</span>);<br>
+    <font face="Courier New">IUP_BUTTON2</font>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">middle mouse button (button 2</span>);<br>
+    <font face="Courier New">IUP_BUTTON3</font>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">right mouse button (button </span>3).</p>
+  </blockquote>
+  <p><strong><font face="Courier New">pressed</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">indicates the state of the button</span>:</p>
+  <blockquote>
+    <p><font face="Courier New">0</font>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">mouse button was released</span>;<br>
+    <font face="Courier New">1</font>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">mouse button was pressed</span>.</p>
+  </blockquote>
+  <p><font face="Courier New"><strong>x</strong>, <strong>y</strong></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">position in the canvas where the event has 
+  occurred, in pixels</span>.<br>
+  <strong>status</strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">status of the mouse buttons and some 
+  keyboard keys at the moment the event is generated. The following macros must be used for verification</span>: </p>
+  <blockquote>
+    <p><font face="Courier New">isshift(</font><strong style="font-weight: 400">status</strong><font face="Courier New">)
+    <br>
+    iscontrol(</font><strong style="font-weight: 400">status</strong><font face="Courier New">) <br>
+    isbutton1(</font><strong style="font-weight: 400">status</strong><font face="Courier New">) <br>
+    isbutton2(</font><strong style="font-weight: 400">status</strong><font face="Courier New">) <br>
+    isbutton3(</font><strong style="font-weight: 400">status</strong><font face="Courier New">)<br>
+    isdouble(</font><strong style="font-weight: 400">status</strong><font face="Courier New">)</font> </p>
+  </blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">They return </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <font face="Courier New">1</font></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> if the respective key or button is pressed, 
+  and </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <font face="Courier New">0</font></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> otherwise</span>. </p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>This callback can be used to customize a button behavior. For a standard button use the <code>ACTION</code> 
+  callback of the <code>IupButton</code>.</p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>,
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupbutton')">IupButton</a>,
+  <a href="javascript:parent.manLoadCont('ctrl', '../ctrl/iupglcanvas')">IupGLCanvas</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

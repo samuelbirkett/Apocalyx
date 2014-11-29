@@ -1,0 +1,120 @@
+<html>
+
+<head>
+<style TYPE="text/css">
+TD {
+  border:0pt; 
+  font-size:10pt; 
+  font-family:sans-serif; 
+  white-space:nowrap; color:white; 
+}
+#layer0 {
+  position:absolute; 
+  left:0px; 
+  top:0px; 
+  width:100%;
+}
+</style>
+
+<script language='JavaScript1.2' src='bar.js'> </script>
+<script language='JavaScript1.2' src='bar_msg.js'> </script>
+
+</head>
+
+<body background='wb_img/bar_background.gif' bgcolor='#C0C0C0'>
+
+<div id=layer0>
+<table width='100%' cellpadding='0' border='0' cellspacing='0'><tr>
+  <td>
+    <img onDblClick=wb_bar_webbook() src='wb_img/bar_background_beg.gif'>
+  </td>
+  <td>
+    <img src='wb_img/bar_background_div.gif'>
+  </td>
+  <td>
+    <a href='javascript:parent.wb_tree.exp_all()'
+       onMouseOver=wb_bar_mouseover('exp_all') 
+       onMouseOut=wb_bar_mouseout('exp_all')>
+      <img border='0' hspace='1' name='wb_exp_all' src='wb_img/bar_exp_all.gif'>
+    </a>
+  </td>
+  <td>
+    <a onMouseOver=wb_bar_mouseover("cont_all") 
+       onMouseOut=wb_bar_mouseout("cont_all") 
+       href='javascript:parent.wb_tree.cont_all()'>
+      <img border='0' hspace='1' name='wb_cont_all' src='wb_img/bar_cont_all.gif'>
+    </a>
+  </td>
+  <td>
+    <img src='wb_img/bar_background_div.gif'>
+  </td>
+  <td>
+    <a href='javascript:parent.wb_tree.home()'
+       onMouseOver=wb_bar_mouseover("home") 
+       onMouseOut=wb_bar_mouseout("home")>
+      <img border='0' hspace='1' name='wb_home' src='wb_img/bar_home.gif'>
+    </a>
+  </td>
+  <td>
+    <a onMouseOver=wb_bar_mouseover("sync") 
+       onMouseOut=wb_bar_mouseout("sync") 
+       href='javascript:parent.wb_tree.sync()'>
+      <img border='0' hspace='1' name='wb_sync' src='wb_img/bar_sync.gif'>
+    </a>
+  </td>
+  <td>
+    <a onMouseOver=wb_bar_mouseover("next") 
+       onMouseOut=wb_bar_mouseout("next") 
+       href='javascript:parent.wb_tree.next()'>
+      <img border='0' hspace='1' name='wb_next' src='wb_img/bar_next.gif'>
+    </a>
+  </td>
+  <td>
+    <a onMouseOver=wb_bar_mouseover("previous") 
+       onMouseOut=wb_bar_mouseout("previous") 
+       href='javascript:parent.wb_tree.previous()'>
+      <img border='0' hspace='1' name='wb_previous' src='wb_img/bar_previous.gif'>
+    </a>
+  </td>
+  <td>
+    <img src='wb_img/bar_background_div.gif'>
+  </td>
+  <td>
+    <a href='javascript:parent.wb_tree.site_map()' style="text-decoration:none">
+      <font color="#606060">&nbsp;&nbsp;Links</font>
+    </a>
+  </td>
+  <td width='100%' align='right'>
+    <img src='wb_img/bar_background_div.gif'>
+  </td>
+  <td>     
+    <a href='javascript:parent.wb_chlang()' 
+       onMouseOver=wb_bar_mouseover("lang") 
+       onMouseOut=wb_bar_mouseout("lang")>
+<script language='JavaScript1.2' type="text/javascript">
+      document.write("<img border='0' hspace='1' name='wb_lang' src='wb_img/bar_lang_", parent.wb_cur_lang, ".gif'>");
+</script>
+    </a>
+  </td>
+  <td>
+    <img src='wb_img/bar_background_div.gif'>
+  </td>
+  <td>
+    <a href='javascript:wb_bar_mail()' 
+       onMouseOver=wb_bar_mouseover("mail") 
+       onMouseOut=wb_bar_mouseout("mail")>
+      <img border='0' hspace='1' name='wb_mail' src='wb_img/bar_mail.gif'>
+    </a>
+  </td>
+  <td>
+    <img src='wb_img/bar_background_end.gif'>
+  </td>
+</tr></table>
+</span>
+
+<script language='JavaScript1.2' type="text/javascript">
+wb_bar_init();
+</script>
+
+</body>
+</html>

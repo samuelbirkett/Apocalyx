@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guia</title>
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+
+<body bgcolor="white" lang="EN-US" link="blue" vlink="blue">
+
+<h2 align="center" style="text-align:center">
+<span style="font-family: Helvetica">Resources</span></h2>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p>Resources are several auxiliary tools including menus, images, fonts and 
+  global names. </p>
+  <p>Some objects like menus and images, that are not inserted in a dialog 
+  children tree, are in fact &quot;associated&quot; with dialogs or controls. </p>
+  <p>Menus can be associated with dialogs only. Images can be associated with 
+  labels, buttons, toggles and menu items (this last in Windows only).</p>
+  <p>Both images and menus to be associated use a global table of names. This 
+  exist because of the LED scripts. First you associate the image or menu 
+  Ihandle to a name, then you associated the MENU or IMAGE attribute to the 
+  respective name. </p>
+  <p>For example, in C:</p>
+  <blockquote>
+    <pre>Ihandle* img = IupImage (11, 11, pixmap) ;
+IupSetHandle(&quot;myImg&quot;, img);
+IupSetAttribute(myButton, &quot;IMAGE&quot;, &quot;myImg&quot;) ;</pre>
+  </blockquote>
+  <p>or in LED:</p>
+  <blockquote>
+    <pre>myImg = image[...] (
+...
+)
+myButton = button[IMAGE = myImg](&quot;&quot;)</pre>
+  </blockquote>
+  <p>or in Lua:</p>
+  <blockquote>
+    <pre>myImg = iupimage {
+...
+}
+myButton = iupbutton { title = &quot;&quot;, image = myImg }
+</pre>
+  </blockquote>
+  <p>Only dialogs, timers, popup menus and images can be destroyed. Menu bars 
+  associated with dialogs are automatically destroyed. </p>
+</blockquote>
+
+</body>
+
+</html>

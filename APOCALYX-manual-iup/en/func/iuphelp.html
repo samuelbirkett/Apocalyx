@@ -1,0 +1,41 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupHelp</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupHelp</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Opens the given URL. In UNIX executes 
+  Netscape passing the desired URL as a parameter</span>. In Windows calls the default application that handle URLs.</p>
+  <p>In UNIX you can change the used browser setting the environment variable IUP_HELPAPP. If set it will replace 
+  &quot;netscape&quot;.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>int IupHelp(char* <strong>url</strong>); [in C]
+iup.Help(<strong>url</strong>: string) [in Lua]</pre>
+  <p><font face="Courier New"><b>url</b></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">may be any kind of address accepted by the 
+  Browser, that is, it can include 'http://', or be just a file name, etc</span>.</p>
+  <p>Returns 1 if successfull, -1 if failed. In Windows can return -2 if file not found.</p>
+</blockquote>
+
+</body>
+
+</html>

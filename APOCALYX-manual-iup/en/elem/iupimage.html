@@ -1,0 +1,213 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Template" content="X:\OFFICE97\OFFICE\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupImage</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080">
+
+<h2>IupImage</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates an image to be shown on a label, 
+  button, toggle, or as a cursor</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creation</span></h3>
+<blockquote>
+  <pre>Ihandle* IupImage(int <strong>width</strong>, int <strong>height</strong>, char *<strong>pixels</strong>); [in C]
+iup.image{<strong>pixels</strong>: table of numbers, <strong>colors</strong>: table of colors} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+image(<strong>width</strong>, <strong>height</strong>, <strong>b1</strong>, <strong>b2</strong>, ...) [in LED]</pre>
+  <p><strong><font face="Courier New">width</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image width in pixels</span>.<br>
+  <strong><font face="Courier New">height</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image height in pixels</span>.<br>
+  <strong><font face="Courier New">pixels</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Vector containing the color of each pixel</span>.<br>
+  <font face="Courier New"><strong>b1</strong>, <strong>b2</strong>, ...</font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Color index of the pixels</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+  created image, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> (</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">nil</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> in IupLua) if an error occurs</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Attributes</span></h3>
+<blockquote>
+  <p><strong>&quot;<font face="Courier New">0</font>&quot;</strong>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Color in index 0</span>. <br>
+  <strong>&quot;<font face="Courier New">1</font>&quot;</strong>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Color in index 1</span>. <br>
+  <b>...</b> <br>
+  <strong>&quot;<font face="Courier New">i</font>&quot;</strong>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Color in index i</span>. </p>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The indices can range from 0 to 255. </span>
+    The total number of colors is limited to 256 colors. Notice that in Lua the first index in the array is &quot;1&quot;, the 
+    index &quot;0&quot; is ignored in IupLua. Be careful when setting colors, since they are attributes they follow the same 
+    storage rules for standard attributes.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The values are integer numbers from 0 to 
+    255, one for each color in the RGB standard (&quot;255 255 255&quot;). If the value of a given index is </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+    &quot;</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">BGCOLOR</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">&quot;, the color used will be the background color of the element on which the image will be 
+    inserted</span>. The
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    &quot;BGCOLOR&quot;</span> must be defined with an index less than 16.</p>
+  </blockquote>
+  <p><b><font face="Courier New">HOTSPOT</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Hotspot is the position inside a cursor 
+  image indicating the mouse-click spot. Its value is given by the x and y coordinates inside a cursor image</span>. Its 
+  value has the format &quot;<font face="Courier New">x:y</font>&quot;,
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">where </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">x</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> and </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">y</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> are integers defining the coordinates in 
+  pixels</span>.</p>
+</blockquote>
+<blockquote>
+  <p><b><font face="Courier New">HEIGHT</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image height</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  in pixels</span>.</p>
+  <p><b><font face="Courier New">WIDTH</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Image width</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  in pixels</span>.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>An image created with IupImage can be reused for different buttons and labels. But in Motif the BGCOLOR color index 
+  will be calculated only once when it is first used.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The images must be destroyed when they are 
+  no longer necessary, by means of the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><a href="../func/iupdestroy.html">IupDestroy</a></span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> function. To destroy an image, it cannot be in use. Please observe the rules for 
+  creating cursor images</span>: <a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_cursor')">
+  <font face="Courier New">CURSOR</font></a>. </p>
+  <p>The pixels array is duplicated internally so you can discart it after calling IupImage.</p>
+  <p>If do not set a colors it is used a default color for the 16 first colors. The default color table is the same for 
+  Windows and Motif:</p>
+  <blockquote>
+    <pre> 0 =   0,  0,  0 (black)
+ 1 = 128,  0,  0 (dark red)
+ 2 =   0,128,  0 (dark green) 
+ 3 = 128,128,  0 (dark yellow)
+ 4 =   0,  0,128 (dark blue)
+ 5 = 128,  0,128 (dark magenta) 
+ 6 =   0,128,128 (dark cian) 
+ 7 = 192,192,192 (gray)
+ 8 = 128,128,128 (dark gray)
+ 9 = 255,  0,  0 (red)     
+10 =   0,255,  0 (green)
+11 = 255,255,  0 (yellow)
+12 =   0,  0,255 (blue)
+13 = 255,  0,255 (magenta)
+14 =   0,255,255 (cian)  
+15 = 255,255,255 (white)
+</pre>
+  </blockquote>
+  <p>For images with more than 16 colors, all the color indices must be defined up to the maximum number of colors. For 
+  example, if the biggest image index is 100, then all the colors from i=16 up to i=100 must be defined even if some 
+  indices are not used. Note that to use more than 128 colors you must use an &quot;unsigned char*&quot; pointer and simply cast 
+  it to &quot;char*&quot; when calling the IupImage function.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">T</span>he
+  <a target="_top" href="http://www.tecgraf.puc-rio.br/edpatt">EdPatt</a> an<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">d the
+  <a href="http://www.tecgraf.puc-rio.br/~scuri/imlab">IMLAB</a> applications can load and save images in LED format. 
+  They allow operations such as importing GIF images and exporting them as IUP images</span>. <b>EdPatt</b> allows you 
+  to manually edit the images, and also have support for imagens in IupLua.</p>
+  <p>You can donwload several IUP images in LED format from <a href="../../download/iup_images.zip">iup_images.zip</a>. 
+  To view the images you can use the LED viewer application, see <b>IupView</b> in the applications included in the 
+  distribution,
+  <u1:p>available at the <a href="../download.html">Download</a>.</u1:p> <b>IupView</b> is also capable of converting 
+  several image formats into an IupImage, and save IUP images as LED, Lua or ICO. Some of these images are already 
+  available in the <a href="../ctrl/iupimglib.html">pre-defined image library</a>.</p>
+  <p>Application icons are usually 32x32. Toolbar bitmaps are 24x24 or smaller. Menu bitmaps and small icons are 16x16 
+  or smaller.</p>
+</blockquote>
+<h3><a href="../examples/elem/iupimage/">Examples</a></h3>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iuplabel.html">IupLabel</a>, <a href="iupbutton.html">IupButton</a>,
+  <a href="iuptoggle.html">IupToggle</a>, </font>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><a href="../func/iupdestroy.html">IupDestroy</a></span>.</p>
+</blockquote>
+
+</body>
+
+</html>

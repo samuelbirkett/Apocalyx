@@ -1,0 +1,52 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>TIP</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>CONTROL</h2>
+<blockquote>
+  <p><b>Windows only.</b> Whether the dialog is embedded inside the parent 
+  window or has a window of its own.</p>
+</blockquote>
+<h3>Value</h3>
+<blockquote>
+  <p>YES or NO. If the value is YES, the dialog will appear embedded inside its 
+  parent window (you must set a parent, either with PARENTDIALOG or 
+  NATIVEPARENT, or this setting will be ignored). If the value is NO, the dialog 
+  will have its own window.</p>
+</blockquote>
+<h3>Note</h3>
+<blockquote>
+  <p>This is useful for implementing ActiveX controls, with the help of the
+  <a target="_blank" href="http://www.tecgraf.puc-rio.br/~rcerq/luacom/">LuaCOM</a> 
+  library. ActiveX controls run embedded inside another window. LuaCOM will send 
+  a window creation event the the control, passing a handle to the parent window 
+  and the size of the control. You can use this to set the dialog's NATIVEPARENT 
+  and RASTERSIZE attributes. See the
+  <a target="_blank" href="http://www.tecgraf.puc-rio.br/~rcerq/luacom/">LuaCOM</a> 
+  documentation for more information.</p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><font face="Courier New">
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupdialog')">IupDialog</a></font></p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><b><font face="Courier New">NATIVEPARENT</font></b>, <b>
+  <font face="Courier New">PARENTDIALOG</font></b>, <b><font face="Courier New">
+  RASTERSIZE</font></b></p>
+</blockquote>
+
+</body>
+
+</html>

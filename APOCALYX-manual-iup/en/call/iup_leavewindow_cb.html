@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_LEAVEWINDOW_CB</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>LEAVEWINDOW_CB</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse leaves a 
+  canvas</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  or button</span>.</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle *<strong>self</strong>); [in C]
+<strong>elem</strong>:leavewindow_cb() -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <p><strong><font face="Courier New">self</font></strong>:
+  <span lang="PT-BR" style="font-size:10.0pt;font-family:
+&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+PT-BR;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">i</span><span lang="PT-BR" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:PT-BR;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">dentifier of the </span>
+  <span lang="PT-BR" style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: PT-BR; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  control from where</span><span lang="PT-BR" style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:PT-BR;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> the mouse left</span></p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a><font face="Courier New">,
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupbutton')">IupButton</a>,
+  <a href="javascript:parent.manLoadCont('ctrl', '../ctrl/iupglcanvas')">IupGLCanvas</a></font></p>
+  <p>In Motif can also be used by other controls, but it is not available in Lua for those controls.</p>
+</blockquote>
+
+</body>
+
+</html>

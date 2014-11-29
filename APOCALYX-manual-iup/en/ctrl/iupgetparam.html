@@ -1,0 +1,232 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<meta NAME="GENERATOR" CONTENT="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupGetColor</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body BGCOLOR="#FFFFFF">
+
+<h2>IupGetParam</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Shows a modal dialog for capturing </span>
+  parameter
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">values using several types of controls.</span></p>
+  <p>This dialog is included in the <a href="javascript:parent.wb_topic('../iupcontrols.html')">Controls Library</a>. It 
+  requires an addicional initialization, see the Controls Library documentation.</p>
+</blockquote>
+<h3>Creation and Show</h3>
+<dl>
+  <dd>
+  <dl>
+    <pre>int IupGetParam(const char* <b>title</b>, Iparamcb <b>action</b>, void* <b>user_data</b>, const char* <b>format</b>,...); [in C]
+iup.GetParam(<b>title</b>: string, <b>action</b>: function, <b>format</b>: string,...) -&gt; (ret: number, ...) [in Lua]</pre>
+    <b>
+    <p><font face="Courier New">title</font></b>: dialog title.<br>
+    <b><font face="Courier New">action:</font></b> user callback to be called whenever a parameter value was changed, 
+    and when the user pressed the OK button. It can be NULL.<br>
+    <b><font face="Courier New">user_data</font></b>: user pointer repassed to the user callback.<br>
+    <b><font face="Courier New">format</font></b>: string describing the parameter<br>
+    ...: list of variables address with initial values for the parameters. </p>
+    <p>The function returns 1 if the OK button is pressed, 0 if the user canceled or if an error occurred. The function 
+    will abort if there are errors in the format string as in the number of the expected parameters.</p>
+  </dl>
+  </dd>
+</dl>
+<h3>Callback</h3>
+<dl>
+  <p><font face="Courier New">typedef int (*Iparamcb)(Ihandle* <b>dialog</b>, int <b>param_index, </b>void* <b>user_data</b>);<br>
+  <b>action</b>(<b>dialog</b>: ihandle<b>, param_index</b>: number) -&gt; (ret: number) [in Lua]</font></p>
+  <blockquote>
+    <p><b><font face="Courier New">dialog</font></b>: dialog handle<br>
+    <b><font face="Courier New">param</font></b><font face="Courier New"><b>_index</b></font>: current parameter being 
+    changed. It is -1 if the user pressed the <b>OK</b> button. It is -2 when the dialog is <b>mapped</b>, just before 
+    shown. It is -3 if the user pressed the <b>Cancel</b> button.<br>
+    <b><font face="Courier New">user_data</font></b>: a user pointer that is passed in the function call.</p>
+    <p>You can reject the change or the OK action by returning &quot;0&quot; in the callback, otherwise you must return &quot;1&quot;.&nbsp;
+    </p>
+    <p>You should not programmatically change the current parameter value during the callback. On the other hand you can 
+    freely change the value of other parameters.</p>
+    <p>Use the dialog attribute &quot;<code>PARAMn</code>&quot; to get the parameter &quot;Ihandle*&quot;, but not that this is not the 
+    actual control. Where &quot;n&quot; is the parameter index in the order they are specified starting at 0, but separators are 
+    not counted. Use the parameter attribute &quot;<code>CONTROL</code>&quot; to get the actual control. For example:</p>
+    <blockquote>
+      <pre>Ihandle* param2 = (Ihandle*)IupGetAttribute(dialog, &quot;PARAM2&quot;);
+int value2 = IupGetInt(param2, IUP_VALUE);
+
+Ihandle* param5 = (Ihandle*)IupGetAttribute(dialog, &quot;PARAM5&quot;);
+Ihandle* ctrl5 = (Ihandle*)IupGetAttribute(param5, &quot;CONTROL&quot;);
+
+if (value2 == 0)
+{
+  IupSetAttribute(param5, IUP_VALUE, &quot;New Value&quot;);
+  IupSetAttribute(ctrl5, IUP_VALUE, &quot;New Value&quot;);
+}</pre>
+    </blockquote>
+    <p>Since parameters are user controls and not real controls, you must update the control value and the parameter 
+    value.</p>
+    <p>Be aware that programmatically changes are not filtered. The valuator, when available, can be retrieved using the 
+    parameter attribute &quot;<code>AUXCONTROL</code>&quot;. The valuator is not automatically updated when the text box is 
+    changed programmatically. The parameter label is also available using the parameter attribute &quot;<code>LABEL</code>&quot;.
+    </p>
+  </blockquote>
+</dl>
+<h3>Attributes (inside the callback)</h3>
+<blockquote>
+  <p>For the dialog:</p>
+  <blockquote>
+    <p>&quot;<code>PARAMn</code>&quot; - returns an IUP <code>Ihandle*</code> representing the n<sup>th</sup> parameter, indexed 
+    by the declaration order not couting separators.<br>
+    &quot;<code>OK</code>&quot; - returns an IUP <code>Ihandle*,</code> the main button.<br>
+    &quot;<code>CANCEL</code>&quot; - returns an IUP <code>Ihandle*,</code> the close button.</p>
+  </blockquote>
+  <p>For a parameter:</p>
+  <blockquote>
+    <p>&quot;<code>LABEL</code>&quot; - returns an IUP <code>Ihandle*</code>, the label associated with the parameter.<br>
+    &quot;<code>CONTROL</code>&quot; - returns an IUP <code>Ihandle*</code>, the real control associated with the parameter.<br>
+    &quot;<code>AUXCONTROL</code>&quot; - returns an IUP <code>Ihandle*</code>,&nbsp; the auxiliary control associated with the 
+    parameter (only for Valuators). <br>
+    &quot;<code>INDEX</code>&quot; - returns an integer value associated with the parameter index. <code>IupGetInt</code> can also 
+    be used.<br>
+    &quot;<code>VALUE</code>&quot; - returns the parameter value as a string, but <code>IupGetFloat</code> and <code>IupGetInt</code> 
+    can also be used.</p>
+  </blockquote>
+  <p>In Lua to retreive a parameter you must use the following function:</p>
+  <pre>IupGetParamParam(<strong>dialog: </strong>ihandle, <b>param_index</b><strong>: </strong>number)-&gt; (<b>param</b>: ihandle) [in IupLua3]
+iup.GetParamParam(<strong>dialog: </strong>ihandle, <b>param_index</b><strong>: </strong>number)-&gt; (<b>param</b>: ihandle) [in Lua]</pre>
+  <blockquote>
+    <p><strong><font face="Courier New">dialog</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">
+    dialog</span>. <br>
+    <strong><font face="Courier New">para_index</font></strong>: parameter to be retrieved.</p>
+  </blockquote>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The format string must have the following 
+  format, notice the &quot;\n&quot; at the end</span></p>
+  <blockquote>
+    <p>&quot;<font face="Courier New"><strong>text</strong>%<strong>x[extra]</strong>\n</font>&quot;, where:</p>
+    <blockquote>
+      <p><strong><font face="Courier New">text</font></strong>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">is a descriptive text, to be placed to the 
+      left of the entry field in a label.</span></p>
+      <p><strong><font face="Courier New">x</font></strong>
+      <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">is the </span>
+      <span style="font-family: Times New Roman">type of the </span>parameter<span style="font-family: Times New Roman">. 
+      The valid options are:</span></p>
+      <blockquote>
+        <p><strong><font face="Courier New">b</font></strong> <span style="font-family: Times New Roman">= boolean 
+        (shows a True/False toggle, use &quot;int&quot; in C)</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><br>
+        </span><strong><font face="Courier New">i</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> = integer (shows a integer filtered text 
+        box, </span><span style="font-family: Times New Roman">use &quot;int&quot; in C)</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><br>
+        </span><strong><font face="Courier New">r</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+        = real (shows a real filtered text box, </span><span style="font-family: Times New Roman">use &quot;float&quot; in C)</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><br>
+        </span><strong><font face="Courier New">a</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> = angle in degrees (</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">shows 
+        a real filtered text box and a dial, use &quot;float&quot; in C)<br>
+        </span><strong><font face="Courier New">s</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+        = string (shows a text box, </span><span style="font-family: Times New Roman">use &quot;char*&quot; in C, it must have 
+        room enough for your string)<br>
+        </span><strong><font face="Courier New">m</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+        = multiline string (shows a multiline text box, </span><span style="font-family: Times New Roman">use &quot;char*&quot; in 
+        C, it must have room enough for your string)<br>
+        </span><strong><font face="Courier New">l</font></strong><span style="font-family: Times New Roman"> = list 
+        (shows a dropdown list box,</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+        </span><span style="font-family: Times New Roman">use &quot;int&quot; in C for the zero based item index selected)<br>
+        </span><strong><font face="Courier New">t</font></strong><span style="font-family: Times New Roman"> = separator 
+        (shows a horizontal line separator label, in this case text can be an empty string)</span></p>
+      </blockquote>
+      <p><strong><font face="Courier New">extra</font></strong><span style="font-family: Times New Roman"> is one or 
+      more additional options for the given type</span></p>
+      <blockquote>
+        <p><strong><font face="Courier New">[min,max]</font></strong>
+        <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">are optional limits for <u>integer</u> and
+        <u>real</u> types. The maximum value can be omited. When both are specified a valuator will also be added to 
+        change the value.<br>
+        </span><strong><font face="Courier New">[false,true]</font></strong>
+        <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">are optional strings for <u>boolean</u> 
+        types. The strings can not have commas '</span><strong><font face="Courier New">,</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">', nor brackets </span>
+        <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+        '</span><strong><font face="Courier New">[</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">' 
+        or '</span><strong><font face="Courier New">]</font></strong><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">'.</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><br>
+        </span><strong><font face="Courier New">mask</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> is an optional mask for the <u>string</u> 
+        and <u>multiline</u> types. The dialog uses the <a href="iupmask.html">IupMask</a> internally. In this case we 
+        do no use the brackets '</span><strong><font face="Courier New">[</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">' and '</span><strong><font face="Courier New">]</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">' to avoid confusion with the specified 
+        mask.<br>
+        </span><strong><font face="Courier New">|item0|item1|item2,...|</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> are the items of the <u>list</u>. At least 
+        one item must exist. Again the brackets are not used to increase the possibilities for the strings, instead you 
+        must use '</span><strong><font face="Courier New">|</font></strong><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">'. Items index are zero based start. </span>
+        </p>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <p>The number of lines in the format string (&quot;\n&quot;s) will determine the number of required parameters. But separators 
+  will not count as parameters.</p>
+  <p><span style="font-family: Times New Roman">The dialog is resizable if it contains a string, a multiline string or a 
+  number with a valuator. All the multiline strings will increase size equally in both directions.</span></p>
+  <p>The dialog uses a global attribute called IUP_PARENTDIALOG as the parent dialog if it is defined. It also uses a 
+  global attribute called &quot;ICON&quot; as the dialog icon if it is defined.</p>
+</blockquote>
+<h3><a href="../examples/ctrl/iupgetparam/">Examples</a></h3>
+<blockquote>
+  <p>Here is an example showing many the possible parameters. We show only one for each type, but you can have as many 
+  parameters of the same type you want.</p>
+  <p align="center"><img ALIGN="center" alt="iupgetcolor.gif" src="iupgetparam.gif" width="358" height="546"> </p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="../dlg/iupscanf.html">IupScanf</a>, <a href="iupgetcolor.html">IupGetColor</a>,
+  <a href="iupmask.html">IupMask</a>, <a href="iupval.html">IupValuator</a>, <a href="iupdial.html">IupDial</a>,
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iuplist')">IupList</a>. </font></p>
+</blockquote>
+
+</body>
+
+</html>

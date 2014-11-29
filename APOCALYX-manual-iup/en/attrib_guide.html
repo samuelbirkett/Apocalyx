@@ -1,0 +1,122 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guia</title>
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+
+<body bgcolor="white" lang="EN-US" link="blue" vlink="blue">
+
+<h2 align="center" style="text-align:center"><span style="font-family:Helvetica">Attributes Guide</span></h2>
+<h3><a name="Using">Using</a></h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p class="MsoNormal">Attributes are strings, and there are two functions to change them:</p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <ul type="disc">
+      <li class="MsoNormal"><span style="font-family:&quot;Courier New&quot;"><a href="func/iupsetattribute.html">
+      IupSetAttribute</a></span> stores only a pointer to the string and does not duplicate it. </li>
+      <li class="MsoNormal"><span style="font-family:&quot;Courier New&quot;"><a href="func/iupstoreattribute.html">
+      IupStoreAtribute</a></span> duplicates the string, allowing you to use it for other purposes.</li>
+    </ul>
+  </blockquote>
+  <p class="MsoNormal">With <span style="font-family:&quot;Courier New&quot;">IupSetAttribute</span> you can also store 
+  application pointers that can be strings or not. This can be very useful, for instance, used together with <b>
+  callbacks</b>. For example, by storing a C pointer of an application defined structure, the application can retrieve 
+  this pointer inside the callback through function <span style="font-family:&quot;Courier New&quot;">
+  <a href="func/iupgetattribute.html">IupGetAttribute</a></span>. Therefore, even if the callbacks are global functions, 
+  the same callback can be used for several objects, even of different types.<u1:p> </u1:p>
+  </p>
+  <p>When an attribute is set it is always stored at the hash table unless the driver disable the storage.
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  If the value is </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, the attribute will be removed from the hash table</span>. Then the driver or the custom 
+  control is updated. Finally the attribute is also updated for the children of the element in the driver if they do not 
+  have the attribute defined in their own hash table.</p>
+  <p class="MsoNormal">There are attributes common to all the elements. These attributes sometimes are not mentioned in 
+  each element documentation. We assume that the programmer knows they exist. In some cases, common attributes behave 
+  differently in different elements, but in such cases, there are comments explaining the behavior. </p>
+  <p class="MsoNormal">In LED there is no prefix <span style="font-family:&quot;Courier New&quot;">IUP_</span> or 
+  quotation marks for attributes, names or values.</p>
+</blockquote>
+<h3><a name="Inheritance">Inheritance</a></h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p class="MsoNormal">Elements included in other elements can inherit their attributes. This means there is an <b>
+  inheritance</b> mechanism inside a given dialog. </p>
+  <p class="MsoNormal">This means, for example, that if you set the <span style="font-family:&quot;Courier New&quot;">
+  &quot;MARGIN&quot;</span> attribute of a <span class="msochangeprop0"><span style="font-family:&quot;Courier New&quot;">vbox</span></span> 
+  containing several other elements, including other <span style="font-family:
+&quot;Courier New&quot;">vbox</span>es, all the elements depending on the attribute
+  <span style="font-family:&quot;Courier New&quot;">&quot;MARGIN&quot;</span> will be affected, except for those who the
+  <span style="font-family:&quot;Courier New&quot;">&quot;MARGIN&quot;</span> attribute is already defined.</p>
+  <p class="MsoNormal">Please note that not all attributes are inherited. Exceptions are: <font face="Courier New">
+  &quot;TITLE&quot;</font>, <font face="Courier New">&quot;VALUE&quot;</font>, <font face="Courier New">&quot;ALIGNMENT&quot;</font>,
+  <font face="Courier New">&quot;X&quot;</font>, <font face="Courier New">&quot;Y&quot;</font>, <font face="Courier New">&quot;RASTERSIZE&quot;</font> 
+  and <font face="Courier New">&quot;SIZE&quot;</font>.</p>
+  <p>The attribute is first checked at the element specific implementation at the driver (if mapped) or at the custom 
+  control. If not defined then it checks in the hash table. If not defined in its hash table, the attribute will be 
+  inherited from its parent and so forth, until it reaches the dialog. But if still then the attribute is not defined a 
+  default value for the element is returned (the default value can also be NULL).</p>
+</blockquote>
+<h3><a name="IupLua">IupLua</a></h3>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p class="MsoNormal">Each interface element is created as a Lua table, and its attributes are fields in this table<b>.
+  </b>Some of these attributes are directly transferred to IUP, so that any changes made to them immediately reflect on 
+  the screen. However, not all attributes are transferred to IUP. </p>
+  <p class="MsoNormal">Control attributes, such as <span style="font-family:&quot;Courier New&quot;">handle</span>, 
+  which stores the handle of the IUP element, and <span style="font-family:&quot;Courier New&quot;">parent</span>, which 
+  stores the object immediately above in the class hierarchy, are not transfered. Attributes that receive strings or 
+  numbers as values are immediately transferred to IUP. Other values (such as functions or objects) are stored in IupLua 
+  and might receive special treatment.<u1:p> </u1:p>
+  </p>
+  <u1:p></u1:p>
+  <p>For instance, a button can be created as follows (defining a title and the background color): </p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <p><code><span style="font-size:10.0pt">myButton = iup.button{title = &quot;Ok&quot;, bgcolor = &quot;0 255 0&quot;}</span></code></p>
+  </blockquote>
+  <p>Font color can be subsequently changed by modifying the value of attribute
+  <span style="font-family:&quot;Courier New&quot;">fgcolor</span>: </p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <p><code><span style="font-size:10.0pt">myButton.fgcolor = &quot;255 0 0&quot;</span></code></p>
+  </blockquote>
+  <p class="MsoNormal">Note that the attribute names in C and in IupLua are the same, but in IupLua they can be written 
+  in lower case. </p>
+  <p class="MsoNormal">In the creation of an element some parameters are required attributes (such as
+  <span style="font-family:&quot;Courier New&quot;">title</span> in buttons). Their types are checked when the element 
+  is created. The required parameters are exactly the paremeters that are necessary for the element to be created in C.</p>
+  <p>Some interface elements can contain one or more elements, as is the case of dialogs, lists and boxes. In such 
+  cases, the object’s element list is put together as a vector, that is, the elements are placed one after the other, 
+  separated by commas. They can be accessed by indexing the object containing them, as can be seen in this example: </p>
+  <blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+    <pre>mybox = iup.hbox{bt1, bt2, bt3}
+mybox[1].fgcolor = &quot;255 0 0&quot;         -- changes bt1 foreground color
+mybox[2].fgcolor = caixa[1].fgcolor  -- changes bt2 foreground color</pre>
+  </blockquote>
+</blockquote>
+<blockquote style="margin-top:5.0pt;margin-bottom:5.0pt">
+  <p class="MsoNormal">While the attributes receiving numbers or strings are directly transferred to IUP, attributes 
+  receiving other interface objects are not directly transferred, because IUP only accepts strings as a value. The 
+  method that transfers attributes to IUP verifies if the attribute value is a handle, that is, if it is an interface 
+  element. If the element already has a name, this name is passed to IUP. If not, a new name is created, associated to 
+  the element and passed to IUP as the value of the attribute being defined.<u1:p> </u1:p>
+  </p>
+  <u1:p></u1:p>
+  <p>This policy is very useful for associating two interface elements, because you can abstract the fact that IUP uses 
+  a string to make associations and imagine the interface element itself is being used. </p>
+  <p class="MsoNormal">The attributes in charge of treating the actions associated to objects are not directly 
+  transferred to IUP. Since the use of actions requires registering functions in C to be called when the event occurs, 
+  there is a differentiated treatment for such attributes. The IupLua system does not require the creation and 
+  registration of C functions for this purpose.<u1:p> </u1:p>
+  <u1:p></u1:p>
+  </p>
+</blockquote>
+
+</body>
+
+</html>

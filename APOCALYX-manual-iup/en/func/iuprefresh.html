@@ -1,0 +1,51 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupShow</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupRefresh</h2>
+<blockquote>
+  <p>Updates the size and layout of controls after changing size attributes. Can be used for any element inside a dialog 
+  or for the dialog itself. It can change the layout of all the controls inside the dialog because of the dynamic layout 
+  positioning. </p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <pre>int IupRefresh(Ihandle *<strong>element</strong>); [in C]
+iup.Refresh(<strong>element</strong>: ihandle) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">element</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: identifier of the interface element</span>.</p>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function will not change the size of 
+  the dialog. Changing the size of the controls may position some controls outside of the dialog on the left or bottom 
+  borders.</span></p>
+  <p><span style="font-family: Times New Roman">If you want to also change the size of the dialog use:</span></p>
+  <blockquote>
+    <pre>IupSetAttribute(dialog, &quot;SIZE&quot;, NULL);
+IupShow(dialog);</pre>
+  </blockquote>
+  <p>so the dialog will be redisplayed with the new size.</p>
+</blockquote>
+
+</body>
+
+</html>

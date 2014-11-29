@@ -1,0 +1,77 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_SCROLL_CB</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>SCROLL_CB</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called when some manipulation is made to the 
+  scrollbar. When this attribute is defined, the </span><a href="iup_action.html"><font face="Courier New">ACTION</font></a>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">callback is not called in such cases</span>.</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle *<strong>self</strong>, int <strong>op</strong>, float <strong>posx</strong>, float <strong>posy</strong>); [in C]
+<strong>elem</strong>:scroll_cb(<strong>op</strong>, <strong>posx</strong>, <strong>posy</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <p><strong><font face="Courier New">op</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">indicates the operation performed on the 
+  scrollbar</span>.<br>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">If the manipulation was made on the vertical 
+  scrollbar, it can have the following values</span>:</p>
+  <blockquote>
+    <pre>IUP_SBUP - line up
+IUP_SBDN - line down
+IUP_SBPGUP - page up
+IUP_SBPGDN - page down
+IUP_SBPOSV - vertical position
+IUP_SBDRAGV - vertical drag </pre>
+  </blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">If it was on the horizontal scrollbar, the 
+  following values are valid</span>:</p>
+  <blockquote>
+    <pre>IUP_SBLEFT - column left
+IUP_SBRIGHT - column right
+IUP_SBPGLEFT - page left
+IUP_SBPGRIGHT - page right
+IUP_SBPOSH - horizontal position
+IUP_SBDRAGH - horizontal drag</pre>
+  </blockquote>
+  <p><font face="Courier New"><strong>posx</strong>, <strong>posy</strong></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">the same as the </span>
+  <a href="iup_action.html"><font face="Courier New">ACTION</font></a>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">canvas callback (corresponding to the values 
+  of attributes </span><font face="Courier New">IUP_POSX</font> and <font face="Courier New">IUP_POSY</font>).</p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a><font face="Courier New">,
+  <a href="javascript:parent.manLoadCont('ctrl', '../ctrl/iupglcanvas')">IupGLCanvas</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

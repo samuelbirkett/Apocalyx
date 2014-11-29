@@ -1,0 +1,297 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<base target="_blank">
+<title>interface</title>
+</head>
+
+<body bgcolor="white" link="blue" vlink="blue">
+
+<h2 align="center" style="text-align:center">Comparing IUP with Other Interface 
+Toolkits</h2>
+<h3>Why to still maintain IUP if today we have so many other popular toolkits?</h3>
+<blockquote>
+  <p>This is a question we always ask to ourselves before going on for another 
+  year.</p>
+  <p>To answer that question we must first define the characteristics of the 
+  &quot;ideal&quot; toolkit, list the available toolkits and compare them with the &quot;ideal&quot; 
+  and with IUP.</p>
+  <p>We would like a toolkit that has:</p>
+  <ul>
+    <li><b>Portability.</b> That provides an abstraction for User Interface in 
+    Windows, UNIX and Macintosh.</li>
+    <li><b>Free License and Open Source.</b> This means that we can also produce 
+    commercial applications. The pure GPL license can not be used but the LGPL 
+    can but must contain an exception stating that derived works in binary form 
+    may be distributed on the user's own terms. This is a solution that 
+    satisfies those who wish to produce GPL'ed software and also those producing 
+    proprietary software. Many libraries are distributed with this license 
+    combination.</li>
+    <li><b>Small and Simple API. </b>This is rare. Many libraries assume that an 
+    Interface toolkit is also a synonymous of a system abstraction and 
+    accumulate thousands of extra functions that are not related to User 
+    Interface. At Tecgraf we like many small libraries instead of one big 
+    library. Almost all available toolkits today are in C++ only, so C 
+    applications are excluded, also this means a hundred classes to include and 
+    understand each member function. The use of attributes makes a lot of things 
+    more elegant and simpler to understand.</li>
+    <li><b>Native Look &amp; Feel</b>. Many toolkits draw their own controls. This 
+    gives an uniformity among systems, but also a disparity among the available 
+    applications in the same system. Native controls are also faster because 
+    they are drawn by the system. But the problem is what's &quot;native&quot; in UNIX? 
+    Some commercial applications in UNIX start using Motif as the &quot;native&quot; 
+    option. It is the official standard but because of license restrictions, 
+    before the OpenMotif event, the system became old and some good alternatives 
+    were developed, including GTK and Qt.</li>
+  </ul>
+</blockquote>
+<h3>Toolkits</h3>
+<blockquote>
+  <p>With these characteristics in mind we select some of the available 
+  toolkits:</p>
+</blockquote>
+<table border="1" tableborder="1" cellspacing="0" cellpadding="3" style="border-collapse: collapse" bordercolor="#111111">
+  <tr>
+    <td>
+    <p align="center" style="text-align:center"><b>Name</b></td>
+    <td><b>License</b></td>
+    <td><b>Last Update</b></td>
+    <td><b>Version</b></td>
+    <td><b>Language</b></td>
+    <td><b>Platforms</b></td>
+    <td><b>Controls</b></td>
+    <td><b>Team</b></td>
+    <td><b>Comments</b></td>
+  </tr>
+  <tr>
+    <td height="17" bgcolor="#C0C0C0">
+    <p align="center" style="text-align:center">
+    <a href="http://www.objectcentral.com/">V</a></td>
+    <td height="17" bgcolor="#C0C0C0">LGPL</td>
+    <td height="17" bgcolor="#C0C0C0">1998-2003/03</td>
+    <td height="17" bgcolor="#C0C0C0">1.9</td>
+    <td height="17" bgcolor="#C0C0C0">C++</td>
+    <td height="17" bgcolor="#C0C0C0">Win, X</td>
+    <td height="17" bgcolor="#C0C0C0"><font color="#FF0000">native</font></td>
+    <td height="17" bgcolor="#C0C0C0">1</td>
+    <td height="17" bgcolor="#C0C0C0"></td>
+  </tr>
+  <tr>
+    <td bgcolor="#C0C0C0">
+    <p align="center" style="text-align:center">
+    <a href="http://zoolib.sourceforge.net/" ADD_DATE="851377089" LAST_VISIT="857454078" LAST_MODIFIED="851377011">
+    ZooLib</a></td>
+    <td bgcolor="#C0C0C0">MIT</td>
+    <td bgcolor="#C0C0C0">2000-2003/04</td>
+    <td bgcolor="#C0C0C0">0.9</td>
+    <td bgcolor="#C0C0C0">
+    <o:p>C++</o:p></td>
+    <td bgcolor="#C0C0C0">Win, X, Mac</td>
+    <td bgcolor="#C0C0C0">
+    <o:p>own</o:p></td>
+    <td bgcolor="#C0C0C0">4+9</td>
+    <td bgcolor="#C0C0C0">Still no 1.0 version</td>
+  </tr>
+  <tr>
+    <td bgcolor="#C0C0C0">
+    <p align="center" style="text-align:center">
+    <a ADD_DATE="851377089" LAST_VISIT="857454078" LAST_MODIFIED="851377011" href="http://www.fresco.org/">
+    Fresco</a></td>
+    <td bgcolor="#C0C0C0">LGPL</td>
+    <td bgcolor="#C0C0C0">1998-2004/02</td>
+    <td bgcolor="#C0C0C0">Alpha</td>
+    <td bgcolor="#C0C0C0">
+    <o:p>C++</o:p></td>
+    <td bgcolor="#C0C0C0">Win, X, Mac</td>
+    <td bgcolor="#C0C0C0">own</td>
+    <td bgcolor="#C0C0C0">9</td>
+    <td bgcolor="#C0C0C0">License restrictions, Still in Alpha, Use CORBA...</td>
+  </tr>
+  <tr>
+    <td bgcolor="#C0C0C0">
+    <p align="center"><a href="http://www.yaaf.org">
+    <o:p>YAAF</o:p></a></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>BSD*</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>2002-2004/03</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>1.1a8</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>C++</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>Win, X, Mac</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>own</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>1+9</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>&nbsp;</o:p></td>
+  </tr>
+  <tr>
+    <td bgcolor="#C0C0C0">
+    <p align="center" style="text-align:center">
+    <a ADD_DATE="851377089" LAST_VISIT="857454078" LAST_MODIFIED="851377011" href="http://enchantia.com/software/graphapp/index.html">
+    GraphApp</a></td>
+    <td bgcolor="#C0C0C0">BSD*</td>
+    <td bgcolor="#C0C0C0">1997-2004/05</td>
+    <td bgcolor="#C0C0C0">3.52</td>
+    <td bgcolor="#C0C0C0">
+    <o:p>C</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>Win, X, Mac</o:p></td>
+    <td bgcolor="#C0C0C0">
+    <o:p>own</o:p></td>
+    <td bgcolor="#C0C0C0">1</td>
+    <td bgcolor="#C0C0C0">Small and interesting.</td>
+  </tr>
+  <tr>
+    <td>
+    <p align="center" style="text-align:center">
+    <a href="http://www.fox-toolkit.org/">FOX</a></td>
+    <td>LGPL*</td>
+    <td>1997-2005/03</td>
+    <td>1.5.0</td>
+    <td>
+    <o:p>C++</o:p></td>
+    <td>Win, X</td>
+    <td>
+    <o:p>own</o:p></td>
+    <td>3+15</td>
+    <td>great look, license totaly free?</td>
+  </tr>
+  <tr>
+    <td>
+    <p align="center" style="text-align:center"><a href="http://www.fltk.org/">
+    FLTK</a></td>
+    <td>LGPL*</td>
+    <td>1998-2004/11</td>
+    <td>1.1.6</td>
+    <td>
+    <o:p>C++</o:p></td>
+    <td>Win, X, Mac</td>
+    <td>
+    <o:p>own</o:p></td>
+    <td>3+16</td>
+    <td>was from<o:p> Digital Domain. Easy to learn.</o:p></td>
+  </tr>
+  <tr>
+    <td>
+    <p align="center" style="text-align:center"><a href="http://www.gtk.org/">
+    GTK+</a></td>
+    <td>LGPL*</td>
+    <td>1997-2005/03</td>
+    <td>2.6.4</td>
+    <td>
+    <o:p>C</o:p></td>
+    <td>Win, X</td>
+    <td>
+    <o:p>own</o:p></td>
+    <td>9</td>
+    <td>target for<o:p> X-Windows, basis of GNOME, Windows is apart</o:p></td>
+  </tr>
+  <tr>
+    <td>
+    <p align="center" style="text-align:center">
+    <a href="http://www.trolltech.com">Qt</a></td>
+    <td>GPL</td>
+    <td>1994-2004/08</td>
+    <td>3.3.3</td>
+    <td>
+    <o:p>C++</o:p></td>
+    <td>Win, X, Mac</td>
+    <td>own</td>
+    <td>(many)</td>
+    <td>X is free for Non Commercial, basis of KDE, Windows is paid,<br>
+    Emulates the native look and feel</td>
+  </tr>
+  <tr>
+    <td>
+    <p align="center" style="text-align:center">
+    <a href="http://www.wxwidgets.org/">wxWidgets</a></td>
+    <td>LGPL*</td>
+    <td>1992-2005/02</td>
+    <td>2.5.4</td>
+    <td>
+    <o:p>C++</o:p></td>
+    <td>Win, X, Mac</td>
+    <td><font color="#FF0000">
+    <o:p>native</o:p></font></td>
+    <td>6+11</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+    <p align="center"><a href="http://www.tecgraf.puc-rio.br/iup/">IUP</a></td>
+    <td>MIT*</td>
+    <td>1994-2005/03</td>
+    <td>2.3</td>
+    <td>C</td>
+    <td>Win, X</td>
+    <td><font color="#FF0000">
+    <o:p>native</o:p></font></td>
+    <td>2</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<p>Table Last Update: March 2005</p>
+<blockquote>
+  <p>More toolkits can be found here:
+  <a href="http://www.geocities.com/SiliconValley/Vista/7184/guitool.html" ADD_DATE="851377089" LAST_VISIT="857454078" LAST_MODIFIED="851377011">
+  The GUI Toolkit, Framework Page</a>.</p>
+  <p>An interesting article can be found here:
+  <a href="http://freshmeat.net/articles/view/928/">GUI Toolkits for The X 
+  Window System</a>.</p>
+</blockquote>
+<h3>Conclusions</h3>
+<blockquote>
+  <p>From the selected toolkits using the defined approach we can eliminate some 
+  toolkits:</p>
+  <p>The gray ones are not updated anymore or the development is very slow or 
+  needs a better organization.</p>
+  <p>FOX has a great look but the license can be restrictive in some cases. </p>
+  <p>FLTK promises a new version with a better look, but until then it does not 
+  have a pretty good look. The FLTK documentation also does not help.</p>
+  <p>GTK+ can be used as a replacement for Motif, but not as a &quot;portable&quot; 
+  toolkit since is was target for X-Windows. Nowadays GTK 2 is a great free C 
+  toolkit. But some predefined dialogs could be the native ones, like the File 
+  Selection.</p>
+  <p>Qt has several license limitations, although is a very stable and powerful 
+  toolkit. Qt can be also used as a replacement for Motif.</p>
+  <p>The &quot;best&quot; free solution that we choose would be <font color="#FF0000">
+  wxWidgets</font> because of the native controls and its portability. But since 
+  version 2, <font color="#FF0000">GTK+</font> is a very strong option because 
+  it is in C and had its visual improved.</p>
+  <p>It is very hard to compare IUP with wxWidgets and Qt since they are much 
+  more than an Interface Toolkit. They are complete development platform that 
+  includes several secondary libraries. In IUP we focus only in Graphical User 
+  Interface.</p>
+</blockquote>
+<h3>Developing IUP</h3>
+<blockquote>
+  <p>IUP uses Native Controls in Windows and Motif. </p>
+  <blockquote>
+    <p>Mac port is outdated and not maintained for long time, MacOS 9 was 
+    terrible. With Mac OS X we may have the opportunity to do something better. 
+    Today IUP can be built in Mac OS X using X11 and Motif. </p>
+    <p>Motif is still very important for non Linux systems, some of our 
+    applications run on old AIX, SGI and Sun, that only have Motif installed and 
+    we can not force the installation of other toolkits like GTK. On the other 
+    hand in Linux we should be using GTK instead of Motif.</p>
+  </blockquote>
+  <p>IUP is in C, is small and powerful. We have a small but very active team 
+  and we have many Tecgraf and foreign applications that today use IUP, 
+  collaborating for its evolution. Our objective is to surpass the Tecgraf 
+  needs, keeping backward compatibility and improving the internal code.</p>
+  <p>IUP does not have a wide localization feature, it only includes support for 
+  messages in English and Portuguese. And it does not have support for Unicode 
+  characters.</p>
+</blockquote>
+<p><em>.. &quot;Make it Reusable, Make it Simple, Make it Small&quot; ...</em></p>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_CLOSE_CB</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>CLOSE_CB</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called just before a dialog is hidden due to 
+  some action over it - for example, double clicking the system's menu box, usually located to the left in the title bar</span>.</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle *<b>self</b>); [in C]
+<strong>elem</strong>:close_cb() -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Returning </span><code>IUP_IGNORE</code><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">, it prevents the dialog from being hidden</span>. 
+  If you destroy the dialog in this callback, you must return <code>IUP_IGNORE</code>.</p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupdialog')">IupDialog</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

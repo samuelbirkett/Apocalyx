@@ -1,0 +1,68 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_WOM</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>WOM_CB</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">when an audio device receives an event.</span></p>
+  <p>[Windows Only]</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle *<b>self</b>, int <b>state</b>); [in C]
+<strong>elem</strong>:wom_cb(<b>state</b>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <pre><b>state</b>: can be opening=1, done=0, or closing=-1.</pre>
+</blockquote>
+<h3>Notes</h3>
+<blockquote>
+  <p>This callback is used to syncronize video playback with audio. It is sent when the audio device:</p>
+  <div align="center">
+    <center>
+    <table cols="2" cellPadding="5" rules="rows" border="0" frame="below" style="border-collapse: collapse" bordercolor="#111111" cellspacing="0">
+      <tr vAlign="top">
+        <td class="blue" width="83"><b>Message</b></td>
+        <td class="blue" width="503"><b>Description</b></td>
+      </tr>
+      <tr>
+        <td width="83">opening</td>
+        <td width="503">is opened by using the <b>waveOutOpen</b> function.</td>
+      </tr>
+      <tr>
+        <td width="83">done</td>
+        <td width="503">is finished with a data block sent by using the <b>waveOutWrite</b> function.</td>
+      </tr>
+      <tr vAlign="top">
+        <td width="83">closing</td>
+        <td width="503">is closed by using the <b>waveOutClose</b> function.</td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p>You must use the HWND attribute when calling <b>waveOutOpen</b> in the <i>dwCallback</i> parameter and set <i>
+  fdwOpen</i> to CALLBACK_WINDOW.</p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupdialog')">IupDialog</a>,
+  <a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a>,
+  <a href="javascript:parent.manLoadCont('ctrl', '../ctrl/iupglcanvas')">IupGLCanvas</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

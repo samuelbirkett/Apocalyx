@@ -1,0 +1,548 @@
+<pre>&quot;<b>APOCALYX 3D Engine</b>&quot; <b>0.9.3</b>
+Copyright &copy; 2002-2008, Leonardo Boselli.
+All rights reserved.
+
+
+<B>2008/08/31 0.9.3</B>
+----------------
+
+* <b>LUA</b>
+- Added <I>MDLModel</I> functions: <I>setTransition()</I>,
+  <I>setTransitionTimer()</I>, <I>getStoppedTransition()</I>
+- Added <I>IM</I> (Imaging Toolkit) support in <I>IUP</I> GUI
+- Added primitives: <I>Cylinder</I>, <I>Disk</I>, <I>PartialDisk</I>, <I>Sphere</I>
+- Added <I>setPointerVisible()</I>, <I>isPointerVisible()</I>
+- Added <I>string.pack()</I>, <I>string.unpack()</I>
+- Fixed bug in collisions between ODE objects and BSP geometry
+- Added support for Arbitrary Precision Math (MAPM)
+- Added support for Video Capture functions (experimental)
+- Added support for MySQL databases
+- Added support for SQLite databases
+- Removed AngelScript language support
+- Removed SMALL language support
+- Removed CSL language support
+<!--
+- Added Tubing and Extrusion primitives
+- Added ScriptBasic language support
+- Added <I>IM</I> (Imaging Toolkit) Lua support
+- Added <I>CD</I> (2D Graphics) Lua support
+- Added <I>Half-Life 1 BSP</I> support
+- Added <I>Sauerbraten</I>, an indoor 3D engine
+- Added <I>libMini</I>, a terrain renderer
+- Added <I>WxLua</I> library to support <I>WxWidgets</I> GUI
+- Added <I>Gluxle</I> interpreter for adventure games
+- Added <I>libUFO</I> GUI objects
+- Added <I>CeGui</I> GUI objects
+- Supported animated models in the <I>X</I> file format
+- Supported animated models in the <I>MD5</I> file format
+--><!--
+* <b>TinyC</b>
+- Added <I>spark</I> functions
+- Added <I>objectGetName()</I> <I>objectSetName()</I>
+- Added picking support through <I>appPickName()</I>
+- Added <I>setLocation()</I>, <I>getLocation()</I>, <I>setDimension()</I>
+  to reposition and resize the engine window
+- Added <I>createAnimatedFadingBillboard()</I> function
+--><!--
+* <b>GUI Framework</b>
+- Added <I>WxWidgets</I>, a complete GUI library
+- Added <I>LibUFO</I>, a GUI for OpenGL
+- Added <I>CeGui</I>, a GUI for OpenGL
+- Embedded <I>AntTweakBar</I> in GLFW
+-->
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2008/04/25 0.9.2</B>
+----------------
+
+* <b>LUA</b>
+- Added in-script <I>Lua interpreter</I>
+- Improved <I>MDL</I> model format support
+- Improved <I>MD2</I> model format support
+- Added <I>hide/showWatermark()</I> functions
+- Added <I>Material:copy()</I> function
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2008/01/01 0.9.1</B>
+----------------
+
+* <b>LUA</b>
+- Added <I>IUP</I> GUI objects support
+- Added <I>LuaSQL</I>, a Lua binding to SQL databases
+- Supported animated models in the <I>MDL</I> file format
+
+* <b>GUI Framework</b>
+- Added <I>IUP</I>, a native GUI library
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2007/07/30 0.9.0</B>
+----------------
+
+* <b>LUA</b>
+- Added <I>GLGooey</I> GUI objects
+- Added <I>libNoise</I>, a coherent noise generator
+- Added <I>Etwork</I>, a networking library
+
+* <b>GUI Framework</b>
+- Added <I>GLGooey</I>, a GUI for OpenGL
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2007/04/25 0.8.14</B>
+-----------------
+
+* <b>LUA</b>
+- Added <I>FTGL</I>, a library to render TrueType fonts
+- Supported animated models in the <I>MS3D</I> file format
+- Added <I>luaGL</I> library to provide Lua <I>OpenGL</I> functions
+- Added <I>ScriptObject</I> class and methods
+- Added <I>isRunning()</I> and <I>setRunning() </I>functions
+- Added <I>setElapsedTime()</I> function
+- Added <I>processLoop()</I> function
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2007/03/15 0.8.13</B>
+-----------------
+
+* <b>LUA</b>
+- Added <I>Spark</I> class and methods
+- Added <I>getSharedMemory()</I> and <I>setSharedMemory()</I> functions
+- Added <I>isAsyncKeyPressed()</I> function
+- Added function <I>Font3D:getWidth()</I> and <I>Font3D:getType()</I>
+- Added function <I>Font:getWidth()</I> and <I>Font:getType()</I>
+- Added function <I>TrueTypeFont:getType()</I>
+- Added function <I>OdeGeom:outerCollide()</I>
+- Improvements in <I>OdeContactsInfo</I>
+- Added the class <I>OverlayTrueTypeTexts</I>
+- Added <I>OggVorbis</I> codec library and the class <I>OggMusic</I>
+- Removed support for networking with <I>RakNet</I> and <I>RakVoice</I> libraries
+  (the library is still available on request in the source distribution)
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2007/01/15 0.8.12</B>
+-----------------
+
+* <b>LUA</b>
+- Added <I>setLocation()</I>, <I>getLocation()</I>, <I>setDimension()</I>
+  to reposition and resize the engine window
+- Added <I>Particle</I>, a particle system library, and the
+  classes <I>ParticleSystem</I>, <I>ParticleGroup</I>, <I>ParticleDomain</I>
+- Added <I>OGLFT</I>, a library to render TrueType fonts, and
+  the classes <I>TrueTypeFont</I> and <I>TrueTypeText</I>
+- Included <I>Stellarium</I>, a realistic sky renderer
+- Added new arguments to <I>setScene()</I>:
+  the callbacks <I>keyUp</I> and <I>onResize</I>
+- Added <I>setBackstage()</I> function
+- Added <I>AnimatedFadingBillboard</I> and <I>Decal</I> class
+- Added <I>setAnimations()</I> to <I>MD3Model</I> class
+- Added <I>Object:getAABB()</I> function
+
+* <b>EXE</b>
+- Included new command line options:
+  -nobar -x<I>pos_x</I> -y<I>pos_y</I>  -w<I>width</I> -h<I>height</I>
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2006/11/30 0.8.11</B>
+-----------------
+
+* <b>LUA</b>
+- Included <I>Lua-GD</I>, a 2D graphics library
+- Supported 2D graphics-to-texture through <I>GraphicTexture</I>
+- Added <I>sendMessage()</I> function useful to communicate
+  with other applications
+- Added <I>isActive()</I> and <I>setActive()</I> functions
+- Added <I>setTopmost()</I> function
+
+* <b>EXE</b>
+- Included new command line options:
+  -ontop  -notop
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2006/10/15 0.8.10</B>
+-----------------
+
+* <b>LUA</b>
+- Supported render-to-texture through <I>ViewportTexture</I>
+- Supported AVI-to-texture through <I>AviTexture</I>
+- Embedded <I>AntTweakBar</I> to support tweaking
+- Added <I>getOpenGLStrings()</I> to query OpenGL version
+- Included <I>TexSynth</I>, a 2D texture generator
+- Added <I>luasocket</I> library to support networking
+- Added <I>OdeCylinder</I> to ODE supported objects
+- Added <I>Texture3D</I> class to create 3D textures
+- Added <I>Texture3D</I> support to <I>Patches</I>
+- Added <I>NewZip</I> class to zip data in files
+- Added <I>get/setName()</I> to <I>Object</I>
+- Added picking support through <I>pickNames()</I>
+- Added <I>Image:convertToGray()</I>
+
+* <b>TinyC</b>
+- Added <I>dGeomCylinderGetParams()</I>, <I>dGeomCylinderSetParams()</I>
+  and <I>dCreateCylinder()</I> functions
+- Added <i>dJointIsBreakable</i>, <i>dJointSetBreakable</i> functions
+- Added <I>newZipCreate()</I>, <I>newZipDelete()</I>, <I>newZipOpenFile()</I>
+  and <I>newZipWriteInFile()</I> functions to zip data in files
+- Added <I>imageConvertToGray()</I> function
+
+* <b>ZIP Files</b>
+- Added support for ZIP files creation
+
+* <b>ODE</b>
+- Added breakable joints
+- Added cylinder
+
+* <b>EXE</b>
+- Included new command line options:
+  -totop  -dostring"<I>string</I>"  -dofile"<I>file_name</I>"
+
+* <b>Manual</b>
+- Added documentation about new functions and classes
+
+
+<B>2006/08/30 0.8.9</B>
+----------------
+
+* <b>LUA</b>
+- Upgraded to LUA 5.1.1
+- Added support for <I>toLua++</I>
+- Added functions to query 3D accelerator capabilities
+- Added <I>joystick</I> support (using <I>SDL</I>)
+- Added <I>audio cd-rom</I> support (using <I>SDL</I>)
+- Added support for <I>eSpeak</I>, a speech synthesizer
+- Added function <I>Compiler:callPassingLuaState()</I>
+- Added function <I>Bsp:getCollisionTexture()</I>
+
+* <b>TinyC</b>
+- Added support for <I>toLua++</I>
+- Added Lua auxiliary functions
+- <I>stdlib.h</I> and <I>string.h</I> are extracted from <I>core.h</I>
+  because they are required by <I>toLua++</I>
+- Added <I>joystick</I> support (using <I>SDL</I>)
+- Added <I>audio cd-rom</I> support (using <I>SDL</I>)
+- Added function <I>bspGetCollisionTexture()</I>
+
+* <b>Manual</b>
+- Added documentation for <I>toLua++</I>
+- Added documentation for new functions and classes
+
+
+<B>2006/07/16 0.8.8</B>
+----------------
+
+* <b>LUA</b>
+- Added <I>TiledTerrain</I> class and methods
+- Added alternate names <I>getMD2Model()</I>, <I>getMD3Model()</I> and
+  <I>getCal3DModel()</I> for <I>getBasicModel()</I>, <I>getModel()</I> and
+  <I>getAdvancedModel()</I> functions of the <I>Zip</I> class
+- Added function <I>getVertexCoord()</I> and <I>getVertexNormal()</I>
+  to <i>MD2Model</i> class
+- Added function <I>Shadow:setColor()</I>
+- Added constructors <I>ImageRGB()</I>, <I>ImageRGBA()</I>, <I>ImageGrayscale()</I>
+- Added functions <I>isGrayscale()</I>, <I>setPixel()</I>, <I>getPixel()</I> to <I>Image</I>
+- Added functions <I>getImageFromHeights()</I> and <I>getImageFromColors()</I>
+  to <I>Patches</I>
+- Added support for networking with <I>RakNet</I> and <I>RakVoice</I> libraries
+- Added support for the <I>OpenSteer</I> library for steering behaviors
+- Added support for the <I>FSM</I> library for finite state machines
+
+* <b>TinyC</b>
+- Added <I>tiledTerrain</I> functions
+- Added function <I>shadowSetColor()</I>
+- Added constructors <I>imageRGBCreate()</I>, <I>imageRGBACreate()</I>,
+  <I>imageGrayscaleCreate()</I>
+- Added functions <I>imageIsGrayscale()</I>, <I>imageSetPixel()</I>,
+  <I>imageGetPixel()</I>
+- Added functions <I>patchesGetImageFromHeights()</I> and
+  <I>patchesGetImageFromColors()</I>
+
+* <b>Renderer</b>
+- Improved aspect of planar shadows using the stencil buffer
+
+* <b>Manual</b>
+- Added documentation for new functions and classes
+
+
+<B>2006/06/15 0.8.7</B>
+----------------
+
+* <b>LUA</b>
+- Added alternate names <I>MD2Model</I>, <I>MD3Model</I>, <I>Cal3DModel</I>
+  for <I>BasicModel</I>, <I>Model</I>, <I>AdvancedModel</I>
+- Added class <I>Void</I> with function <I>Void:getPointer()</I>
+- Added functions <I>CreateInstanceOf()</I> and <I>GetTagOf</I>
+- Added function <I>Bsp:getEntitiesString()</I>
+- Added functions for heights data management of <I>Patches</I>:
+  <I>getGridCount()</I>, <I>getHeightAtGrid()</I>, <I>getColorAtGrid()</I>,
+  <I>setHeightAtGrid()</I>, <I>setColorAtGrid()</I>
+  These function are valid only if the <I>Patch</I> is dynamic
+
+* <b>TinyC</b>
+- Added function <I>pointerReinterpretAsVoid()</I>
+- Added functions <I>voidCastToXXX()</I>
+- Added function <I>bspGetEntitiesString()</I>
+- Added functions for heights data management of <I>Patches</I>:
+  <I>patchesGetGridCount()</I>, <I>patchesGetHeightAtGrid()</I>,
+  <I>patchesGetColorAtGrid()</I>, <I>patchesSetHeightAtGrid()</I>,
+  <I>patchesSetColorAtGrid()</I>
+  These function are valid only if the <I>Patch</I> is dynamic
+
+* <b>Manual</b>
+- Added documentation for new functions and classes
+
+
+<B>2006/05/14 0.8.6</B>
+----------------
+
+* <b>LUA</b>
+- Added support for <I>MediaControl</I> objects (MP3 playback)
+- Added <I>getTextureUnitsCount()</I> function
+- Added <I>Bsp:setUseFastRendering()</I> function
+- Added <I>getMousePos()</I> and <I>setMousePos()</I> functions
+
+* <b>TinyC</b>
+- Added support for <I>mediaControl</I> functions (MP3 playback)
+- Added <I>appGetTextureUnitsCount()</I> function
+
+* <b>BSP Levels</b>
+- Added support for BSP levels created with <I>GtkRadiant</I>
+  (previously only levels created with <I>Q3Radiant</I> were supported)
+
+* <b>AngelScript</b>
+- Included again support for the AngelScript interpreter
+
+* <b>SMALL</b>
+- Included again support for the SMALL interpreter
+
+* <b>Manual</b>
+- Added documentation for new functions and classes
+
+
+<B>2006/03/31 0.8.5</B>
+----------------
+
+* <b>LUA</b>
+- Upgraded to LUA 5.1
+- Added function <I>OverlayTexts:getText()</I> 
+- Added function <I>enableLinearFog()</I> 
+- Added function <I>OverlayViewport:enableLinearFog()</I> 
+- Modified declaration of <I>OdeBody:getMass()</I>:
+  it accepts an <I>OdeMass</I> argument instead of returning it
+- Added function <I>OdeBody:setMass()</I>
+- Added constructor <I>OdeMass()</I>
+- Added functions <I>Image:resample()</I> and <I>Image:saveAsPng()</I>
+- Added function <I>getScreenshot()</I>
+- Added methods for <I>Points</I>, <I>Lines</I> and <I>Polys</I> classes
+- Added methods for <I>OverlayPoints</I>, <I>OverlayLines</I> and
+  <I>OverlayPolys</I> classes
+- Added support for <I>OverlayWorldView</I> objects
+- Added support for <I>CaptureDevice</I> objects
+- Added support for <I>PathFinder</I> and <I>PathFound</I> objects
+- Added complete CSL support
+- Removed AngelScript support
+
+* <b>TinyC</b>
+- Added function <I>overlayTextsGetText()</I> 
+- Added function <I>worldEnableLinearFog()</I> 
+- Added function <I>overlayViewportEnableLinearFog()</I> 
+- Added functions <I>imageResample()</I> and <I>imageSaveAsPng()</I>
+- Added function <I>appGetScreenshot()</I>
+- Added functions for <I>points</I>, <I>lines</I> and <I>polys</I> objects
+- Added functions for <I>overlayPoints</I>, <I>overlayLines</I> and
+  <I>overlayPolys</I> objects
+- Added support for <I>overlayWorldView</I> objects
+- Added support for <I>captureDevice</I> objects
+- Added support for <I>pathFinder</I> and <I>pathFound</I> objects
+- Added complete CSL support
+- Added <i>csl.h</i>
+- Removed AngelScript support
+- Removed <i>angel.h</i>
+
+* <b>OpenAL</b>
+- Improved to version 1.1 (with sound capture)
+
+* <b>AI</b>
+- Added A* path finding support
+- Prepared library for Finite State Machines (FSM) support
+- Prepared library for Steering Behaviors support
+
+* <b>CSL</b>
+- Added support for the CSL interpreter
+
+* <b>AngelScript</b>
+- Removed support for the AngelScript interpreter
+
+* <b>Manual</b>
+- Added documentation for new functions and classes
+- Added documentation of the CSL interpreter
+- Removed documentation of the AngelScript interpreter
+
+
+<B>2006/02/28 0.8.4</B>
+----------------
+
+* <b>LUA</b>
+- Modified function <I>Zip(string, boolean)</I>
+  If the second argument is false, the file name represents a path in the file
+  system (directory) from which normal files are retrieved
+- Modified function <I>Reference:scale()</I> to support not uniform scaling
+- Added functions <I>transform()</I> and <I>transformT()</I> to <I>Transform</I>
+- Added function <I>Mesh:setScaled()</I> to specify the mesh was scaled
+
+* <b>TinyC</b>
+- Modified function <I>zipCreate(const char*, int)</I>
+  If the second argument is zero, the file name represents a path in the file
+  system (directory) from which normal files are retrieved
+- Modified declaration of <I>bspLoad(const char*, const char*, float)</I>
+- Modified declaration of <I>transformScale(Transform*, float, float, float)</I>
+
+* <b>ODE</b>
+- Fixed several bugs
+
+* <b>ZIP Files</b>
+- Added support for virtual ZIP files
+
+
+<B>2006/01/31 0.8.3</B>
+----------------
+
+* <b>LUA</b>
+- Added class <I>OverlayViewport</I>
+- Added function <i>Model:unlink()</i>
+- Added function <i>Bsp:setShowTransparencies()</i>
+- Added functions <i>isMouseAcquired()</i> and <I>acquireMouse()</I>
+- Added functions <i>hasFocus()</i> and <I>gainFocus()</I> (main window focus)
+- Added function <I>setClear()</I>
+- Modified functions <I>setAnimation()</I> of <i>BasicModel</i>, <I>Model</I>
+  and <i>Bot</i> with a second boolean argument to reverse the animation
+- Fixed bugs in <I>Machinery()</I> and modified its declaration
+- Added function <I>Machinery:setAirDragEnabled()</I>
+
+* <b>TinyC</b>
+- Added functions <I>overlayViewport*()</I>
+- Added function <i>bspSetTransparenciesVisible()</i>
+- Added functions <i>appIsMouseAcquired()</i> and <I>appAcquireMouse()</I>
+- Added functions <i>appHasFocus()</i> and <I>appGainFocus()</I>
+- Added function <I>worldSetClear()</I>
+- Modified functions <I>SetAnimation()</I> of <i>basicModel</i>, <I>model</I>
+  and <i>bot</i> with a second boolean argument to reverse the animation
+- Modified declaration of <I>machineryCreate()</I>
+- Added function <I>machinerySetAirDragEnabled()</I>
+
+* <b>BSP Levels</b>
+- Added support for levels with transparent textures
+
+
+<B>2005/12/31 0.8.2</B>
+----------------
+
+* <b>LUA</b>
+- Added complete ODE (<i>Open Dynamics Engine</i>) support
+- Added function <i>getMouseWheel()</i>
+- Added function <i>Zip:getCubeMapTexture()</i>
+- Added functions <i>Compiler:loadObjString()</i>, <i>Compiler:saveObjFile()</i>
+- Added functions <i>Socket:listen()</i>, <i>Socket:accept()</i>
+- Added function <i>loadlib()</i>
+- Fixed bug in <i>Sound:setLooping()</i> and <i>Music:setLooping()</i>
+- Fixed malfunctions in <i>SkyDome</i> and its methods were modified too
+- Renamed <I>Font</I> class to <I>Font3D</I> class (for 3D text)
+- Added <I>Font</I> class for overlay texts (both textured and bitmap)
+  with constructors <I>BitmapFont()</I> and <I>TexturedFont()</I>
+- Added functions to load resources (images, meshes, models, levels,
+  sound and music samples) from regular files
+- Changed declaration of <I>BasicModel()</I>, <I>Model()</I> and <I>Bot()</I>:
+  Before they clone, now they accept a file name string to load models from disk
+- Added <I>clone()</I> method to <I>BasicModel</I>, <I>Model</I> and <I>Bot</I>
+- Added <I>setMainOverlayFont()</I>
+- Added complete AngelScript support
+- Removed SMALL support
+
+* <b>TinyC</b>
+- Added function <i>appGetMouseWheel()</i>
+- Added function <i>zipCreateCubeMapTexture()</i>
+- Added functions <i>compilerLoadObjBuffer()</i>, <i>compilerSaveObjFile()</i>
+- Added functions <i>socketListen</i>, <i>socketAccept</i>
+- Added functions <i>buffer*()</i> for character arrays I/O
+- Added functions <i>getenv()</i>, <i>putenv()</i>
+- Added functions <i>time()</i>, <i>clock()</i>
+- Added function <i>putchar()</i>
+- Added function <i>ftell()</i>
+- Fixed malfunctions in <i>SkyDome</i> and functions were modified too
+- Renamed <I>font</I> functions to <I>font3D</I> functions (for 3D text)
+- Added <I>font</I> functions for overlay texts (both textured and bitmap)
+- Added <I>overlaySetMainOverlayFont()</I>
+- Added functions to load resources (images, meshes, models, levels,
+  sound and music samples) from regular files
+- Modified functions <i>appSetScene()</i> and <i>appSetHelp()</i>:
+  the argument containing the LUA state is no more needed
+- Modified function <i>lua_State()</i>: no more need to call it at the
+  beginning of a C Lua-style function.
+- Added complete AngelScript support
+- Removed SMALL support
+- Rewritten headers <i>core.h</i> and <i>apocalyx.h</i>
+- Renamed header <i>basic.h</i> to <i>core.h</i>
+- Removed <i>small.h</i>
+- Several fixes in the API
+
+* <b>FASM</b>
+- Added support for the "flat assembler"
+
+* <b>AngelScript</b>
+- Added support for the AngelScript interpreter
+
+* <b>SMALL</b>
+- Removed support for the SMALL interpreter
+
+* <b>Console</b>
+- The backspace key now works correctly both in the editor and in the command line
+- The prompt becomes "&gt; i " after the execution of LUA instructions
+- Show/hide scroll for console window
+
+* <b>OBJ Model Format</b>
+- Added support for the OBJ model format
+
+* <b>Manual</b>
+- The manual was divided in several parts
+- Added documentation of new LUA functions
+- Added documentation of the "flat assembler"
+- Added documentation of the AngelScript interpreter
+- Removed documentation of the SMALL interpreter
+- Constructors <i>VertexProgram()</i> and <i>FragmentProgram()</i> accept a
+  string containing the source as first parameter, not a file name
+- Modified headers <i>core.h</i> and <i>apocalyx.h</i>
+
+
+<B>2005/10/30 0.8.1</B>
+----------------
+
+* Intermediate release in alpha version only
+- Some bug fixes listed in version 0.8.2
+
+
+<B>2005/09/28 0.8.0</B>
+----------------
+
+* <b>FIRST SCRIPT-ONLY RELEASE</b>
+- A lot of new features
+</pre>

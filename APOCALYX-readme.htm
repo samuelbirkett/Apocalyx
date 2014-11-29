@@ -1,0 +1,1368 @@
+<pre><b>&quot;APOCALYX 3D Engine&quot; 0.9.3</b>
+Copyright &copy; 2002-2008, Leonardo Boselli.
+All rights reserved.
+
+					August 31st 2008
+INDEX
+<ol>
+<li><a href="#whatisthis">What is APOCALYX?</a>
+<li><a href="#donations">Donations</a>
+<li><a href="#commercial">Commercial Products</a>
+<li><a href="#acknowledgements">Acknowledgements</a>
+<li><a href="#howtocompile">How to Compile</a>
+<li><a href="#knownbugs">Known Bugs</a>
+<li><a href="#legaldisclaimer">Legal Disclaimer</a>
+<li><a href="#librariesandtoolscopyrights">Libraries &amp; Tools</a>
+<li><a href="#termsforuse">Terms for Use</a>
+<li><a href="#contactinformation">Contact Info</a>
+</ol>
+
+<a name="whatisthis"><b>1 - What is APOCALYX?</b>
+---------------------</a>
+
+The &quot;APOCALYX 3D Engine&quot; is an OpenGL based 3D engine with
+interesting features and powerful scripting capabilities.
+
+The manual of the engine is accessible from the file:
+<a href="APOCALYX-manual-index.htm">APOCALYX-manual-index.htm</a>.
+
+To get scripted demos of the engine visit the Downloads page
+at <a href="http://apocalyx.sourceforge.net">http://apocalyx.sourceforge.net</a> and get the latest executable
+(this one could not be the latest) and one or more demos packages.
+Then unzip all the downloaded files in the same folder and run
+the &quot;APOCALYX.exe&quot; file. 
+If you want to modify the demos, remember that the &quot;.dat&quot; files
+are ZIP files the extension of which was renamed (they contain
+the media files needed by the demos) and the &quot;.lua&quot; files are
+text files (they include the code of the scripts), so you can
+use your preferred editor and an unzip utility.
+Since several languages are supported, I recommend the use of the
+<i>Scintilla Text Editor</i> available at <a href="http://www.scintilla.org">http://www.scintilla.org</a>
+It provides sintax highlighting for a lot of different languages
+and features useful to manage several scripts at once.
+
+The main scripting language supported by APOCALYX is LUA.
+LUA is an embeddable and extendable scripting language.
+To know more about this language visit <a href="http://www.lua.org">http://www.lua.org</a>
+You don't need to know all the features of LUA to write programs
+for APOCALYX, so you can simply read the APOCALYX documentation
+provided at <a href="http://apocalyx.sourceforge.net">http://apocalyx.sourceforge.net</a> including a &quot;getting
+started&quot; guide on LUA (5.1) and the list of the APOCALYX APIs.
+
+Tested on:
+
+OPSYS        - Windows Vista
+CPU          - Core2Duo T7300
+RAM          - 2048 Mb
+GRAPHIC CARD - GeForce 8600M GT 256 Mb
+SOUND CARD   - Realtek High Definition Audio
+
+OPSYS        - Windows XP
+CPU          - Athlon 64 3700+
+RAM          - 1024 Mb
+GRAPHIC CARD - GeForce 6200 256 Mb
+SOUND CARD   - Realtek AC'97 Audio
+
+OPSYS        - Windows 98
+CPU          - Athlon 800 MHz
+RAM          - 256 Mb
+GRAPHIC CARD - GeForce 256 32 Mb
+SOUND CARD   - SoundBlaster Live! 1024
+
+To test the application you need a PC with Windows 98 or higher
+and OpenGL installed. Hardware 3D acceleration is required and
+the resolution of the graphic card must use at least 16 bits
+mode to run the application fullscreen or in a window.
+
+To recompile the application you need the free C++ Borland
+compiler and the Code::Blocks IDE, but the use of C++ sources
+is provided only for those power-users who want to modify the
+inner workings of the engine.
+<b>Normal users can program their demos and games using scripts
+and no compiler is necessary because APOCALYX already includes
+all the tools to interpret/compile scripts.</b>
+Anyway the Borland C++ command line compiler is available for
+free and so the Code::Blocks IDE.
+For more details about the <B>Borland C++ free compiler</B>, visit
+<a href="http://www.borland.com/bcppbuilder/freecompiler/">http://www.borland.com/bcppbuilder/freecompiler/</a>
+For more details about the <B>Code::Blocks IDE</B>, visit
+<a href="http://www.codeblocks.org">http://www.codeblocks.org</a>
+
+You must have installed the latest OpenGL drivers for your
+graphic card on your machine, then no other tool is required
+because all the DLLs and libraries are included in the
+development package.
+
+
+<a name="donations"><b>2 - Donations</b>
+-------------</a>
+
+The APOCALYX Engine and all the related stuff (sources, demos and
+games) are provided for free as an open source project. I hope that
+my work benefits you as a possible learning tool of particular
+coding techniques or as an effective library to be included in your
+own programs.
+
+If you find my code useful and want to support further improvements
+of the project, you can fund it with donations. The 5% of the
+amount you are going to donate will remain to SourceForge.net
+for their great hosting service.
+
+Thank you in advance!
+
+URL for donations:
+  <a href="http://www.sourceforge.net/donate/index.php?group_id=65456">http://www.sourceforge.net/donate/index.php?group_id=65456</a>
+
+
+<a name="commercial"><b>3 - Commercial Products</b>
+-----------------------</a>
+
+Even if the APOCALYX Engine is provided for free, it includes
+several libraries that are subject to their own license.
+
+You can find an abstract of the licenses in the <a href="#librariesandtoolscopyrights">Libraries &amp; Tools</a>
+section. Not all the libraries listed below are included in any
+release of the engine. To discover which are really used in
+the executable, right click on the icon of the program to show
+the context menu, then on the "properties" item, then on the
+"version" tab: A list of libraries will appear.
+<!--
+<B>If you plan to use APOCALYX for any commercial product, be aware
+that some of the libraries require a payment for such an use, while
+no problem arise if your product is freeware (just like this engine).</B>
+
+Actually the only libraries that can't be used freely in commercial
+products are <B>FMOD</B> and <B>RakNet</B>. The first is used for music and sound
+effects but in the latest versions is not compiled in the engine,
+substituted by OpenAL, that is free. Anyway a FMOD version is
+always available on request in source form.
+The second is a networking library with useful functionalities,
+in particular for UDP connections, but in the latest versions is
+not compiled in the engine. You can replace some of its features
+with <b>LuaSocket</b>. Anyway a RakNet version is always available
+on request in source form.
+
+If you need to write code that include calls to the libraries
+listed above, visit the sites <A HREF="http://www.rakkarsoft.com">http://www.rakkarsoft.com</A> (for RakNet)
+and <A HREF="http://www.fmod.com">http://www.fmod.com</A> (for FMOD) to read more information about
+their license.
+-->
+
+<a name="acknowledgements"><b>4 - Acknowledgements</b>
+--------------------</a>
+
+I wish to thank all the people who helped in the development.
+
+First of all, I must thank Matteo &quot;Fuzz&quot; Perenzoni and his
+&quot;Apocalypse demo&quot; written for the NeHe's Apocalypse Contest
+<a href="http://nehe.gamedev.net/data/contests/contest.asp?contest=03">http://nehe.gamedev.net/data/contests/contest.asp?contest=03</a>
+The sources of his demo were the starting point for the
+APOCALYX renderer and many nice effects. 
+
+Then I must thank a lot of great internet resources about
+game programming:
+News Portals, such as
+  GameDev <a href="http://www.gamedev.net/">http://www.gamedev.net/</a> ,
+  FlipCode <a href="http://www.flipcode.net/">http://www.flipcode.net/</a> ,
+  CFXweb <a href="http://www.cfxweb.net/">http://www.cfxweb.net/</a> and
+  OpenGL.org <a href="http://www.opengl.org/">http://www.opengl.org/</a> ,
+  GPI <a href="http://www.gameprog.it/">http://www.gameprog.it/</a> ,
+Game Tutorials Sites, such as
+  NeHe <a href="http://nehe.gamedev.net/">http://nehe.gamedev.net/</a> ,
+  Game Tutorials <a href="http://www.gametutorials.com/">http://www.gametutorials.com/</a> ,
+  SULACO <a href="http://www.sulaco.co.za/">http://www.sulaco.co.za/
+</a>newsgroups, such as
+  ICGS <a href="news://it.comp.giochi.sviluppo">news://it.comp.giochi.sviluppo</a> (in italian),
+and many others. 
+
+
+<a name="howtocompile"><b>5 - How to compile</b>
+------------------</a>
+
+If you possess the <B>Borland C++ 5.51 Command Line Compiler</B>
+and the <b>Code::Blocks IDE</b> you can recompile the engine using
+the project file <I>APOCALYX.cbp</I> included in the <I>dev/src</I> folder.
+
+<B>Remember to set the include path for the resource compiler
+in <I>Code::Blocks</I> or the project will not compile.
+You can find that setting in the "<I>Settings</I>" menu, then click
+on the "<I>Compiler</I>" item, then on the "<I>Directories</I>" tab. Now
+copy the path that you can read under the "<I>Compiler</I>" tab
+and, finally, click on the "<I>Resource compiler</I>" tab. You
+must paste there the same include path already used
+for the compiler.</b>
+
+<b>Remember also that normal users can program their demos
+and games with scripts and no compiler is necessary
+because APOCALYX already includes all the tools
+to interpret/compile scripts.</b>
+
+For more details about the <B>Borland C++ free compiler</B>, visit
+<a href="http://www.borland.com/bcppbuilder/freecompiler/">http://www.borland.com/bcppbuilder/freecompiler/</a>
+For more details about the <B>Code::Blocks IDE</B>, visit
+<a href="http://www.codeblocks.org">http://www.codeblocks.org</a>
+
+
+<a name="knownbugs"><b>6 - Known Bugs</b>
+--------------</a>
+
+<B>As a rule, you can fully trust only features that
+appear in one of the demos provided with the engine.
+Report any bug that you may find using other functions.</B>
+
+If you experience severe malfunctions (system crashes),
+they are usually caused by old OpenGL drivers, thus
+visit the site of your graphic card manufacturer to
+download the latest drivers.
+Very old configurations are supported (for example,
+<I>GeForce with 32 Mb RAM on 800 MHz Athlon</I>) but
+executing some demos, tuned for a more performant
+hardware, you may experience poor frame rates.
+
+<B>The main bug that made the engine crash in the past
+on some configurations was not my fault, because it
+was caused by OpenAL. Now the implementation shipped
+with the engine is one of the latest from Creative
+that works even on my old computer with a clean
+Win98 installation and 1999 original drivers.
+If you experience problems that you think are
+caused by this version of OpenAL, I can provide
+an older version that proved to be stable on
+obsolete hardware but contains some minor bugs.
+</B>
+
+<a name="legaldisclaimer"><b>7 - Legal Disclaimer</b>
+--------------------</a>
+
+I exclude any and all implied warranties, including warranties
+of merchantability and fitness for a particular purpose. I make
+no warranty or representation, either express or implied, with
+respect to this program, its quality, performance, merchantability,
+or fitness for a particular purpose. I shall have no liability for
+special, incidental, or consequential damages arising out of or
+resulting from the use, misuse, or modification of this program.
+
+All trademarks are property of their respective owners.
+
+
+<a name="librariesandtoolscopyrights"><b>8 - Libraries &amp; Tools Copyrights</b>
+--------------------------------</a>
+
+<b>OpenGL 1.5 - 3D Graphics Library</b>
+Copyright &copy; 1996 Silicon Graphics, Inc.
+<font size="-1">License Applicability. Except to the extent portions of this file are
+made subject to an alternative license as permitted in the SGI Free
+Software License B, Version 1.1 (the "License"), the contents of this
+file are subject only to the provisions of the License. You may not use
+this file except in compliance with the License. You may obtain a copy
+of the License at Silicon Graphics, Inc., attn: Legal Services, 1600
+Amphitheatre Parkway, Mountain View, CA 94043-1351, or at:
+<a href="http://oss.sgi.com/projects/FreeB">http://oss.sgi.com/projects/FreeB</a>
+Note that, as provided in the License, the Software is distributed on an
+"AS IS" basis, with ALL EXPRESS AND IMPLIED WARRANTIES AND CONDITIONS
+DISCLAIMED, INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTIES AND
+CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A
+PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+Original Code. The Original Code is: OpenGL Sample Implementation,
+Version 1.2.1, released January 26, 2000, developed by Silicon Graphics,
+Inc. The Original Code is Copyright (c) 1991-2002 Silicon Graphics, Inc.
+Copyright in any portions created by third parties is as indicated
+elsewhere herein. All Rights Reserved.
+Additional Notice Provisions: This software was created using the
+OpenGL(R) version 1.2.1 Sample Implementation published by SGI, but has
+not been independently verified as being compliant with the OpenGL(R)
+version 1.2.1 Specification.
+</font>
+<b>SDL 1.2.11 - Simple DirectMedia Layer</b>
+Copyright &copy; 1997-2006 Sam Lantinga
+<font size="-1">The Simple DirectMedia Layer (SDL for short) is a cross-platfrom
+library designed to make it easy to write multi-media software,
+such as games and emulators.
+The Simple DirectMedia Layer library source code
+is available from: <A HREF="http://www.libsdl.org/">http://www.libsdl.org/</A>
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</font>
+<b>OpenAL 1.1 - Cross Platform Audio Library</b>
+Copyright &copy; 2005 by authors
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Library General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Library General Public License for more details.
+You should have received a copy of the GNU Library General Public
+License along with this library; if not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.
+Or go to <a href="http://www.gnu.org/copyleft/lgpl.html">http://www.gnu.org/copyleft/lgpl.html</a>
+</font><!-- 
+<b>FMOD 3.74 - Music and Sound Effects System</b>
+Copyright &copy; 1994-2004 FireLight Multimedia
+<font size="-1">FMOD's names, sources, documentation and binaries contained within the 
+distributed archive are copyright © Firelight Technologies, Pty, Ltd. 
+1994-2004.
+The contents of the FMOD distribution archive may not be redistributed, 
+reproduced, modified, transmitted, broadcast, published or adapted in any 
+way, shape or form, without the prior written consent of the owner, 
+Firelight Technologies, be it by tangible or non tangible media.
+The fmod.dll file may be redistributed without the authors prior permission, 
+and must remain unmodified.  The use of dll 'static linking' tools that aim
+to hide the fmod library are forbidden.
+FMOD may not be used in a commercial product, or product that directly or
+indirectly receives income with the aid of the FMOD sound library, without
+a commercial license from Firelight Technologies.  Releasing a product
+without a commercial license in this instance is a breach of the FMOD EULA
+and parties who violate this license will be prosecuted under the full 
+extent of the law.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</font> -->
+<b>LUA 5.1.1 - Script Language Library</b>
+Copyright &copy; 1994-2006 by Lua.org, PUC-Rio
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>toLua++ 1.0.92 - LUA Bindings Library</b>
+Copyright &copy; 2003 by Waldemar Celes, Ariel Manzur
+<font size="-1">This code is free software; you can redistribute it and/or modify it.
+The software provided hereunder is on an "as is" basis, and
+the author has no obligation to provide maintenance, support, updates,
+enhancements, or modifications.
+</font>
+<b>Etwork 0.4 - Common-sense Networking Library</b>
+Copyright &copy; 2006 Jon Watte
+<font size="-1">MIT open source license. It is provided with NO WARRANTY and 
+NO GUARANTEE of merchantability or fitness for a particular 
+purpose, free of charge.
+</font>
+<b>LuaSocket 2.0.1 - LUA Networking Library</b>
+Copyright &copy; 2004-2006 Diego Nehab
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+</font>
+<b>LuaSQL 2.0.2 - LUA Database Connectivity Library</b>
+Copyright &copy; 2003-2006 The Kepler Project
+<font size="-1">LuaSQL is free software: it can be used for both academic
+and commercial purposes at absolutely no cost. There are no royalties or
+GNU-like "copyleft" restrictions. LuaSQL qualifies as Open Source software.
+Its licenses are compatible with GPL. LuaSQL is not in the public domain
+and the <A HREF="http://www.keplerproject.org/">Kepler Project</A> keep its copyright. The legal details are below.
+The spirit of the license is that you are free to use LuaSQL for any purpose
+at no cost without having to ask us. The only requirement is that if you do
+use LuaSQL, then you should give us credit by including the appropriate
+copyright notice somewhere in your product or its documentation.
+The LuaSQL library is designed and implemented by the <A HREF="http://www.keplerproject.org/">Kepler Project</A> team.
+The implementation is not derived from licensed software.
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>SQLite 3 - SQL Database Manager</b>
+<font size="-1">The author disclaims copyright to this source code.  In place of
+a legal notice, here is a blessing:
+May you do good and not evil.
+May you find forgiveness for yourself and forgive others.
+May you share freely, never taking more than you give.
+</font>
+<b>ScriptBasic 2.0 - Scripting Language Library</b>
+Copyright &copy; 1997-2007 Peter Verhas
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</font>
+<!-- <b>AngelCode 2.4.1c - Scripting Language Library</b>
+Copyright &copy; 2003-2006 Andreas Jönsson
+<font size="-1">This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any
+damages arising from the use of this software.
+Permission is granted to anyone to use this software for any
+purpose, including commercial applications, and to alter it and
+redistribute it freely, subject to the following restrictions:
+1. The origin of this software must not be misrepresented; you
+   must not claim that you wrote the original software. If you use
+   this software in a product, an acknowledgment in the product
+   documentation would be appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and
+   must not be misrepresented as being the original software.
+3. This notice may not be removed or altered from any source
+   distribution.
+</font>
+<b>CSL 4.4.0 - Scripting Language Library</b>
+Copyright &copy; 2001-2002 IBK-Landquart-Switzerland
+<font size="-1">This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License version 2 as published by
+the Free Software Foundation.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+more details.
+</font>
+<b>SMALL 1.8 - Scripting Language Library</b>
+Copyright &copy; 1997-2003 by ITB CompuPhase
+<font size="-1">The software toolkit "Small" (the compiler, the abstract machine and the
+documentation) are copyright (c) 1997-2003 by ITB CompuPhase. The Intel
+assembler implementation of the abstract machine and the just-in-time
+compiler (specifically the files AMXEXEC.ASM, AMXEXECN.ASM, JITR.ASM and
+JITS.ASM) are copyright (c) 1998-2003 Marc Peter.
+Small is distributed under the "zLib/libpng" license, which is reproduced
+below:
+This software is provided "as-is", without any express or implied warranty.
+In no event will the authors be held liable for any damages arising from
+the use of this software.
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software in
+   a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not
+   be misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+The zLib/libpng license has been approved by the "Open Source Initiative"
+organization.
+</font>
+--><b>TinyCC 0.9.23 - ANSI C Compiler</b>
+Copyright &copy; 2001-2004 Fabrice Bellard
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</font>
+<b>Flat Assembler 1.64 - x86 Assembler</b>
+Copyright &copy;  1999-2005 Tomasz Grysztar.
+<font size="-1">This program is free for commercial and non-commercial use as long as
+the following conditions are adhered to.
+Copyright remains Tomasz Grysztar, and as such any Copyright notices
+in the code are not to be removed.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE REGENTS OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+The licence and distribution terms for any publically available
+version or derivative of this code cannot be changed. i.e. this code
+cannot simply be copied and put under another distribution licence
+(including the GNU Public Licence).
+</font>
+<b>IUP 2.5 - A Portable User Interface Toolkit</b>
+Copyright &copy; 1994-2005 Tecgraf/PUC-Rio and PETROBRAS S/A.
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>CD 4.4 - A 2D Graphics Library</b>
+Copyright &copy; 1994-2005 Tecgraf/PUC-Rio and PETROBRAS S/A.
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>IM 3.3 - An Imaging Toolkit</b>
+Copyright &copy; 1994-2007 Tecgraf/PUC-Rio and PETROBRAS S/A.
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font><!-- <b>CeGUI 0.5 - GUI Framework</b>
+Copyright &copy; 2004-2006 Paul D Turner & The CEGUI Development Team
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>PCRE 6.7 - Perl-Compatible Regular Expressions</b>
+Copyright &copy;  1997-2005 University of Cambridge.
+<font size="-1">Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+* Neither the name of the University of Cambridge nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+</font> -->
+<b>FreeType 2.2.1 - TrueType Font Engine</b>
+Copyright &copy; 1996-2001, 2002, 2003, 2004, 2005, 2006 by
+David Turner, Robert Wilhelm, and Werner Lemberg.
+<font size="-1">This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the
+Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+</font>
+<b>FTGL 2.1.2 - FreeType Fonts Drawing in OpenGL</b>
+Copyright &copy; 2001-2003 Henry Maddocks
+<font size="-1">Herewith is a license. I've also chucked in a LGPL license
+for those that are that way inclined. Basically I want you to use this
+software and if you think this license is preventing you from doing so
+let me know. 
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>OGLFT 0.9 - FreeType Fonts Drawing in OpenGL</b>
+Copyright &copy; 2002 lignum Computing, Inc.
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+</font>
+<b>GLE 3.1.0 - OpenGL Extruded Surfaces</b>
+Copyright &copy; 2000 Linas Vepstas
+<font size="-1">This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the
+Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+</font>
+<b>AntTweakBar 1.04 - Light GUI to Tweak Apps</b>
+Copyright &copy; 2005 Philippe Decaudin
+<font size="-1">This software is provided ‘as-is’, without any express or implied warranty. 
+In no event will the authors be held liable for any damages arising from 
+the use of this software.
+Permission is granted to anyone to use this software for any purpose, 
+including commercial applications, and to alter it and redistribute it freely, 
+subject to the following restrictions:
+1. The origin of this software must not be misrepresented; you must not claim 
+  that you wrote the original software. If you use this software in a product, 
+  an acknowledgment in the product documentation would be appreciated.
+2. Altered versions must be plainly marked as such, and must not be 
+  misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+</font>
+<b>GLGooey 0.1 - GUI for OpenGL</b>
+Copyright &copy; 2004 by Niel Waldren
+<font size="-1">This software is provided 'as-is', without any express or implied warranty.
+In no event will the authors be held liable for any damages arising from
+the use of this software.
+Permission is granted to anyone to use this software for any purpose, including
+commercial applications, and to alter it and redistribute it freely, subject to
+the following restrictions:
+1. The origin of this software must not be misrepresented; you must not claim
+   that you wrote the original software. If you use this software in a product,
+   an acknowledgment in the product documentation would be appreciated but is
+   not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution. 
+</font><!-- <b>LibUFO 0.8.4 - GUI for OpenGL</b>
+Copyright &copy; 2001-2005 by Johannes Schmidt
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+</font> -->
+<b>TinyXML 2.0 - XML Parser</b>
+Copyright &copy; 2000-2002 Lee Thomason
+<font size="-1">This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any
+damages arising from the use of this software.
+Permission is granted to anyone to use this software for any
+purpose, including commercial applications, and to alter it and
+redistribute it freely, subject to the following restrictions:
+1. The origin of this software must not be misrepresented; you must
+   not claim that you wrote the original software. If you use this
+   software in a product, an acknowledgment in the product documentation
+   would be appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and
+   must not be misrepresented as being the original software.
+3. This notice may not be removed or altered from any source
+   distribution.
+</font><!-- <b>wxWidgets 2.8.0 - Graphical User Interface</b>
+Copyright &copy; 1992-2006 Julian Smart, Robert Roebling et al
+<font size="-1">WXWINDOWS 3.1 LIBRARY LICENCE
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+This library is free software; you can redistribute it and/or modify it
+under the terms of the GNU Library General Public Licence as published by
+the Free Software Foundation; either version 2 of the Licence, or (at
+your option) any later version.
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library
+General Public Licence for more details.
+You should have received a copy of the GNU Library General Public Licence
+along with this software, usually in a file named COPYING.LIB.  If not,
+write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+Boston, MA 02111-1307 USA.
+EXCEPTION NOTICE
+1. As a special exception, the copyright holders of this library give
+permission for additional uses of the text contained in this release of
+the library as licenced under the wxWindows Library Licence, applying
+either version 3.1 of the Licence, or (at your option) any later version of
+the Licence as published by the copyright holders of version
+3.1 of the Licence document.
+2. The exception is that you may use, copy, link, modify and distribute
+under your own terms, binary object code versions of works based
+on the Library.
+3. If you copy code from files distributed under the terms of the GNU
+General Public Licence or the GNU Library General Public Licence into a
+copy of this library, as this licence permits, the exception does not
+apply to the code that you add in this way.  To avoid misleading anyone as
+to the status of such modified files, you must delete this exception
+notice from such code and/or adjust the licensing conditions notice
+accordingly.
+4. If you write modifications of your own for this library, it is your
+choice whether to permit this exception to apply to your modifications. 
+If you do not wish that, you must delete the exception notice from such
+code and/or adjust the licensing conditions notice accordingly.
+</font>
+<b>wxLua 2.8.0 - Lua binding for wxWidgets</b>
+Copyright &copy; 2001-2002 Lomtick Software
+<font size="-1">WXWINDOWS 3.1 LIBRARY LICENCE
+TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+This library is free software; you can redistribute it and/or modify it
+under the terms of the GNU Library General Public Licence as published by
+the Free Software Foundation; either version 2 of the Licence, or (at
+your option) any later version.
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Library
+General Public Licence for more details.
+You should have received a copy of the GNU Library General Public Licence
+along with this software, usually in a file named COPYING.LIB.  If not,
+write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330,
+Boston, MA 02111-1307 USA.
+EXCEPTION NOTICE
+1. As a special exception, the copyright holders of this library give
+permission for additional uses of the text contained in this release of
+the library as licenced under the wxWindows Library Licence, applying
+either version 3.1 of the Licence, or (at your option) any later version of
+the Licence as published by the copyright holders of version
+3.1 of the Licence document.
+2. The exception is that you may use, copy, link, modify and distribute
+under your own terms, binary object code versions of works based
+on the Library.
+3. If you copy code from files distributed under the terms of the GNU
+General Public Licence or the GNU Library General Public Licence into a
+copy of this library, as this licence permits, the exception does not
+apply to the code that you add in this way.  To avoid misleading anyone as
+to the status of such modified files, you must delete this exception
+notice from such code and/or adjust the licensing conditions notice
+accordingly.
+4. If you write modifications of your own for this library, it is your
+choice whether to permit this exception to apply to your modifications. 
+If you do not wish that, you must delete the exception notice from such
+code and/or adjust the licensing conditions notice accordingly.
+</font>
+<b>Expat 1.95.6 - XML Parser</b>
+Copyright &copy; 2001-2002 1998, 1999, 2000 Thai Open Source
+Software Center Ltd and Clark Cooper
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>Regex 8.4.5 - Perl-Compatible Regular Expressions</b>
+Copyright &copy;  1998, 1999 Henry Spencer
+<font size="-1">Development of this software was funded, in part, by Cray Research Inc.,
+UUNET Communications Services Inc., Sun Microsystems Inc., and Scriptics
+Corporation, none of whom are responsible for the results.  The author
+thanks all of them. 
+Redistribution and use in source and binary forms -- with or without
+modification -- are permitted for any purpose, provided that
+redistributions in source form retain this entire copyright notice and
+indicate the origin and nature of any modifications.
+I'd appreciate being given credit for this package in the documentation
+of software which uses it, but that is not a requirement.
+THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL
+HENRY SPENCER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</font> -->
+<b>GD 2.0.33 - A graphics library for fast image creation</b>
+COPYRIGHT STATEMENT FOLLOWS THIS LINE
+<font size="-1">Portions copyright 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+2002 by Cold Spring Harbor Laboratory. Funded under Grant
+P41-RR02188 by the National Institutes of Health. 
+Portions copyright 1996, 1997, 1998, 1999, 2000, 2001, 2002 by
+Boutell.Com, Inc. 
+Portions relating to GD2 format copyright 1999, 2000, 2001, 2002
+Philip Warner.
+Portions relating to PNG copyright 1999, 2000, 2001, 2002 Greg
+Roelofs. 
+Portions relating to gdttf.c copyright 1999, 2000, 2001, 2002 John  
+Ellson (ellson@lucent.com).
+Portions relating to gdft.c copyright 2001, 2002 John Ellson  
+(ellson@lucent.com).  
+Portions relating to JPEG and to color quantization copyright 2000,
+2001, 2002, Doug Becker and copyright (C) 1994, 1995, 1996, 1997,
+1998, 1999, 2000, 2001, 2002, Thomas G. Lane. This software is
+based in part on the work of the Independent JPEG Group. See the
+file README-JPEG.TXT for more information.
+Portions relating to WBMP copyright 2000, 2001, 2002 Maurice
+Szmurlo and Johan Van den Brande.
+Permission has been granted to copy, distribute and modify gd in
+any context without fee, including a commercial application,
+provided that this notice is present in user-accessible supporting
+documentation.
+This does not affect your ownership of the derived work itself, and 
+the intent is to assure proper credit for the authors of gd, not to
+interfere with your productive use of gd. If you have questions,
+ask. "Derived works" includes all programs that utilize the   
+library. Credit must be given in user-accessible documentation.
+This software is provided "AS IS." The copyright holders disclaim  
+all warranties, either express or implied, including but not
+limited to implied warranties of merchantability and fitness for a
+particular purpose, with respect to this code and accompanying  
+documentation.
+Although their code does not appear in gd, the authors wish to thank
+David Koblas, David Rowley, and Hutchison Avenue Software Corporation
+for their prior contributions.
+</font>END OF COPYRIGHT STATEMENT
+
+<b>luagd 2.0.33 - GD bindings for Lua</b>
+Copyright &copy; 2004-06 Alexandre Erwin Ittner
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+If you use this package in a product, an acknowledgment in the product
+documentation would be greatly appreciated (but it is not required).
+</font>
+<b>luaGL 1.01 - OpenGL bindings for Lua</b>
+Copyright &copy; 2003-04 Fabio Guerra and Cleyde Marlyse
+<font size="-1">Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</font>
+<b>TXSynth 1.0 - A 2D texture generator/synthesizer</b>
+Copyright &copy; 2002 Marcus Geelnard
+<font size="-1">This software is provided "as-is", without any express or implied
+warranty, without even the implied warranty of fitness for a particular
+purpose. In no event will the author be held liable for any damage
+araising from the use of this software.
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+1. You must not claim that you wrote this software.
+2. If you modify any parts of this software, it must be clearly stated
+   which modifications have been made, and that those modifications are
+   not the work of the author of this software.
+3. If you use this software in a product, an acknowledgment in the
+   product documentation would be appreciated, but is not required.
+4. This notice may not be removed or altered from any source
+   distribution of this software.
+</font>
+<b>libNoise 0.9.0 - Coherent noise generator</b>
+Copyright &copy; 2003, 2004 Jason Bevins
+<font size="-1">This library is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or (at
+your option) any later version.
+This library is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public
+License for more details.
+You should have received a copy of the GNU Lesser General Public License
+along with this library; if not, write to the Free Software Foundation,
+Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+</font>
+<b>MAPM 4.9.5 - Mike's Arbitrary Precision Math</b>
+Copyright &copy; 1999, 2007 Michael C. Ring
+<font size="-1">Permission to use, copy, and distribute this software and its
+documentation for any purpose with or without fee is hereby granted,
+provided that the above copyright notice appear in all copies and
+that both that copyright notice and this permission notice appear
+in supporting documentation.
+Permission to modify the software is granted. Permission to distribute
+the modified code is granted. Modifications are to be distributed by
+using the file 'license.txt' as a template to modify the file header.
+'license.txt' is available in the official MAPM distribution.
+To distribute modified source code, insert the file 'license.txt'
+at the top of all modified source code files and edit accordingly.
+This software is provided "as is" without express or implied warranty.
+</font>
+<b>SimulAxion 0.8 - Particle Based Physics Library</b>
+Copyright &copy; 2001-2006 Leonardo Boselli
+<font size="-1">This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the
+Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+</font>
+<b>Open Dynamics Engine 0.5 - Physics Library</b>
+Copyright &copy; 2001,2002 Russell L. Smith
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of EITHER:
+(1) The GNU Lesser General Public License as published by the Free
+    Software Foundation; either version 2.1 of the License, or (at
+    your option) any later version. The text of the GNU Lesser
+    General Public License is included with this library in the
+    file LICENSE.TXT.
+(2) The BSD-style license that is included with this library in
+    the file LICENSE-BSD.TXT.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the files
+LICENSE.TXT and LICENSE-BSD.TXT for more details.
+</font>
+<b>ColDet 1.1 - Collision Detection Library</b>
+Copyright &copy; 2000 Amir Geva
+<font size="-1">This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Library General Public
+License as published by the Free Software Foundation; either
+version 2 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Library General Public License for more details.
+You should have received a copy of the GNU Library General Public
+License along with this library; if not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+Boston, MA  02111-1307, USA.
+</font>
+<b>Particle 2.1 - Particle System API</b>
+Copyright &copy; 1997-2006 David K. McAllister
+<font size="-1">The Particle System API is distributed under the GNU LGPL.
+</font>
+<b>Cal3D 0.10 - Character Animation Library</b>
+Copyright &copy; 2001-2005 Cal3D Team
+<font size="-1">This library is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or (at
+your option) any later version.
+</font>
+<b>Stellarium 0.4.7 - Realistic Sky Renderer</b>
+Copyright &copy; 2002 Fabien Chéreau
+<font size="-1">This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+</font><!--
+<b>libMini 8.2 - Terrain Rendering Library</b>
+Copyright &copy; 1995-2007 by Stefan Roettger
+<font size="-1">The terrain renderer is licensed under the terms of the LGPL 2.1.
+Any commercial use of the code or parts of it requires the EXPLICIT
+<A HREF="mailto:stefan@stereofx.org">permission of the author</A>! No warranty WHATSOEVER is expressed;
+not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE!
+</font> -->
+<b>FSM 2.0.0 - Finite State Machine Library</b>
+Copyright &copy; 2002 Siemens C-LAB Paderborn
+<font size="-1">This program is  free  software;  you can redistribute it and/or modify it
+under the terms of the  GNU Lesser General Public License  as published by 
+the  Free Software Foundation;  either version 2.1 of the License,  or (at 
+your option) any later version.
+This  program  is  distributed in  the  hope that it will  be useful,  but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or  FITNESS FOR A  PARTICULAR PURPOSE.  See the  GNU Lesser General Public  
+License for more details.
+You should  have received  a copy of the GNU Lesser General Public License
+along with  this program;  if not, write to the  Free Software Foundation,
+Inc., 675 Mass Ave, Cambridge, MA 02139, USA. 
+</font>
+<b>MicroPather 1.1.0 - A* Path Finding Library</b>
+Copyright &copy; 2000-2005 Lee Thomason
+<font size="-1">Grinning Lizard Utilities (<A HREF="www.grinninglizard.com">www.grinninglizard.com</A>)
+This software is provided 'as-is', without any express or implied 
+warranty. In no event will the authors be held liable for any 
+damages arising from the use of this software.
+Permission is granted to anyone to use this software for any 
+purpose, including commercial applications, and to alter it and 
+redistribute it freely, subject to the following restrictions:
+1. The origin of this software must not be misrepresented; you must 
+not claim that you wrote the original software. If you use this 
+software in a product, an acknowledgment in the product documentation 
+would be appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and 
+must not be misrepresented as being the original software.
+3. This notice may not be removed or altered from any source 
+distribution.
+</font>
+<b>OpenSteer 0.8.2 - Steering Behaviors for Autonomous Characters</b>
+Copyright &copy; 2002-2003, Sony Computer Entertainment America
+<font size="-1">Original author: Craig Reynolds <craig_reynolds@playstation.sony.com>
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+</font><!-- <b>Glulxe 0.4.0 - Interpreter for Glulx games</b>
+Copyright &copy; 1999-2004 Andrew Plotkin
+<font size="-1">Designed by Andrew Plotkin &lt;<A HREF="erkyrath@eblong.com">erkyrath@eblong.com</A>&gt;
+<A HREF="http://www.eblong.com/zarf/glk/index.html">http://www.eblong.com/zarf/glk/index.html</A>
+This file is copyright 1998-2004 by Andrew Plotkin. You may copy,
+distribute, and incorporate it into your own programs, by any means
+and under any conditions, as long as you do not modify it. You may
+also modify this file, incorporate it into your own programs,
+and distribute the modified version, as long as you retain a notice
+in your program or documentation which mentions my name and the URL
+shown above.
+</font> -->
+<b>eSpeak 1.17 - Speech Synthesizer</b>
+Copyright &copy; 2005,2006 by Jonathan Duddington
+<font size="-1">This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the
+Free Software Foundation, Inc.,
+59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+</font><!-- <b>RakNet 2.412 - Networking Library</b>
+Copyright &copy; 2003 Rakkarsoft LLC and Kevin Jenkins
+<font size="-1">Usage of Raknet is subject to the appropriate licence agreement.
+"Shareware" Licensees with Rakkarsoft LLC are subject to the
+shareware license found at
+<a href=http://www.rakkarsoft.com/shareWareLicense.html>http://www.rakkarsoft.com/shareWareLicense.html</a> which you agreed
+to upon purchase of a "Shareware license"
+"Commercial" Licensees with Rakkarsoft LLC are subject to the
+commercial license found at
+<a href=http://www.rakkarsoft.com/sourceCodeLicense.html>http://www.rakkarsoft.com/sourceCodeLicense.html</a> which you agreed
+to upon purchase of a "Commercial license"
+Custom license users are subject to the terms therein.
+All other users are subject to the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version.
+Refer to the appropriate license agreement for distribution,
+modification, and warranty rights.
+</font>
+<b>Speex 1.1.4 - Voice Codec Library</b>
+Copyright &copy; 2002 Jean-Marc Valin
+<font size="-1">Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+- Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+- Neither the name of the Xiph.org Foundation nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</font> -->
+<b>Ogg 1.1 Vorbis 1.0.1 - Music Codec Library</b>
+Copyright &copy; 2002, Xiph.org Foundation
+<font size="-1">Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+- Redistributions of source code must retain the above copyright
+  notice, this list of conditions and the following disclaimer.
+- Redistributions in binary form must reproduce the above copyright
+  notice, this list of conditions and the following disclaimer in the
+  documentation and/or other materials provided with the distribution.
+- Neither the name of the Xiph.org Foundation nor the names of its
+  contributors may be used to endorse or promote products derived from
+  this software without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION
+OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</font>
+<b>zLib 1.2.3 - Compression Library</b>
+Copyright &copy; 1995-2005 Jean-loup Gailly and Mark Adler
+<font size="-1">This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+</font>
+<b>LibJPEG 6b - Jpeg image format library</b>
+Copyright &copy; 1991-1998, Thomas G. Lane
+<font size="-1">The authors make NO WARRANTY or representation, either express or implied,
+with respect to this software, its quality, accuracy, merchantability, or
+fitness for a particular purpose.  This software is provided "AS IS", and you,
+its user, assume the entire risk as to its quality and accuracy.
+Permission is hereby granted to use, copy, modify, and distribute this
+software (or portions thereof) for any purpose, without fee, subject to these
+conditions:
+(1) If any part of the source code for this software is distributed, then this
+README file must be included, with this copyright and no-warranty notice
+unaltered; and any additions, deletions, or changes to the original files
+must be clearly indicated in accompanying documentation.
+(2) If only executable code is distributed, then the accompanying
+documentation must state that "this software is based in part on the work of
+the Independent JPEG Group".
+(3) Permission for use of this software is granted only if the user accepts
+full responsibility for any undesirable consequences; the authors accept
+NO LIABILITY for damages of any kind.
+These conditions apply to any software derived from or based on the IJG code,
+not just to the unmodified library.  If you use our work, you ought to
+acknowledge us.
+Permission is NOT granted for the use of any IJG author's name or company name
+in advertising or publicity relating to this software or products derived from
+it.  This software may be referred to only as "the Independent JPEG Group's
+software".
+We specifically permit and encourage the use of this software as the basis of
+commercial products, provided that all warranty or liability claims are
+assumed by the product vendor.
+</font>
+<b>LibPNG 1.2.18 - PNG image format library</b>
+Copyright &copy; 1998-2007 Glenn Randers-Pehrson
+<font size="-1">The PNG Reference Library is supplied "AS IS".  The Contributing Authors
+and Group 42, Inc. disclaim all warranties, expressed or implied,
+including, without limitation, the warranties of merchantability and of
+fitness for any purpose.  The Contributing Authors and Group 42, Inc.
+assume no liability for direct, indirect, incidental, special, exemplary,
+or consequential damages, which may result from the use of the PNG
+Reference Library, even if advised of the possibility of such damage.
+Permission is hereby granted to use, copy, modify, and distribute this
+source code, or portions hereof, for any purpose, without fee, subject
+to the following restrictions:
+1. The origin of this source code must not be misrepresented.
+2. Altered versions must be plainly marked as such and must not be
+   misrepresented as being the original source.
+3. This Copyright notice may not be removed or altered from any source or
+   altered source distribution.
+The Contributing Authors and Group 42, Inc. specifically permit, without
+fee, and encourage the use of this source code as a component to
+supporting the PNG file format in commercial products.
+</font>
+<b>LibTIFF 3.6.1-3 - TIFF image format library</b>
+Copyright &copy; 1988-1997 Sam Leffler
+Copyright &copy; 1991-1997 Silicon Graphics, Inc.
+<font size="-1">Permission to use, copy, modify, distribute, and sell this software and 
+its documentation for any purpose is hereby granted without fee, provided
+that (i) the above copyright notices and this permission notice appear in
+all copies of the software and related documentation, and (ii) the names of
+Sam Leffler and Silicon Graphics may not be used in any advertising or
+publicity relating to the software without the specific, prior written
+permission of Sam Leffler and Silicon Graphics.
+THE SOFTWARE IS PROVIDED "AS-IS" AND WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS, IMPLIED OR OTHERWISE, INCLUDING WITHOUT LIMITATION, ANY 
+WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.  
+IN NO EVENT SHALL SAM LEFFLER OR SILICON GRAPHICS BE LIABLE FOR
+ANY SPECIAL, INCIDENTAL, INDIRECT OR CONSEQUENTIAL DAMAGES OF ANY KIND,
+OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+WHETHER OR NOT ADVISED OF THE POSSIBILITY OF DAMAGE, AND ON ANY THEORY OF 
+LIABILITY, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE 
+OF THIS SOFTWARE.
+</font>
+<b>Media Resources</b>
+All the resources that appear in the demos (e.g. textures, models,
+sound effects, midi files) may be followed by a &quot;readme&quot; file that
+gives credits to their respective authors. Before using that
+resources in your own programs, read which conditions apply,
+in particular when COMMERCIAL use is planned.
+If you can't find any specific &quot;readme&quot; for a resource that you
+wish to use, ask to me directly and I'll try to track the history
+of the resource to see if commercial use is permitted.
+
+
+<a name="termsforuse"><b>9 - Terms for use (Part of license)</b>
+-----------------</a>
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of
+the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public
+License along with this library; if not, write to the
+Free Software Foundation, Inc.,
+675 Mass Ave, Cambridge, MA 02139, USA.
+
+
+<a name="contactinformation"><b>9 - Contact information</b>
+-----------------------</a>
+
+You may contact me in the following manners:
+
+* Send mail to:
+
+    Leonardo Boselli
+    Via Diano Calderina, 7
+    18100 Imperia
+    ITALY
+
+* Send E-mail to:
+
+    <a href="mailto:tetractys@users.sourceforge.net">tetractys@users.sf.net</a>
+
+* On the World Wide Web:
+
+ APOCALYX Engine: <a href="http://apocalyx.sourceforge.net">http://apocalyx.sourceforge.net</a>
+ </pre>

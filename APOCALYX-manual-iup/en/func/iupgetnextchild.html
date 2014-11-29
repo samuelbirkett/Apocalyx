@@ -1,0 +1,86 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupDetach</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupGetNextChild</h2>
+<blockquote>
+  <p>Returns the children of the given control. </p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Parameters/Return</span></h3>
+<blockquote>
+  <div dir="ltr">
+    <pre>Ihandle *IupGetNextChild(Ihandle *<strong>parent</strong>, Ihandle *<strong>lastchild</strong>); [in C]
+iup.GetNextChild(<strong>parent, lastchild</strong>: ihandle) -&gt; <strong>ret</strong>: ihandle [in Lua]</pre>
+  </div>
+  <div dir="ltr">
+    <pre><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA; font-weight:700">parent</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Identifier of an interface control.</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA; font-weight:700">
+lastchild</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Identifier of the last interface control returned by the function.</span></pre>
+  </div>
+</blockquote>
+<h3>Note</h3>
+<blockquote>
+  <p>This function will return the children of the control in the exact same order in which they were assigned. To get 
+  the first child use <code>lastchild=NULL</code>.</p>
+</blockquote>
+<h3>Example</h3>
+<blockquote>
+  <pre dir="ltr">/* Lists all children of a IupVbox */</pre>
+  <pre dir="ltr">#include &lt;stdio.h&gt;
+#include &quot;iup.h&quot;
+
+int main()
+{
+  Ihandle *dialog, *bt, *lb, *vbox, *tmp = NULL;
+
+  IupOpen();
+
+  bt = IupButton(&quot;Button&quot;, &quot;&quot;);
+  lb = IupLabel(&quot;Label&quot;);
+
+  vbox = IupVbox(bt, lb, NULL);
+
+  dialog = IupDialog(vbox);
+  IupShow(dialog);
+
+  while(1)
+  {
+    tmp = IupGetNextChild(vbox, tmp);
+    if(tmp)
+      printf(&quot;vbox has a child of type %s\n&quot;, IupGetType(tmp));
+    else
+      break;
+  }
+
+  IupMainLoop();
+  IupClose();
+
+  return 0;
+}</pre>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="iupgetbrother.html">IupGetBrother</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

@@ -1,0 +1,1113 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Codificação do Teclado no IUP</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3><strong>Keyboard Codes</strong></h3>
+<blockquote>
+  <p>The table below shows the IUP codification of every key in the keyboard. 
+  Each key is represented by an integer value, defined in the iupkey.h file, 
+  which must be included in the application. Normally these keys are used in 
+  K_ANY and KEYPRESS_CB callbacks to inform the key that was pressed in the 
+  keyboard.</p>
+  <p>IUP uses the US default codification this means that if you installed a 
+  keyboard specific for your country the key codes will be different from the 
+  real keys for a small group of keys. Except for the Brazilian ABNT keyboard 
+  which works in Windows and Linux. This does not affect the IupText and 
+  IupMultiline text input.</p>
+  <p>Notice that somes key combinations are not available, like: Shift+Ins, 
+  Shift+Del, Alt+Space, Alt/Ctrl/Shift+Backspace, Alt/Ctrl/Shift+Pause, 
+  Alt/Ctrl/Shift+Esc, Ctrl/Alt+Enter. When CapsLock is active the Shift+&lt;Key&gt; 
+  combination is used, except for Esc and Backspace that will ignore the 
+  combination.</p>
+  <p>The <code>isxkey(key)</code> macro defined in the <b>&lt;iupkey.h&gt;</b> file 
+  informs whether a given key is an extended code instead of an alphanumeric 
+  key. This macro is also available in Lua as a function with the same name.</p>
+  <p>In IUP the codification implies that some keys have the same code:
+  <font face="Courier New">K_BS=K_cH</font>, <font face="Courier New">K_TAB=K_cI</font> 
+  and <font face="Courier New">K_CR=K_cM</font>.</p>
+  <table border="0" cellpadding="0" cellspacing="5">
+    <tr>
+      <td valign="top">
+      <table border="1" cellpadding="7" cellspacing="1">
+        <tr>
+          <th>Key</th>
+          <th>Code /<br>
+          Attribute</th>
+        </tr>
+        <tr>
+          <td>SPACE</td>
+          <td><font face="Courier New">K_SP</font></td>
+        </tr>
+        <tr>
+          <td>!</td>
+          <td><font face="Courier New">K_exclam</font></td>
+        </tr>
+        <tr>
+          <td>&quot;</td>
+          <td><font face="Courier New">K_quotedbl</font></td>
+        </tr>
+        <tr>
+          <td>#</td>
+          <td><font face="Courier New">K_numbersign</font></td>
+        </tr>
+        <tr>
+          <td>$</td>
+          <td><font face="Courier New">K_dollar</font></td>
+        </tr>
+        <tr>
+          <td>%</td>
+          <td><font face="Courier New">K_percent</font></td>
+        </tr>
+        <tr>
+          <td>&amp;</td>
+          <td><font face="Courier New">K_ampersand</font></td>
+        </tr>
+        <tr>
+          <td>'</td>
+          <td><font face="Courier New">K_apostrophe</font></td>
+        </tr>
+        <tr>
+          <td>(</td>
+          <td><font face="Courier New">K_parentleft</font></td>
+        </tr>
+        <tr>
+          <td>)</td>
+          <td><font face="Courier New">K_parentright</font></td>
+        </tr>
+        <tr>
+          <td>*</td>
+          <td><font face="Courier New">K_asterisk</font></td>
+        </tr>
+        <tr>
+          <td>+</td>
+          <td><font face="Courier New">K_plus</font></td>
+        </tr>
+        <tr>
+          <td>,</td>
+          <td><font face="Courier New">K_comma</font></td>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td><font face="Courier New">K_minus</font></td>
+        </tr>
+        <tr>
+          <td>.</td>
+          <td><font face="Courier New">K_period</font></td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td><font face="Courier New">K_slash</font></td>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td><font face="Courier New">K_0</font></td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td><font face="Courier New">K_1</font></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><font face="Courier New">K_2</font></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><font face="Courier New">K_3</font></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><font face="Courier New">K_4</font></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><font face="Courier New">K_5</font></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><font face="Courier New">K_6</font></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><font face="Courier New">K_7</font></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><font face="Courier New">K_8</font></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><font face="Courier New">K_9</font></td>
+        </tr>
+        <tr>
+          <td>:</td>
+          <td><font face="Courier New">K_colon</font></td>
+        </tr>
+        <tr>
+          <td>;</td>
+          <td><font face="Courier New">K_semicolon</font></td>
+        </tr>
+        <tr>
+          <td>&lt;</td>
+          <td><font face="Courier New">K_less</font></td>
+        </tr>
+        <tr>
+          <td>=</td>
+          <td><font face="Courier New">K_equal</font></td>
+        </tr>
+        <tr>
+          <td>&gt;</td>
+          <td><font face="Courier New">K_greater</font></td>
+        </tr>
+        <tr>
+          <td>?</td>
+          <td><font face="Courier New">K_question</font></td>
+        </tr>
+        <tr>
+          <td>@</td>
+          <td><font face="Courier New">K_at</font></td>
+        </tr>
+        <tr>
+          <td>A</td>
+          <td><font face="Courier New">K_A</font></td>
+        </tr>
+        <tr>
+          <td>B</td>
+          <td><font face="Courier New">K_B</font></td>
+        </tr>
+        <tr>
+          <td>C</td>
+          <td><font face="Courier New">K_C</font></td>
+        </tr>
+        <tr>
+          <td>D</td>
+          <td><font face="Courier New">K_D</font></td>
+        </tr>
+        <tr>
+          <td>E</td>
+          <td><font face="Courier New">K_E</font></td>
+        </tr>
+        <tr>
+          <td>F</td>
+          <td><font face="Courier New">K_F</font></td>
+        </tr>
+        <tr>
+          <td>G</td>
+          <td><font face="Courier New">K_G</font></td>
+        </tr>
+        <tr>
+          <td>H</td>
+          <td><font face="Courier New">K_H</font></td>
+        </tr>
+        <tr>
+          <td>I</td>
+          <td><font face="Courier New">K_I</font></td>
+        </tr>
+        <tr>
+          <td>J</td>
+          <td><font face="Courier New">K_J</font></td>
+        </tr>
+        <tr>
+          <td>K</td>
+          <td><font face="Courier New">K_K</font></td>
+        </tr>
+        <tr>
+          <td>L</td>
+          <td><font face="Courier New">K_L</font></td>
+        </tr>
+        <tr>
+          <td>M</td>
+          <td><font face="Courier New">K_M</font></td>
+        </tr>
+        <tr>
+          <td>N</td>
+          <td><font face="Courier New">K_N</font></td>
+        </tr>
+        <tr>
+          <td>O</td>
+          <td><font face="Courier New">K_O</font></td>
+        </tr>
+        <tr>
+          <td>P</td>
+          <td><font face="Courier New">K_P</font></td>
+        </tr>
+        <tr>
+          <td>Q</td>
+          <td><font face="Courier New">K_Q</font></td>
+        </tr>
+        <tr>
+          <td>R</td>
+          <td><font face="Courier New">K_R</font></td>
+        </tr>
+        <tr>
+          <td>S</td>
+          <td><font face="Courier New">K_S</font></td>
+        </tr>
+        <tr>
+          <td>T</td>
+          <td><font face="Courier New">K_T</font></td>
+        </tr>
+        <tr>
+          <td>U</td>
+          <td><font face="Courier New">K_U</font></td>
+        </tr>
+        <tr>
+          <td>V</td>
+          <td><font face="Courier New">K_V</font></td>
+        </tr>
+        <tr>
+          <td>W</td>
+          <td><font face="Courier New">K_W</font></td>
+        </tr>
+        <tr>
+          <td>X</td>
+          <td><font face="Courier New">K_X</font></td>
+        </tr>
+        <tr>
+          <td>Y</td>
+          <td><font face="Courier New">K_Y</font></td>
+        </tr>
+        <tr>
+          <td>Z</td>
+          <td><font face="Courier New">K_Z</font></td>
+        </tr>
+        <tr>
+          <td>[</td>
+          <td><font face="Courier New">K_bracketleft</font></td>
+        </tr>
+        <tr>
+          <td>\</td>
+          <td><font face="Courier New">K_backslash</font></td>
+        </tr>
+        <tr>
+          <td>]</td>
+          <td><font face="Courier New">K_bracketright</font></td>
+        </tr>
+        <tr>
+          <td>^</td>
+          <td><font face="Courier New">K_circum</font></td>
+        </tr>
+        <tr>
+          <td>_</td>
+          <td><font face="Courier New">K_underscore</font></td>
+        </tr>
+        <tr>
+          <td>`</td>
+          <td><font face="Courier New">K_grave</font></td>
+        </tr>
+        <tr>
+          <td>a</td>
+          <td><font face="Courier New">K_a</font></td>
+        </tr>
+        <tr>
+          <td>b</td>
+          <td><font face="Courier New">K_b</font></td>
+        </tr>
+        <tr>
+          <td>c</td>
+          <td><font face="Courier New">K_c</font></td>
+        </tr>
+        <tr>
+          <td>d</td>
+          <td><font face="Courier New">K_d</font></td>
+        </tr>
+        <tr>
+          <td>e</td>
+          <td><font face="Courier New">K_e</font></td>
+        </tr>
+        <tr>
+          <td>f</td>
+          <td><font face="Courier New">K_f</font></td>
+        </tr>
+        <tr>
+          <td>g</td>
+          <td><font face="Courier New">K_g</font></td>
+        </tr>
+        <tr>
+          <td>h</td>
+          <td><font face="Courier New">K_h</font></td>
+        </tr>
+        <tr>
+          <td>i</td>
+          <td><font face="Courier New">K_i</font></td>
+        </tr>
+        <tr>
+          <td>j</td>
+          <td><font face="Courier New">K_j</font></td>
+        </tr>
+        <tr>
+          <td>k</td>
+          <td><font face="Courier New">K_k</font></td>
+        </tr>
+        <tr>
+          <td>l</td>
+          <td><font face="Courier New">K_l</font></td>
+        </tr>
+        <tr>
+          <td>m</td>
+          <td><font face="Courier New">K_m</font></td>
+        </tr>
+        <tr>
+          <td>n</td>
+          <td><font face="Courier New">K_n</font></td>
+        </tr>
+        <tr>
+          <td>o</td>
+          <td><font face="Courier New">K_o</font></td>
+        </tr>
+        <tr>
+          <td>p</td>
+          <td><font face="Courier New">K_p</font></td>
+        </tr>
+        <tr>
+          <td>q</td>
+          <td><font face="Courier New">K_q</font></td>
+        </tr>
+        <tr>
+          <td>r</td>
+          <td><font face="Courier New">K_r</font></td>
+        </tr>
+        <tr>
+          <td>s</td>
+          <td><font face="Courier New">K_s</font></td>
+        </tr>
+        <tr>
+          <td>t</td>
+          <td><font face="Courier New">K_t</font></td>
+        </tr>
+        <tr>
+          <td>u</td>
+          <td><font face="Courier New">K_u</font></td>
+        </tr>
+        <tr>
+          <td>v</td>
+          <td><font face="Courier New">K_v</font></td>
+        </tr>
+        <tr>
+          <td>w</td>
+          <td><font face="Courier New">K_w</font></td>
+        </tr>
+        <tr>
+          <td>x</td>
+          <td><font face="Courier New">K_x</font></td>
+        </tr>
+        <tr>
+          <td>y</td>
+          <td><font face="Courier New">K_y</font></td>
+        </tr>
+        <tr>
+          <td>z</td>
+          <td><font face="Courier New">K_z</font></td>
+        </tr>
+        <tr>
+          <td>{</td>
+          <td><font face="Courier New">K_braceleft</font></td>
+        </tr>
+        <tr>
+          <td>|</td>
+          <td><font face="Courier New">K_bar</font></td>
+        </tr>
+        <tr>
+          <td>}</td>
+          <td><font face="Courier New">K_braceright</font></td>
+        </tr>
+        <tr>
+          <td>~</td>
+          <td><font face="Courier New">K_tilde</font></td>
+        </tr>
+        <tr>
+          <td>ESC</td>
+          <td><font face="Courier New">K_ESC</font></td>
+        </tr>
+        <tr>
+          <td>Enter</td>
+          <td><font face="Courier New">K_CR</font></td>
+        </tr>
+        <tr>
+          <td>BackSpace</td>
+          <td><font face="Courier New">K_BS</font></td>
+        </tr>
+        <tr>
+          <td>Insert</td>
+          <td><font face="Courier New">K_INS</font></td>
+        </tr>
+        <tr>
+          <td>Del</td>
+          <td><font face="Courier New">K_DEL</font></td>
+        </tr>
+        <tr>
+          <td>Tab</td>
+          <td><font face="Courier New">K_TAB</font></td>
+        </tr>
+        <tr>
+          <td>Home</td>
+          <td><font face="Courier New">K_HOME</font></td>
+        </tr>
+        <tr>
+          <td>UP</td>
+          <td><font face="Courier New">K_UP</font></td>
+        </tr>
+        <tr>
+          <td>PgUp</td>
+          <td><font face="Courier New">K_PGUP</font></td>
+        </tr>
+        <tr>
+          <td>LEFT</td>
+          <td><font face="Courier New">K_LEFT</font></td>
+        </tr>
+        <tr>
+          <td>MIDDLE</td>
+          <td><font face="Courier New">K_MIDDLE</font></td>
+        </tr>
+        <tr>
+          <td>RIGHT</td>
+          <td><font face="Courier New">K_RIGHT</font></td>
+        </tr>
+        <tr>
+          <td>END</td>
+          <td><font face="Courier New">K_END</font></td>
+        </tr>
+        <tr>
+          <td>DOWN</td>
+          <td><font face="Courier New">K_DOWN</font></td>
+        </tr>
+        <tr>
+          <td>PgDn</td>
+          <td><font face="Courier New">K_PGDN</font></td>
+        </tr>
+        <tr>
+          <td>Pause</td>
+          <td><font face="Courier New">K_PAUSE</font></td>
+        </tr>
+        <tr>
+          <td>F1</td>
+          <td><font face="Courier New">K_F1</font></td>
+        </tr>
+        <tr>
+          <td>F2</td>
+          <td><font face="Courier New">K_F2</font></td>
+        </tr>
+        <tr>
+          <td>F3</td>
+          <td><font face="Courier New">K_F3</font></td>
+        </tr>
+        <tr>
+          <td>F4</td>
+          <td><font face="Courier New">K_F4</font></td>
+        </tr>
+        <tr>
+          <td>F5</td>
+          <td><font face="Courier New">K_F5</font></td>
+        </tr>
+        <tr>
+          <td>F6</td>
+          <td><font face="Courier New">K_F6</font></td>
+        </tr>
+        <tr>
+          <td>F7</td>
+          <td><font face="Courier New">K_F7</font></td>
+        </tr>
+        <tr>
+          <td>F8</td>
+          <td><font face="Courier New">K_F8</font></td>
+        </tr>
+        <tr>
+          <td>F9</td>
+          <td><font face="Courier New">K_F9</font></td>
+        </tr>
+        <tr>
+          <td>F10</td>
+          <td><font face="Courier New">K_F10</font></td>
+        </tr>
+        <tr>
+          <td>F11</td>
+          <td><font face="Courier New">K_F11</font></td>
+        </tr>
+        <tr>
+          <td>F12</td>
+          <td><font face="Courier New">K_F12</font></td>
+        </tr>
+      </table>
+      </td>
+      <td valign="top">
+      <table border="1" cellpadding="7" cellspacing="1">
+        <tr>
+          <th nowrap>Key</th>
+          <th>Code /<br>
+          Attribute</th>
+        </tr>
+        <tr>
+          <td nowrap>Alt-A</td>
+          <td><font face="Courier New">K_mA</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-B</td>
+          <td><font face="Courier New">K_mB</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-C</td>
+          <td><font face="Courier New">K_mC</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-D</td>
+          <td><font face="Courier New">K_mD</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-E</td>
+          <td><font face="Courier New">K_mE</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F</td>
+          <td><font face="Courier New">K_mF</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-G</td>
+          <td><font face="Courier New">K_mG</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-H</td>
+          <td><font face="Courier New">K_mH</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-I</td>
+          <td><font face="Courier New">K_mI</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-J</td>
+          <td><font face="Courier New">K_mJ</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-K</td>
+          <td><font face="Courier New">K_mK</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-L</td>
+          <td><font face="Courier New">K_mL</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-M</td>
+          <td><font face="Courier New">K_mM</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-N</td>
+          <td><font face="Courier New">K_mN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-O</td>
+          <td><font face="Courier New">K_mO</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-P</td>
+          <td><font face="Courier New">K_mP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Q</td>
+          <td><font face="Courier New">K_mQ</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-R</td>
+          <td><font face="Courier New">K_mR</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-S</td>
+          <td><font face="Courier New">K_mS</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-T</td>
+          <td><font face="Courier New">K_mT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-U</td>
+          <td><font face="Courier New">K_mU</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-V</td>
+          <td><font face="Courier New">K_mV</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-W</td>
+          <td><font face="Courier New">K_mW</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-X</td>
+          <td><font face="Courier New">K_mX</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Y</td>
+          <td><font face="Courier New">K_mY</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Z</td>
+          <td><font face="Courier New">K_mZ</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-1</td>
+          <td><font face="Courier New">K_m1</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-2</td>
+          <td><font face="Courier New">K_m2</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-3</td>
+          <td><font face="Courier New">K_m3</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-4</td>
+          <td><font face="Courier New">K_m4</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-5</td>
+          <td><font face="Courier New">K_m5</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-6</td>
+          <td><font face="Courier New">K_m6</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-7</td>
+          <td><font face="Courier New">K_m7</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-8</td>
+          <td><font face="Courier New">K_m8</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-9</td>
+          <td><font face="Courier New">K_m9</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-0</td>
+          <td><font face="Courier New">K_m0</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Tab</td>
+          <td><font face="Courier New">K_mTAB</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Home</td>
+          <td><font face="Courier New">K_mHOME</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-UP</td>
+          <td><font face="Courier New">K_mUP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-PgUp</td>
+          <td><font face="Courier New">K_mPGUP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-LEFT</td>
+          <td><font face="Courier New">K_mLEFT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-RIGHT</td>
+          <td><font face="Courier New">K_mRIGHT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-END</td>
+          <td><font face="Courier New">K_mEND</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-DOWN</td>
+          <td><font face="Courier New">K_mDOWN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-PgDn</td>
+          <td><font face="Courier New">K_mPGDN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Insert</td>
+          <td><font face="Courier New">K_mINS</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-Del</td>
+          <td><font face="Courier New">K_mDEL</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F1</td>
+          <td><font face="Courier New">K_mF1</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F2</td>
+          <td><font face="Courier New">K_mF2</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F3</td>
+          <td><font face="Courier New">K_mF3</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F4</td>
+          <td><font face="Courier New">K_mF4</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F5</td>
+          <td><font face="Courier New">K_mF5</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F6</td>
+          <td><font face="Courier New">K_mF6</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F7</td>
+          <td><font face="Courier New">K_mF7</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F8</td>
+          <td><font face="Courier New">K_mF8</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F9</td>
+          <td><font face="Courier New">K_mF9</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F10</td>
+          <td><font face="Courier New">K_mF10</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F11</td>
+          <td><font face="Courier New">K_mF11</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Alt-F12</td>
+          <td><font face="Courier New">K_mF12</font></td>
+        </tr>
+      </table>
+      </td>
+      <td valign="top">
+      <table border="1" cellpadding="7" cellspacing="1">
+        <tr>
+          <th nowrap>Key</th>
+          <th>Code /<br>
+          Attribute</th>
+        </tr>
+        <tr>
+          <td>Ctrl-SPACE</td>
+          <td><font face="Courier New">K_cSP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-A</td>
+          <td><font face="Courier New">K_cA</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-B</td>
+          <td><font face="Courier New">K_cB</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-C</td>
+          <td><font face="Courier New">K_cC</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-D</td>
+          <td><font face="Courier New">K_cD</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-E</td>
+          <td><font face="Courier New">K_cE</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F</td>
+          <td><font face="Courier New">K_cF</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-G</td>
+          <td><font face="Courier New">K_cG</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-H</td>
+          <td><font face="Courier New">K_cH</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-I</td>
+          <td><font face="Courier New">K_cI</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-J</td>
+          <td><font face="Courier New">K_cJ</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-K</td>
+          <td><font face="Courier New">K_cK</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-L</td>
+          <td><font face="Courier New">K_cL</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-M</td>
+          <td><font face="Courier New">K_cM</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-N</td>
+          <td><font face="Courier New">K_cN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-O</td>
+          <td><font face="Courier New">K_cO</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-P</td>
+          <td><font face="Courier New">K_cP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Q</td>
+          <td><font face="Courier New">K_cQ</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-R</td>
+          <td><font face="Courier New">K_cR</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-S</td>
+          <td><font face="Courier New">K_cS</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-T</td>
+          <td><font face="Courier New">K_cT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-U</td>
+          <td><font face="Courier New">K_cU</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-V</td>
+          <td><font face="Courier New">K_cV</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-W</td>
+          <td><font face="Courier New">K_cW</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-X</td>
+          <td><font face="Courier New">K_cX</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Y</td>
+          <td><font face="Courier New">K_cY</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Z</td>
+          <td><font face="Courier New">K_cZ</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Tab</td>
+          <td><font face="Courier New">K_cTAB</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Home</td>
+          <td><font face="Courier New">K_cHOME</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-UP</td>
+          <td><font face="Courier New">K_cUP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-PgUp</td>
+          <td><font face="Courier New">K_cPGUP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-LEFT</td>
+          <td><font face="Courier New">K_cLEFT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-MIDDLE</td>
+          <td><font face="Courier New">K_cMIDDLE</font> </td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-RIGHT</td>
+          <td><font face="Courier New">K_cRIGHT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-END</td>
+          <td><font face="Courier New">K_cEND</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-DOWN</td>
+          <td><font face="Courier New">K_cDOWN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-PgDn</td>
+          <td><font face="Courier New">K_cPGDN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Insert</td>
+          <td><font face="Courier New">K_cINS</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-Del</td>
+          <td><font face="Courier New">K_cDEL</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F1</td>
+          <td><font face="Courier New">K_cF1</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F2</td>
+          <td><font face="Courier New">K_cF2</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F3</td>
+          <td><font face="Courier New">K_cF3</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F4</td>
+          <td><font face="Courier New">K_cF4</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F5</td>
+          <td><font face="Courier New">K_cF5</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F6</td>
+          <td><font face="Courier New">K_cF6</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F7</td>
+          <td><font face="Courier New">K_cF7</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F8</td>
+          <td><font face="Courier New">K_cF8</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F9</td>
+          <td><font face="Courier New">K_cF9</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F10</td>
+          <td><font face="Courier New">K_cF10</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F11</td>
+          <td><font face="Courier New">K_cF11</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Ctrl-F12</td>
+          <td><font face="Courier New">K_cF12</font></td>
+        </tr>
+      </table>
+      </td>
+      <td valign="top">
+      <table border="1" cellpadding="7" cellspacing="1">
+        <tr>
+          <th nowrap>Key</th>
+          <th>Code /<br>
+          Attribute</th>
+        </tr>
+        <tr>
+          <td>Shift-SPACE</td>
+          <td><font face="Courier New">K_sSP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-Enter</td>
+          <td><font face="Courier New">K_sCR</font></td>
+        </tr>
+        <tr>
+          <td>Shift-Insert</td>
+          <td><font face="Courier New">K_sINS</font></td>
+        </tr>
+        <tr>
+          <td>Shift-Del</td>
+          <td><font face="Courier New">K_sDEL</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-Tab</td>
+          <td><font face="Courier New">K_sTAB</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-Home</td>
+          <td><font face="Courier New">K_sHOME</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-UP</td>
+          <td><font face="Courier New">K_sUP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-PgUp</td>
+          <td><font face="Courier New">K_sPGUP</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-LEFT</td>
+          <td><font face="Courier New">K_sLEFT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-RIGHT</td>
+          <td><font face="Courier New">K_sRIGHT</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-END</td>
+          <td><font face="Courier New">K_sEND</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-DOWN</td>
+          <td><font face="Courier New">K_sDOWN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-PgDn</td>
+          <td><font face="Courier New">K_sPGDN</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F1</td>
+          <td><font face="Courier New">K_sF1</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F2</td>
+          <td><font face="Courier New">K_sF2</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F3</td>
+          <td><font face="Courier New">K_sF3</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F4</td>
+          <td><font face="Courier New">K_sF4</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F5</td>
+          <td><font face="Courier New">K_sF5</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F6</td>
+          <td><font face="Courier New">K_sF6</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F7</td>
+          <td><font face="Courier New">K_sF7</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F8</td>
+          <td><font face="Courier New">K_sF8</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F9</td>
+          <td><font face="Courier New">K_sF9</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F10</td>
+          <td><font face="Courier New">K_sF10</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F11</td>
+          <td><font face="Courier New">K_sF11</font></td>
+        </tr>
+        <tr>
+          <td nowrap>Shift-F120</td>
+          <td><font face="Courier New">K_sF12</font></td>
+        </tr>
+      </table>
+      </td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</blockquote>
+
+</body>
+
+</html>

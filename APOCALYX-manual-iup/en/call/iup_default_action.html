@@ -1,0 +1,74 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_DEFAULT_ACTION</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>DEFAULT_ACTION</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Predefined IUP action, generated every time 
+  an action has no associated function</span> (except for the
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-weight: 700">
+  IDLE_ACTION</span>).</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle *<strong>self</strong>); [in C]
+[There is no Lua equivalent]</pre>
+  <p><strong><font face="Courier New">self</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">identifier of the element that activated the 
+  function</span>.</p>
+</blockquote>
+<h3>Note</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Often a programmer defines an action with a 
+  name and, when associating it to a function, he/she mistypes the action name, or vice-versa. This kind of mistake is 
+  very common, and IUP is not able to automatically detect it. This predefined </span>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">action, combined with function </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-weight: 700">
+  IupGetActionName</span><span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">, can help the programmer detect this problem. All you have to do is define a default action 
+  and verify which is the name of the action that activated it</span>. For example:</p>
+  <blockquote>
+    <pre>IupSetFunction(&quot;myFunctionName&quot;, (Icallback)myFunction);
+IupSetAttribute(myButton, &quot;ACTION&quot;, &quot;myFunctionNam<u>r</u>&quot;);   /* notice the typo error here */</pre>
+  </blockquote>
+  <p>In this case &quot;<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-weight: 700">myFunctionNam<u>r</u></span>&quot; 
+  will not be found and if the
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-weight: 700">
+  DEFAULT_ACTION</span> is defined it will be called when &quot;<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-weight: 700">ACTION</span>&quot; 
+  in invoked for the button. In fact it will be called for all the actions that do not have an action associated.</p>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p>All callbacks.</p>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('func', '../func/iupsetfunction')">IupSetFunction</a>,
+  <a href="javascript:parent.manLoadCont('func', '../func/iupgetactionname')">IupGetActionName</a></font>.</p>
+</blockquote>
+
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body>
+
+<h2>IupSpeech</h2>
+<blockquote>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Creates a speech engine that allows speech recognition and speech.</span></p>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  [Windows only]</span></p>
+</blockquote>
+<h3>Initialization and Usage</h3>
+<blockquote>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The </span><b>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IupSpeechOpen</span></b><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  function must be called after a </span><b>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IupOpen</span></b><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">, 
+  so that the </span>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Speech</span><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  control can be used (no binding available yet.) </span></p>
+</blockquote>
+<blockquote>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  To generate an application that uses this control, the program must be linked to the control’s library (</span><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">iupspeech.lib</span><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  on Windows </span>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  ). The </span><b>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  iupspeech.h</span></b><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  file must also be included in the source code.</span></span></p>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The <a target="_blank" href="http://www.microsoft.com/speech/download/sdk51/">Microsoft Speech SDK 5.1</a> must be 
+  installed in the system. </span></p>
+</blockquote>
+<h3>Creation</h3>
+<blockquote>
+  <pre>Ihandle* IupCreate(&quot;speech&quot;); [in C]
+[Not available in IupLua] </pre>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The function returns the identifier of the created handle, or </span>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  NULL</span><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><strong><font face="Courier New">GRAMMAR</font></strong>:
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Accepts a full directory path to a .xml file defining the grammar that the speech engine will be considering. Only one 
+  grammar allowed.</span></p>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">SAY</font></strong>:
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Speaks the given text.</span></p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><strong><font face="Courier New">ACTION_CB</font></strong>: <font size="3">
+  <span style="FONT-FAMILY: Times New Roman; mso-fareast-font-family: Times New Roman; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <span style="FONT-FAMILY: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Called when the engine recognizes a word/sentence.</span> </span></font></p>
+  <blockquote>
+    <pre><font size="3"><span style="FONT-FAMILY: Times New Roman; mso-fareast-font-family: Times New Roman; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><span style="FONT-FAMILY: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"></span></span></font>int function(Ihandle *<strong>self</strong>, char *<b>text</b>); [in C]</pre>
+    <p><b>self</b>: Ihandle.<br>
+    <b>text</b>: Full recognized text based on given grammar.</p>
+  </blockquote>
+</blockquote>
+<div align="left">
+  <h3>Comments</h3>
+</div>
+<blockquote>
+  <p align="left">Check <a href="http://www.microsoft.com/speech/SDK/51/sapi.chm">Speech SDK help</a> file for more 
+  information on how to create an input xml file.</p>
+  <p id align="left">IUP's speech interface will create a &quot;shared-recognizer&quot;, i.e., a unique recognizer that will work 
+  for the entire system. That means that the input focus can be anywhere in the system and still the recognition will be 
+  triggered.</p>
+  <p align="left">Only one process in the system can initialize IupSpeech.</p>
+  <p align="left">The system is greatly improved by training. Look in the control-panel in the Speech tab for more 
+  details.</p>
+  <p align="left">Available only in Microsoft Visual Studio .NET (Visual C++ 7).</p>
+</blockquote>
+<h3><a href="../examples/ctrl/iupspeech/">Examples</a></h3>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

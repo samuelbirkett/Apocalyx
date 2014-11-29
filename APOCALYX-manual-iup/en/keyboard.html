@@ -1,0 +1,53 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Generator" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Guia</title>
+<meta http-equiv="Content-Language" content="en-us">
+</head>
+
+<body bgcolor="white" lang="EN-US" link="blue" vlink="blue">
+
+<h2 align="center" style="text-align:center">
+<span style="font-family: Helvetica">Keyboard</span></h2>
+<blockquote>
+  <p class="MsoNormal">Keyboard navigation is the dialog uses the &quot;Tab&quot; key to 
+  change the keyboard focus from one control to another. All IUP interactive 
+  controls have Tab stops, but the navigation order is related to the order the 
+  controls are placed in the dialog and can not be changed. When the focus is at 
+  a Multiline control to change focus the combination &quot;Ctrl+Tab&quot; must be used, 
+  because &quot;Tab&quot; is a valid character for the Multiline. The application can also 
+  control the focus using the functions: <code><a href="func/iupgetfocus.html">
+  IupGetFocus</a></code>, <code><a href="func/iupsetfocus.html">IupSetFocus</a></code>,
+  <code><a href="func/iupnextfield.html">IupNextField</a></code> and <code>
+  <a href="func/iuppreviousfield.html">IupPreviousField</a></code>. And when the 
+  focus is changed the application is notified trough the callbacks <code>
+  <a href="call/iup_getfocus_cb.html">GETFOCUS_CB</a></code> and <code>
+  <a href="call/iup_killfocus_cb.html">KILLFOCUS_CB</a></code>.</p>
+  <p class="MsoNormal">Two keys are also important in keyboard navigation: 
+  &quot;Enter&quot; and &quot;Esc&quot;. But they are only active is the application register the 
+  attributes <code>DEFAULTENTER</code> and <code>DEFAULTESC</code> of the
+  <a href="elem/iupdialog.html"><code>IupDialog</code></a>. These attributes 
+  configure buttons to be activated when the respective key is pressed. Again 
+  &quot;Enter&quot; is a valid key for the Multiline so the combination &quot;Ctrl+Enter&quot; must 
+  be used instead. If the focus is at a button then the Enter key will activate 
+  this button independent from the <code>DEFAULTENTER</code> attribute.</p>
+  <p class="MsoNormal">Usualy the application will process keyboard input in the 
+  canvas using the <code><a href="call/iup_keypress_cb.html">KEYPRESS_CB</a></code> 
+  callback. But there is also the <code><a href="call/iup_k_any.html">K_ANY</a></code> 
+  callback that can be used for all the controls, but it does not have control 
+  of the press state. Both callbacks use the key codification explained in
+  <a href="atrib/key.html">Keyboard Codes</a>. These codes are also used in the
+  <code>ACTION</code> callbacks of <code><a href="elem/iuptext.html">IupText</a></code> 
+  and <code><a href="elem/iupmultiline.html">IupMultiline</code></a>, and in 
+  shortcuts for menu items and submenus using the <code>KEY</code> attribute of
+  <code><a href="elem/iupitem.html">IupItem</a></code> and <code>
+  <a href="elem/iupsubmenu.html">IupSubmenu</a></code>. Finally all the keyboard 
+  codes can be used as callback names to implement application hot keys.</p>
+</blockquote>
+
+</body>
+
+</html>

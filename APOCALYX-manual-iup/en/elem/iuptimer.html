@@ -1,0 +1,56 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>New Page 1</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupTimer</h2>
+<blockquote>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Creates a timer which periodicaly invokes a callback when the time is up. Each timer should be destroyed using
+  <a href="../func/iupdestroy.html">IupDestroy</a>.</span></p>
+</blockquote>
+<h3>Creation</h3>
+<blockquote>
+  <pre>Ihandle* IupTimer(); [in C]
+iup.timer() -&gt; (<strong>elem</strong>: ihandle) [in Lua] 
+timer() [in LED]</pre>
+  <p>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  The function returns the identifier of the created handle, or </span>
+  <span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Courier New'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  NULL</span><span style="FONT-SIZE: 12pt; FONT-FAMILY: 'Times New Roman'; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: 'Times New Roman'; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  if an error occurs</span>.</p>
+</blockquote>
+<h3>Attributes</h3>
+<blockquote>
+  <p><strong><font face="Courier New">TIME</font></strong>: <span style="font-family: Times New Roman">The time interval 
+  in miliseconds.</span></p>
+</blockquote>
+<blockquote>
+  <p><strong><font face="Courier New">RUN</font></strong>: <span style="font-family: Times New Roman">Starts and stops 
+  the timer. Possible values: &quot;YES&quot; or &quot;NO&quot;.</span></p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><strong><font face="Courier New">ACTION_CB</font></strong>: <font size="3">
+  <span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  Called when the time is up.</span></font></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self)</strong>; [in C]
+<strong>elem</strong>:action_cb() -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p dir="ltr">&nbsp;&nbsp; <b>self</b>: Timer handle.</p>
+  </blockquote>
+</blockquote>
+<h3><a href="../examples/elem/iuptimer/">Examples</a></h3>
+
+</body>
+
+</html>

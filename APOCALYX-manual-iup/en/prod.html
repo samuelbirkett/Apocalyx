@@ -1,0 +1,293 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>O produto: IUP</title>
+<script src="../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h3><a name="visao_geral">Overview</a></h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP is a portable toolkit for building 
+  graphical user interfaces. It offers APIs in three basic languages: C</span>,
+  <a TARGET="_top" href="http://www.lua.org">Lua</a> and
+  <a href="javascript:parent.manLoadCont('guide', 'guide', 'led')">LED</a>. </p>
+  <p class="MsoNormal"><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt">Its library contains about 100 functions 
+  for creating and manipulating dialogs.<o:p> </o:p>
+  <o:p></o:p>
+  </span></p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP's purpose is to allow a program to run in different systems without changes - the 
+  toolkit provides the application portability. Supported systems include: Motif and Microsoft Windows 2000/XP/2003</span>.
+  </p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP uses an abstract layout model based on 
+  the boxes-and-glue paradigm from the T<sub>E</sub>X text editor. This model, combined with the dialog-specification 
+  language </span>(<a href="javascript:parent.manLoadCont('guide', 'guide', 'led')">LED</a>)
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">or with the Lua binding </span>(<a href="javascript:parent.manLoadCont('guide', 'iuplua')">IupLua</a>)
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">makes the dialog creation task more flexible 
+  and independent from the graphics system's resolution</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Currently available interface elements can 
+  be categorized as follows</span>:</p>
+  <ul>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Primitives</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> (effective user interaction): </span><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">dialog, label, button, text, multi-line, list, toggle, canvas, frame, image</span></b>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Composition</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> (ways to show the elements): </span><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">hbox, vbox,</span></b><span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> <b>zbox, fill</b></span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Grouping</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> (definition of a common functionality for a group of elements):<b> </b></span><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">radio</span></b>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Menu</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> (related both to menu bars and to pop-up menus): </span><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">menu, submenu, item, separator</span></b>.</li>
+    <li>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-weight: 700">
+    Additional</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> (elements built outside the main library): </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><b>dial, gauge, matrix, tabs, valuator, OpenGL canvas, color 
+    chooser, color browser</b>.</span></li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Dialogs</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> (useful predefined dialogs): </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"><b>file selection, message, alarm, data input, list selection</b>.</span></li>
+  </ul>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Hence IUP has some advantages over other 
+  interface toolkits available</span>:</p>
+  <ul>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Simplicity:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> due to the small number of functions and to its attribute mechanism, the learning curve 
+    for a new user is often faster</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Portability:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> the same functions are implemented in each one of the platforms, thus assuring the 
+    interface system's portability</span>.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Customization:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> the dialog specification language </span>(LED)
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">and the Lua binding </span>(IupLua)
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">are two mechanisms in which it is possible 
+    to customize an application for a specific user with a simple-syntax text file</span>.</li>
+    <li><b>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    Flexibility</span></b>: its abstract layout mechanism provides flexibility to dialog creation.</li>
+    <li><b>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Extensibility:</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> the programmer can create new interface elements as needed.</span></li>
+  </ul>
+  <p>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IUP is free software, can be used for public and commercial applications.</span></p>
+</blockquote>
+<h3><a name="disponibilidade">Availability</a></h3>
+<blockquote>
+  <p>The library is available for several <strong>compilers</strong>: </p>
+  <ul>
+    <li>GCC and CC, in the UNIX environment </li>
+    <li>Visual C++, Borland C++, Watcom C++ and GCC (Cygwin and MingW), in the Windows environment</li>
+  </ul>
+  <p>The library is available for several <strong>operating systems</strong>:</p>
+  <ul>
+    <li>UNIX (SunOS, IRIX, AIX, FreeBSD and Linux) using Motif 2.x (and optionally 1.x)</li>
+    <li>Microsoft Windows 2000/XP/2003</li>
+  </ul>
+</blockquote>
+<h3><a name="suporte">Support</a></h3>
+<blockquote>
+  <p>The official support mechanism is by e-mail, using <b><u>iup AT tecgraf.puc-rio.br</u></b> (replace &quot; AT &quot; by &quot;@&quot;). 
+  Before sending your message:</p>
+  <ul>
+    <li>Check if the reported behavior is not described in the user guide. </li>
+    <li>Check if the reported behavior is not described in the specific control or driver characteristics. </li>
+    <li>Check the History to see if your version is updated. </li>
+    <li>Check the To Do list to see if your problem has already been reported.</li>
+  </ul>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">If all these points were checked, you can 
+  report your problem. Please specify in your message: <b>function, attribute, callback, platform</b> and <b>compiler</b></span>.</p>
+  <p>We host <b>IUP</b> support features at <b><a href="http://luaforge.net/">LuaForge</a></b>. It provides us Tracker, 
+  Lists, News, CVS and Files. The IUP page at <b>LuaForge</b> is available at:
+  <a target="_blank" href="http://luaforge.net/projects/iup/">http://luaforge.net/projects/iup/</a>.</p>
+  <blockquote>
+    <p>The discussion list is available at: <a href="http://lists.luaforge.net/mailman/listinfo/iup-users">
+    http://lists.luaforge.net/mailman/listinfo/iup-users</a>.<br>
+    You can also submit <i>Bugs</i>, <i>Feature</i> <i>Requests</i> and <i>Support</i> <i>Requests</i> at:
+    <a href="http://luaforge.net/tracker/?group_id=89">http://luaforge.net/tracker/?group_id=89</a>.<br>
+    Source code, pre-compiled binaries and samples can be downloaded at: <a href="http://luaforge.net/frs/?group_id=89">
+    http://luaforge.net/frs/?group_id=89</a>.<br>
+    The CVS can be browsed at: <a href="http://luaforge.net/scm/?group_id=89">http://luaforge.net/scm/?group_id=89</a>.</p>
+  </blockquote>
+  <p>If you want us to develop a specific feature for the toolkit, Tecgraf is available for partnerships and 
+  cooperation. Please contact <u><b>tcg AT tecgraf.puc-rio.br</b></u>.</p>
+  <p>Lua documentation and resources can be found at <a href="http://www.lua.org/">http://www.lua.org/</a>.</p>
+</blockquote>
+<h3><a name="creditos">Credits</a></h3>
+<blockquote>
+  <p>This work was developed at Tecgraf by means of the partnership with PETROBRAS/CENPES.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">People who took part in IUP's development</span>:</p>
+  <blockquote>
+    <p>André Carregal<br>
+    André Clinio<br>
+    André Costa<br>
+    André Derraik<br>
+    Antonio Scuri<br>
+    Carlos Augusto Mendes<br>
+    Carlos Henrique Levy<br>
+    Carlos José Pereira de Lucena<br>
+    Claudio Coutinho de Biasi<br>
+    Danny Reinhold<br>
+    Diego Nehab<br>
+    Diogo Martinez<br>
+    Enio Emanuel Russo<br>
+    Guilherme Fonseca Alvarenga<br>
+    Henrique Dalcin Mendes Pinheiro<br>
+    Leonardo Constantino Oliveira<br>
+    Luiz Cristóvão Gomes Coelho<br>
+    Luiz Henrique de Figueiredo<br>
+    Marcelo Gattass<br>
+    Mark Stroetzel Glasberg<br>
+    Mauricio Oliveira Carneiro<br>
+    Milton Jonathan<br>
+    Neil Armstrong <br>
+    Renato Borges<br>
+    Renato Cerqueira<br>
+    Roberto Beauclair<br>
+    Vinicius Almendra </p>
+  </blockquote>
+  <p>We must also mention engineer Enio Emanuel Russo, from PETROBRAS, who effectively contributed to the system's 
+  specification and project.<o:p> </p>
+  <p>The initial version of the present document was developed by Carlos Henrique Levy, Neil Armstrong and André 
+  Carregal, being supervised and oriented by Luiz Martins, Luiz Henrique de Figueiredo, Marcelo Gattass and Carlos José 
+  Pereira de Lucena at Tecgraf, PUC-Rio for the Data Processing Sector (SEPROC) at CENPES/PETROBRAS. </p>
+  <p>Fullscreen support in Motif copied from <a href="http://www.wxwidgets.org/">wxWidgets</a>. Their license is as 
+  flexible as the Tecgraf Library License, you can find it here: <a href="http://www.wxwidgets.org/newlicen.htm">
+  http://www.wxwidgets.org/newlicen.htm</a>.</p>
+</blockquote>
+<h3><a name="Sobre">Documentation</a></h3>
+<blockquote>
+  <p>This toolkit is available at <a href="http://www.tecgraf.puc-rio.br/iup">http://www.tecgraf.puc-rio.br/iup</a>.&nbsp;
+  </p>
+  <p>The full documentation can be downloaded from the <a href="download.html">Download</a> by choosing the 
+  &quot;Documentation Files&quot; option.</p>
+  <p>The documentation is also available in Adobe Acrobat (<a href="http://luaforge.net/download.php/335/iup2_22.pdf">iup.pdf</a> 
+  ~1.1Mb) and Windows HTML Help (<a href="http://luaforge.net/download.php/337/iup2_22.chm">iup.chm</a> ~1.5Mb) formats.</p>
+  <p>The HTML navigation uses the WebBook tool, available at
+  <a href="http://www.tecgraf.puc-rio.br/webbook" target="_blank">http://www.tecgraf.puc-rio.br/webbook</a>.</p>
+</blockquote>
+<h3><a name="publicacoes">Publications</a></h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This product stimulated the following 
+  scientific publications</span>:</p>
+  <ul>
+    <li>Levy, C. H.; Figueiredo, L. H.; Gattass, M.; Lucena, C.; and Cowan, D. &quot;IUP/LED: A Portable User Interface 
+    Development Tool&quot;. <i>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Software: Practice &amp; Experience</span></i><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">, 26 #7 (1996) 737-762</span>. [<a href="../download/spe95.pdf">spe95.pdf</a>]</li>
+    <li>Levy, C. H. &quot;IUP/LED: Uma Ferramenta Portátil de Interface com Usuário&quot;.
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">M.Sc. dissertation, Computer Science 
+    Department, PUC-Rio</span>, 1993.[<a href="../download/levy93.pdf">levy93.pdf</a>]</li>
+    <li>Figueiredo, L. H.;Gattass, M.; and Levy, C.H. &quot;Uma Estratégia de Portabilidade para Aplicações Gráficas 
+    Interativas&quot;.
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Proceedings of </span>VI SIBGRAPI (1993), 
+    203-211. [<a href="../download/sib93.pdf">sib93.pdf</a>]</li>
+    <li>Oliveira Prates, R.; Figueiredo, L. H.; and Gattass, M. &quot;Especificação de Layout Abstrato por Manipulação 
+    Direta&quot;. Proceedings of VII SIBGRAPI (1994), 165-172. [<a href="../download/sib94.pdf">sib94.pdf</a>]</li>
+    <li>Oliveira Prates, R.; Gattass, M. ;and Figueiredo, L. H. &quot;Visual LED: uma ferramenta interativa para geração de 
+    Interfaces gráficas&quot;. M.Sc. dissertation, Computer Science Department, PUC-Rio, 1994. [<a href="../download/prates94.pdf">prates94.pdf</a>]
+    </li>
+  </ul>
+</blockquote>
+
+</body>
+
+</html>

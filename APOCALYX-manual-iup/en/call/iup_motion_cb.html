@@ -1,0 +1,58 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="pt-br">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP_MOTION_CB</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>MOTION_CB</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse move</span><span style="font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"><font size="3">s</font></span>.</p>
+</blockquote>
+<h3>Callback</h3>
+<blockquote>
+  <pre>int function(Ihandle *<strong>self</strong>, int <strong>x</strong>, int <strong>y</strong>, char *<strong>r</strong>); [in C]
+<strong>elem</strong>:motion_cb(<strong>x</strong>, <strong>y</strong>: number, <strong>r</strong>: string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+  <p><strong><font face="Courier New">self</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">identifier of the canvas that activated the 
+  function's execution</span>.<br>
+  <font face="Courier New"><strong>x</strong>, <strong>y</strong></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">position in the canvas where the event has 
+  occurred, in pixels</span>.<br>
+  <strong><font face="Courier New">r</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">status of mouse buttons and certain keyboard 
+  keys at the moment the event was generated. The following macros must be used for verification</span>:</p>
+  <blockquote>
+    <p><font face="Courier New">isshift(r) <br>
+    iscontrol(r) <br>
+    isbutton1(r) <br>
+    isbutton2(r) <br>
+    isbutton3(r)<br>
+    isdouble(r)</font> </p>
+    <p>These macros are also available in Lua.</p>
+  </blockquote>
+</blockquote>
+<h3>Affects</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')"><font face="Courier New">IupCanvas</font></a><font face="Courier New">,
+  <a href="javascript:parent.manLoadCont('ctrl', '../ctrl/iupglcanvas')">IupGLCanvas</a></font></p>
+</blockquote>
+
+</body>
+
+</html>

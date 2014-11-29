@@ -1,0 +1,839 @@
+<html>
+<head>
+<title>APOCALYX Engine - Programmer's Manual</title>
+</head>
+
+<body bgcolor=#CCCCCC>
+
+<font face="verdana,arial" size=-1>
+
+<center>
+<h1>APOCALYX Engine</h1>
+<h2>Programmer's Manual</h2>
+<h4>Version 0.9.3 (2008/08/31)</h4>
+<h5>Copyright &copy 2002-2008 <A HREF="mailto:tetractys@users.sourceforge.net">Leonardo Boselli</A></h5>
+</center>
+<p><hr>
+<p>This paper is provided as is without warranties of any kind.
+<ul>
+<p><li><a href="#introduction">Introduction</a>
+<p><li><b>LUA</b> interface
+<p><ul>
+<li><b><a href="APOCALYX-manual-lua.htm#the_lua_language">Part I</a></b> is mainly an excerpt taken from the "<i>Reference Manual of the Programming language LUA (5.1)</i>", copyright &copy; 1994-2006 by Lua.org, PUC-Rio, that is included in the official documentation of the language. To get the complete manual visit the site <a href="http://www.lua.org">http://www.lua.org</a>.
+<li><b><a href="APOCALYX-manual-lua.htm#the_LUA_API">Part II</a></b> describes the core API accessible to the LUA language and it is again an excerpt from the LUA Reference
+  Manual.
+<li><b><a href="APOCALYX-manual-lua.htm#the_APOCALYX_API">Part III</a></b> describes the API to access the features of the APOCALYX 3D Engine and extend the capabilities of the LUA language.
+</ul>
+<p><li><b>Tiny C</b> interface
+<p><ul>
+<li><b><a href="APOCALYX-manual-tinyc.htm#the_tinyc_compiler">Part IV</a></b> is an excerpt taken from the "<i>Tiny C Compiler Reference Documentation (0.9.23)</i>", copyright &copy; 2001-2004 Fabrice Bellard, that is included in the official documentation of the compiler. To get the complete manual visit the site <a href="http://www.tinycc.org">http://www.tinycc.org</a>.
+<li><b><a href="APOCALYX-manual-tinyc.htm#the_TinyC_API">Part V</a></b> describes the API accessible to C functions compiled with the Tiny C compiler.
+</ul>
+
+<p><li><b>FASM</b> interface
+<p><ul>
+<li><b><a href="APOCALYX-manual-fasm.htm#fasm_section">Part VI</a></b> is a verbatim copy taken from "<i>flat assembler - Programmer's Manual</i>", copyright  &copy; 1999-2005 Tomasz Grysztar, that is included in the official documentation of the assembler (version 1.64). To get more information visit the site <a href="http://flatassembler.net/">http://flatassembler.net/</a>.
+<li><b>Part VII</b> that should describe the core API of FASM does not exist because FASM can access all the functions available to the C interface (use C function call convention), so refer to <a href="APOCALYX-manual-tinyc.htm#the_TinyC_API">Part V</a> for futher details.
+</ul>
+
+<!--
+<p><li><b>CSL</b> interface
+<p><ul>
+<li><b><a href="APOCALYX-manual-csl.htm#parti">Part VIII</a></b> is an excerpt taken from the "<i>C Scripting Language Reference Manual</i>",
+copyright  &copy; 2001-2002 IBK-Landquart-Switzerland, that was included in the official documentation of the CSL language in May 2002 (version 4.4.0). The complete version of the manual is available at <a href="http://csl.sourceforge.net">http://csl.sourceforge.net</a>, but only the excerpt here included is useful to write applications for APOCALYX.
+<li><b><a href="APOCALYX-manual-csl.htm#partii">Part IX</a></b> describes the core API accessible to CSL functions.
+</ul>
+
+<p><li><b>AngelScript</b> interface
+<p><ul>
+<li><b><a href="APOCALYX-manual-angel.htm#parti">Part X</a></b> is an excerpt taken from the "<i>AngelScript Script writer's manual</i>",
+copyright  &copy; 2003-2007 Andreas Jönsson, that was included in the official documentation of the AngelScript language in August 2007
+  (version 2.9.1). The complete version of the manual is available at <a href="http://www.angelcode.com/angelscript/">http://www.angelcode.com/angelscript/</a>,
+  but only the excerpt here included is useful to write applications for APOCALYX.
+<li><b><a href="APOCALYX-manual-angel.htm#partii">Part XI</a></b> describes the core API accessible to AngelScript functions.
+</ul>
+
+<p><li><b>SMALL</b> interface
+<p><ul>
+<li><b><a href="APOCALYX-manual-small.htm#parti">Part XII</a></b> is an excerpt taken from "<i>the SMALL booklet</i>", copyright  &copy; 1997-2001 ITB CompuPhase, that was included in the official documentation of the SMALL language in November 2001
+  (version 1.8). Remember that the SMALL language was modified and extended since
+  then, in fact now it is called PAWN, so version 2.0 (or higher) of the manual available at <a href="http://www.compuphase.com">http://www.compuphase.com</a> is not useful or even
+  misleading for applications in APOCALYX.
+<li><b><a href="APOCALYX-manual-small.htm#partii">Part XIII</a></b> describes the core API accessible to SMALL functions.
+</ul>
+-->
+
+	</ul>
+
+<center><p><hr><a name=index><h2>Index</h2></a><hr></center>
+
+<ul>
+<p align=center><li><a href=#introduction>Introduction</a>
+
+<p><li><a href="APOCALYX-manual-lua.htm#the_lua_language">Part I - The Lua Language</a><br>
+
+<p>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#1">1 - Introduction</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2">2 - The Language</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.1">2.1 - Lexical Conventions</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.2">2.2 - Values and Types</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.2.1">2.2.1 - Coercion</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.3">2.3 - Variables</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4">2.4 - Statements</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.1">2.4.1 - Chunks</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.2">2.4.2 - Blocks</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.3">2.4.3 - Assignment</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.4">2.4.4 - Control Structures</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.5">2.4.5 - For Statement</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.6">2.4.6 - Function Calls as Statements</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.4.7">2.4.7 - Local Declarations</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5">2.5 - Expressions</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.1">2.5.1 - Arithmetic Operators</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.2">2.5.2 - Relational Operators</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.3">2.5.3 - Logical Operators</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.4">2.5.4 - Concatenation</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.5">2.5.5 - The Length Operator</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.6">2.5.6 - Precedence</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.7">2.5.7 - Table Constructors</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.8">2.5.8 - Function Calls</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.5.9">2.5.9 - Function Definitions</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.6">2.6 - Visibility Rules</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.7">2.7 - Error Handling</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.8">2.8 - Metatables</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.9">2.9 - Environments</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.10">2.10 - Garbage Collection</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.10.1">2.10.1 - Garbage-Collection Metamethods</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.10.2">2.10.2 - Weak Tables</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#2.11">2.11 - Coroutines</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#7">7 - Incompatibilities with the Previous Version</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#7.1">7.1 - Changes in the Language</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#7.2">7.2 - Changes in the Libraries</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#7.3">7.3 - Changes in the API</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#8">8 - The Complete Syntax of Lua</A>
+</UL>
+
+
+<p><li><a href=APOCALYX-manual-lua.htm#the_LUA_API>Part II - The LUA API</a>
+
+<p>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#5">5 - Standard Libraries</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.1">5.1 - Basic Functions</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.2">5.2 - Coroutine Manipulation</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.3">5.3 - Modules</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.4">5.4 - String Manipulation</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.4.1">5.4.1 - Patterns</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.5">5.5 - Table Manipulation</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.6">5.6 - Mathematical Functions</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.7">5.7 - Input and Output Facilities</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.8">5.8 - Operating System Facilities</A>
+<LI><A HREF="APOCALYX-manual-lua.htm#5.9">5.9 - The Debug Library</A>
+</UL>
+<LI>Additional Libraries
+<UL>
+<LI><A HREF="APOCALYX-manual-tolua.htm">The <B>toLua</B> Library</a>
+<LI><A HREF="APOCALYX-manual-luasocket.htm">The <B>LuaSocket</B> Library</A>
+<LI><A HREF="APOCALYX-manual-luasql.htm">The <B>LuaSQL</B> Library</A>
+<LI><A HREF="APOCALYX-manual-luasqlite.htm">The <B>Lua-SQLite</B> Library</A>
+<LI><A HREF="APOCALYX-manual-luagd.htm">The <B>Lua-GD</B> Library</A>
+<LI><A HREF="APOCALYX-manual-luagl.htm">The <B>luaGL</B> Library</A>
+<LI><A HREF="APOCALYX-manual-iup/index.html">The <B>IUP</B> Library</A>
+<LI>The <B>Mike's Arbitrary Precision Math</B> (MAPM) Library
+<!--
+<LI><A HREF="APOCALYX-manual-cd/index.html">The <B>CD</B> Library</A>
+<LI><A HREF="APOCALYX-manual-im/index.html">The <B>IM</B> Library</A>
+-->
+<!-- 
+<LI><A HREF="APOCALYX-manual-wxlua.htm">The <B>wxLua</B> Library</A>
+ -->
+</UL>
+</UL>
+
+<br>
+<li><a href=APOCALYX-manual-lua.htm#the_APOCALYX_API>Part III - The APOCALYX API</a>
+<p><a href=APOCALYX-manual-lua.htm#void>3.0 Void</a>
+<br><a href=APOCALYX-manual-lua.htm#window>3.1 Win</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#scene>3.1.1 Scene</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#world>3.1.2 World</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#tweakbar>3.1.2.0 TweakBar</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlay>3.1.2.1 Overlay</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayObject>3.6.3 OverlayObject</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#overlayFader">3.6.3.0 OverlayFader</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayTexts>3.6.3.1 OverlayTexts</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#overlayText">3.6.3.1.1 OverlayText</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#overlayTrueTypeTexts">3.6.3.1.2 OverlayTrueTypeTexts</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#overlayUnicodeTexts">3.6.3.1.2.1 OverlayUnicodeTexts</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#overlayUnicodeText">3.6.3.1.2.2 OverlayUnicodeText</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#font>3.6.3.1.3 Font</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlaySprite>3.6.3.2 OverlaySprite</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayGui>3.6.3.2.0 OverlayGui</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayWorldView>3.6.3.2.1 OverlayWorldView</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayViewport>3.6.3.2.2 OverlayViewport</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayPoints>3.6.3.3 OverlayPoints</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayLines>3.6.3.3.1 OverlayLines</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#overlayPolys>3.6.3.3.2 OverlayPolys</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#gui>3.1.2.2 Gui</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiWindow>3.1.2.2.1 GuiWindow</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiBasicButton>3.1.2.2.1.1 GuiBasicButton</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiButton>3.1.2.2.1.1.1 GuiButton</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiCheckBox>3.1.2.2.1.1.2 GuiCheckBox</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiCheckBoxGroup>3.1.2.2.1.1.2.1 GuiCheckBoxGroup</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiMultiTextButton>3.1.2.2.1.1.3 GuiMultiTextButton</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiComboBox>3.1.2.2.1.2 GuiComboBox</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiComboBox>3.1.2.2.1.3 GuiEditField</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiFrameWindow>3.1.2.2.1.4 GuiFrameWindow</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiCustomWindow>3.1.2.2.1.5 GuiCustomWindow</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiListWindow>3.1.2.2.1.6 GuiListWindow</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiListBox>3.1.2.2.1.6.1 GuiListBox</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiListControl>3.1.2.2.1.6.2 GuiListControl</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiPanel>3.1.2.2.1.7 GuiPanel</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiLayouter>3.1.2.2.1.7.1 GuiLayouter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiBoxLayouter>3.1.2.2.1.7.1.1 GuiBoxLayouter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiComplexGridLayouter>3.1.2.2.1.7.1.2 GuiComplexGridLayouter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiFlowLayouter>3.1.2.2.1.7.1.3 GuiFlowLayouter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiGridLayouter>3.1.2.2.1.7.1.4 GuiGridLayouter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiProgressBar>3.1.2.2.1.8 GuiProgressBar</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiSlideable>3.1.2.2.1.9 GuiSlideable</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiScrollBar>3.1.2.2.1.9.1 GuiScrollBar</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiSlider>3.1.2.2.1.9.2 GuiSlider</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiSpinBox>3.1.2.2.1.9.3 GuiSpinBox</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiStaticText>3.1.2.2.1.10 GuiStaticText</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiImage>3.1.2.2.2 GuiImage</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiTimer>3.1.2.2.3 GuiTimer</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiSlotHolder>3.1.2.2.4 GuiSlotHolder</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiListener>3.1.2.2.5 GuiListener</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiKeyListener>3.1.2.2.5.1 GuiKeyListener</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiMouseListener>3.1.2.2.5.2 GuiMouseListener</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#guiTextRenderer>3.1.2.2.6 GuiTextRenderer</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#underlay>3.1.2.3 Underlay</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#underlayObject>3.6.4 UnderlayObject</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#viewportTexture">3.6.4.0 ViewportTexture</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#aviTexture">3.6.4.1 AviTexture</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#graphicTexture">3.6.4.2 GraphicTexture</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#filesystem>3.1.3 FileSystem</a>
+<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#textfile">3.1.3.1 TextFile</a>
+<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#meshfile">3.1.3.2 MeshFile</a>
+<br>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#samplefile">3.1.3.3 SampleFile</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#joystick>3.1.4 Joystick</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#audiocd>3.1.5 AudioCd</a>
+<br><a href="APOCALYX-manual-lua.htm#background">3.2 Background</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#halfsky>3.2.0 HalfSky</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#skydome>3.2.1 SkyDome</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#stellarium>3.2.2 Stellarium</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#cloudlayer>3.2.3 CloudLayer</a>
+<br><a href=APOCALYX-manual-lua.htm#terrain>3.3 Terrain</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#tiledterrain">3.3.1 TiledTerrain</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#patches">3.3.2 Patches</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#scenery">3.3.3 Scenery</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#furniture">3.3.3.0 Furniture</a>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#teams">3.3.3.0.1 Teams</a>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#teammate">3.3.3.0.1.1 TeamMate</a>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#weapondata">3.3.3.0.1.2 WeaponData<br>
+  </a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#powerups">3.3.3.0.2
+  Powerups</a>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<a href="APOCALYX-manual-lua.htm#ammodata">3.3.3.0.2.1
+  PowerupData<br>
+  </a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#ammo">3.3.3.0.3
+  Ammo</a>
+<br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#ammodata">3.3.3.0.3.1
+  AmmoData</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#bsp">3.3.3.1 Bsp
+<br></a><a href=APOCALYX-manual-lua.htm#image>3.4 Image</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#texture>3.4.1 Texture</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#bumpedtexture>3.4.1.1 BumpedTexture</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#animatedtexture>3.4.1.2 AnimatedTexture</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#texture3d>3.4.1.3 Texture3D</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#texsynth>3.4.2 TexSynth</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#teximage>3.4.2.1 TexImage</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisemodule>3.4.3 NoiseModule</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseperlin>3.4.3.1 NoisePerlin, NoiseBillow, NoiseRidgedMulti</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseclamp>3.4.3.2 NoiseClamp</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseconst>3.4.3.3 NoiseConst</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisecurve>3.4.3.4 NoiseCurve</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisespheres>3.4.3.5 NoiseSpheres, NoiseCylinders</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseexponent>3.4.3.6 NoiseExponent</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiserotatepoint>3.4.3.7 NoiseRotatePoint</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisescalebias>3.4.3.8 NoiseScaleBias</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisescalepoint>3.4.3.9 NoiseScalePoint</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseselect>3.4.3.10 NoiseSelect</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseterrace>3.4.3.11 NoiseTerrace</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisetranslatepoint>3.4.3.12 NoiseTranslatePoint</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseturbulence>3.4.3.13 NoiseTurbulence</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisevoronoi>3.4.3.14 NoiseVoronoi</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisemapbuilder>3.4.4 NoiseMapBuilder</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisenormalmaprenderer>3.4.4.1 NoiseNormalMapRenderer</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisecolormaprenderer>3.4.4.2 NoiseColorMapRenderer</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisemap>3.4.5 NoiseMap</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseimage>3.4.5.1 NoiseImage</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseline>3.4.6 NoiseLine</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noiseplane>3.4.6.1 NoisePlane</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisesphere>3.4.6.2 NoiseSphere</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#noisecylinder>3.4.6.3 NoiseCylinder</a>
+<br><a href=APOCALYX-manual-lua.htm#material>3.5 Material</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#bumpedmaterial">3.5.1 BumpedMaterial</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#program">3.5.2 Program</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#vertexprogram">3.5.2.1
+  VertexProgram</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#fragmentprogram">3.5.2.2
+  FragmentProgram</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#programmaterial">3.5.2.3 ProgramMaterial</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#shader">3.5.3 Shader</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#fragmentshader">3.5.3.1
+  FragmentShader</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#vertexshader">3.5.3.2
+  VertexShader</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#shaderprogram">3.5.3.3
+  ShaderProgram</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#shadermaterial">3.5.4 ShaderMaterial</a>
+<br><a href=APOCALYX-manual-lua.htm#reference>3.6 Reference</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#transform>3.6.0 Transform</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#camera>3.6.1 Camera</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#object>3.6.2 Object</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#scriptobject>3.6.2.0 ScriptObject</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#objects>3.6.2.1 Objects</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#lod>3.6.2.1.1 Lod</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#light>3.6.2.2 Light</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#moon">3.6.2.2.1 Moon</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#sun">3.6.2.2.1.1 Sun</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#firelight>3.6.2.2.2 FireLight</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#mesh>3.6.2.3 Mesh</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#collider">3.6.2.3.0 Collider</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#shape>3.6.2.3.1 Shape</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#shadershape>3.6.2.3.1.1 ShaderShape</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#bumpedmesh>3.6.2.3.2 BumpedMesh</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#heightfield>3.6.2.4 HeightField</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#sprite>3.6.2.5 Sprite</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#sprites>3.6.2.5.0 Sprites</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#animatedsprite>3.6.2.5.1 AnimatedSprite</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#axisaligned">3.6.2.5.2 AxisAligned</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#billboard>3.6.2.5.3 Billboard</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#fadingbillboard">3.6.2.5.3.0 FadingBillboard</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#animatedbillboard>3.6.2.5.3.1 AnimatedBillboard</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#animatedfadingbillboard>3.6.2.5.3.1.1 AnimatedFadingBillboard</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#trees>3.6.2.5.3.2 Trees</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#emitter>3.6.2.6 Emitter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#animatedemitter>3.6.2.6.1 AnimatedEmitter</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#text>3.6.2.7 Text</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#font3d>3.6.2.7.1 Font3D</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#model>3.6.2.8 MD3Model <I>aka</I> Model</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#bot>3.6.2.8.1 Bot</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#basicmodel">3.6.2.8.2 MD2Model <I>aka</I> BasicModel</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#advancedmodel">3.6.2.8.3 Cal3DModel <I>aka</I> AdvancedModel</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#ms3dmodel">3.6.2.8.4 MS3DModel</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#mdlmodel">3.6.2.8.5 MDLModel</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#shadow">3.6.2.9 Shadow</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#shadowed">3.6.2.9.1
+  Shadowed</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#flat">3.6.2.10 Flat</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#points">3.6.2.11 Points</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#lines">3.6.2.11.1 Lines</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#polys">3.6.2.11.2 Polys</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#quadric">3.6.2.11.3 Quadric</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#truetypetext">3.6.2.12 TrueTypeText</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#truetypefont">3.6.2.12.1 TrueTypeFont</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#truetypepolygonal">3.6.2.12.1.1 TrueTypePolygonal</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#truetypesolid">3.6.2.12.1.2 TrueTypeSolid</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#unicodetext">3.6.2.12.2 UnicodeText</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#unicodefont">3.6.2.12.2.1 UnicodeFont</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#particlegroup">3.6.2.13 ParticleGroup</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#particlesystem">3.6.2.13.1 ParticleSystem</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#particledomain">3.6.2.13.2 ParticleDomain</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#spark">3.6.2.14 Spark</a>
+<br><a href=APOCALYX-manual-lua.htm#sample>3.7 Sample</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#sample3d>3.7.1 Sample3D</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#sound>3.7.2 Sound</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#sound3d>3.7.2.1 Sound3D</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#source>3.7.2.2 Source</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#capturedevice>3.7.3 CaptureDevice</a>
+<br><a href=APOCALYX-manual-lua.htm#music>3.8 MidiMusic <I>aka</I> Music</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#mediacontrol>3.8.1 MediaControl</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#oggmusic>3.8.2 OggMusic</a>
+<br><a href=APOCALYX-manual-lua.htm#simulator>3.9 Simulator<br>
+  </a>
+  &nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-lua.htm#body">3.9.0 Body</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#particleset>3.9.1 ParticleSet</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#assembly>3.9.1.1 Assembly<br>
+  </a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="APOCALYX-manual-lua.htm#machinery">3.9.1.1.0 Machinery</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#cloth>3.9.1.1.1 Cloth</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#staticenvironment>3.9.2 StaticEnvironment</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#obstruction>3.9.2.1 Obstruction</a>
+<br><a href=APOCALYX-manual-lua.htm#zip>3.10 Zip</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#newzip>3.10.1 NewZip</a>
+<br><a href=APOCALYX-manual-lua.htm#socket>3.11 Socket</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#socketstream>3.11.0 SocketStream</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#socketdatagram>3.11.1 SocketDatagram</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#host>3.11.2 Host</a>
+<br><a href="APOCALYX-manual-lua.htm#odeworld">3.12 OdeWorld</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odebody>3.12.1 OdeBody</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odemass>3.12.1.1 OdeMass</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odejoint>3.12.2 OdeJoint</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odesocket>3.12.2.1 OdeSocket</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odehinge>3.12.2.2 OdeHinge</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odeslider>3.12.2.3 OdeSlider</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odecontactsinfo>3.12.2.4 OdeContactsInfo</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odeuniversal>3.12.2.5 OdeUniversal</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odehinge2>3.12.2.6 OdeHinge2</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odemotor>3.12.2.7 OdeMotor</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odejointgroup>3.12.3 OdeJointGroup</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odegeom>3.12.4 OdeGeom</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odespace>3.12.4.1 OdeSpace</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odehashspace>3.12.4.1.1 OdeHashSpace</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odeplane>3.12.4.2 OdePlane</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odeplaceable>3.12.4.3 OdePlaceable</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odesphere>3.12.4.3.1 OdeSphere</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odebox>3.12.4.3.2 OdeBox</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odecappedcylinder>3.12.4.3.3 OdeCappedCylinder</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odecylinder>3.12.4.3.3.1 OdeCylinder</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odetransform>3.12.4.3.4 OdeTransform</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#oderay>3.12.4.3.5 OdeRay</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odetrimesh>3.12.4.3.6 OdeTriMesh</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#odetrimeshdata>3.12.4.3.6.1 OdeTriMeshData</a>
+<br><a href="APOCALYX-manual-lua.htm#compiler">3.13 Compiler</a>
+<br><a href="APOCALYX-manual-lua.htm#luascript">3.14 LuaScript</a>
+<!--
+<br><a href="APOCALYX-manual-lua.htm#interpreter">3.15 Interpreter</a>
+<br><a href="APOCALYX-manual-lua.htm#scriptengine">3.16 ScriptEngine</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#scriptthread>3.16.1 ScriptThread</a>
+-->
+<br><a href="APOCALYX-manual-lua.htm#pathfinder">3.17 PathFinder</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#pathfound>3.17.1 PathFound</a>
+<br><a href="APOCALYX-manual-lua.htm#steervehicle">3.18 SteerVehicle</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steervehiclegroup>3.18.1 SteerVehicleGroup</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steerobstacle>3.18.2 SteerObstacle</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steerobstaclegroup>3.18.2.1 SteerObstacleGroup</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steersphericalobstacle>3.18.2.2 SteerSphericalObstacle</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steerpathway>3.18.3 SteerPathway</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steerpolylinepathway>3.18.3.1 SteerPolylinePathway</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#steerproximity>3.18.4 SteerProximity</a>
+<br><a href="APOCALYX-manual-lua.htm#finitestatemachine">3.19 FiniteStateMachine</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmstate>3.19.1 FsmState</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmtransition>3.19.2 FsmTransition</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmcondition>3.19.3 FsmCondition</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmaction>3.19.4 FsmAction</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmactionset>3.19.4.1 FsmActionSet</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmactionincr>3.19.4.2 FsmActionIncr</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#fsmactioncall>3.19.4.3 FsmActionCall</a>
+<br><a href="APOCALYX-manual-lua.htm#speechsynth">3.20 SpeechSynth</a>
+<br><a href="APOCALYX-manual-lua.htm#networkserver">3.21 NetworkServer</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#networkclient>3.21.1 NetworkClient</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#networkbufferpacket>3.21.2 NetworkPacket</a>
+<!-- RakNet
+<br><a href="APOCALYX-manual-lua.htm#netserver">3.22 NetServer</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#netclient>3.22.1 NetClient</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#netpacket>3.22.2 NetPacket</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#netstream>3.22.3 NetStream</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#netplayer>3.22.4 NetPlayer</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-lua.htm#netvoice>3.22.5 NetVoice</a>
+-->
+
+<p><li><a href="APOCALYX-manual-tinyc.htm#the_tinyc_compiler">Part IV - The Tiny C Compiler</a><br>
+<p>
+<A NAME="TOC1" HREF="APOCALYX-manual-tinyc.htm#SEC1">4.1. Introduction</A>
+<br><A NAME="TOC5" HREF="APOCALYX-manual-tinyc.htm#SEC5">4.3. C language support</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC6" HREF="APOCALYX-manual-tinyc.htm#SEC6">4.3.1 ANSI C</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC7" HREF="APOCALYX-manual-tinyc.htm#SEC7">4.3.2 ISOC99 extensions</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC8" HREF="APOCALYX-manual-tinyc.htm#SEC8">4.3.3 GNU C extensions</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC9" HREF="APOCALYX-manual-tinyc.htm#SEC9">4.3.4 TinyCC extensions</A>
+<br><A NAME="TOC10" HREF="APOCALYX-manual-tinyc.htm#SEC10">4.4. TinyCC Assembler</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC11" HREF="APOCALYX-manual-tinyc.htm#SEC11">4.4.1 Syntax</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC12" HREF="APOCALYX-manual-tinyc.htm#SEC12">4.4.2 Expressions</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC13" HREF="APOCALYX-manual-tinyc.htm#SEC13">4.4.3 Labels</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC14" HREF="APOCALYX-manual-tinyc.htm#SEC14">4.4.4 Directives</A>
+<br>&nbsp;&nbsp;&nbsp;<A NAME="TOC15" HREF="APOCALYX-manual-tinyc.htm#SEC15">4.4.5 X86 Assembler</A>
+
+<p><li><a href=APOCALYX-manual-tinyc.htm#the_TinyC_API>Part V - The Tiny C API</a>
+<p><a href="APOCALYX-manual-tinyc.htm#basic_interface">5.0 Basic functions</a><br>
+<a href="APOCALYX-manual-tinyc.htm#lua_interface">5.1 Lua functions</a><br>
+<UL>
+<LI><A HREF="APOCALYX-manual-tinychtm#3">3 - The Application Program Interface</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.1">3.1 - The Stack</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.2">3.2 - Stack Size</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.3">3.3 - Pseudo-Indices</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.4">3.4 - C Closures</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.5">3.5 - Registry</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.6">3.6 - Error Handling in C</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.7">3.7 - Functions and Types</A>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#3.8">3.8 - The Debug Interface</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#4">4 - The Auxiliary Library</A>
+<UL>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#4.1">4.1 - Functions and Types</A>
+</UL>
+<LI><A HREF="APOCALYX-manual-tinyc.htm#tolua">The toLua++ Library</A>
+</UL>
+<a href="APOCALYX-manual-tinyc.htm#engine_interface">5.2 APOCALYX Engine functions</a><br>
+<a href="APOCALYX-manual-tinyc.htm#sdl_interface">5.3 Simple DirectMedia Layer (SDL) functions</a><br>
+<a href="APOCALYX-manual-tinyc.htm#ode_interface">5.4 Open Dynamics Engine (ODE) functions</a><br>
+<a href="APOCALYX-manual-tinyc.htm#csl_interface">5.5 CSL functions</a><br>
+<a href="APOCALYX-manual-tinyc.htm#angel_interface">5.6 AngelScript functions</a><br>
+<a href="APOCALYX-manual-tinyc.htm#small_interface">5.7 SMALL functions</a><br>
+
+<p><li><a href=APOCALYX-manual-fasm.htm#fasm_section>Part VI - The Flat Assembler</a><br>
+<BR><SPAN class=mediumtext><a href=APOCALYX-manual-fasm.htm#fasm_section_chapter1>Chapter 1 - 
+Introduction</a></SPAN><BR><A class=mediumtext 
+style="PADDING-LEFT: 20pt" 
+href="APOCALYX-manual-fasm.htm#1.1">1.1 
+Compiler overview</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.1.1">1.1.1 
+System requirements</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.1.2">1.1.2 
+Executing compiler from command line</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.1.3">1.1.3 
+Compiler messages</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.1.4">1.1.4 
+Output formats</A><BR><A class=mediumtext 
+style="PADDING-LEFT: 20pt" 
+href="APOCALYX-manual-fasm.htm#1.2">1.2 
+Assembly syntax</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.2.1">1.2.1 
+Instruction syntax</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.2.2">1.2.2 
+Data definitions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.2.3">1.2.3 
+Constants and labels</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.2.4">1.2.4 
+Numerical expressions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.2.5">1.2.5 
+Jumps and calls</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#1.2.6">1.2.6 
+Size settings</A><BR><SPAN class=mediumtext><a href=APOCALYX-manual-fasm.htm#fasm_section_chapter2>Chapter 2 - 
+Instruction Set</a></SPAN><BR><A class=mediumtext 
+style="PADDING-LEFT: 20pt" 
+href="APOCALYX-manual-fasm.htm#2.1">2.1 
+The x86 architecture instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.1">2.1.1 
+Data movement instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.2">2.1.2 
+Type conversion instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.3">2.1.3 
+Binary arithmetic instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.4">2.1.4 
+Decimal arithmetic instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.5">2.1.5 
+Logical instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.6">2.1.6 
+Control transfer instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.7">2.1.7 
+I/O instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.8">2.1.8 
+Strings operations</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.9">2.1.9 
+Flag control instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.10">2.1.10 
+Conditional operations</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.11">2.1.11 
+Miscellaneous instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.12">2.1.12 
+System instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.13">2.1.13 
+FPU instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.14">2.1.14 
+MMX instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.15">2.1.15 
+SSE instructions</A><BR><A class=sralltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.16">2.1.16 
+SSE2 instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.17">2.1.17 
+SSE3 instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.18">2.1.18 
+AMD 3DNow! instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.1.19">2.1.19 
+The x86-64 long mode instructions</A><BR><A 
+class=mediumtext style="PADDING-LEFT: 20pt" 
+href="APOCALYX-manual-fasm.htm#2.2">2.2 
+Control directives</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.2.1">2.2.1 
+Conditional assembly</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.2.2">2.2.2 
+Repeating blocks of instructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.2.3">2.2.3 
+Addressing spaces</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.2.4">2.2.4 
+Other directives</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.2.5">2.2.5 
+Multiple passes</A><BR><A class=mediumtext 
+style="PADDING-LEFT: 20pt" 
+href="APOCALYX-manual-fasm.htm#2.3">2.3 
+Preprocessor directives</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.1">2.3.1 
+Including source files</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.2">2.3.2 
+Symbolic constants</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.3">2.3.3 
+Macroinstructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.4">2.3.4 
+Structures</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.5">2.3.5 
+Repeating macroinstructions</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.6">2.3.6 
+Conditional preprocessing</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.3.7">2.3.7 
+Order of processing</A><BR><A class=mediumtext 
+style="PADDING-LEFT: 20pt" 
+href="APOCALYX-manual-fasm.htm#2.4">2.4 
+Formatter directives</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.4.1">2.4.1 
+MZ executable</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.4.2">2.4.2 
+Portable Executable</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.4.3">2.4.3 
+Common Object File Format</A><BR><A class=smalltext 
+style="PADDING-LEFT: 40pt" 
+href="APOCALYX-manual-fasm.htm#2.4.4">2.4.4 
+Executable and Linkable Format</A><BR></B></P>
+
+<!--
+
+<p><li><a href=APOCALYX-manual-csl.htm#parti>Part VIII - The C Scripting Language<br>
+
+<p><a href=APOCALYX-manual-csl.htm#introduction>Introduction</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#at_a_glance>At a glance</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#supported_systems>Supported systems</a>
+<br><a href=APOCALYX-manual-csl.htm#language>Language</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#comments>Comments</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#numbers>Numbers</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#literals>Literals</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#var_and_const>Var and const</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#arrays>Arrays</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#initialization>Initialization</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#static_and_extern>Static and extern</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#dynamic_relocation>Dynamic relocation</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#operators>Operators</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#statements_and_blocks>Statements and blocks</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#program_flow>Program flow</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#if>if</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#switch>switch</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#while>while</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#do>do</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#for>for</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#trace_facility>Trace facility</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#exception_handling>Exception handling</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#between_cls_and_c>Between CLS and C</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#functions>Functions</a>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#static_and_forward>Static and forward</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#predefined_identifiers>Predefined identifiers</a>
+<br><a href=APOCALYX-manual-csl.htm#directives>Directives</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#include>#include</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#list>#list</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#loadLibrary>#loadLibrary</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#loadScript>#loadScript</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#logFile>#logFile</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#if_else_endif>#if #else #endif</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#message>#message</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#error>#error</a>
+<br>&nbsp;&nbsp;&nbsp;<a href=APOCALYX-manual-csl.htm#block>#block</a>
+
+<p><li><a href=APOCALYX-manual-csl.htm#partii>Part IX - The C Scripting Language API<br>
+<p><a href=APOCALYX-manual-csl.htm#partii0>9.0 Core Functions</a>
+<br><a href=APOCALYX-manual-csl.htm#partii1>9.1 Math Functions<br>
+
+<p><li><a href=APOCALYX-manual-angel.htm#parti>Part X - The AngelScript Language<br>
+
+<p><a href="APOCALYX-manual-angel.htm#introduction">Introduction</a>
+<br><a href="APOCALYX-manual-angel.htm#global_declarations">Global declarations</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#function">Functions</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#variable">Variables</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#structs">Structures</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#import">Imports</a>
+<br><a href="APOCALYX-manual-angel.htm#statements">Statements</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#block">Statement blocks</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#variable">Variable declarations</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#if">Conditions: if / if-else / switch-case</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#while">Loops: while / do-while / for</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#break">Loop control: break / continue</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#return">Return statement</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#expression">Expression statement</a>
+<br><a href="APOCALYX-manual-angel.htm#expressions">Expressions</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#assignment">Assignments</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#compound">Compound assignments</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#function">Function calls</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#conversion">Type conversions</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#math">Math operators</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#bits">Bitwise operators</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#logic">Logic operators</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#comparison">Comparison operators</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#increment">Increment operators</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#condition">Conditional expression</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#member">Member access</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#handle">Handle-of</a>
+<br><a href="APOCALYX-manual-angel.htm#data_types">Data types</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#void">void</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#bool">bool</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#int">int, int8, int16</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#uint">uint, uint8, uint16</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#float">float</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#double">double</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#bits">bits, bits8, bits16</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#any">any</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#array">Arrays</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#objhandle">Object handles</a>
+<br>&nbsp;&nbsp;&nbsp;<a href="APOCALYX-manual-angel.htm#bstr">Strings</a>
+<br><a href="APOCALYX-manual-angel.htm#operator_precedence">Operator precedence</a>
+<br><a href="APOCALYX-manual-angel.htm#reserved_keywords">Reserved keywords and tokens</a>
+<br><a href="APOCALYX-manual-angel.htm#object_handles">Object handles</a>
+<br><a href="APOCALYX-manual-angel.htm#parameter_references">Parameter references</a>
+
+<p><li><a href=APOCALYX-manual-angel.htm#partii>Part XI - The AngelScript Language API<br>
+<p><a href=APOCALYX-manual-angel.htm#partii0>11.0 Core Functions</a>
+<br><a href=APOCALYX-manual-angel.htm#partii1>11.1 Math Functions<br>
+
+<p><li><a href=APOCALYX-manual-small.htm#parti>Part XII - The SMALL Language<br>
+<p><a href=APOCALYX-manual-small#parti0>12.0 Introduction</a>
+<br><a href=APOCALYX-manual-small#parti1>12.1 SMALL: The Language</a>
+<br><a href=APOCALYX-manual-small#parti2>12.2 Data and Declarations</a>
+<br><a href=APOCALYX-manual-small#parti3>12.3 Functions</a>
+<br><a href=APOCALYX-manual-small#parti4>12.4 General Syntax</a>
+<br><a href=APOCALYX-manual-small#parti5>12.5 Operators and Expressions</a>
+<br><a href=APOCALYX-manual-small#parti6>12.6 Statements</a>
+<br><a href=APOCALYX-manual-small#parti7>12.7 Directives</a>
+<br><a href=APOCALYX-manual-small#parti8>12.8 Pitfalls: Differences from C</a>
+<br><a href=APOCALYX-manual-small#parti9>12.9 SMALL: The Compiler<br>
+
+<p><li><a href=APOCALYX-manual-small#partii>Part XIII - The SMALL Language API<br>
+<p><a href=APOCALYX-manual-small#partii0>13.0 Core Functions</a>
+<br><a href=APOCALYX-manual-small#partii1>13.1 Math Functions<br>
+
+-->
+
+</ul>
+
+<hr><center><a name=introduction><h2>Introduction</h2></a></center><hr>
+
+<p>This document describes the use of the LUA language (and eventually the included <i>Tiny C
+compiler</i>, <i>AngelScript interpreter</i>, <I>SMALL interpreter</I>, <I>CSL interpreter</I> or <i>FASM assembler</i>) to create scripts for the APOCALYX 3D Engine.
+<p>The <b>Lua language</b> is a powerful scripting language easily extendable and embeddable in other applications.
+Here the description of LUA is limited to the features that are useful to create APOCALYX scripts, but a lot of
+other possibilities are available. To know more about LUA visit
+<A href="http://www.lua.org">http://www.lua.org</A>
+<p>The <b>APOCALYX 3D Engine</b> is an OpenGL based 3D engine with interesting features and powerful scripting capabilities.
+The use of LUA makes possible to create applications accessing easily all the exposed API of the engine.
+To know more about APOCALYX visit <A HREF="http://apocalyx.sourceforge.net">http://apocalyx.sf.net</A>
+
+<p>APOCALYX includes a console from which you can execute LUA scripts. To show the console, press the 'F3'
+key. Using the command line of the console, you can execute interactively
+single or multiple lines written in  the LUA language, run LUA scripts or compile them.
+<p>The available commands are:
+<ul>
+<li><b>h :</b> to read the complete list of the commands
+<li><b>l :</b> to read a list of LUA scripts
+<li><b>r "file name" :</b> to execute a LUA script
+<li><b>c "file name" :</b> to compile a LUA script (the output is written in 'luac.out'). Remember that LUA scripts don't need to be compiled before execution: Compilation is a plus to speed up the loading phase
+<li><b>i :</b> to enter and interpret multiple LUA lines
+<li><b>i "string" :</b> to interpret a single LUA string
+<li><b>d :</b> to change the working directory
+<li><b>e &quot;file name&quot; :</b> to edit text files
+<li><b>g &quot;file name&quot; :</b> to execute external programs
+</ul>
+When a script is in execution, you can read all the messages that the script generates on the console.
+<p>To execute a particular script you can also specify its name on the command line.
+For example, the command <b>APOCALYX script.lua</b> executes the <i>script.lua</i>
+script, while <b>APOCALYX package.dat</b> tells the application to look for the
+script <i>main.lua</i> in the zipped file <i>package.dat</i>. In no file
+is specified, the program looks by default for the script <i>main.lua</i> or the file <i>main.dat</i>
+in the same folder of the application.
+<br>An alternate way to execute the <I>script.lua</I> script is to use the option <B>-dofile"<I>script.lua</I>"</B>. This command line option has also another particular use explained below.
+<p>
+Options that one can specify on the command line:
+<ul>
+<li><b>-nosetup</b>
+<br>to avoid the opening of the setup dialog at the beginning
+  and read the needed data directly from the file <i>setup.ini</i>.<br>
+<li><b>-setup&quot;<i>file_name</i></b>&quot;
+<br>this option specifies the file that contains the setup parameters. By
+  default, that file is <i>setup.ini</i>. Don't forget the <b>&quot;</b>
+  delimiters that surround the file name (useful in particular when the file
+  name contains space characters).
+<li><b>-x<i>pos_x</i></b> <b>-y<i>pos_y</i></b>
+<br>these options specify the initial top left corner position of the window.
+<li><b>-w<i>width</i></b> <b>-y<i>height</i></b>
+<br>these options specify the initial dimensions of the window (in this case data specified in <i>setup.ini</i> is ignored).
+<li><b>-nobar</b>
+<br>this option specifies that the window must be created without a title bar.<br>
+<li><b>-freemouse</b>
+<br>this option requires that the mouse is not acquired by the engine at the beginning.
+</ul>
+<p>
+Options particularly useful when an instance of the engine is already running (in this case any script or package specified on the command line is ignored):
+<ul>
+<li><b>-ontop</b>
+<br>to keep permanently on top an instance of the engine already running.
+<li><b>-notop</b>
+<br>to cancel the effect of the previous option.
+<li><b>-totop</b>
+<br>to bring to top an instance of the engine already running. Useful in combination with the next options.
+<li><b>-dostring&quot;<i>string</i></b>&quot;
+<br>this option specifies a LUA string that must be interpreted. When another instance of the engine is running, the string is passed to that one and this instance is terminated. Don't forget the <b>&quot;</b> delimiters that surround the string.
+<li><b>-dofile&quot;<i>file_name</i></b>&quot;
+<br>this option specifies a LUA file that must be interpreted. When another instance of the engine is running, the file is passed to that one and this instance is terminated. Don't forget the <b>&quot;</b> delimiters that surround the file name (useful in particular when the file name contains space characters). This option is ignored if <I>-dostring</I> is specified.
+</ul>
+
+<p><a href=#index>Index</a>
+
+<hr><p>Any question? Contact: <A HREF="mailto:tetractys@users.sourceforge.net">tetractys@users.sf.net</A>
+<br>Online resources: <A HREF="http://apocalyx.sourceforge.net">http://apocalyx.sf.net</A>
+
+</font>
+</BODY>
+</HTML>

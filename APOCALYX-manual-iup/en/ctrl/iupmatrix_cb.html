@@ -1,0 +1,666 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupMatrix</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupMatrix Callbacks</h2>
+<h3>Interaction</h3>
+<blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_ACTION">ACTION</a>_CB</font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a keyboard event 
+  occurs</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>c</strong>, int <strong>lin</strong>, int <strong>col</strong>, int <strong>active</strong>, char* <strong>after</strong>); [in C]
+<strong>elem</strong>:action_cb(<strong>c, lin, col</strong>, <strong>active, after</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix where the user 
+    typed something</span>.<br>
+    <strong><font face="Courier New">c</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the typed key. Please refer to 
+    the </span><a href="javascript:parent.manLoadCont('atrib', '../atrib/key')">
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Keyboard Codes</span></a>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">table for a list of possible values</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the selected cell</span>.<br>
+    <strong><font face="Courier New">active</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">1</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> if the cell is in edition mode, and </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if it is not</span>.<br>
+    <strong><font face="Courier New">after</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The new value of the text in case the key is 
+    validated (see return values</span>).</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Possible return values are</span>:
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_DEFAULT</span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">validates the key</span>,
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_IGNORE</span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">ignores the key</span>,
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_CONTINUE</span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">forwards the key to IUP’s conventional 
+    processing. This function can also return the identifier of the key to be treated by the matrix</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_CLICK_CB">CLICK_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when any mouse button is 
+  pressed over a cell</span>. This callback is always called after other callbacks.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, char *<strong>r</strong>); [in C]
+<strong>elem</strong>:click_cb(<strong>lin, col</strong>: number, <strong>r</strong>:string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell where the mouse 
+    button was pressed</span>. They can be -1 if the user click outside the matrix but inside the canvas that contains 
+    it.<br>
+    <strong><font face="Courier New">r</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Status of the mouse buttons and some 
+    keyboard keys at the moment the event is generated. The following macros must be used for verification</span>:
+    <font face="Courier New">isshift(r), iscontrol(r), isbutton1(r), isbutton2(r), isbutton3(r), isdouble(r)</font>.
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">They return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">1</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> if the respective key or button is pressed, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> otherwise</span>.</p>
+    <p>To interrupt further internal processing return IUP_IGNORE.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_MOUSEMOVE_CB">MOUSEMOVE_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to notify the application 
+  that the mouse has moved over the matrix.&nbsp;</span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:mousemove_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell that the mouse 
+    cursor is currently </span>on.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_ENTERITEM_CB">ENTERITEM_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a matrix cell is 
+  selected, becoming the current cell</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:enteritem_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the selected cell</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The user must return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span>.<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+    This callback is also called when matrix is getting focus.</span></p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_LEAVEITEM_CB">LEAVEITEM_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a cell is no longer 
+  the current cell</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:leaveitem_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell which is no longer 
+    the current cell</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The user must return </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    either </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">. </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    This callback is also called when the matrix is losing focus. </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">Returning </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> prevents the current cell from changing, but this will not work when the </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    matrix is losing focus</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">. </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    &nbsp;If you try to move to beyond matrix borders the cell will lose focus and then get it again, so leaveitem and 
+    enteritem will be called.</span></p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_SCROLL_CB">SCROLLTOP_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the matrix </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  is scrolled with the scrollbars or with the keyboard</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. Can be used together with the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">&quot;ORIGIN&quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> attribute to synchronize the movement of two or more matrices</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:scrolltop_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell currently in the 
+    upper left corner of the matrix</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The user must return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span>.</p>
+  </blockquote>
+</blockquote>
+<h3>Drawing</h3>
+<blockquote>
+  <p><a name="BGCOLOR_CB"><strong><font face="Courier New">BGCOLOR_CB</font></strong></a> -
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to retrieve the background 
+  color of a cell when it needs to be redrawn. </span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, unsigned int <strong>*red</strong>, unsigned int <strong>*green</strong>, unsigned int <strong>*blue</strong>); [in C]
+<strong>elem</strong>:bgcolor_cb(<strong>lin, col</strong>: number) -&gt; (<strong>red, green, blue, ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix where the user 
+    typed something</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.<br>
+    <font face="Courier New"><strong>red</strong></font>, <font face="Courier New"><strong>green</strong></font>,
+    <font face="Courier New"><strong>blue</strong></font>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">the cell background color</span>.</p>
+    <p>If the function return
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_IGNORE</span>, the return values are ignored and the attribute defined background color will be used. If returns
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_DEFAULT</span> the returned values will be used as the
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    background color</span>.</p>
+  </blockquote>
+  <p><a name="FGCOLOR_CB"><strong><font face="Courier New">FGCOLOR_CB</font></strong></a> -
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to retrieve the foreground 
+  color of a cell when it needs to be redrawn. </span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, unsigned int <strong>*red</strong>, unsigned int <strong>*green</strong>, unsigned int <strong>*blue</strong>); [in C]
+<strong>elem</strong>:fgcolor_cb(<strong>lin, col</strong>: number) -&gt; (<strong>red, green, blue, ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix where the user 
+    typed something</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.<br>
+    <font face="Courier New"><strong>red</strong></font>, <font face="Courier New"><strong>green</strong></font>,
+    <font face="Courier New"><strong>blue</strong></font>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">the cell </span>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    fore</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">ground color</span>.</p>
+    <p>If the function return
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_IGNORE</span>, the return values are ignored and the attribute defined
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    fore</span>ground color will be used. If returns
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_DEFAULT</span> the returned values will be used as the
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    foreground color</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_DRAW_CB">DRAW_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated before a cell is drawn. 
+  Allows to draw a custom cell contents. You must use the <a target="_blank" href="http://www.tecgraf.puc-rio.br/cd/">CD</a> 
+  library primitives.</span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, int <strong>x1</strong>, int <strong>x2</strong>, int <strong>y1</strong>, int <strong>y2</strong>); [in C]
+<strong>elem</strong>:draw_cb(<strong>lin, col, x1, x2, y1, y2</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the current cell</span>.<br>
+    <strong><font face="Courier New">x1</font></strong>, <strong><font face="Courier New">x2</font></strong>, <strong>
+    <font face="Courier New">y1</font></strong>, <strong><font face="Courier New">y2</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Bounding rectangle of the current cell in 
+    pixels</span>.</p>
+    <p><span style="font-family: Times New Roman">If</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> this function return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> the normal text drawing will take place</span>. The clipping is set for the bounding 
+    rectangle. The callback is called after the cell background has been filled with the background color. If
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    HIDEFOCUS=NO</span> (the default) the drawing area will not include the focus area, if
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    HIDEFOCUS=YES</span> the complete cell is available.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_DROPCHECK_CB">DROPCHECK_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated before </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  the current </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">cell is redrawn to determine if a dropdown 
+  feedback should be shown. If this action is not registered, no feedback will be shown. </span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:dropcheck_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function must return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> to show a dropdown field feedback</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">, 
+    or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> to ignore the dropdown feedback.</span></p>
+  </blockquote>
+</blockquote>
+<h3>Editing</h3>
+<blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_DROP_CB">DROP_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated before the current cell 
+  enters edition mode to determine if a text field or a dropdown will be shown. It is called after </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  EDITION_CB</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">. If this action is not registered, a text 
+  field will be shown. Its return determines what type of element will be used in the edition mode. If the selected type 
+  is a dropdown, the values appearing in the dropdown must be fulfilled in this callback, just like elements are added 
+  to any list (the </span>
+  <span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">drop</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> parameter is the handle of the dropdown 
+  list to be shown). You should also set the list’s current value (</span><span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA; font-family: Courier New">&quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">VALUE&quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">), the default is always &quot;1&quot;. The previously cell value can be verified from the given
+  </span><font face="Courier New">
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  drop</span></font><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> Ihandle via the </span><span style="font-family: Courier New">&quot;</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">PREVIOUSVALUE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">&quot; attribute</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, Ihandle *<strong>drop</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:drop_cb(<strong>drop: </strong>ihandle, <strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">drop</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the dropdown list which will 
+    be shown to the user</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the current cell</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function must return </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IUP_IGNORE</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> to show a text-edition field, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IUP_DEFAULT</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> to show a dropdown field</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_DROPSELECT_CB">DROPSELECT_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when an element in the 
+  dropdown list is selected</span>. If returns
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  IUP_CONTINUE</span> the value is accepted as a new value and the matrix leaves edition mode.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, Ihandle *<strong>drop</strong>, char *<strong>t</strong>, int <strong>i, </strong>int <strong>v</strong>); [in C]
+<strong>elem</strong>:dropselect_cb(<strong>lin, col</strong>: number, <strong>drop: </strong>ihandle,<strong> t</strong>: string, <strong>i, v</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua] </pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the current cell</span>.<br>
+    <strong><font face="Courier New">drop</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the dropdown list shown to the 
+    user</span>.<br>
+    <strong><font face="Courier New">t</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Text of the item whose state was changed</span>.<br>
+    <strong><font face="Courier New">i</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Number of the item whose state was changed</span>.<br>
+    <b>v</b>: Indicates if item was selected or unselected (1 or 0).</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_EDITION_CB">EDITION_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the current cell 
+  enters or leaves the edition mode</span>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, int <strong>mode</strong>);  [in C]
+<strong>elem</strong>:edition_cb(<strong>lin, col</strong>, <strong>mode</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the current cell</span>.<br>
+    <strong><font face="Courier New">mode</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">1</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> if the cell has entered the edition mode, or </span>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">0</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if the cell has left the edition mode</span>.</p>
+    <p>The new value is accepted only if the callback returns
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_DEFAULT</span>. If the callback does not exists the new value is always accepted. If the user pressed <b>Enter</b> 
+    and the callback returns
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_IGNORE</span> the editing continues. If the callback returns
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_CONTINUE</span> when mode is 0, the edit mode is ended but the value is not updated, so the application can 
+    update a different value (usefull to format the new value). If the control loses its focus the edition mode will be 
+    ended always even if the callback return
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    IUP_IGNORE.</span> </p>
+    <p>This callback is also called if the user cancel the editing with <b>Esc</b> and when the user press <b>Del</b> to 
+    validate the operation for each cell been cleared (in this case is called only with mode=1).</p>
+  </blockquote>
+</blockquote>
+<h3>Callback Mode</h3>
+<blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_VALUE_CB">VALUE_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to verify the value of a 
+  cell. Called both for common cells and for line and column titles</span>.</p>
+  <blockquote>
+    <pre>char* function(Ihandle* <strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:value_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: string) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.</p>
+    <p>
+    <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+    Must return the string to be redrawn</span>. </p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">IMPORTANT: </span>The existance of this 
+    callback defines the callback operation mode of the matrix.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_VALUE_EDIT_CB">VALUE_EDIT_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to notify the application 
+  that the value of a cell was edited. Since it is a notification, it cannot refuse the value modification (which can be 
+  done by the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">&quot;EDITION_CB</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">&quot; callback</span>). This callback is usually set in callback mode, but also works in 
+  normal mode.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, char* <strong>newval</strong>); [in C]
+<strong>elem</strong>:value_edit_cb(<strong>lin, col</strong>: number<strong>, newval</strong>: string) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <font face="Courier New"><strong>lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.<br>
+    <strong><font face="Courier New">newval</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">String containing the new cell value</span></p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_MARK_CB">MARK_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to verify the selection 
+  state of a cell. Called only for common cells and only in callback mode.</span></p>
+  <blockquote>
+    <pre>int function(Ihandle* <strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>); [in C]
+<strong>elem</strong>:mark_cb(<strong>lin, col</strong>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Must return the </span>
+    <span style="font-family: Times New Roman">selection state (marked=1, not marked 0)</span>.</p>
+  </blockquote>
+  <p><strong><font face="Courier New"><a name="IUP_MARKEDIT_CB">MARK_EDIT_CB</a></font></strong>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated to notify the application 
+  that the selection state of a cell was changed. Since it is a notification, it cannot refuse the mark modification</span>.
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">&nbsp;Called 
+  only for common cells and only in callback mode.</span></p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, int <strong>lin</strong>, int <strong>col</strong>, int <b>marked</b>); [in C]
+<strong>elem</strong>:markedit_cb(<strong>lin, col, </strong><b>marked</b>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">self</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Identifier of the matrix interacting with 
+    the user</span>.<br>
+    <strong><font face="Courier New">lin</font></strong>, <strong><font face="Courier New">col</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Coordinates of the cell</span>.<br>
+    <strong><font face="Courier New">marked</font></strong>: <span style="font-family: Times New Roman">selection state 
+    (marked=1, not marked 0).</span></p>
+  </blockquote>
+  <hr>
+  <p>The canvas callbacks <a href="javascript:parent.manLoadCont('call', '../call/iup_action')">
+  <font face="Courier New">ACTION</font></a>, <a href="javascript:parent.manLoadCont('call', '../call/iup_scroll_cb')">
+  <font face="Courier New">SCROLL_CB</font></a>, <font face="Courier New">
+  <a href="javascript:parent.manLoadCont('call', '../call/iup_keypress_cb')">KEYPRESS_CB</a></font>,
+  <font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_motion_cb')">MOTION_CB</a></font>,
+  <font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_map_cb')">MAP_CB</a></font>,
+  <font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_resize_cb')">RESIZE_CB</a></font> 
+  and <a href="javascript:parent.manLoadCont('call', '../call/iup_button_cb')"><font face="Courier New">BUTTON_CB</font></a> 
+  can be changed but you should save and call the original definitions or the matrix will not correctly work. This can 
+  not be done in Lua.</p>
+  <p>See <font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupcanvas')">IupCanvas</a></font>.</p>
+</blockquote>
+
+</body>
+
+</html>

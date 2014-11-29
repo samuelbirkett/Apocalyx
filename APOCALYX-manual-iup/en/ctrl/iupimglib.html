@@ -1,0 +1,189 @@
+<!doctype HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>IupGLCanvas - controle</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>IupImageLib</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">A library of pre-defined images for buttons 
+  and labels.</span></p>
+</blockquote>
+<h3>Initialization</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">To generate an application that uses this 
+  function, the program must be linked to the function’s library (</span><span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">iupimglib.lib</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> on Windows and </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">libiupimglib.a</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> on Unix). The </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">iupcontrols.h</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> file must also be included in the source code. </span></p>
+  <p><span style="font-family: Times New Roman">The library is quite large because of the images. To avoid using all the 
+  images get the source code and extract only the image you need.</span></p>
+</blockquote>
+<h3 dir="ltr">Reference</h3>
+<blockquote>
+  <pre>void IupImageLibOpen(void); [in C]</pre>
+</blockquote>
+<blockquote dir="ltr">
+  <blockquote>
+    <p dir="ltr">
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function loads all the images in the 
+    library.</span></p>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <pre>void IupImageLibClose(void); [in C]</pre>
+</blockquote>
+<blockquote dir="ltr">
+  <blockquote>
+    <p dir="ltr">
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function releases all the images of the 
+    library.</span></p>
+  </blockquote>
+</blockquote>
+<h3>Usage</h3>
+<blockquote>
+  <p>The following names are defined after the library initialization. The images do NOT include the button borders, 
+  this is just a preview for buttons!</p>
+  <p>The &quot;BGCOLOR&quot; color value is set and the colors are distributed so that the automatic disable color algorithm works 
+  fine. Images for buttons have size 20x20, small images are 11x11, and label images have height=30.</p>
+  <div align="center">
+    <center>
+    <table border="1" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="38%" id="AutoNumber1" cellpadding="3">
+      <tr>
+        <th width="39%" bgcolor="#C0C0C0">Names</th>
+        <th width="61%" bgcolor="#C0C0C0">Images</th>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_TEXT&quot;<br>
+        &quot;IUP_IMGBUT_NEW&quot;<br>
+        &quot;IUP_IMGBUT_NEWSPRITE&quot;<br>
+        &quot;IUP_IMGBUT_OPEN&quot;<br>
+        &quot;IUP_IMGBUT_CLOSE&quot;<br>
+        &quot;IUP_IMGBUT_CLOSEALL&quot;<br>
+        &quot;IUP_IMGBUT_SAVE&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg5.gif" width="155" height="77"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_CUT&quot;<br>
+        &quot;IUP_IMGBUT_COPY&quot;<br>
+        &quot;IUP_IMGBUT_PASTE&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg4.gif" width="112" height="42"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_PRINT&quot;<br>
+        &quot;IUP_IMGBUT_PREVIEW&quot;<br>
+        &quot;IUP_IMGBUT_SEARCH&quot;<br>
+        &quot;IUP_IMGBUT_HELP&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg6.gif" width="149" height="43"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_REDO&quot;<br>
+        &quot;IUP_IMGBUT_UNDO&quot;<br>
+        &quot;IUP_IMGBUT_ONELEFT&quot;<br>
+        &quot;IUP_IMGBUT_ONERIGHT&quot;<br>
+        &quot;IUP_IMGBUT_TENLEFT&quot;<br>
+        &quot;IUP_IMGBUT_TENRIGHT&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg7.gif" width="154" height="73"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_ZOOM&quot;<br>
+        &quot;IUP_IMGBUT_ZOOMIN&quot;<br>
+        &quot;IUP_IMGBUT_ZOOMOUT&quot;<br>
+        &quot;IUP_IMGBUT_NOZOOM&quot;<br>
+        &quot;IUP_IMGBUT_YZ&quot;<br>
+        &quot;IUP_IMGBUT_XY&quot;<br>
+        &quot;IUP_IMGBUT_XZ&quot;<br>
+        &quot;IUP_IMGBUT_FIT&quot;<br>
+        &quot;IUP_IMGBUT_AXIS&quot;<br>
+        &quot;IUP_IMGBUT_CUBE&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg8.gif" width="155" height="115"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_TILE&quot;<br>
+        &quot;IUP_IMGBUT_CASCADE&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg3.gif" width="77" height="39"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_STOP&quot;<br>
+        &quot;IUP_IMGBUT_PLAY&quot;<br>
+        &quot;IUP_IMGBUT_PREVIOUS&quot;<br>
+        &quot;IUP_IMGBUT_NEXT&quot;<br>
+        &quot;IUP_IMGBUT_PLAYBACKWARD&quot;<br>
+        &quot;IUP_IMGBUT_FOWARD&quot;<br>
+        &quot;IUP_IMGBUT_REWIND&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg10.gif" width="155" height="79"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_GREENLEFT&quot;<br>
+        &quot;IUP_IMGBUT_GREENUP&quot;<br>
+        &quot;IUP_IMGBUT_GREENRIGHT&quot;<br>
+        &quot;IUP_IMGBUT_GREENDOWN&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg1.gif" width="156" height="48"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGBUT_CONFIGURE&quot;<br>
+        &quot;IUP_IMGBUT_VIDEO&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg9.gif" width="81" height="39"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGSML_SINGLELEFT&quot;<br>
+        &quot;IUP_IMGSML_DOUBLELEFT&quot;<br>
+        &quot;IUP_IMGSML_SINGLERIGHT&quot;<br>
+        &quot;IUP_IMGSML_DOUBLERIGHT&quot;<br>
+        &quot;IUP_IMGSML_DOWN&quot;<br>
+        &quot;IUP_IMGSML_LEFT&quot;<br>
+        &quot;IUP_IMGSML_RIGHT&quot;<br>
+        &quot;IUP_IMGSML_UP&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg11.gif" width="118" height="59"></td>
+      </tr>
+      <tr>
+        <td width="39%"><code>&quot;IUP_IMGLBL_TECGRAF&quot;<br>
+        &quot;IUP_IMGLBL_BR&quot;<br>
+        &quot;IUP_IMGLBL_LUA&quot;<br>
+        &quot;IUP_IMGLBL_TECGRAFPUCRIO&quot;<br>
+        &quot;IUP_IMGLBL_PETROBRAS&quot;</code></td>
+        <td width="61%" align="center"><img border="0" src="iupimg2.gif" width="170" height="132"></td>
+      </tr>
+    </table>
+    </center>
+  </div>
+</blockquote>
+<h3>See Also</h3>
+<blockquote>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('elem', '../elem/iupimage')">IupImage</a></font></p>
+</blockquote>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

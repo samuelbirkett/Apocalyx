@@ -1,0 +1,235 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>IupMask - control</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>iupMask - Pattern Specification</h2>
+<blockquote>
+  <p>The pattern to be searched in the text can be defined by the rules given 
+  below. Note that such rules are very similar to the ones used by Lua, even 
+  though they are not the same. For further information on these patterns, 
+  please refer to the <a target="_TOP" href="http://www.lua.org">Lua Manual</a>.
+  </p>
+</blockquote>
+<h3>Notes</h3>
+<ul>
+  <li>&quot;Function&quot; codes (such as <font face="Courier New">/l</font>,
+  <font face="Courier New">/D</font>, <font face="Courier New">/w</font>) cannot 
+  be used inside a class (<font face="Courier New">[...]</font>). </li>
+  <li>If the character following a <font face="Courier New">/</font> does not 
+  mean a special case (such as <font face="Courier New">/w</font> or
+  <font face="Courier New">/n</font>), it is matched with no
+  <font face="Courier New">/</font> - that means that <font face="Courier New">
+  /x</font> will match only <font face="Courier New">x</font>, and not
+  <font face="Courier New">/x</font>. If you want to match
+  <font face="Courier New">/x</font>, use <font face="Courier New">//x</font>.
+  </li>
+  <li>The caret (<font face="Courier New">^</font>) character has different 
+  meanings when used inside or outside a class - inside a class it means 
+  negative, and outside a class it is an anchor to the beginning of a line. </li>
+  <li>The boundary function (<font face="Courier New">/b</font>) anchors the 
+  pattern to a word boundary - it does not match anything. A word boundary is a 
+  point between a <font face="Courier New">/w</font> and a
+  <font face="Courier New">/W</font> character. </li>
+  <li>Capture operators (<font face="Courier New">f</font> and
+  <font face="Courier New">g</font>) group patterns and are also used to keep 
+  matched sections of texts. </li>
+  <li>A word on precedence: concatenation has precedence over the alternation (<font face="Courier New">j</font>) 
+  operator - that is, <font face="Courier New">faj fej fi</font> will match
+  <font face="Courier New">fa</font> OR <font face="Courier New">fe</font> OR
+  <font face="Courier New">fi</font>. </li>
+  <li>The <font face="Courier New">@</font> character is used to determine that, 
+  instead of searching the text until the first match is made, the function 
+  should try to match the pattern only with the first character. If present, it 
+  must be the first character of the pattern. </li>
+  <li>The <font face="Courier New">%</font> character is used to determine that 
+  the text should be searched to its end, independently of the number of matches 
+  found. If present, it must be the first character of the pattern. This is only 
+  useful when combined with the capture feature. </li>
+</ul>
+<h3>Allowed pattern characters</h3>
+<table border="1">
+  <tr>
+    <td><font face="Courier New">c</font></td>
+    <td>Matches a <font face="Courier New">c</font> (non-special) character </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">.</font></td>
+    <td>Matches any single character</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">[abc]</font></td>
+    <td>Matches an <font face="Courier New">a</font>, <font face="Courier New">b</font> 
+    or <font face="Courier New">c</font></td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">[a-d]</font></td>
+    <td>Matches any character between <font face="Courier New">a</font> and
+    <font face="Courier New">d</font>, including them (just like
+    <font face="Courier New">[abcd]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">[^a-dg]</font></td>
+    <td>Matches any character which is neither between <font face="Courier New">
+    a</font> and <font face="Courier New">d</font> nor a
+    <font face="Courier New">g</font></td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/d</font></td>
+    <td>Matches any digit (just like <font face="Courier New">[0-9]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/D</font></td>
+    <td>Matches any non-digit (just like <font face="Courier New">[^0-9]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/l</font></td>
+    <td>Matches any letter (just like <font face="Courier New">[a-zA-Z]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/L</font></td>
+    <td>Matches any non-letter (just like <font face="Courier New">[^a-zA-Z]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/w</font></td>
+    <td>Matches any alphanumeric character (just like <font face="Courier New">
+    [0-9a-zA-Z ]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/W</font></td>
+    <td>Matches any non-alphanumeric character (just like
+    <font face="Courier New">[^0-9a-zA-Z ]</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/s</font></td>
+    <td>Matches any &quot;blank&quot; character (TAB, SPACE, CR)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/S</font></td>
+    <td>Matches ant non-blank character</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/n</font></td>
+    <td>Matches a newline character</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/t</font></td>
+    <td>Matches a tabulation character</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/nnn</font></td>
+    <td>Matches an ASCII character with a <font face="Courier New">nnn</font> 
+    value (decimal)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/xnn</font></td>
+    <td>Matches an ASCII character with a <font face="Courier New">nn</font> 
+    value (hexadecimal)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/special</font></td>
+    <td>Matches the special character literally (<font face="Courier New">/[</font>,
+    <font face="Courier New">//</font>, <font face="Courier New">/.</font>)</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">abc</font></td>
+    <td>Matches a sequence of <font face="Courier New">a</font>,
+    <font face="Courier New">b</font> and <font face="Courier New">c</font> 
+    patterns in order</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">aj bj c</font></td>
+    <td>Matches a pattern <font face="Courier New">a</font>,
+    <font face="Courier New">b</font> or <font face="Courier New">c</font></td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">a*</font></td>
+    <td>Matches 0 or more characters <font face="Courier New">a</font></td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">a+</font></td>
+    <td>Matches 1 or more characters <font face="Courier New">a</font></td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">a?</font></td>
+    <td>Matches 1 or no characters <font face="Courier New">a</font></td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">(pattern)</font></td>
+    <td>Considers pattern as one character for the above</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">fpatterng</font></td>
+    <td>Captures pattern for later reference</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/b</font></td>
+    <td>Anchors to a word boundary</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/B</font></td>
+    <td>Anchors to a non-boundary</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">^pattern</font></td>
+    <td>Anchors pattern to the beginning of a line</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">pattern$</font></td>
+    <td>Anchors pattern to the end of a line</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">@pattern</font></td>
+    <td>Returns the match found only in the beginning of the text</td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">%pattern</font></td>
+    <td>Returns the firstmatch found, but searches all the text </td>
+  </tr>
+</table>
+<h3>&nbsp;</h3>
+<h3>Examples</h3>
+<p></p>
+<table border="1">
+  <tr>
+    <td><font face="Courier New">(my|his)</font></td>
+    <td>Matches both <font face="Courier New">my</font> pattern and
+    <font face="Courier New">his</font> pattern. </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/d/d:/d/d(:/d/d)?</font></td>
+    <td>Matches time with seconds (01:25:32) or without seconds (02:30). </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">[A-D]/l+</font></td>
+    <td>Matches names such as Australia, Bolivia, Canada or Denmark, but not 
+    England, Spain or single letters such as A. </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/l/w*</font></td>
+    <td>my variable = 23 * width; </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">^Subject:[^/n]*/n</font></td>
+    <td>Subject: How to match a subject line.1 </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">/b[ABab]/w*</font></td>
+    <td>Matches any word that begins with A or B </td>
+  </tr>
+  <tr>
+    <td><font face="Courier New">from:/s*/w+</font></td>
+    <td>Captures &quot;sender&quot; in a message from <font face="Courier New">sender</font>
+    </td>
+  </tr>
+</table>
+
+</body>
+
+</html>

@@ -1,0 +1,260 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="Template" content="X:\OFFICE97\OFFICE\html.dot">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IupCanvas</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF" link="#0000FF" vlink="#800080">
+
+<h2>IupCanvas</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creates an interface element that is a 
+  canvas - a working area for your application</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Creation</span></h3>
+<blockquote>
+  <pre>Ihandle* IupCanvas(char *<strong>action</strong>); [in C]
+iup.canvas{} -&gt; (<strong>elem</strong>: ihandle) [in Lua]
+canvas(<strong>action</strong>) [in LED]</pre>
+  <p><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">action</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">: Name of the action generated when the canvas needs to be redrawn</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This function returns the identifier of the 
+  created canvas, or </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> if an error occurs</span>.</p>
+</blockquote>
+<h3>
+<span style="font-size:14.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Attributes</span></h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_bgcolor')"><font face="Courier New">BGCOLOR</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Background color</span>. In Windows the 
+  background is painted only if the ACTION callback is not defined. If the callback is defined the application must draw 
+  all the canvas contents. For better results also let the attribute <font face="Courier New">CLIPCHILDREN=YES</font> in 
+  the dialog.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_cursor.html">CURSOR</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Canvas cursor</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_size')"><font face="Courier New">SIZE</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Size of the canvas. Default: size of one 
+  character</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_scrollbar.html">SCROLLBAR</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Associates a horizontal and/or vertical 
+  scrollbar to the canvas</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_dx.html">DX</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Size of the thumb in the horizontal 
+  scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_dy.html">DY</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Size of the thumb in the vertical scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_posx.html">POSX</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Position of the thumb in the horizontal 
+  scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_posy.html">POSY</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Position of the thumb in the vertical 
+  scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_xmax.html">XMAX</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Maximum value of the horizontal scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_xmin.html">XMIN</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Minimum value of the horizontal scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_ymin.html">YMIN</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Minimum value of the vertical scrollbar</span>.</p>
+  <p><font face="Courier New"><a href="../atrib/iup_ymax.html">YMAX</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Maximum value of the vertical scrollbar</span>.</p>
+  <p><b><font face="Courier New">BORDER</font></b>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">(Windows Only) Shows a border around the 
+  canvas. It can only be changed before the element is mapped. </span>Default: <font face="Courier New">&quot;YES&quot;</font>.</p>
+  <p><a href="javascript:parent.manLoadCont('atrib', '../atrib/iup_expand')"><font face="Courier New">EXPAND</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The default value is </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">&quot;YES&quot;</span>.</p>
+  <p><font face="Courier New"><b>DRAWSIZE</b>:</font> The size of the drawing area in pixels. In Motif this is identical 
+  to RASTERSIZE. In Windows it is obtained from the canvas client area since it may contains a border.</p>
+  <p><font face="Courier New"><b>BACKINGSTORE</b></font>: (Motif Only).
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Controls the canvas backing store flag. The 
+  default value is </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">&quot;YES&quot;</span>.</p>
+  <p><font face="Courier New"><b>MDICLIENT</b></font>: (Windows Only). Configure this canvas as an MDI client window. No 
+  callbacks will be called. This canvas will be used internally only.<span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA"> 
+  The default value is </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:
+EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">&quot;NO&quot;</span>.</p>
+  <p><b><font face="Courier New">HDC_WMPAINT</font></b>: (Windows Only). Contains the HDC created with the BeginPaint 
+  inside the WM_PAINT message. Valid only during the ACTION callback.</p>
+</blockquote>
+<h3>Callbacks</h3>
+<blockquote>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_action')"><font face="Courier New">ACTION</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the canvas needs to be 
+  redrawn. Also receives as parameters the scrollbar position</span>:</p>
+  <blockquote>
+    <pre>int function(Ihandle *<strong>self</strong>, float <strong>x</strong>, float <strong>y</strong>); [in C]
+<strong>elem</strong>:action(<b>x, y</b>: number) -&gt; (<strong>ret</strong>: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">x</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Thumb position in the horizontal scrollbar</span>.<br>
+    <strong><font face="Courier New">y</font></strong>:
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Thumb position in the vertical scrollbar</span>.</p>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This action is also generated right after 
+    the dialog is viewed by means of functions </span>
+    <a href="javascript:parent.manLoadCont('func', '../func/iupshow')"><font face="Courier New">IupShow</font></a>,
+    <a href="javascript:parent.manLoadCont('func', '../func/iupshowxy')"><font face="Courier New">IupShowXY</font></a> 
+    or <a href="javascript:parent.manLoadCont('func', '../func/iuppopup')"><font face="Courier New">IupPopup</font></a>.</p>
+  </blockquote>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_button_cb')"><font face="Courier New">BUTTON_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when any mouse button is 
+  pressed or released</span>.</p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_dropfiles_cb')">DROPFILES_CB</a></font><span style="font-family: Times New Roman">:</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> [Windows Only] Action generated when one or 
+  more files are dropped from the Windows Explorer in the canvas.</span></p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_enterwindow_cb')"><font face="Courier New">
+  ENTERWINDOW_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse enters the 
+  canvas</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_leavewindow_cb')"><font face="Courier New">
+  LEAVEWINDOW_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse leaves the 
+  canvas</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_motion_cb')"><font face="Courier New">MOTION_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the mouse is moved</span>.</p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_keypress_cb')">KEYPRESS_CB</a></font>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when a key is pressed or 
+  released. </span>It is called after the common callback <b><font face="Courier New">K_ANY</font></b>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_resize_cb')"><font face="Courier New">RESIZE_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when the canvas' size is 
+  changed</span>.</p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_scroll_cb')"><font face="Courier New">SCROLL_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called when the scrollbar is manipulated</span>.
+  </p>
+  <p><a href="javascript:parent.manLoadCont('call', '../call/iup_map_cb')"><font face="Courier New">MAP_CB</font></a>:
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Called right after the element is mapped</span>.</p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_wom_cb')">WOM_CB</a></font><span style="font-family: Times New Roman">:</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> </span>
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  [Windows Only] </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Action generated when an audio device 
+  receives an event.</span></p>
+  <p><font face="Courier New"><a href="javascript:parent.manLoadCont('call', '../call/iup_wheel_cb')">WHEEL_CB</a></font><span style="font-family: Times New Roman">:</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"> Action generated when the mouse wheel is 
+  rotated.</span></p>
+  <p><b><font face="Courier New">FOCUS_CB</font></b>: Called when the canvas gets or looses the focus. It is called 
+  after the common callbacks <b><font face="Courier New">GETFOCUS_CB</font></b> and <b><font face="Courier New">
+  KILL_FOCUS_CB</font></b>.</p>
+  <blockquote>
+    <pre>int function(Ihandle *<b>n</b>, int focus); [in C]
+elem:focus_cb(<b>focus</b>: number) -&gt; (ret: number) [in Lua]</pre>
+    <p><strong><font face="Courier New">focus</font></strong>: is non zero if the canvas is getting the focus, is zero 
+    if it is loosing the focus.</p>
+  </blockquote>
+</blockquote>
+<h3>Note</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Note that some keys might remove the focus 
+  from the canvas. To avoid this, return </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">IGNORE</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> in the </span><a href="javascript:parent.manLoadCont('call', '../call/iup_k_any')">
+  <font face="Courier New">K_ANY</font></a>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">callback</span>. </p>
+  <p>The mouse cursor position can be programatically controled using the global attribute
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Courier New; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  <a href="../atrib/iup_globals.html#cursorpos">CURSORPOS</a></span>.</p>
+</blockquote>
+<h3><a href="../examples/elem/iupcanvas/">Examples</a></h3>
+
+</body>
+
+</html>

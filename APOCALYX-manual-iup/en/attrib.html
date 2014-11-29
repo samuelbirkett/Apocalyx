@@ -1,0 +1,47 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Atributos</title>
+<script src="../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h1 align="center"><font face="Helvetica,Arial">Attributes</font></h1>
+<blockquote>
+  <p>Attributes are used to change properties of elements. Each element has a 
+  set of attributes that affect it, and each attribute can work differently for 
+  each element. Depending on the element, its value can be computed or simply 
+  verified also it can be internally stored or not. </p>
+  <p>The attribute is first checked at the element specific implementation at 
+  the driver (if mapped) or at the custom control. If not defined then it checks 
+  in the hash table. If not defined in its hash table, the attribute will be 
+  inherited from its parent and so forth, until it reaches the dialog. But if 
+  still then the attribute is not defined a default value for the element is 
+  returned (the default value can also be NULL).</p>
+  <p>Only a few attributes are not inherited: <font face="Courier New">&quot;TITLE&quot;</font>,
+  <font face="Courier New">&quot;VALUE&quot;</font>, <font face="Courier New">&quot;ALIGNMENT&quot;</font>,
+  <font face="Courier New">&quot;X&quot;</font>, <font face="Courier New">&quot;Y&quot;</font>,
+  <font face="Courier New">&quot;RASTERSIZE&quot;</font> and <font face="Courier New">
+  &quot;SIZE&quot;</font>.</p>
+  <p>When an attribute is set it is always stored at the hash table unless the 
+  driver disable the storage.
+  <span style="font-size: 12.0pt; mso-bidi-font-size: 10.0pt; font-family: Times New Roman; mso-fareast-font-family: Times New Roman; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA">
+  If the value is </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">NULL</span><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">, the attribute will be removed from the hash 
+  table</span>. Then the driver or the custom control is updated. Finally the 
+  attribute is also updated for the children of the element in the driver if 
+  they do not have the attribute defined in their own hash table.</p>
+</blockquote>
+
+</body>
+
+</html>

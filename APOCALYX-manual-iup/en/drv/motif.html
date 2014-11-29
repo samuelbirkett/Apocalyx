@@ -1,0 +1,220 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>IUP/Motif - características</title>
+<script src="../../wb_core/wb_dummy.js"></script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<h2>Motif System Driver&nbsp;</h2>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Driver for the X-Windows/Motif 2.x 
+  environment. But it can run in Motif 1.x.</span></p>
+</blockquote>
+<h3>Environment Variables</h3>
+<blockquote>
+  <p><b><font face="Courier New">QUIET</font></b></p>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">When this variable is set to NO, IUP will 
+    generate a message in console indicating the driver’s version when initializing</span>. Default: YES.</p>
+  </blockquote>
+  <p><b><font face="Courier New">DEBUG</font></b></p>
+  <blockquote>
+    <p>
+    <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This variable’s existence makes the driver 
+    operate in synchronous mode with the X server. This slows down all operations, but allows immediately detecting 
+    errors caused by X</span>.</p>
+  </blockquote>
+</blockquote>
+<h3><b>
+<span style="font-size:14.0pt;mso-bidi-font-size:
+10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Default Values – Resource Files</span></b>
+</h3>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Some default values used by the driver, such 
+  as background color, foreground color and font, can be set by the user by means of a resource file called </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">Iup</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">. It must be in the user’s </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">home</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> or in a directory pointed to by the </span>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA">XAPPLRESDIR</span><span style="font-size:12.0pt;
+mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA"> environment variable. Below you can see an example of this file’s contents</span>:</p>
+</blockquote>
+<blockquote>
+  <blockquote>
+    <pre>*background: #ff0000
+*foreground: #a0ff00
+*fontList: -misc-fixed-bold-r-normal-*-13-*</pre>
+  </blockquote>
+</blockquote>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The values used in the example above are the 
+  ones used by IUP if these resources are not defined</span>.</p>
+</blockquote>
+<h3>Tips</h3>
+<ul>
+  <li>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA"><b>During linking in the Solaris 
+  environment: Can not find </b></span><b>
+  <span style="font-size:
+12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-font-family:
+&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA">libresolv.so.2</span></b></li>
+</ul>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This error occurs if the system does not 
+  have an applied patch containing this library</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">This library is important for all 
+  installations of Solaris 2.5 and 2.5.1 (SunOS 5.5 and 5.5.1, respectively). It is a correction of the DNS system, 
+  involving security</span>.</p>
+</blockquote>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The web address to get these patches is 
+  SunSolve’s</span> <a href="http://sunsolve1.sun.com/sunsolve/pubpatches/patches.html">
+  http://sunsolve1.sun.com/sunsolve/pubpatches/patches.html</a>.
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Select the Solaris version you wish (2.5 or 
+  2.5.1 for Sparc) and download the patches</span> 103667-09, 102980-17, 103279-03, 103708-02<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">, or more recent for 2.5 (the number after 
+  the ‘-’ is the patch version, and the more recent number is the patch), or </span>103663-12, 103594-14, 103680-02 and 
+  103686-02 for 2.5.1.
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">All of them have a README file explaining 
+  installation, and groups have to be installed together</span>.</p>
+</blockquote>
+<ul>
+  <li><strong>TrueColor canvas</strong></li>
+</ul>
+<blockquote>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Whenever a canvas is created, one tries to 
+  create it with a TrueColor resolution Visual. This is not always possible, since it is subject to many conditions, 
+  such as hardware (graphics board) and the X server’s configuration</span>.</p>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">The </span><b>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:
+&quot;Courier New&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;
+mso-fareast-language:EN-US;mso-bidi-language:AR-SA">xdpyinfo</span></b><span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:&quot;Times New Roman&quot;;
+mso-fareast-font-family:&quot;Times New Roman&quot;;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA"> program informs which Visuals are available in the X server where the display is being 
+  made, so that you can see if your X allows creating a canvas with a TrueColor Visual. In some platforms, however, the 
+  X server may not make a TrueColor Visual available, even though the graphics board is able to display it. In this 
+  case, restart the server with parameters that force this. Below is a table with such parameters to some systems where 
+  the IUP library has been tested. If the command does not work, or if it is not possible, then the graphics library 
+  really does not support 24 bpp</span>.</p>
+  <div align="center">
+    <center>
+    <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+      <tr>
+        <th>
+        <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">System</span></th>
+        <th>
+        <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Execution Command</span></th>
+      </tr>
+      <tr>
+        <td>Linux</td>
+        <td><font face="Courier New">startx --bpp 24</font></td>
+      </tr>
+      <tr>
+        <td>AIX</td>
+        <td>(<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">not necessary</span>)</td>
+      </tr>
+      <tr>
+        <td>IRIX</td>
+        <td>(<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">not necessary</span>)</td>
+      </tr>
+      <tr>
+        <td>Solaris</td>
+        <td>(<span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">not necessary</span>)</td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p>
+  <span style="font-size:12.0pt;mso-bidi-font-size:10.0pt;
+font-family:&quot;Times New Roman&quot;;mso-fareast-font-family:&quot;Times New Roman&quot;;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA">Since color requests are “always” successful 
+  in TrueColor/24bpp windows, we have minimized visualization problems for images that make use of complex color 
+  palettes (when there is a high color demand, not always all colors requested can be obtained). The IUP applications 
+  also coexist more “peacefully” with other applications and among themselves, since the colors used by TrueColor/24bpp 
+  windows do not use the colormap cells used by all applications</span>.</p>
+</blockquote>
+<ul>
+  <li><strong>XtAddCallback failed</strong></li>
+</ul>
+<blockquote>
+  <p>When a warning about XtAddCallback appears during the application initialization, and it aborts, this usually means 
+  that you are using a Motif with a different version than the Motif used to build IUP. Reinstall Motif or rebuild IUP 
+  using your Motif.</p>
+</blockquote>
+<ul>
+  <li><b>Some Control Sizes are wrong</b></li>
+</ul>
+<blockquote>
+  <p>Sometimes the control initialization is incomplete and its size is miscalculated. To solve this call IupMap(dialog) 
+  and set the dialog size to NULL &quot;IupSetAttribute(dlg, IUP_SIZE, NULL);&quot; before calling IupShow. This will fix the 
+  sizes. We hope to solve this problem in future versions.</p>
+</blockquote>
+
+</body>
+
+</html>

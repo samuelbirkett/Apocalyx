@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<!--  This file does NOT need to be edited! Configure webbook changing the files
+      inside the wb_usr directory.
+-->
+<!--
+Webbook version 2.0 
+Aug 2002
+Authors: Antonio Scuri and Mark Stroetzel Glasberg
+
+(Please keep all copyright notices.)
+This frameset document includes the FolderTree script.
+Script found in: http://www.mmartins.com
+Author: Marcelino Alves Martins
+-->
+<!-- Finding out JavaScript version -->  
+<script language="JavaScript" type="text/javascript">    JavaVersion = "1.0"; </script>
+<script language="JavaScript1.2" type="text/javascript"> JavaVersion = "1.2"; </script>
+</HEAD>
+
+<!-- Determining browser capabilities -->
+<script language="JavaScript" type="text/javascript">
+  if (JavaVersion == "1.0")
+  {
+		document.write("<body BGCOLOR='#FFFFFF'>\n",
+			             "<p>Your browser does not support JavaScript '1.2'.</p>\n",
+			             "</body>\n");
+  }
+</script>
+
+<noscript>
+  <body bgcolor="#FFFFFF">
+  <p>Your browser does not support JavaScript or it is disabled.</p>
+  </body>
+</noscript>
+
+<!-- Code for browser detection -->
+<script src="wb_core/ua.js"></script>
+
+<!-- Loading user information -->
+<script src="wb_usr/wb_usr.js"> </script>
+
+<!-- Control the cont frame (wb_cont) -->
+<script src="wb_core/wb.js"> </script>
+
+<!-- Basic init --> 
+<script language="JavaScript1.2" type="text/javascript">
+
+// Initializing language
+wb_cur_lang_index = 0;
+wb_cur_lang = wb_usr.langs[wb_cur_lang_index];
+
+// Setting document's title based on user configuration
+document.write("<TITLE>", wb_usr.messages[wb_cur_lang].title, "</TITLE>\n");
+
+</script>
+
+<!-- Showing document frames: wb_tree.html and the main page (will be loaded later) --> 
+<script language="JavaScript" type="text/javascript">
+  if (navigator.appName.indexOf("Netscape") != -1 && parseInt(navigator.appVersion) <= 4)
+    document.write("<frameset BORDERCOLOR='darkblue' BORDER='1' ROWS='56,38,*'>\n"); // NS4 bug, wrong frame size
+  else
+    document.write("<frameset FRAMESPACING='0' BORDER='0' ROWS='49,31,*'>\n");
+
+  document.write("<frame MARGINWIDTH='0' MARGINHEIGHT='0' FRAMEBORDER='0' NORESIZE SCROLLING='no' NAME='wb_title' SRC='wb_core/wb_title.html'>\n");
+  document.write("<frame MARGINWIDTH='0' MARGINHEIGHT='0' FRAMEBORDER='0' NORESIZE SCROLLING='no' NAME='wb_bar' SRC='wb_core/wb_bar.html'>\n");
+  document.write("<frameset BORDER='5' FRAMESPACING='1' COLS='", wb_usr.start_size, ",*'>\n");
+  if (navigator.appName.indexOf("Netscape") != -1 && parseInt(navigator.appVersion) <= 4)
+  {
+    document.write("<frame NORESIZE FRAMEBORDER='1' SRC='wb_core/wb_tree.html' NAME='wb_tree'>\n");
+    document.write("<frame NORESIZE FRAMEBORDER='1' SRC='about:blank' NAME='wb_cont'>\n");
+  }
+  else
+  {
+    document.write("<frame FRAMEBORDER='1' SRC='wb_core/wb_tree.html' NAME='wb_tree'>\n");
+    document.write("<frame FRAMEBORDER='1' SRC='about:blank' NAME='wb_cont'>\n");
+  }
+
+  function GetBaseURL()
+  {
+    var ss = document.URL
+    var _index = ss.lastIndexOf("\/")
+    var _index2 = ss.lastIndexOf("\\")
+    if(_index2 > _index)
+      _index = _index2
+    return ss.substring(0, _index);
+  }
+  
+  START_URL = GetBaseURL()
+  
+
+</script>
+
+  </frameset>
+  <noframes>
+    <body>
+      <p>This page uses frames, but your browser doesn't support them.</p>
+    </body>
+  </noframes>
+</frameset>
+
+</HTML>
