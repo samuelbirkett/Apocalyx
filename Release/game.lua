@@ -49,7 +49,7 @@ function callback.init()
 	
 		 
 	setAmbient(0.5, 0.5, 0.5)
-	setPerspective(75,.5,3000)
+	setPerspemctive(75,.5,3000)
 	local camera = getCamera()
 	camera:reset()
 	camera:setPosition(0,2.5,8)
